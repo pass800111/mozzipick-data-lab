@@ -21,7 +21,8 @@
       "status": "verified-pending",
       "officialUrl": "https://www.anker.com/products/b110a-anker-prime-26k-300w-power-bank-with-charging-base",
       "spec": "26,250mAh · 300W · 140W USB-C · model A110A/B110A",
-      "xiaohongshuQuery": "安克 Prime 充电宝 26K 300W"
+      "xiaohongshuQuery": "安克 Prime 充电宝 26K 300W",
+      "legacyName": "앤커 맥고 보조배터리 프로 2"
     },
     {
       "id": "dji-romo",
@@ -41,7 +42,8 @@
       "status": "verified-pending",
       "officialUrl": "https://www.dji.com/media-center/announcements/dji-best-ifa-2026-awards-multiple",
       "spec": "36,000Pa · 123° 로봇암 · 최대 8.5cm 문턱",
-      "xiaohongshuQuery": "DJI ROMO 2 P2 A2 扫地机器人"
+      "xiaohongshuQuery": "DJI ROMO 2 P2 A2 扫地机器人",
+      "legacyName": "DJI 로모 P2 / A2"
     },
     {
       "id": "viofo-t340",
@@ -61,7 +63,8 @@
       "status": "verified-pending",
       "officialUrl": "https://www.viofo.com/",
       "spec": "4K+2K+2K+2K · IR cabin · 4x optical zoom · Wi‑Fi 6 · GPS",
-      "xiaohongshuQuery": "VIOFO T340 四路 行车记录仪"
+      "xiaohongshuQuery": "VIOFO T340 四路 行车记录仪",
+      "legacyName": "비오포 T340 4채널 블랙박스"
     },
     {
       "id": "galaxy-s26-fe",
@@ -101,7 +104,8 @@
       "status": "verified-pending",
       "officialUrl": "https://aurzen.com/",
       "spec": "Tri-fold · native 1080p Full HD · pocket projector",
-      "xiaohongshuQuery": "Aurzen ZIP Pro 便携投影仪"
+      "xiaohongshuQuery": "Aurzen ZIP Pro 便携投影仪",
+      "legacyName": "오르젠 ZIP Pro 포켓 프로젝터"
     },
     {
       "id": "soundcore-sleep-4-pro",
@@ -121,7 +125,8 @@
       "status": "verified-pending",
       "officialUrl": "https://www.soundcore.com/products/d1301-sleep-a30-smart-anc-earbuds-for-sleeping",
       "spec": "Triple noise reduction · 3g · 8–10h · IPX4",
-      "xiaohongshuQuery": "soundcore Sleep A30 睡眠耳机"
+      "xiaohongshuQuery": "soundcore Sleep A30 睡眠耳机",
+      "legacyName": "사운드코어 슬립 이어버드 4 프로"
     },
     {
       "id": "ugreen-pb773",
