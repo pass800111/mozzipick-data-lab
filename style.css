@@ -170,3 +170,6 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* mobile favorite tap v1.3 */
 .all-fav-btn{position:relative;z-index:20;pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:38px;min-height:38px}.product .name{position:relative}.product.product-redesign{overflow:visible}@media(max-width:700px){.all-fav-btn{min-width:44px;min-height:44px;font-size:22px}.side nav button,.fav-pagination button{touch-action:manipulation}}
+
+/* favorite controller v1.4 */
+.fav-v14{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;margin-left:8px;padding:0;border:1px solid #bfdbfe;border-radius:12px;background:#eff6ff;color:#2563eb;font-size:22px;line-height:1;cursor:pointer;position:relative;z-index:100;pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.fav-v14.on{background:#dbeafe;color:#1d4ed8}@media(max-width:700px){.fav-v14{flex-basis:48px;width:48px;height:48px;font-size:24px}}
