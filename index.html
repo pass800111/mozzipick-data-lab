@@ -341,10 +341,21 @@ window.MOZZIPICK_COUPANG_RANKING = window.MOZZIPICK_COUPANG_RANKING || {
  document.querySelectorAll('.product.product-redesign').forEach(card=>{
   const name=card.querySelector('.name')?.textContent?.trim(); if(!name)return;
   let b=card.querySelector('.mozz-fav-btn');
-  if(!b){b=document.createElement('button');b.type='button';b.className='mozz-fav-btn';b.style.cssText='margin-top:8px;border:1px solid #dbe3ef;background:#fff;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:800;cursor:pointer';card.appendChild(b);}
+  if(!b){
+    b=document.createElement('button'); b.type='button'; b.className='mozz-fav-btn';
+    b.setAttribute('aria-label','모찌즐찾');
+    b.style.cssText='border:1px solid #dbeafe;background:#eff6ff;color:#2563eb;border-radius:999px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(37,99,235,.10);vertical-align:middle;flex:0 0 auto';
+    const title=card.querySelector('.name');
+    if(title){
+      const wrap=document.createElement('div'); wrap.className='product-title-fav'; wrap.style.cssText='display:flex;align-items:center;gap:8px;margin-top:1px';
+      title.parentNode.insertBefore(wrap,title); wrap.appendChild(title); wrap.appendChild(b);
+    }else{
+      const thumb=card.querySelector('.thumb'); if(thumb){thumb.style.position='relative';thumb.appendChild(b);b.style.position='absolute';b.style.top='8px';b.style.right='8px';}
+    }
+  }
   const exactCoupang=coupangLinks[name];
   if(!exactCoupang){ b.remove(); return; }
-  const sync=()=>b.textContent=get().includes(name)?'★ 모찌즐찾':'☆ 모찌즐찾';
+  const sync=()=>{const on=get().includes(name);b.textContent=on?'★':'☆';b.title=on?'모찌즐찾 해제':'모찌즐찾 추가';b.style.background=on?'#dbeafe':'#eff6ff';};
   sync();
   b.addEventListener('click',e=>{e.stopPropagation();let f=get();f=f.includes(name)?f.filter(v=>v!==name):[...f,name];save(f);sync();render();});
  });
