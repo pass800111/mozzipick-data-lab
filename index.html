@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const [pd,td]=await Promise.all([fetch('./data/products.json?v=1').then(r=>r.json()),fetch('./data/trend-snapshots.json?v=1').then(r=>r.json())]);
   window.MOZZIPICK_DATA=pd; window.MOZZIPICK_TRENDS=td;
   const byName={};pd.products.forEach(x=>{byName[x.name]=x;if(x.legacyName)byName[x.legacyName]=x});
-  $('#ranking .product.product-redesign').forEach(card=>{
+  $$('#ranking .product.product-redesign').forEach(card=>{
    const el=card.querySelector('.name');if(!el)return;
    const n=[...el.childNodes].filter(x=>x.nodeType===3).map(x=>x.textContent).join('').trim()||el.textContent.replace(/[★☆]/g,'').trim();
    const p=byName[n];if(!p)return;card.dataset.productId=p.id;if(p.legacyName&&p.name!==n){const tn=[...el.childNodes].find(x=>x.nodeType===3);if(tn)tn.textContent=p.name+' ';}
