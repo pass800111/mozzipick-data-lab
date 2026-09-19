@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v2">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v3">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -420,22 +420,26 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('click',e=>{if(e.target.matches('.v1-close,#v1Detail'))document.getElementById('v1Detail').hidden=true});
 </script><script>
-/* MOZZIPICK FAVORITES v2 - sole controller */
-document.addEventListener('DOMContentLoaded',function(){
+/* MOZZIPICK FAVORITES v3 */
+(function(){
  const KEY='mozzipick_favorites_v1';let rp=1,lp=1;
- const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(_){return[]}};
- const write=a=>localStorage.setItem(KEY,JSON.stringify(Array.from(new Set(a))));
+ const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
+ const write=a=>localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
+ const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
+ const getName=c=>{const t=c.querySelector('.name');return t?(t.getAttribute('data-fav-name')||t.textContent.replace(/[★☆]/g,'').trim()):''};
  const esc=x=>String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
- const nameOf=card=>{const t=card.querySelector('.name');if(!t)return '';return (t.dataset.cleanName||[...t.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||t.textContent.replace(/[★☆]/g,'').trim())};
- const pages=(page,total,size,where)=>{let n=Math.ceil(total/size);if(n<2)return '';let z='<div class="fav-pagination" data-where="'+where+'">';for(let i=1;i<=n;i++)z+='<button type="button" data-p="'+i+'" class="'+(i===page?'active':'')+'">'+i+'</button>';return z+'</div>'};
+ const pager=(p,total,size,side)=>{const n=Math.ceil(total/size);if(n<2)return '';return '<div class="fav-pagination" data-side="'+side+'">'+Array.from({length:n},(_,i)=>'<button type="button" data-page="'+(i+1)+'" class="'+(p===i+1?'active':'')+'">'+(i+1)+'</button>').join('')+'</div>'};
  function mount(){
-  document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{const t=card.querySelector('.name');if(!t)return;if(!t.dataset.cleanName)t.dataset.cleanName=nameOf(card);t.querySelectorAll('.mozz-fav-static,.product-title-fav,.all-fav-btn,.fav-v14').forEach(x=>x.remove());let b=document.createElement('button');b.type='button';b.className='mozz-fav-v2';b.dataset.name=t.dataset.cleanName;b.setAttribute('aria-label','즐겨찾기');t.appendChild(b)});
-  paint();
+  cards().forEach(c=>{const t=c.querySelector('.name');if(!t)return;if(!t.getAttribute('data-fav-name'))t.setAttribute('data-fav-name',t.textContent.replace(/[★☆]/g,'').trim());t.querySelectorAll('[data-favorite-control]').forEach(x=>x.remove());const b=document.createElement('button');b.type='button';b.className='fav-star-v3';b.setAttribute('data-favorite-control','1');b.setAttribute('data-name',t.getAttribute('data-fav-name'));b.setAttribute('aria-label','즐겨찾기 추가/해제');t.appendChild(b)});
+  draw();
  }
- function paint(){const a=read();document.querySelectorAll('.mozz-fav-v2').forEach(b=>{const on=a.includes(b.dataset.name);b.textContent=on?'★':'☆';b.classList.toggle('on',on)});right();left();}
- function right(){const box=document.getElementById('mozzFavoritesList');if(!box)return;const a=read(),n=Math.max(1,Math.ceil(a.length/5));rp=Math.min(rp,n);const v=a.slice((rp-1)*5,rp*5);box.innerHTML=a.length?v.map(x=>'<div class="fav-row"><span>★</span><div><b>'+esc(x)+'</b></div></div>').join('')+pages(rp,a.length,5,'r'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>'}
- function left(){const nav=document.querySelector('.side nav button[data-view="favorites"].on'),box=document.getElementById('menuDataView');if(!nav||!box||box.hidden)return;const f=read(),cards=[...document.querySelectorAll('#ranking .product.product-redesign')].filter(c=>f.includes(nameOf(c))),n=Math.max(1,Math.ceil(cards.length/10));lp=Math.min(lp,n);const v=cards.slice((lp-1)*10,lp*10);box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+cards.length+'개</strong></div>'+(cards.length?'<div class="favorites-simple-list">'+v.map(c=>'<div class="favorite-simple-item"><b>'+esc(nameOf(c))+'</b></div>').join('')+'</div>'+pages(lp,cards.length,10,'l'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>')}
- document.addEventListener('click',function(e){const b=e.target.closest('.mozz-fav-v2');if(b){e.preventDefault();e.stopPropagation();let a=read(),n=b.dataset.name;a=a.includes(n)?a.filter(x=>x!==n):a.concat(n);write(a);paint();return}const p=e.target.closest('.fav-pagination button');if(p){e.preventDefault();e.stopPropagation();if(p.closest('[data-where="r"]'))rp=+p.dataset.p;else lp=+p.dataset.p;paint();return}if(e.target.closest('.side nav button[data-view="favorites"]')){lp=1;setTimeout(left,30)}},true);
- mount();
-});
+ function draw(){const f=read();document.querySelectorAll('.fav-star-v3').forEach(b=>{const on=f.includes(b.dataset.name);b.textContent=on?'★':'☆';b.classList.toggle('on',on)});renderRight();renderLeft()}
+ function renderRight(){const box=document.getElementById('mozzFavoritesList');if(!box)return;const f=read(),n=Math.max(1,Math.ceil(f.length/5));rp=Math.min(rp,n);const a=f.slice((rp-1)*5,rp*5);box.innerHTML='<div class="fav-panel-title">즐겨찾기 <strong>'+f.length+'</strong></div>'+(f.length?a.map(x=>'<div class="fav-row"><span>★</span><b>'+esc(x)+'</b></div>').join('')+pager(rp,f.length,5,'right'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>')}
+ function renderLeft(){const nav=document.querySelector('.side nav button[data-view="favorites"].on'),box=document.getElementById('menuDataView');if(!nav||!box||box.hidden)return;const f=read(),a=cards().filter(c=>f.includes(getName(c))),n=Math.max(1,Math.ceil(a.length/10));lp=Math.min(lp,n);const v=a.slice((lp-1)*10,lp*10);box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>★ 즐겨찾기</h2></div><strong>'+a.length+'개</strong></div>'+(a.length?'<div class="favorites-simple-list">'+v.map(c=>'<div class="favorite-simple-item"><span class="menu-fav-star">★</span><b>'+esc(getName(c))+'</b></div>').join('')+'</div>'+pager(lp,a.length,10,'left'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>')}
+ function activate(e){const b=e.target.closest&&e.target.closest('.fav-star-v3');if(!b)return false;e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();let f=read(),n=b.dataset.name;write(f.includes(n)?f.filter(x=>x!==n):f.concat(n));draw();return true}
+ document.addEventListener('click',activate,true);
+ document.addEventListener('pointerup',e=>{if(e.pointerType==='touch')activate(e)},true);
+ document.addEventListener('click',e=>{const p=e.target.closest('.fav-pagination button');if(p){e.preventDefault();if(p.closest('[data-side="right"]'))rp=+p.dataset.page;else lp=+p.dataset.page;draw()}const n=e.target.closest('.side nav button[data-view="favorites"]');if(n){lp=1;setTimeout(renderLeft,60)}},true);
+ const start=()=>{mount();setTimeout(mount,500)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
 </script></body></html>
