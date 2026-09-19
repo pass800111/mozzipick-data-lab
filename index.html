@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-17">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-18">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -374,4 +374,22 @@ input.addEventListener('input',search);input.addEventListener('focus',search);cl
 out.addEventListener('click',e=>{const b=e.target.closest('button[data-rank]');if(!b)return;const c=cards().find(x=>(x.querySelector('.rank')?.textContent.trim()||'-')===b.dataset.rank);input.value=c?.querySelector('.name')?.textContent.trim()||'';close();if(c){c.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>c.click(),350)}});
 document.addEventListener('click',e=>{if(!e.target.closest('.global-search'))close()});
 })();
+</script><script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const imgs={
+  '유그린 맥플로우 Qi2 25W 보조배터리':'https://kr.ugreen.com/cdn/shop/files/PB773-1.webp?v=1759135106&width=900',
+  'UGREEN MagFlow PB773 Qi2 25W':'https://kr.ugreen.com/cdn/shop/files/PB773-1.webp?v=1759135106&width=900',
+  'Insta360 Link 2':'https://res.insta360.com/dynamic/store/ba50458073ace427f278f8bf4bf52a93/2300_313f0fea-379b-42d7-ba3a-4e1319790080.png'
+ };
+ document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{
+   const name=card.querySelector('.name')?.textContent.trim()||'';
+   const key=Object.keys(imgs).find(k=>name.includes(k));
+   if(!key)return;
+   const box=card.querySelector('.thumb');
+   if(!box)return;
+   box.classList.remove('product-noimage');
+   box.classList.add('product-photo');
+   box.innerHTML='<img src="'+imgs[key]+'" alt="'+name+'" loading="lazy" referrerpolicy="no-referrer">';
+ });
+});
 </script></body></html>
