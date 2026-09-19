@@ -1,4 +1,5 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-8">
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-8">
 </head><body><div class="app"><aside class="side"><div class="brand"><b>MOZZIPICK</b><strong>DATA LAB</strong><small>ELECTRONICS TREND RADAR</small></div><nav><button class="on">⌁ <span>트렌드 홈</span></button><button>▦ <span>카테고리</span></button><button>✦ <span>바이럴 레이더</span></button><button>♡ <span>관심제품</span></button></nav><div class="sidefoot"><i></i> Research system<br><small>VERIFIED DATA</small></div></aside><main class="main"><header><div><span class="kicker">ELECTRONICS INTELLIGENCE</span><h1>지금 뜨는 전자기기</h1><p>신제품부터 바이럴 소스까지, 콘텐츠 제작 관점으로 추적합니다.</p></div><div class="live"><i></i> LIVE RADAR</div></header><div class="sample">확인되지 않은 데이터는 <b>미확인</b>으로 표시합니다. 정확 동일 모델만 쿠팡 확인 처리합니다.</div><section class="heroStats"><article><small>현재 표시</small><b>9</b><em>검증·추적 후보</em></article><article><small>NEW</small><b>3</b><em>이번 신규 진입</em></article><article><small>공식 영상 확인</small><b>1</b><em>DJI ROMO 2</em></article><article><small>업데이트</small><b class="hot">● LIVE</b><em>2026.09.20</em></article></section><section class="controls"><div class="period"><button class="on">실시간</button><button>7일</button><button>30일</button><button>월별</button></div><div class="chips">
 <button class="on" data-category="전체">전체</button>
 <button data-category="모바일">모바일</button>
@@ -158,8 +159,26 @@ const reviewData={
          cons:['앱 연결·초기 설정이 직관적이지 않다는 일부 의견','세부 설정에 익숙해지는 데 시간이 필요하다는 의견','일부 사용자 환경에서 오디오 싱크 관련 불만 사례가 있음']
        }
      };
-     const vd=detailVerified[name.trim()];
-     const d=vd||reviewData[name.trim()];
+     const key=name.trim();
+     const aliases=[
+      ['갤럭시 S26 FE','갤럭시 S26 FE'],
+      ['Galaxy S26 FE','갤럭시 S26 FE'],
+      ['Aurzen ZIP Pro','Aurzen ZIP Pro 휴대용 프로젝터'],
+      ['ZIP Pro','Aurzen ZIP Pro 휴대용 프로젝터'],
+      ['Sleep Earbuds 4 Pro','사운드코어 Sleep Earbuds 4 Pro'],
+      ['Soundcore Sleep','사운드코어 Sleep Earbuds 4 Pro'],
+      ['DJI ROMO','DJI ROMO P2 A2 로봇청소기'],
+      ['VIOFO T340','VIOFO T340 4채널 블랙박스'],
+      ['Qrevo Edge 3 Pro','로보락 Qrevo Edge 3 Pro 로봇청소기'],
+      ['Roborock Qrevo','로보락 Qrevo Edge 3 Pro 로봇청소기'],
+      ['인스타360 링크 2','인스타360 링크 2 AI 웹캠'],
+      ['Insta360 Link 2','인스타360 링크 2 AI 웹캠'],
+      ['유그린 맥플로우','유그린 맥플로우 Qi2 25W 보조배터리'],
+      ['UGREEN','유그린 맥플로우 Qi2 25W 보조배터리']
+     ];
+     const resolved=(detailVerified[key]&&key)||(aliases.find(a=>key.includes(a[0]))||[])[1];
+     const vd=resolved?detailVerified[resolved]:null;
+     const d=vd||reviewData[key];
      detailPros.innerHTML=d?d.pros.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
      detailCons.innerHTML=d?d.cons.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
      if(detailPrice) detailPrice.innerHTML=vd?'<div style="font-size:11px;color:#667085;font-weight:800">현재 가격</div><div style="font-size:24px;line-height:1.3;font-weight:950;color:#101828;margin-top:2px">'+vd.price+'</div><div style="font-size:11px;color:#667085;margin-top:3px">'+vd.priceSource+'</div>':'<div style="font-size:12px;color:#667085;font-weight:800">현재 가격</div><div style="font-size:16px;font-weight:900;margin-top:3px">가격 데이터 확인 중</div>';
@@ -171,11 +190,8 @@ const reviewData={
          '<div style="font-size:10px;color:#98a2b3;margin-top:6px">표시 가격은 확인 시점 기준이며 쿠폰·회원·카드 할인 및 재고에 따라 달라질 수 있습니다.</div>';
        }else detailStorePrices.innerHTML='<div style="font-size:12px;color:#98a2b3">사이트별 가격 비교 데이터 수집 예정</div>';
      }
-     const cutBox=Array.from(document.querySelectorAll('#productDetailModal div')).find(x=>x.textContent&&x.textContent.includes('컷씬 1·2·3'));
-     if(cutBox&&vd&&vd.cuts){
-       const body=cutBox.querySelector('div');
-       if(body) body.innerHTML=vd.cuts.map(x=>'• '+x).join('<br>');
-     }
+     const detailCuts=document.getElementById('detailCuts');
+     if(detailCuts) detailCuts.innerHTML=(vd&&vd.cuts)?vd.cuts.map(x=>'• '+x).join('<br>'):'제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.';
    }
    if(detailStores){
      const anchors=Array.from(card.querySelectorAll('a'));
@@ -243,6 +259,6 @@ const reviewData={
 <div style="background:#f2fbf6;border:1px solid #d7f0df;border-radius:12px;padding:12px"><b>👍 장점</b><div id="detailPros" style="margin-top:7px;font-size:11px;line-height:1.75;color:#344054">검증 리뷰 수집 예정</div></div>
 <div style="background:#fff7f5;border:1px solid #fee4e2;border-radius:12px;padding:12px"><b>👎 단점</b><div id="detailCons" style="margin-top:7px;font-size:11px;line-height:1.75;color:#344054">검증 리뷰 수집 예정</div></div>
 </div></div>
-   <div style="margin-top:18px"><b>컷씬 1 · 컷씬 2 · 컷씬 3</b><div style="margin-top:7px;font-size:12px;color:#667085">제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.</div></div>
+   <div style="margin-top:18px"><b>컷씬 1 · 컷씬 2 · 컷씬 3</b><div id="detailCuts" style="margin-top:7px;font-size:12px;line-height:1.8;color:#667085">제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.</div></div>
   </div>
  </div></body></html>
