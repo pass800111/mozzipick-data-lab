@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-stable1">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-v2">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -409,16 +409,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
  }catch(err){console.warn('MOZZIPICK data layer fallback',err)}
 })();
-</script><div id="v1Detail" class="v1-detail" hidden><div class="v1-detail-card"><button class="v1-close">×</button><div id="v1DetailBody"></div></div></div><script>
-document.addEventListener('click',e=>{
- const card=e.target.closest('#ranking .product.product-redesign');if(!card||e.target.closest('a,button'))return;
- const d=window.MOZZIPICK_DATA,p=d&&d.products.find(x=>x.id===card.dataset.productId);if(!p)return;
+</script><div id="v1Detail" class="v1-detail" hidden><div class="v1-detail-card"><button class="v1-close" type="button" aria-label="닫기">×</button><div id="v1DetailBody"></div></div></div><script>
+/* PRODUCT DETAIL v2 */
+(function(){
+ const modal=document.getElementById('v1Detail'),body=document.getElementById('v1DetailBody');
  const val=x=>x&&x!=='미확인'?x:'미확인';
- const links=[['공식 페이지',p.officialUrl],['Instagram',p.instagram],['TikTok',p.tiktok],['YouTube',p.youtube],['Xiaohongshu',p.xiaohongshu]].filter(x=>x[1]&&x[1]!=='미확인');
- document.getElementById('v1DetailBody').innerHTML='<span>PRODUCT DETAIL</span><h2>'+p.name+'</h2><div class="v1-grid"><p><b>출시일</b>'+val(p.release)+'</p><p><b>현재 가격</b>'+val(p.price)+'</p><p><b>쿠팡 가격</b>'+val(p.coupangPrice)+'</p><p><b>리뷰</b>'+val(p.reviews)+'</p><p><b>평점</b>'+val(p.rating)+'</p><p><b>주요 사양</b>'+val(p.spec)+'</p></div><h3>소스</h3><div class="v1-links">'+links.map(x=>'<a target="_blank" rel="noopener" href="'+x[1]+'">'+x[0]+' ↗</a>').join('')+'</div><h3>샤오홍슈 검색어</h3><p>'+val(p.xiaohongshuQuery)+'</p><h3>콘텐츠 컷씬</h3><div class="v1-scenes"><b>컷씬 1 · 첫 3초 핵심 기능</b><b>컷씬 2 · 실제 사용/조작</b><b>컷씬 3 · 결과/차별점</b></div>';
- document.getElementById('v1Detail').hidden=false;
-});
-document.addEventListener('click',e=>{if(e.target.matches('.v1-close,#v1Detail'))document.getElementById('v1Detail').hidden=true});
+ const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ function open(card){
+  const d=window.MOZZIPICK_DATA;if(!d||!body)return;
+  const p=d.products.find(x=>x.id===card.dataset.productId);if(!p)return;
+  const links=[['공식 페이지',p.officialUrl],['Instagram',p.instagram],['TikTok',p.tiktok],['YouTube',p.youtube],['Xiaohongshu',p.xiaohongshu]].filter(x=>x[1]&&x[1]!=='미확인');
+  body.innerHTML='<span>PRODUCT DETAIL</span><h2>'+esc(p.name)+'</h2><div class="v1-grid"><p><b>출시일</b>'+esc(val(p.release))+'</p><p><b>현재 가격</b>'+esc(val(p.price))+'</p><p><b>쿠팡 가격</b>'+esc(val(p.coupangPrice))+'</p><p><b>리뷰</b>'+esc(val(p.reviews))+'</p><p><b>평점</b>'+esc(val(p.rating))+'</p><p><b>주요 사양</b>'+esc(val(p.spec))+'</p></div><h3>소스</h3><div class="v1-links">'+(links.length?links.map(x=>'<a target="_blank" rel="noopener" href="'+esc(x[1])+'">'+esc(x[0])+' ↗</a>').join(''):'<em>확인된 소스 없음</em>')+'</div><h3>샤오홍슈 검색어</h3><p>'+esc(val(p.xiaohongshuQuery))+'</p><h3>콘텐츠 컷씬</h3><div class="v1-scenes"><b>컷씬 1 · 첫 3초 핵심 기능</b><b>컷씬 2 · 실제 사용/조작</b><b>컷씬 3 · 결과/차별점</b></div>';
+  modal.hidden=false;document.body.classList.add('detail-open');
+ }
+ document.addEventListener('click',e=>{const close=e.target.closest('.v1-close');if(close||e.target===modal){modal.hidden=true;document.body.classList.remove('detail-open');return}const card=e.target.closest('#ranking .product.product-redesign');if(!card||e.target.closest('a,button,input'))return;open(card)},true);
+})();
 </script><script>
 /* TIME TREND CLICK FIX v1 */
 (function(){
