@@ -167,3 +167,6 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* favorites pagination v1.2 */
 .fav-pagination{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(148,163,184,.2)}.fav-pagination button{min-width:28px;height:28px;padding:0 7px;border:1px solid #cbd5e1;background:#fff;color:#475569;border-radius:8px;font-size:10px;font-weight:900;cursor:pointer}.fav-pagination button.active{background:#2563eb;border-color:#2563eb;color:#fff}.favBox .fav-pagination button{background:#1e293b;border-color:#475569;color:#cbd5e1}.favBox .fav-pagination button.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
+
+/* mobile favorite tap v1.3 */
+.all-fav-btn{position:relative;z-index:20;pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:38px;min-height:38px}.product .name{position:relative}.product.product-redesign{overflow:visible}@media(max-width:700px){.all-fav-btn{min-width:44px;min-height:44px;font-size:22px}.side nav button,.fav-pagination button{touch-action:manipulation}}
