@@ -130,3 +130,7 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* v16 hourly trend menu */
 .time-trend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.time-trend-grid button{border:1px solid #e1e8f0;background:#fff;border-radius:14px;padding:18px;text-align:left;cursor:pointer}.time-trend-grid button:hover{border-color:#b8cdf7;background:#f8fbff}.time-trend-grid b{display:block;font-size:18px;color:#111827}.time-trend-grid span{display:block;margin-top:6px;font-size:11px;color:#7b8798}.time-note{margin-top:14px;padding:12px 14px;border-radius:12px;background:#f7f9fc;color:#7b8798;font-size:11px}.period{display:flex!important;gap:6px!important;flex-wrap:wrap!important}@media(max-width:720px){.time-trend-grid{grid-template-columns:1fr}}
+
+/* v18 real exact-model product images */
+.thumb.product-photo{display:flex!important;align-items:center!important;justify-content:center!important;background:#fff!important;border:1px solid #e7ecf2!important;overflow:hidden!important;padding:10px!important}
+.thumb.product-photo img{display:block!important;width:100%!important;height:100%!important;max-height:165px!important;object-fit:contain!important}
