@@ -74,7 +74,34 @@ document.addEventListener('DOMContentLoaded',function(){
    
    if(detailPros&&detailCons){
      const name=(card.querySelector('.name')||{}).textContent||'';
-     const detailVerified={
+     const PRODUCT_DATA = window.MOZZIPICK_PRODUCT_DATA = {
+ 'galaxy-s26-fe':{name:'갤럭시 S26 FE',category:'모바일',detailKey:'갤럭시 S26 FE'},
+ 'aurzen-zip-pro':{name:'Aurzen ZIP Pro 휴대용 프로젝터',category:'디스플레이·프로젝터',detailKey:'Aurzen ZIP Pro 휴대용 프로젝터'},
+ 'soundcore-sleep-4-pro':{name:'사운드코어 Sleep Earbuds 4 Pro',category:'오디오',detailKey:'사운드코어 Sleep Earbuds 4 Pro'},
+ 'dji-romo-p2-a2':{name:'DJI ROMO P2 A2 로봇청소기',category:'생활가전',detailKey:'DJI ROMO P2 A2 로봇청소기'},
+ 'viofo-t340':{name:'VIOFO T340 4채널 블랙박스',category:'자동차 전자기기',detailKey:'VIOFO T340 4채널 블랙박스'},
+ 'roborock-qrevo-edge-3-pro':{name:'로보락 Qrevo Edge 3 Pro 로봇청소기',category:'생활가전',detailKey:'로보락 Qrevo Edge 3 Pro 로봇청소기'},
+ 'insta360-link-2':{name:'인스타360 링크 2 AI 웹캠',category:'카메라·크리에이터',detailKey:'인스타360 링크 2 AI 웹캠'},
+ 'ugreen-magflow-pb773':{name:'유그린 맥플로우 Qi2 25W 보조배터리',category:'충전·배터리',detailKey:'유그린 맥플로우 Qi2 25W 보조배터리'}
+};
+function normalizeProductId(name){
+ const n=(name||'').toLowerCase();
+ return Object.keys(PRODUCT_DATA).find(id=>n.includes(PRODUCT_DATA[id].name.toLowerCase())||
+   (id==='galaxy-s26-fe'&&n.includes('s26 fe'))||
+   (id==='aurzen-zip-pro'&&n.includes('zip pro'))||
+   (id==='soundcore-sleep-4-pro'&&n.includes('sleep earbuds 4 pro'))||
+   (id==='dji-romo-p2-a2'&&n.includes('dji romo'))||
+   (id==='viofo-t340'&&n.includes('t340'))||
+   (id==='roborock-qrevo-edge-3-pro'&&n.includes('qrevo edge 3 pro'))||
+   (id==='insta360-link-2'&&n.includes('link 2'))||
+   (id==='ugreen-magflow-pb773'&&(n.includes('유그린')||n.includes('ugreen'))))||null;
+}
+document.querySelectorAll('.product.product-redesign').forEach(card=>{
+ const nm=card.querySelector('.name')?.textContent?.trim()||'';
+ const id=normalizeProductId(nm);
+ if(id){card.dataset.productId=id; card.dataset.productCategory=PRODUCT_DATA[id].category;}
+});
+const detailVerified={
  '갤럭시 S26 FE':{
    price:'가격 확인 중', priceSource:'정확한 국내 동일모델 판매가 검증 후 표시 · 확인일 2026.09.20',
    storePrices:[['삼성 공식','제품/출시 정보','https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EA%B0%A4%EB%9F%AD%EC%8B%9C-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EA%B8%B0%EB%8A%A5%EC%9D%84-%EB%8B%B4%EC%9D%80-%EA%B0%A4%EB%9F%AD%EC%8B%9C-s26-fe-%EA%B3%B5']],
@@ -176,7 +203,9 @@ const reviewData={
       ['유그린 맥플로우','유그린 맥플로우 Qi2 25W 보조배터리'],
       ['UGREEN','유그린 맥플로우 Qi2 25W 보조배터리']
      ];
-     const resolved=(detailVerified[key]&&key)||(aliases.find(a=>key.includes(a[0]))||[])[1];
+     const pid=card.dataset.productId||normalizeProductId(key);
+     const unified=pid?PRODUCT_DATA[pid]:null;
+     const resolved=(unified&&unified.detailKey)||(detailVerified[key]&&key)||(aliases.find(a=>key.includes(a[0]))||[])[1];
      const vd=resolved?detailVerified[resolved]:null;
      const d=vd||reviewData[key];
      detailPros.innerHTML=d?d.pros.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
