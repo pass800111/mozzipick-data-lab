@@ -185,3 +185,6 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* home period click recovery */
 .period,.period button{position:relative;z-index:50;pointer-events:auto!important}.period button{cursor:pointer!important;touch-action:manipulation!important;min-height:42px}.period button.on{background:#0f172a!important;color:#fff!important}
+
+/* stable additions only */
+.time-filter-status{margin:0 0 10px;padding:10px 13px;border:1px solid #dbeafe;border-radius:11px;background:#f8fbff;color:#64748b;font-size:11px}.time-filter-status b{color:#2563eb}.period button{pointer-events:auto!important;touch-action:manipulation!important}.period button.on{background:#2563eb!important;color:#fff!important}
