@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded',function(){
  const detailKeywords=document.getElementById('detailKeywords');
  const detailLinks=document.getElementById('detailLinks');
  const detailStores=document.getElementById('detailStores');
+ const detailPros=document.getElementById('detailPros');
+ const detailCons=document.getElementById('detailCons');
  function openDetail(card){
    const n=card.querySelector('.name');
    if(detailName) detailName.textContent=n?n.textContent.trim():'제품 상세';
@@ -63,6 +65,23 @@ document.addEventListener('DOMContentLoaded',function(){
      if(official) html+='<a href="'+official.href+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';
      else html+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
      detailLinks.innerHTML=html;
+   }
+   
+   if(detailPros&&detailCons){
+     const name=(card.querySelector('.name')||{}).textContent||'';
+     const reviewData={
+       '유그린 맥플로우 Qi2 25W 보조배터리':{
+         pros:['동일모델 판매처와 공개 리뷰 데이터 확인 중'],
+         cons:['단점 반복 의견은 추가 검증 후 표시']
+       },
+       '인스타360 링크 2 AI 웹캠':{
+         pros:['여러 판매처의 공개 구매자 리뷰를 교차 확인 중'],
+         cons:['단점 반복 의견은 추가 검증 후 표시']
+       }
+     };
+     const d=reviewData[name.trim()];
+     detailPros.innerHTML=d?d.pros.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
+     detailCons.innerHTML=d?d.cons.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
    }
    if(detailStores){
      const anchors=Array.from(card.querySelectorAll('a'));
@@ -122,7 +141,11 @@ document.addEventListener('DOMContentLoaded',function(){
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>판매순위</b><div style="margin-top:5px">검증 데이터 수집 예정</div></div>
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>리뷰 / 평점</b><div style="margin-top:5px">검증 데이터 수집 예정</div></div>
    </div>
-   <div style="margin-top:18px"><b>구매자 리뷰 분석</b><div style="margin-top:7px;background:#fafafa;border:1px solid #eceff3;border-radius:12px;padding:12px;font-size:12px;line-height:1.7">실제 판매 페이지의 공개 리뷰를 확인한 뒤 장점·단점·반복 의견을 요약합니다. 확인 전에는 임의 리뷰를 표시하지 않습니다.</div></div>
+   <div style="margin-top:18px"><b>구매자 리뷰 분석</b><div style="font-size:10px;color:#98a2b3;margin-top:3px">실제 공개 구매자 리뷰를 요약 · 미검증 내용은 표시하지 않음</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:8px">
+<div style="background:#f2fbf6;border:1px solid #d7f0df;border-radius:12px;padding:12px"><b>👍 장점</b><div id="detailPros" style="margin-top:7px;font-size:11px;line-height:1.75;color:#344054">검증 리뷰 수집 예정</div></div>
+<div style="background:#fff7f5;border:1px solid #fee4e2;border-radius:12px;padding:12px"><b>👎 단점</b><div id="detailCons" style="margin-top:7px;font-size:11px;line-height:1.75;color:#344054">검증 리뷰 수집 예정</div></div>
+</div></div>
    <div style="margin-top:18px"><b>컷씬 1 · 컷씬 2 · 컷씬 3</b><div style="margin-top:7px;font-size:12px;color:#667085">제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.</div></div>
   </div>
  </div></body></html>
