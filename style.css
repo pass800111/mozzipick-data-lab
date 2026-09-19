@@ -1,129 +1,17 @@
 *{box-sizing:border-box}body{margin:0;background:#f4f6f8;color:#111827;font-family:Arial,"Noto Sans KR",sans-serif}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{background:#0b1020;color:#fff;padding:34px 22px;position:sticky;top:0;height:100vh}.brand b{font-size:12px;letter-spacing:4px;color:#9aa6bd}.brand strong{display:block;font-size:25px;margin-top:8px}.brand small{display:block;font-size:9px;color:#6f7c96;margin-top:6px;letter-spacing:1px}.side nav{display:grid;gap:7px;margin-top:55px}.side nav button{border:0;background:transparent;color:#8290aa;text-align:left;padding:14px 15px;border-radius:13px;font-weight:700}.side nav .on{background:#192238;color:#fff}.sidefoot{position:absolute;bottom:30px;font-size:12px;color:#9ba6ba;line-height:1.8}.sidefoot i,.live i{display:inline-block;width:7px;height:7px;background:#ff5252;border-radius:50%;margin-right:7px}.main{padding:42px 46px 80px;max-width:1450px;width:100%;margin:auto}header{display:flex;justify-content:space-between;align-items:start}.kicker,.sectionHead span,.radar>span{font-size:11px;letter-spacing:2px;color:#718096;font-weight:800}h1{font-size:38px;letter-spacing:-1.5px;margin:8px 0 8px}header p{margin:0;color:#6f7785}.live{background:#fff;border:1px solid #e0e4e8;border-radius:99px;padding:10px 14px;font-size:11px;font-weight:800}.sample{margin:28px 0 16px;background:#fff7df;border:1px solid #f0dda1;color:#745c15;padding:12px 16px;border-radius:13px;font-size:13px}.heroStats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.heroStats article{background:#fff;border:1px solid #e2e6eb;border-radius:18px;padding:18px}.heroStats small{color:#7a8494}.heroStats b{display:block;font-size:28px;margin:8px 0 5px}.heroStats em{font-style:normal;font-size:11px;color:#9aa1ac}.hot{font-size:17px!important;color:#e44d4d}.controls{display:flex;justify-content:space-between;align-items:center;margin:28px 0 22px;gap:18px}.period{background:#e8ebef;padding:5px;border-radius:13px;display:flex}.period button,.chips button{border:0;padding:10px 16px;border-radius:10px;background:transparent;font-weight:700;white-space:nowrap}.period .on,.chips .on{background:#111827;color:white}.chips{display:flex;gap:5px;overflow:auto}.chips button{background:white;border:1px solid #e0e4e8}.layout{display:grid;grid-template-columns:minmax(650px,1fr) 290px;gap:22px}.sectionHead{display:flex;align-items:end;justify-content:space-between;margin-bottom:13px}.sectionHead h2{margin:4px 0 0;font-size:25px}.sectionHead small{color:#8a93a1}.product{background:#fff;border:1px solid #e1e5ea;border-radius:19px;margin-bottom:10px;padding:15px 17px;display:grid;grid-template-columns:48px 64px minmax(0,1fr) 145px 105px;gap:13px;align-items:center;cursor:pointer}.product:hover{box-shadow:0 10px 28px #1420330d}.rank{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#eef1f4;font-weight:900}.rank.top{background:#111827;color:#fff}.thumb{width:58px;height:58px;border-radius:14px;background:linear-gradient(145deg,#e9edf2,#fafafa);display:grid;place-items:center;color:#9aa3af;font-size:10px}.name{font-size:17px;font-weight:850}.meta{font-size:12px;color:#7c8594;margin-top:5px}.status{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}.tag{font-size:10px;padding:4px 7px;border-radius:99px;background:#eef1f4;color:#596273}.tag.new{background:#e3f7ed;color:#078553}.mini{height:42px;display:flex;align-items:end;gap:3px}.mini i{width:9px;background:#cfd6df;border-radius:3px 3px 0 0}.trend{text-align:right;font-size:12px;font-weight:800}.trend b{display:block;font-size:15px;margin-top:5px}.up{color:#dc4c4c}.down{color:#2381b8}.radar{background:#0f172a;color:white;border-radius:22px;padding:24px;height:max-content;position:sticky;top:25px}.radar>span{color:#7e8ba4}.radar h3{font-size:21px;margin:7px 0}.radar p{font-size:12px;line-height:1.6;color:#9da8ba}.check{margin-top:22px;display:grid;gap:7px}.check>b{font-size:12px;margin-bottom:5px}.check div{background:#192238;padding:11px;border-radius:10px;font-size:12px;color:#d7dce6}.check i{float:right;font-style:normal;color:#65718a}.modal{position:fixed;inset:0;background:#020617aa;z-index:20;display:grid;place-items:center;padding:18px}.hidden{display:none}.sheet{background:#f8fafc;border-radius:24px;padding:28px;max-width:720px;width:100%;max-height:88vh;overflow:auto;position:relative}.close{position:absolute;right:18px;top:12px;border:0;background:none;font-size:30px}.badges{display:flex;gap:7px;flex-wrap:wrap}.badge{background:#e9edf2;padding:7px 9px;border-radius:8px;font-size:12px}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.detailgrid div{padding:14px;background:#fff;border:1px solid #e4e7eb;border-radius:12px}.ideas{display:grid;gap:8px;margin-top:15px}.idea{padding:14px;background:#111827;color:white;border-radius:13px}footer{display:none}
 @media(max-width:850px){.app{display:block}.side{display:none}.main{padding:25px 15px 105px}header{display:block}.live{display:inline-block;margin-top:14px}h1{font-size:30px}.sample{margin-top:20px}.heroStats{grid-template-columns:1fr 1fr}.heroStats article{padding:15px}.controls{display:block;margin:20px 0 18px}.period{width:100%;margin-bottom:12px}.period button{flex:1;padding:10px 5px}.chips{padding-bottom:3px}.layout{display:block}.radar{display:none}.product{grid-template-columns:42px 48px minmax(0,1fr) 65px;padding:13px 10px;gap:8px}.rank{width:38px;height:38px}.thumb{width:44px;height:44px}.name{font-size:15px;line-height:1.25}.meta{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status{gap:3px}.tag{font-size:9px;padding:3px 5px}.mini{display:none}.trend{font-size:10px}.trend b{font-size:12px}.sectionHead h2{font-size:22px}.sectionHead small{font-size:10px}footer{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0b1020;z-index:10;justify-content:space-around;padding:9px 0 13px}footer button{border:0;background:none;color:#71809a;font-size:20px}footer .on{color:white}footer span{display:block;font-size:10px;margin-top:4px}.detailgrid{grid-template-columns:1fr}.sheet{padding:25px 18px}}
 
-/* Readability pass — responsive typography for desktop + mobile */
-html { font-size: 16px; }
-body { font-size: 16px; line-height: 1.55; }
-.name { font-size: 18px !important; line-height: 1.35 !important; }
-.meta, .sub, .verify-note, .source-check { font-size: 13px !important; line-height: 1.55 !important; }
-.chip, .category-chip, button { font-size: 13px; }
-.product { font-size: 14px; }
-.product a { font-size: 12px; }
-.stat strong { font-size: 24px; }
-.stat span { font-size: 12px; }
-
-#productDetailModal { font-size: 15px; }
-#productDetailModal b { font-size: 15px; }
-#productDetailModal #detailMeta { font-size: 14px !important; line-height: 1.65 !important; }
+/* Detail readability only — preserves original ranking-card layout */
+#productDetailModal{font-size:16px}
+#productDetailModal #detailMeta,
 #productDetailModal #detailPros,
-#productDetailModal #detailCons { font-size: 14px !important; line-height: 1.75 !important; }
-#productDetailModal #detailKeywords,
-#productDetailModal #detailLinks,
-#productDetailModal #detailStores { font-size: 13px; }
+#productDetailModal #detailCons{font-size:14px!important;line-height:1.75!important}
 #productDetailModal button,
 #productDetailModal a,
-#productDetailModal span { font-size: 13px !important; }
-
-@media (min-width: 1024px) {
-  body { font-size: 17px; }
-  .name { font-size: 20px !important; }
-  .meta, .sub, .verify-note, .source-check { font-size: 14px !important; }
-  .product { font-size: 15px; }
-  #productDetailModal { font-size: 16px; }
-  #productDetailModal b { font-size: 16px; }
-  #productDetailModal #detailMeta,
-  #productDetailModal #detailPros,
-  #productDetailModal #detailCons { font-size: 15px !important; }
-}
-
-@media (max-width: 640px) {
-  body { font-size: 16px; }
-  .name { font-size: 18px !important; }
-  .meta, .sub, .verify-note, .source-check { font-size: 13px !important; }
-  .chip, .category-chip, button { font-size: 13px !important; }
-  .product { font-size: 14px; }
-  #productDetailModal { font-size: 16px; }
-  #productDetailModal b { font-size: 16px; }
-  #productDetailModal #detailMeta,
-  #productDetailModal #detailPros,
-  #productDetailModal #detailCons { font-size: 14px !important; }
-  #productDetailModal button,
-  #productDetailModal a,
-  #productDetailModal span { font-size: 13px !important; }
-}
-
-
-/* UI polish — comfortable cards, tap targets and product detail modal */
-.product { padding: 18px !important; border-radius: 16px !important; }
-.product + .product { margin-top: 12px; }
-.product .name { margin-bottom: 7px; }
-.product .meta, .product .sub, .verify-note, .source-check { margin-top: 6px; }
-
-.category-chip, .chip, button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-.category-chip, .chip {
-  min-height: 38px;
-  padding: 8px 12px !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#productDetailModal > div,
-#productDetailModal .modal-content {
-  width: min(760px, calc(100vw - 32px)) !important;
-  max-height: 86vh;
-  overflow-y: auto;
-  border-radius: 20px !important;
-}
-#productDetailModal button,
-#productDetailModal a {
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 12px !important;
-}
-#detailStores { gap: 8px !important; }
-#detailKeywords { line-height: 1.6; }
-
-@media (min-width: 1024px) {
-  .product { padding: 22px !important; }
-  .layout { gap: 22px !important; }
-  #productDetailModal > div,
-  #productDetailModal .modal-content {
-    width: min(820px, calc(100vw - 80px)) !important;
-    max-height: 88vh;
-  }
-}
-
-@media (max-width: 640px) {
-  .product { padding: 16px !important; border-radius: 15px !important; }
-  .product + .product { margin-top: 10px; }
-  .category-chip, .chip {
-    min-height: 42px;
-    padding: 9px 13px !important;
-  }
-  #productDetailModal {
-    align-items: flex-end !important;
-  }
-  #productDetailModal > div,
-  #productDetailModal .modal-content {
-    width: calc(100vw - 16px) !important;
-    max-height: 90vh;
-    margin: 8px !important;
-    border-radius: 20px 20px 14px 14px !important;
-    padding: 18px !important;
-  }
-  #productDetailModal button,
-  #productDetailModal a {
-    min-height: 44px;
-    padding: 10px 12px !important;
-  }
-  #detailStores {
-    display: grid !important;
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-  #detailStores > * { width: 100%; box-sizing: border-box; }
+#productDetailModal span{font-size:13px!important}
+@media(max-width:640px){
+ #productDetailModal{font-size:16px}
+ #productDetailModal #detailMeta,
+ #productDetailModal #detailPros,
+ #productDetailModal #detailCons{font-size:14px!important}
 }
