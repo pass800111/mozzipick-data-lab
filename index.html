@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.1">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.2">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -469,4 +469,31 @@ document.addEventListener('click',e=>{
  document.getElementById('v1Detail').hidden=false;
 });
 document.addEventListener('click',e=>{if(e.target.matches('.v1-close,#v1Detail'))document.getElementById('v1Detail').hidden=true});
+</script><script>
+/* Favorites pagination v1.2: right panel 5/page, left menu 10/page */
+document.addEventListener('DOMContentLoaded',()=>{
+ const KEY='mozzipick_favorites_v1';let rightPage=1,leftPage=1;
+ const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
+ const esc=x=>String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ const pager=(page,total,size,side)=>{const pages=Math.max(1,Math.ceil(total/size));if(pages<=1)return '';let a='<div class="fav-pagination" data-fav-pager="'+side+'">';for(let i=1;i<=pages;i++)a+='<button type="button" data-page="'+i+'" class="'+(i===page?'active':'')+'">'+i+'</button>';return a+'</div>'};
+ const coupang={'유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748','인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'};
+ function right(){
+  const box=document.getElementById('mozzFavoritesList');if(!box)return;const all=get(),pages=Math.max(1,Math.ceil(all.length/5));rightPage=Math.min(rightPage,pages);const a=all.slice((rightPage-1)*5,rightPage*5);
+  box.innerHTML=all.length?a.map(n=>'<div class="fav-row"><span>★</span><div><b>'+esc(n)+'</b>'+(coupang[n]?'<a href="'+coupang[n]+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'<small>쿠팡 동일모델 링크 미확인</small>')+'</div></div>').join('')+pager(rightPage,all.length,5,'right'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>';
+ }
+ function left(){
+  const active=document.querySelector('.side nav button[data-view="favorites"].on');const panel=document.getElementById('menuDataView');if(!active||!panel||panel.hidden)return;
+  const cards=[...document.querySelectorAll('#ranking .product.product-redesign')],fav=get();
+  const name=c=>{const e=c.querySelector('.name');return e?[...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim():'제품'};
+  const rows=cards.filter(c=>fav.includes(name(c))),pages=Math.max(1,Math.ceil(rows.length/10));leftPage=Math.min(leftPage,pages);const a=rows.slice((leftPage-1)*10,leftPage*10);
+  panel.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+rows.length+'개</strong></div>'+(rows.length?'<div class="favorites-simple-list">'+a.map(c=>'<div class="favorite-simple-item"><button type="button"><b>'+esc(name(c))+'</b><small>'+esc(c.querySelector('.meta')?.textContent.trim()||'')+'</small></button></div>').join('')+'</div>'+pager(leftPage,rows.length,10,'left'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.<br>제품명 옆 ☆를 눌러 추가하세요.</div>');
+ }
+ document.addEventListener('click',e=>{
+  const p=e.target.closest('.fav-pagination button');if(p){e.preventDefault();e.stopPropagation();if(p.closest('[data-fav-pager="right"]')){rightPage=+p.dataset.page;right()}else{leftPage=+p.dataset.page;left()}return}
+  if(e.target.closest('.all-fav-btn,.mozz-fav-static,.product-title-fav'))setTimeout(()=>{const max=Math.max(1,Math.ceil(get().length/5));rightPage=Math.min(rightPage,max);right();left()},0);
+  const nav=e.target.closest('.side nav button[data-view="favorites"]');if(nav){leftPage=1;setTimeout(left,0)}
+ });
+ const obs=new MutationObserver(()=>{if(document.querySelector('.side nav button[data-view="favorites"].on'))left()});const panel=document.getElementById('menuDataView');if(panel)obs.observe(panel,{attributes:true,attributeFilter:['hidden']});
+ right();
+});
 </script></body></html>
