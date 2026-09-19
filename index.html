@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.4">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v2">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -336,33 +336,6 @@ window.MOZZIPICK_COUPANG_RANKING = window.MOZZIPICK_COUPANG_RANKING || {
  if(b24)b24.addEventListener('click',()=>render('rising24h'));
 })();
 </script><script>
-(function(){
- const KEY='mozzipick_favorites_v1';
- const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
- const save=v=>localStorage.setItem(KEY,JSON.stringify(v));
- const coupangLinks={
-  '유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748',
-  '인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'
- };
- const cardName=el=>[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||el.getAttribute('data-product-name')||el.textContent.replace(/[★☆]/g,'').trim();
- const verifiedNames=[...document.querySelectorAll('#ranking .product.product-redesign .name')].map(cardName);
- const clean=()=>{const v=get().filter(n=>verifiedNames.includes(n));save(v);return v;};
- clean();
- function render(){
-  const box=document.getElementById('mozzFavoritesList'); if(!box)return;
-  const fav=clean();
-  if(!fav.length){box.innerHTML='아직 즐겨찾기한 제품이 없습니다.';return;}
-  box.innerHTML=fav.map(x=>'<div style="padding:9px 0;border-top:1px solid #334155"><b style="display:block;color:#fff">'+x+'</b>'+(coupangLinks[x]?'<a href="'+coupangLinks[x]+'" target="_blank" rel="noopener" style="display:inline-block;margin-top:5px;color:#bfdbfe;font-size:10px;font-weight:800">쿠팡 바로가기 ↗</a>':'<small style="display:block;margin-top:5px;color:#94a3b8">쿠팡 동일모델 링크 미확인</small>')+'</div>').join('');
- }
- document.querySelectorAll('.mozz-fav-static').forEach(btn=>{
-  const name=btn.getAttribute('data-fav-name');
-  const sync=()=>{const on=get().includes(name);btn.textContent=on?'★':'☆';btn.title=on?'모찌즐찾 해제':'모찌즐찾 추가';btn.style.background=on?'#dbeafe':'#eff6ff';};
-  sync();
-  btn.addEventListener('click',e=>{e.stopPropagation();let f=get();f=f.includes(name)?f.filter(v=>v!==name):[...f,name];save(f);sync();render();});
- });
- render();
-})();
-</script><script>
 (()=>{const nav=[...document.querySelectorAll('.side nav button[data-view]')],panel=document.getElementById('menuDataView'),layout=document.querySelector('.layout'),controls=document.querySelector('.controls'),stats=document.querySelector('.heroStats'),sample=document.querySelector('.sample');
 const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')],nm=c=>{const e=c.querySelector('.name');if(!e)return '제품';return [...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim()},cat=c=>c.dataset.productCategory||'기타',rk=c=>c.querySelector('.rank')?.textContent.trim()||'-',meta=c=>c.querySelector('.meta')?.textContent.trim()||'',favs=()=>{try{return JSON.parse(localStorage.getItem('mozzipick_favorites_v1')||'[]')}catch(e){return[]}};
 const row=c=>'<button class="menu-product-row simple" type="button" data-jump="'+rk(c)+'"><div><b>'+nm(c)+'</b><small>'+meta(c)+'</small></div><span>'+cat(c)+'</span></button>';
@@ -411,29 +384,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(ranking.length && (!last || now-last.ts>30*60*1000)){rows.push({ts:now,ranking});rows=rows.filter(x=>now-x.ts<366*24*3600*1000);localStorage.setItem(KEY,JSON.stringify(rows));}
 });
 </script><script>
-document.addEventListener('DOMContentLoaded',()=>{
- const KEY='mozzipick_favorites_v1';
- const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
- const set=a=>localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
- const nameOf=e=>[...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim();
- const coupangLinks={'유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748','인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'};
- function side(){
-  const box=document.getElementById('mozzFavoritesList');if(!box)return;
-  const a=get();box.innerHTML=a.length?a.map(n=>'<div class="fav-row"><span>★</span><div><b>'+n+'</b>'+(coupangLinks[n]?'<a href="'+coupangLinks[n]+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'<small>쿠팡 동일모델 링크 미확인</small>')+'</div></div>').join(''):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>';
- }
- function mount(){
-  document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{
-   const title=card.querySelector('.name');if(!title)return;const name=nameOf(title);
-   title.querySelectorAll('.all-fav-btn,.mozz-fav-static,.product-title-fav').forEach(x=>x.remove());
-   const b=document.createElement('button');b.type='button';b.className='all-fav-btn';
-   const draw=()=>{const on=get().includes(name);b.textContent=on?'★':'☆';b.classList.toggle('on',on)};
-   b.onclick=e=>{e.preventDefault();e.stopPropagation();let a=get();a=a.includes(name)?a.filter(x=>x!==name):[...a,name];set(a);draw();side();};
-   title.appendChild(b);draw();
-  });side();
- }
- mount();setTimeout(mount,250);
-});
-</script><script>
 /* MOZZIPICK v1 data layer: JSON is the source of truth for data/status, while existing verified cards remain the visual renderer. */
 (async()=>{
  const $=q=>document.querySelector(q), $=q=>[...document.querySelectorAll(q)];
@@ -470,48 +420,22 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('click',e=>{if(e.target.matches('.v1-close,#v1Detail'))document.getElementById('v1Detail').hidden=true});
 </script><script>
-/* Favorites pagination v1.2: right panel 5/page, left menu 10/page */
-document.addEventListener('DOMContentLoaded',()=>{
- const KEY='mozzipick_favorites_v1';let rightPage=1,leftPage=1;
- const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
+/* MOZZIPICK FAVORITES v2 - sole controller */
+document.addEventListener('DOMContentLoaded',function(){
+ const KEY='mozzipick_favorites_v1';let rp=1,lp=1;
+ const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(_){return[]}};
+ const write=a=>localStorage.setItem(KEY,JSON.stringify(Array.from(new Set(a))));
  const esc=x=>String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
- const pager=(page,total,size,side)=>{const pages=Math.max(1,Math.ceil(total/size));if(pages<=1)return '';let a='<div class="fav-pagination" data-fav-pager="'+side+'">';for(let i=1;i<=pages;i++)a+='<button type="button" data-page="'+i+'" class="'+(i===page?'active':'')+'">'+i+'</button>';return a+'</div>'};
- const coupang={'유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748','인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'};
- function right(){
-  const box=document.getElementById('mozzFavoritesList');if(!box)return;const all=get(),pages=Math.max(1,Math.ceil(all.length/5));rightPage=Math.min(rightPage,pages);const a=all.slice((rightPage-1)*5,rightPage*5);
-  box.innerHTML=all.length?a.map(n=>'<div class="fav-row"><span>★</span><div><b>'+esc(n)+'</b>'+(coupang[n]?'<a href="'+coupang[n]+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'<small>쿠팡 동일모델 링크 미확인</small>')+'</div></div>').join('')+pager(rightPage,all.length,5,'right'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>';
- }
- function left(){
-  const active=document.querySelector('.side nav button[data-view="favorites"].on');const panel=document.getElementById('menuDataView');if(!active||!panel||panel.hidden)return;
-  const cards=[...document.querySelectorAll('#ranking .product.product-redesign')],fav=get();
-  const name=c=>{const e=c.querySelector('.name');return e?[...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim():'제품'};
-  const rows=cards.filter(c=>fav.includes(name(c))),pages=Math.max(1,Math.ceil(rows.length/10));leftPage=Math.min(leftPage,pages);const a=rows.slice((leftPage-1)*10,leftPage*10);
-  panel.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+rows.length+'개</strong></div>'+(rows.length?'<div class="favorites-simple-list">'+a.map(c=>'<div class="favorite-simple-item"><button type="button"><b>'+esc(name(c))+'</b><small>'+esc(c.querySelector('.meta')?.textContent.trim()||'')+'</small></button></div>').join('')+'</div>'+pager(leftPage,rows.length,10,'left'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.<br>제품명 옆 ☆를 눌러 추가하세요.</div>');
- }
- document.addEventListener('click',e=>{
-  const p=e.target.closest('.fav-pagination button');if(p){e.preventDefault();e.stopPropagation();if(p.closest('[data-fav-pager="right"]')){rightPage=+p.dataset.page;right()}else{leftPage=+p.dataset.page;left()}return}
-  if(e.target.closest('.all-fav-btn,.mozz-fav-static,.product-title-fav'))setTimeout(()=>{const max=Math.max(1,Math.ceil(get().length/5));rightPage=Math.min(rightPage,max);right();left()},0);
-  const nav=e.target.closest('.side nav button[data-view="favorites"]');if(nav){leftPage=1;setTimeout(left,0)}
- });
- const obs=new MutationObserver(()=>{if(document.querySelector('.side nav button[data-view="favorites"].on'))left()});const panel=document.getElementById('menuDataView');if(panel)obs.observe(panel,{attributes:true,attributeFilter:['hidden']});
- right();
-});
-</script><script>
-/* Favorites controller v1.4 - single click path for desktop/mobile */
-document.addEventListener('DOMContentLoaded',()=>{
- const KEY='mozzipick_favorites_v1',get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}},save=a=>localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
- const titleName=t=>[...t.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||t.textContent.replace(/[★☆]/g,'').trim();
+ const nameOf=card=>{const t=card.querySelector('.name');if(!t)return '';return (t.dataset.cleanName||[...t.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||t.textContent.replace(/[★☆]/g,'').trim())};
+ const pages=(page,total,size,where)=>{let n=Math.ceil(total/size);if(n<2)return '';let z='<div class="fav-pagination" data-where="'+where+'">';for(let i=1;i<=n;i++)z+='<button type="button" data-p="'+i+'" class="'+(i===page?'active':'')+'">'+i+'</button>';return z+'</div>'};
  function mount(){
-  document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{
-   const t=card.querySelector('.name');if(!t)return;let b=t.querySelector('.fav-v14');
-   if(!b){t.querySelectorAll('.all-fav-btn,.mozz-fav-static,.product-title-fav').forEach(x=>x.remove());b=document.createElement('button');b.type='button';b.className='fav-v14';b.setAttribute('aria-label','즐겨찾기');t.appendChild(b)}
-   const n=titleName(t),on=get().includes(n);b.textContent=on?'★':'☆';b.classList.toggle('on',on);
-  });
+  document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{const t=card.querySelector('.name');if(!t)return;if(!t.dataset.cleanName)t.dataset.cleanName=nameOf(card);t.querySelectorAll('.mozz-fav-static,.product-title-fav,.all-fav-btn,.fav-v14').forEach(x=>x.remove());let b=document.createElement('button');b.type='button';b.className='mozz-fav-v2';b.dataset.name=t.dataset.cleanName;b.setAttribute('aria-label','즐겨찾기');t.appendChild(b)});
+  paint();
  }
- document.addEventListener('click',e=>{
-  const b=e.target.closest('.fav-v14');if(!b)return;e.preventDefault();e.stopImmediatePropagation();
-  const t=b.closest('.name'),n=t&&titleName(t);if(!n)return;let a=get();a=a.includes(n)?a.filter(x=>x!==n):a.concat(n);save(a);mount();window.dispatchEvent(new CustomEvent('mozzipick:favchange'));
- },true);
- mount();setTimeout(mount,300);
+ function paint(){const a=read();document.querySelectorAll('.mozz-fav-v2').forEach(b=>{const on=a.includes(b.dataset.name);b.textContent=on?'★':'☆';b.classList.toggle('on',on)});right();left();}
+ function right(){const box=document.getElementById('mozzFavoritesList');if(!box)return;const a=read(),n=Math.max(1,Math.ceil(a.length/5));rp=Math.min(rp,n);const v=a.slice((rp-1)*5,rp*5);box.innerHTML=a.length?v.map(x=>'<div class="fav-row"><span>★</span><div><b>'+esc(x)+'</b></div></div>').join('')+pages(rp,a.length,5,'r'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>'}
+ function left(){const nav=document.querySelector('.side nav button[data-view="favorites"].on'),box=document.getElementById('menuDataView');if(!nav||!box||box.hidden)return;const f=read(),cards=[...document.querySelectorAll('#ranking .product.product-redesign')].filter(c=>f.includes(nameOf(c))),n=Math.max(1,Math.ceil(cards.length/10));lp=Math.min(lp,n);const v=cards.slice((lp-1)*10,lp*10);box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+cards.length+'개</strong></div>'+(cards.length?'<div class="favorites-simple-list">'+v.map(c=>'<div class="favorite-simple-item"><b>'+esc(nameOf(c))+'</b></div>').join('')+'</div>'+pages(lp,cards.length,10,'l'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>')}
+ document.addEventListener('click',function(e){const b=e.target.closest('.mozz-fav-v2');if(b){e.preventDefault();e.stopPropagation();let a=read(),n=b.dataset.name;a=a.includes(n)?a.filter(x=>x!==n):a.concat(n);write(a);paint();return}const p=e.target.closest('.fav-pagination button');if(p){e.preventDefault();e.stopPropagation();if(p.closest('[data-where="r"]'))rp=+p.dataset.p;else lp=+p.dataset.p;paint();return}if(e.target.closest('.side nav button[data-view="favorites"]')){lp=1;setTimeout(left,30)}},true);
+ mount();
 });
 </script></body></html>
