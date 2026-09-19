@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded',function(){
  const detailStores=document.getElementById('detailStores');
  const detailPros=document.getElementById('detailPros');
  const detailCons=document.getElementById('detailCons');
+ const detailMarket=document.getElementById('detailMarket');
  function openDetail(card){
    const n=card.querySelector('.name');
    if(detailName) detailName.textContent=n?n.textContent.trim():'제품 상세';
@@ -70,7 +71,21 @@ document.addEventListener('DOMContentLoaded',function(){
    
    if(detailPros&&detailCons){
      const name=(card.querySelector('.name')||{}).textContent||'';
-     const reviewData={
+     const detailVerified={
+ '인스타360 링크 2 AI 웹캠':{
+   market:'공식몰 ₩299,000 · 공식몰 평점 4.7/5 (85개 평가) · 다나와 12몰, 299,000원 표시 · 확인일 2026.09.20',
+   pros:['4K 화질과 얼굴·바디 트래킹 성능이 강점','노이즈 감소 마이크와 주요 화상회의/스트리밍 앱 호환성이 좋음','설치가 간단하고 화이트보드·오버헤드 모드 활용 가능'],
+   cons:['제스처 인식이 항상 안정적이지 않다는 전문 리뷰','프레임 밖으로 나갔다 돌아오면 자동 재추적이 매끄럽지 않을 수 있음','고급 기능은 PC 성능 요구가 커질 수 있음'],
+   cuts:['컷씬 1 · 사람이 움직여도 AI가 따라오는 트래킹 시연','컷씬 2 · 일반 웹캠 대비 4K 화질/보케/노이즈 감소 비교','컷씬 3 · 책상 위 오버헤드 모드로 제품·문서 촬영 시연']
+ },
+ '유그린 맥플로우 Qi2 25W 보조배터리':{
+   market:'공개 실측: 10,000mAh · 유선 최대 30W · Qi2.2 무선 최대 25W · 쿠팡 가격은 변동 가능하므로 상세 판매처에서 재확인 · 확인일 2026.09.20',
+   pros:['Qi2.2 최대 25W 무선충전과 최대 30W 유선충전 지원','내장 USB-C 케이블로 별도 케이블 없이 사용 가능','LCD 배터리 표시와 유·무선 활용성이 좋음'],
+   cons:['10,000mAh급 제품이라 부피감이 있다는 전문 리뷰','일반 맥세이프 보조배터리보다 가격대가 높은 편','고출력 무선충전은 발열 관리가 중요한 제품'],
+   cuts:['컷씬 1 · 아이폰에 자석으로 붙이고 25W Qi2.2 충전 시작','컷씬 2 · 내장 USB-C 케이블을 바로 꺼내 유선 30W 충전','컷씬 3 · LCD 잔량 표시와 유선+무선 사용 장면']
+ }
+};
+const reviewData={
        '유그린 맥플로우 Qi2 25W 보조배터리':{
          pros:['빠르고 안정적인 Qi2 25W 무선 충전 성능','내장 USB-C 케이블과 추가 USB-C 포트가 편리함','마감·빌드 품질이 좋다는 평가'],
          cons:['10,000mAh급이라 다소 두껍고 무게감이 있음','무선 충전 시 발열을 느꼈다는 평가','일반 10,000mAh 보조배터리보다 가격이 높은 편']
@@ -80,9 +95,16 @@ document.addEventListener('DOMContentLoaded',function(){
          cons:['앱 연결·초기 설정이 직관적이지 않다는 일부 의견','세부 설정에 익숙해지는 데 시간이 필요하다는 의견','일부 사용자 환경에서 오디오 싱크 관련 불만 사례가 있음']
        }
      };
-     const d=reviewData[name.trim()];
+     const vd=detailVerified[name.trim()];
+     const d=vd||reviewData[name.trim()];
      detailPros.innerHTML=d?d.pros.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
      detailCons.innerHTML=d?d.cons.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
+     if(detailMarket) detailMarket.innerHTML=vd?'<b>검증 데이터</b><br>'+vd.market:'판매·가격·평점 검증 데이터 수집 예정';
+     const cutBox=Array.from(document.querySelectorAll('#productDetailModal div')).find(x=>x.textContent&&x.textContent.includes('컷씬 1·2·3'));
+     if(cutBox&&vd&&vd.cuts){
+       const body=cutBox.querySelector('div');
+       if(body) body.innerHTML=vd.cuts.map(x=>'• '+x).join('<br>');
+     }
    }
    if(detailStores){
      const anchors=Array.from(card.querySelectorAll('a'));
@@ -135,7 +157,8 @@ document.addEventListener('DOMContentLoaded',function(){
    <div id="detailMeta" style="margin-top:12px;font-size:12px;line-height:1.7;color:#667085"></div>
 <div id="detailKeywords" style="margin-top:12px"></div>
 <div id="detailLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"></div>
-<div style="margin-top:18px"><b>판매처 비교</b><div style="font-size:10px;color:#98a2b3;margin-top:3px">정확한 동일 모델 판매 페이지를 확인한 경우에만 활성화</div><div id="detailStores" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div></div>
+<div style="margin-top:18px"><b>판매처 비교</b><div style="font-size:10px;color:#98a2b3;margin-top:3px">정확한 동일 모델 판매 페이지를 확인한 경우에만 활성화</div><div id="detailStores" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div>
+<div id="detailMarket" style="margin-top:10px;font-size:13px;line-height:1.7;color:#475467"></div></div>
    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px">
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>실제 판매량</b><div style="margin-top:5px">공개 데이터 없음</div></div>
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>판매율</b><div style="margin-top:5px">공개 데이터 없음</div></div>
