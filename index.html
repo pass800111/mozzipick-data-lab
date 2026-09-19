@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -441,11 +441,11 @@ document.addEventListener('DOMContentLoaded',()=>{
  try{
   const [pd,td]=await Promise.all([fetch('./data/products.json?v=1').then(r=>r.json()),fetch('./data/trend-snapshots.json?v=1').then(r=>r.json())]);
   window.MOZZIPICK_DATA=pd; window.MOZZIPICK_TRENDS=td;
-  const byName=Object.fromEntries(pd.products.map(x=>[x.name,x]));
+  const byName={};pd.products.forEach(x=>{byName[x.name]=x;if(x.legacyName)byName[x.legacyName]=x});
   $('#ranking .product.product-redesign').forEach(card=>{
    const el=card.querySelector('.name');if(!el)return;
    const n=[...el.childNodes].filter(x=>x.nodeType===3).map(x=>x.textContent).join('').trim()||el.textContent.replace(/[★☆]/g,'').trim();
-   const p=byName[n];if(!p)return;card.dataset.productId=p.id;
+   const p=byName[n];if(!p)return;card.dataset.productId=p.id;if(p.legacyName&&p.name!==n){const tn=[...el.childNodes].find(x=>x.nodeType===3);if(tn)tn.textContent=p.name+' ';}
    const thumb=card.querySelector('.thumb');if(thumb&&p.image&&!thumb.querySelector('img')){thumb.classList.add('product-photo');thumb.innerHTML='<img src="'+p.image+'" alt="'+p.name+'" loading="lazy" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\')">'}
   });
   document.addEventListener('click',e=>{
@@ -459,4 +459,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
  }catch(err){console.warn('MOZZIPICK data layer fallback',err)}
 })();
+</script><div id="v1Detail" class="v1-detail" hidden><div class="v1-detail-card"><button class="v1-close">×</button><div id="v1DetailBody"></div></div></div><script>
+document.addEventListener('click',e=>{
+ const card=e.target.closest('#ranking .product.product-redesign');if(!card||e.target.closest('a,button'))return;
+ const d=window.MOZZIPICK_DATA,p=d&&d.products.find(x=>x.id===card.dataset.productId);if(!p)return;
+ const val=x=>x&&x!=='미확인'?x:'미확인';
+ const links=[['공식 페이지',p.officialUrl],['Instagram',p.instagram],['TikTok',p.tiktok],['YouTube',p.youtube],['Xiaohongshu',p.xiaohongshu]].filter(x=>x[1]&&x[1]!=='미확인');
+ document.getElementById('v1DetailBody').innerHTML='<span>PRODUCT DETAIL</span><h2>'+p.name+'</h2><div class="v1-grid"><p><b>출시일</b>'+val(p.release)+'</p><p><b>현재 가격</b>'+val(p.price)+'</p><p><b>쿠팡 가격</b>'+val(p.coupangPrice)+'</p><p><b>리뷰</b>'+val(p.reviews)+'</p><p><b>평점</b>'+val(p.rating)+'</p><p><b>주요 사양</b>'+val(p.spec)+'</p></div><h3>소스</h3><div class="v1-links">'+links.map(x=>'<a target="_blank" rel="noopener" href="'+x[1]+'">'+x[0]+' ↗</a>').join('')+'</div><h3>샤오홍슈 검색어</h3><p>'+val(p.xiaohongshuQuery)+'</p><h3>콘텐츠 컷씬</h3><div class="v1-scenes"><b>컷씬 1 · 첫 3초 핵심 기능</b><b>컷씬 2 · 실제 사용/조작</b><b>컷씬 3 · 결과/차별점</b></div>';
+ document.getElementById('v1Detail').hidden=false;
+});
+document.addEventListener('click',e=>{if(e.target.matches('.v1-close,#v1Detail'))document.getElementById('v1Detail').hidden=true});
 </script></body></html>
