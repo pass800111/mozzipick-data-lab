@@ -1,0 +1,39 @@
+name: Trend Snapshot
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Append verified ranking snapshot
+        run: |
+          python - <<'PY'
+          import json,datetime
+          p=json.load(open('data/products.json',encoding='utf-8'))
+          f='data/trend-snapshots.json'
+          d=json.load(open(f,encoding='utf-8'))
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          ranking=[{'id':x['id'],'rank':x['rank']} for x in p['products']]
+          if not d.get('snapshots') or d['snapshots'][-1].get('ranking') != ranking:
+              d.setdefault('snapshots',[]).append({'at':now,'ranking':ranking})
+          else:
+              d['snapshots'].append({'at':now,'ranking':ranking})
+          cutoff=datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(days=370)
+          d['snapshots']=[x for x in d['snapshots'] if datetime.datetime.fromisoformat(x['at'].replace('Z','+00:00'))>=cutoff]
+          json.dump(d,open(f,'w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          PY
+      - name: Commit snapshot
+        run: |
+          git config user.name "mozzipick-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/trend-snapshots.json
+          git diff --cached --quiet || git commit -m "chore: capture 3h trend snapshot"
+          git push
