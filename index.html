@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded',function(){
  const detailMeta=document.getElementById('detailMeta');
  const detailKeywords=document.getElementById('detailKeywords');
  const detailLinks=document.getElementById('detailLinks');
+ const detailStores=document.getElementById('detailStores');
  function openDetail(card){
    const n=card.querySelector('.name');
    if(detailName) detailName.textContent=n?n.textContent.trim():'제품 상세';
@@ -62,6 +63,26 @@ document.addEventListener('DOMContentLoaded',function(){
      if(official) html+='<a href="'+official.href+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';
      else html+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
      detailLinks.innerHTML=html;
+   }
+   if(detailStores){
+     const anchors=Array.from(card.querySelectorAll('a'));
+     const stores=[
+       ['쿠팡',a=>/쿠팡/.test(a.textContent)||/coupang\.com/.test(a.href)],
+       ['네이버',a=>/네이버/.test(a.textContent)||/naver\.com/.test(a.href)],
+       ['11번가',a=>/11번가/.test(a.textContent)||/11st\.co\.kr/.test(a.href)],
+       ['G마켓',a=>/G마켓|지마켓/.test(a.textContent)||/gmarket\.co\.kr/.test(a.href)],
+       ['옥션',a=>/옥션/.test(a.textContent)||/auction\.co\.kr/.test(a.href)],
+       ['Amazon',a=>/Amazon|아마존/.test(a.textContent)||/amazon\./.test(a.href)],
+       ['AliExpress',a=>/AliExpress|알리/.test(a.textContent)||/aliexpress\.com/.test(a.href)]
+     ];
+     const official=anchors.find(a=>/공식/.test(a.textContent));
+     let out='';
+     stores.forEach(([label,test])=>{
+       const a=anchors.find(test);
+       out+=a?'<a href="'+a.href+'" target="_blank" rel="noopener" style="border:1px solid #d0d5dd;background:#fff;color:#344054;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:800;text-decoration:none">'+label+' ✓ ↗</a>':'<span style="border:1px solid #eaecf0;background:#f9fafb;color:#98a2b3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:700">'+label+' 미확인</span>';
+     });
+     out+=official?'<a href="'+official.href+'" target="_blank" rel="noopener" style="border:1px solid #b2ddff;background:#eff8ff;color:#175cd3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:800;text-decoration:none">공식몰 ✓ ↗</a>':'<span style="border:1px solid #eaecf0;background:#f9fafb;color:#98a2b3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:700">공식몰 미확인</span>';
+     detailStores.innerHTML=out;
    }
    if(modal) modal.style.display='block';
  }
@@ -94,6 +115,7 @@ document.addEventListener('DOMContentLoaded',function(){
    <div id="detailMeta" style="margin-top:12px;font-size:12px;line-height:1.7;color:#667085"></div>
 <div id="detailKeywords" style="margin-top:12px"></div>
 <div id="detailLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"></div>
+<div style="margin-top:18px"><b>판매처 비교</b><div style="font-size:10px;color:#98a2b3;margin-top:3px">정확한 동일 모델 판매 페이지를 확인한 경우에만 활성화</div><div id="detailStores" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div></div>
    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px">
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>실제 판매량</b><div style="margin-top:5px">공개 데이터 없음</div></div>
     <div style="background:#f7f8fa;padding:12px;border-radius:12px"><b>판매율</b><div style="margin-top:5px">공개 데이터 없음</div></div>
