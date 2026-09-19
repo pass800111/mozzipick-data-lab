@@ -328,6 +328,9 @@ window.MOZZIPICK_COUPANG_RANKING = window.MOZZIPICK_COUPANG_RANKING || {
  const KEY='mozzipick_favorites_v1';
  const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
  const save=v=>localStorage.setItem(KEY,JSON.stringify(v));
+ const verifiedNames=Object.keys(coupangLinks);
+ const clean=()=>{const v=get().filter(n=>verifiedNames.includes(n));save(v);return v;};
+ clean();
  const coupangLinks={
   '유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748',
   '인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'
