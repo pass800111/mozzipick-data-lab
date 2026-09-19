@@ -147,3 +147,7 @@ body.menu-view-active #menuDataView{display:block!important}
 .dq-head span{font-size:11px;font-weight:900;letter-spacing:.14em;color:#2563eb}.dq-head h2{margin:5px 0 5px;font-size:24px}.dq-head p,.dq-note{color:#718096;font-size:12px;line-height:1.6}
 .dq-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.dq-grid article{border:1px solid #edf1f6;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:5px}.dq-grid b{font-size:13px}.dq-grid small{color:#7b8797}.dq-grid strong{font-size:14px}.dq-grid em{font-style:normal;color:#2563eb;font-size:10px;font-weight:800}
 @media(max-width:900px){.dq-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.dq-grid{grid-template-columns:1fr}.data-quality{padding:18px}}
+
+/* v21 universal favorite button */
+.name .all-fav-btn{margin-left:8px;width:30px;height:30px;border-radius:50%;border:1px solid #cfe0ff;background:#f4f8ff;color:#2563eb;font-size:18px;line-height:26px;cursor:pointer;vertical-align:middle;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.name .all-fav-btn:hover,.name .all-fav-btn.on{background:#2563eb;color:#fff;border-color:#2563eb}
