@@ -151,3 +151,10 @@ body.menu-view-active #menuDataView{display:block!important}
 /* v21 universal favorite button */
 .name .all-fav-btn{margin-left:8px;width:30px;height:30px;border-radius:50%;border:1px solid #cfe0ff;background:#f4f8ff;color:#2563eb;font-size:18px;line-height:26px;cursor:pointer;vertical-align:middle;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
 .name .all-fav-btn:hover,.name .all-fav-btn.on{background:#2563eb;color:#fff;border-color:#2563eb}
+
+/* v22 screenshot fixes: one favorite control, clean cards, no duplicate visual rails */
+.product.product-redesign .name{display:flex!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important}
+.product.product-redesign .name>button:not(.all-fav-btn){display:none!important}
+.all-fav-btn{margin:0!important;width:30px!important;height:30px!important;border-radius:50%!important;border:1px solid #cfe0ff!important;background:#f5f9ff!important;color:#2563eb!important;font-size:19px!important;line-height:1!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;cursor:pointer!important;flex:0 0 30px!important}
+.all-fav-btn.on{background:#2563eb!important;color:#fff!important;border-color:#2563eb!important}
+.fav-row{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:12px}.fav-row span{color:#60a5fa}.fav-row b{font-weight:700;line-height:1.4}.fav-empty{padding:12px;border-radius:12px;background:rgba(255,255,255,.05);font-size:11px;color:#aab6ca}
