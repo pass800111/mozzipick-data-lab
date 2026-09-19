@@ -134,3 +134,10 @@ body.menu-view-active #menuDataView{display:block!important}
 /* v18 real exact-model product images */
 .thumb.product-photo{display:flex!important;align-items:center!important;justify-content:center!important;background:#fff!important;border:1px solid #e7ecf2!important;overflow:hidden!important;padding:10px!important}
 .thumb.product-photo img{display:block!important;width:100%!important;height:100%!important;max-height:165px!important;object-fit:contain!important}
+
+/* v19 completion polish */
+.brand strong{font-size:18px!important;line-height:1.25!important;margin-top:5px!important}
+.time-trend-grid button.active{border-color:#2563eb!important;background:#eef5ff!important;box-shadow:0 0 0 2px rgba(37,99,235,.08)!important}
+.time-trend-grid button.active b{color:#1d4ed8!important}
+.thumb.product-noimage b{font-size:17px!important;letter-spacing:.06em!important;color:#60708a!important}
+.thumb.product-noimage small{font-size:9px!important;color:#9aa6b5!important}
