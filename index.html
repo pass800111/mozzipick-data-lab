@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v9">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v7">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -29,7 +29,7 @@
     <article><b>Roborock Qrevo Edge 3 Pro</b><small>공식 제품 확인</small><strong>제품 페이지 검증</strong><em>Roborock 공식</em></article>
   </div>
   <p class="dq-note">※ 시간별 순위 변화는 실제 시점별 스냅샷이 누적된 뒤 표시합니다. 현재 존재하지 않는 과거 수치는 생성하지 않습니다.</p>
-</section></main></div><footer id="mobileNav"><button class="on" type="button" data-mobile-view="home">⌁<span>홈</span></button><button type="button" data-mobile-view="time">◷<span>시간별</span></button><button type="button" data-mobile-view="categories">▦<span>카테고리</span></button><button type="button" data-mobile-view="viral">✦<span>바이럴</span></button><button type="button" data-mobile-view="favorites">♡<span>즐겨찾기</span></button></footer><script>
+</section></main></div><footer><button class="on">⌁<span>홈</span></button><button>▦<span>카테고리</span></button><button>✦<span>바이럴</span></button><button>♡<span>즐겨찾기</span></button></footer><script>
 document.addEventListener('DOMContentLoaded',function(){
  const buttons=Array.from(document.querySelectorAll('.chips [data-category]'));
  const cards=Array.from(document.querySelectorAll('#ranking article.product'));
@@ -459,17 +459,5 @@ document.addEventListener('click',act,true);
 document.addEventListener('touchend',function(e){let b=e.target.closest&&e.target.closest('.fav-action-v4,.fav-side-item,.fav-menu-item');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b.dataset.name)},{capture:true,passive:false});
 document.addEventListener('click',e=>{let b=e.target.closest('.fav-pagination button');if(b){e.preventDefault();if(b.closest('[data-favpager="r"]'))rp=+b.dataset.page;else lp=+b.dataset.page;render()}if(e.target.closest('.side nav button[data-view="favorites"]'))setTimeout(left,80)},true);
 const go=()=>{mount();setTimeout(mount,700)};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();
-})();
-</script><script>
-/* MOBILE BOTTOM NAV v1 */
-(function(){
- const nav=document.getElementById('mobileNav');if(!nav)return;
- function trigger(view){
-  const target=document.querySelector('.side nav button[data-view="'+view+'"]');
-  if(target){target.click();nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.mobileView===view));window.scrollTo({top:0,behavior:'smooth'});}
- }
- function act(e){const b=e.target.closest&&e.target.closest('#mobileNav [data-mobile-view]');if(!b)return;e.preventDefault();e.stopPropagation();trigger(b.dataset.mobileView)}
- nav.addEventListener('click',act,true);
- nav.addEventListener('touchend',act,{capture:true,passive:false});
 })();
 </script></body></html>
