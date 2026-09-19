@@ -1,11 +1,11 @@
 const products=[
 ["UGREEN MagFlow PB773 Qi2 25W","UGREEN","충전·배터리","판매 확인",90,"VERIFIED","쿠팡 동일모델",["쿠팡 정확모델"],"verified"],
 ["Insta360 Link 2 CINSABNB/LINK201","Insta360","카메라","2024.09",88,"VERIFIED","쿠팡 판매",["쿠팡 정확모델","영상 후보"],"verified"],
-["Galaxy S26 FE","Samsung","모바일","2026.09",0,"WATCH","9월 신제품",["출시 확인"],"watch"],
-["Aurzen ZIP Pro","Aurzen","디스플레이","2026.09",0,"WATCH","IFA 신제품",["출시 확인"],"watch"],
+["Galaxy S26 FE · SM-S741N","Samsung","모바일","2026.09.04",0,"RELEASE VERIFIED","국내 출시 확인",["삼성 공식","모델코드 확인"],"verified"],
+["Aurzen ZIP Pro","Aurzen","디스플레이","2026.09.04",0,"ANNOUNCED","IFA 2026 공개",["Aurzen 공식","1080p"],"verified"],
 ["Philips Hue Liane 360°","Philips Hue","스마트홈","2026.09",0,"WATCH","IFA 신제품",["출시 확인"],"watch"],
-["Soundcore Sleep Earbuds 4 Pro","Soundcore","오디오","2026.09",0,"WATCH","IFA 신제품",["출시 확인"],"watch"],
-["Roborock Qrevo Edge 3 Pro","Roborock","생활가전","2026.08",0,"WATCH","8월 신제품",["출시 확인"],"watch"],
+["Soundcore Sleep Earbuds 4 Pro","Soundcore","오디오","2026.09",0,"PRODUCT VERIFIED","공식 제품 확인",["Soundcore 공식","AMOLED 케이스"],"verified"],
+["Roborock Qrevo Edge 3 Pro","Roborock","생활가전","2026.08",0,"PRE-LAUNCH","미출시",["Roborock 공식","출시 대기"],"watch"],
 ["Ecovacs DEEBOT X12S OmniCyclone","Ecovacs","생활가전","2026.08",0,"WATCH","8월 신제품",["출시 확인"],"watch"],
 ["Wyze Indoor Cam Pan","Wyze","스마트홈","2026.08",0,"WATCH","8월 신제품",["출시 확인"],"watch"],
 ["Tapo TC34 Dual Lens","Tapo","스마트홈","2026.08",0,"WATCH","8월 신제품",["출시 확인"],"watch"]
