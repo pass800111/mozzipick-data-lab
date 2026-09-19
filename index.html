@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.2">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v1.3">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -495,5 +495,22 @@ document.addEventListener('DOMContentLoaded',()=>{
  });
  const obs=new MutationObserver(()=>{if(document.querySelector('.side nav button[data-view="favorites"].on'))left()});const panel=document.getElementById('menuDataView');if(panel)obs.observe(panel,{attributes:true,attributeFilter:['hidden']});
  right();
+});
+</script><script>
+/* Mobile favorites hotfix v1.3 */
+document.addEventListener('DOMContentLoaded',()=>{
+ const KEY='mozzipick_favorites_v1',get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}},set=a=>localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
+ const nameOf=card=>{const e=card.querySelector('.name');if(!e)return '';return [...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim()};
+ function sync(){
+  document.querySelectorAll('#ranking .product.product-redesign').forEach(card=>{const b=card.querySelector('.all-fav-btn'),n=nameOf(card);if(b){const on=get().includes(n);b.textContent=on?'★':'☆';b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')}});
+  window.dispatchEvent(new Event('mozzipick:favorites'));
+ }
+ document.addEventListener('pointerup',e=>{
+  const b=e.target.closest('.all-fav-btn');if(!b)return;e.preventDefault();e.stopPropagation();
+  const card=b.closest('.product.product-redesign'),n=card&&nameOf(card);if(!n)return;
+  let a=get();a=a.includes(n)?a.filter(x=>x!==n):[...a,n];set(a);sync();
+ },true);
+ document.addEventListener('touchend',e=>{const b=e.target.closest('.all-fav-btn');if(b){e.preventDefault();e.stopPropagation()}},{capture:true,passive:false});
+ sync();
 });
 </script></body></html>
