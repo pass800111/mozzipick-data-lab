@@ -141,3 +141,9 @@ body.menu-view-active #menuDataView{display:block!important}
 .time-trend-grid button.active b{color:#1d4ed8!important}
 .thumb.product-noimage b{font-size:17px!important;letter-spacing:.06em!important;color:#60708a!important}
 .thumb.product-noimage small{font-size:9px!important;color:#9aa6b5!important}
+
+/* v20 data system completion */
+.data-quality{margin:28px 0 40px;background:#fff;border:1px solid #e7edf5;border-radius:24px;padding:24px;box-shadow:0 10px 35px rgba(30,55,90,.06)}
+.dq-head span{font-size:11px;font-weight:900;letter-spacing:.14em;color:#2563eb}.dq-head h2{margin:5px 0 5px;font-size:24px}.dq-head p,.dq-note{color:#718096;font-size:12px;line-height:1.6}
+.dq-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.dq-grid article{border:1px solid #edf1f6;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:5px}.dq-grid b{font-size:13px}.dq-grid small{color:#7b8797}.dq-grid strong{font-size:14px}.dq-grid em{font-style:normal;color:#2563eb;font-size:10px;font-weight:800}
+@media(max-width:900px){.dq-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.dq-grid{grid-template-columns:1fr}.data-quality{padding:18px}}
