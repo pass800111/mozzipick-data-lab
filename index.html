@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v9">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v10">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -475,4 +475,22 @@ const go=()=>{mount();setTimeout(mount,700)};document.readyState==='loading'?doc
  document.addEventListener('click',act,true);
  document.addEventListener('touchend',act,{capture:true,passive:false});
 })();
-</script></body></html>
+</script><script>
+/* HOME PERIOD BUTTONS v1 */
+(function(){
+ const labels={'0':'실시간','3':'3시간 전','6':'6시간 전','12':'12시간 전','24':'24시간 전'};
+ function activate(b){
+  document.querySelectorAll('.period button[data-hours]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const hrs=Number(b.dataset.hours),note=document.querySelector('.sectionHead small');
+  if(note)note.textContent=hrs===0?'모찌픽 제작 우선순위 · 실시간':('모찌픽 제작 우선순위 · '+labels[String(hrs)]+' 기준');
+  if(hrs===0)return;
+  const snaps=((window.MOZZIPICK_TRENDS||{}).snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
+  const old=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=Date.now()-hrs*3600000);
+  if(!old&&note)note.textContent='모찌픽 제작 우선순위 · '+labels[String(hrs)]+' 데이터 누적 중';
+ }
+ function act(e){const b=e.target.closest&&e.target.closest('.period button[data-hours]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();activate(b)}
+ document.addEventListener('click',act,true);
+ document.addEventListener('touchend',act,{capture:true,passive:false});
+})();
+</script><script>
+document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power Bank 26K 300W':'앤커 프라임 보조배터리 26K 300W','DJI ROMO 2 P2 / A2':'DJI 로모 2 P2 / A2','VIOFO T340 4CH':'비오포 T340 4채널 블랙박스','Aurzen ZIP Pro 포켓 프로젝터':'오르젠 ZIP Pro 포켓 프로젝터','soundcore Sleep A30':'사운드코어 슬립 A30'};document.querySelectorAll('#ranking .name').forEach(e=>{const raw=[...e.childNodes].find(n=>n.nodeType===3);if(raw){const n=raw.textContent.trim();if(map[n])raw.textContent=map[n]+' '}})});</script></body></html>
