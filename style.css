@@ -173,3 +173,6 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* favorite controller v1.4 */
 .fav-v14{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;margin-left:8px;padding:0;border:1px solid #bfdbfe;border-radius:12px;background:#eff6ff;color:#2563eb;font-size:22px;line-height:1;cursor:pointer;position:relative;z-index:100;pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.fav-v14.on{background:#dbeafe;color:#1d4ed8}@media(max-width:700px){.fav-v14{flex-basis:48px;width:48px;height:48px;font-size:24px}}
+
+/* sole favorites controller v2 */
+.mozz-fav-v2{display:inline-flex!important;align-items:center;justify-content:center;width:46px;height:46px;flex:0 0 46px;margin-left:8px;border:1px solid #bfdbfe;border-radius:12px;background:#eff6ff;color:#2563eb;font-size:23px;line-height:1;position:relative;z-index:999;pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer}.mozz-fav-v2.on{background:#dbeafe;color:#1d4ed8}@media(max-width:700px){.mozz-fav-v2{width:50px;height:50px;flex-basis:50px;font-size:25px}}
