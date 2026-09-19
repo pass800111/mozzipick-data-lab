@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><!-- build 20260920-0958 detail-modal-fix -->
-<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-v10">
+<title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-stable1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
 .thumb.product-noimage span{font-size:9px!important;font-weight:900!important;letter-spacing:.16em!important;color:#5e79a7!important}.thumb.product-noimage b{font-size:17px!important;line-height:1.05!important;color:#a1adbb!important}.thumb.product-noimage small{font-size:9px!important;color:#9aa6b4!important}.thumb.product-noimage.new-visual{background:linear-gradient(145deg,#eef6ff,#e8f2ff)!important}
@@ -516,5 +516,25 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    });
  }
  document.addEventListener('click',e=>{const b=e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();apply(b)},true);
+})();
+</script><script>
+/* STABLE TIME FILTER v2 — snapshot drives visible ranking */
+(function(){
+ const map={'0':0,'3':3,'6':6,'12':12,'24':24};
+ const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
+ const currentOrder=cards().map(c=>c);
+ function pname(c){const e=c.querySelector('.name');return e?(e.dataset.favName||e.textContent.replace(/[★☆]/g,'').trim()):''}
+ function pid(c){return c.dataset.productId||''}
+ function showCurrent(){const r=document.getElementById('ranking');if(!r)return;currentOrder.forEach((c,i)=>{c.style.display='';const x=c.querySelector('.rank');if(x)x.textContent=i+1;r.appendChild(c)});note('실시간','현재 최신 수집 데이터')}
+ function note(label,msg){let n=document.querySelector('.time-filter-status');if(!n){n=document.createElement('div');n.className='time-filter-status';const r=document.getElementById('ranking');if(r)r.parentNode.insertBefore(n,r)}if(n)n.innerHTML='<b>'+label+'</b> · '+msg}
+ function apply(b){const key=b.dataset.hours;if(!(key in map))return;document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x===b));if(key==='0'){showCurrent();return}
+  const td=window.MOZZIPICK_TRENDS||{snapshots:[]},target=Date.now()-map[key]*3600000,snaps=(td.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at)),snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target);
+  if(!snap){cards().forEach(c=>c.style.display='none');note(b.textContent.trim(),'해당 시점의 저장 데이터가 아직 없습니다 · 데이터 누적 중');return}
+  const r=document.getElementById('ranking'),by={};cards().forEach(c=>{by[pid(c)]=c;by[pname(c)]=c;c.style.display='none'});
+  (snap.ranking||[]).sort((a,b)=>a.rank-b.rank).forEach(x=>{const c=by[x.id]||by[x.name];if(!c)return;c.style.display='';const z=c.querySelector('.rank');if(z)z.textContent=x.rank;r.appendChild(c)});
+  note(b.textContent.trim(),new Date(snap.at).toLocaleString('ko-KR')+' 저장 순위');
+ }
+ document.addEventListener('click',e=>{const b=e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();apply(b)},true);
+ document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();apply(b)},{capture:true,passive:false});
 })();
 </script></body></html>
