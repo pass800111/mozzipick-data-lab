@@ -51,3 +51,79 @@ body { font-size: 16px; line-height: 1.55; }
   #productDetailModal a,
   #productDetailModal span { font-size: 13px !important; }
 }
+
+
+/* UI polish — comfortable cards, tap targets and product detail modal */
+.product { padding: 18px !important; border-radius: 16px !important; }
+.product + .product { margin-top: 12px; }
+.product .name { margin-bottom: 7px; }
+.product .meta, .product .sub, .verify-note, .source-check { margin-top: 6px; }
+
+.category-chip, .chip, button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+.category-chip, .chip {
+  min-height: 38px;
+  padding: 8px 12px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#productDetailModal > div,
+#productDetailModal .modal-content {
+  width: min(760px, calc(100vw - 32px)) !important;
+  max-height: 86vh;
+  overflow-y: auto;
+  border-radius: 20px !important;
+}
+#productDetailModal button,
+#productDetailModal a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px !important;
+}
+#detailStores { gap: 8px !important; }
+#detailKeywords { line-height: 1.6; }
+
+@media (min-width: 1024px) {
+  .product { padding: 22px !important; }
+  .layout { gap: 22px !important; }
+  #productDetailModal > div,
+  #productDetailModal .modal-content {
+    width: min(820px, calc(100vw - 80px)) !important;
+    max-height: 88vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .product { padding: 16px !important; border-radius: 15px !important; }
+  .product + .product { margin-top: 10px; }
+  .category-chip, .chip {
+    min-height: 42px;
+    padding: 9px 13px !important;
+  }
+  #productDetailModal {
+    align-items: flex-end !important;
+  }
+  #productDetailModal > div,
+  #productDetailModal .modal-content {
+    width: calc(100vw - 16px) !important;
+    max-height: 90vh;
+    margin: 8px !important;
+    border-radius: 20px 20px 14px 14px !important;
+    padding: 18px !important;
+  }
+  #productDetailModal button,
+  #productDetailModal a {
+    min-height: 44px;
+    padding: 10px 12px !important;
+  }
+  #detailStores {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  #detailStores > * { width: 100%; box-sizing: border-box; }
+}
