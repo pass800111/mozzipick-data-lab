@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "snapshots": [
+    {
+      "at": "2026-09-20T05:00:00+09:00",
+      "ranking": [
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 1
+        },
+        {
+          "id": "dji-romo",
+          "rank": 2
+        },
+        {
+          "id": "viofo-t340",
+          "rank": 3
+        },
+        {
+          "id": "galaxy-s26-fe",
+          "rank": 4
+        },
+        {
+          "id": "aurzen-zip-pro",
+          "rank": 5
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 6
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 7
+        },
+        {
+          "id": "insta360-link2",
+          "rank": 8
+        },
+        {
+          "id": "roborock-qrevo-edge3pro",
+          "rank": 9
+        }
+      ]
+    }
+  ]
+}
