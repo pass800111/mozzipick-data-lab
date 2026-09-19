@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script><script>
 /* MOZZIPICK v1 data layer: JSON is the source of truth for data/status, while existing verified cards remain the visual renderer. */
 (async()=>{
- const $=q=>document.querySelector(q), $=q=>[...document.querySelectorAll(q)];
+ const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
  const hours={3:3,6:6,12:12,24:24,'7d':168,'15d':360,'30d':720,'3m':2160,'6m':4320,'1y':8760};
  try{
   const [pd,td]=await Promise.all([fetch('./data/products.json?v=1').then(r=>r.json()),fetch('./data/trend-snapshots.json?v=1').then(r=>r.json())]);
