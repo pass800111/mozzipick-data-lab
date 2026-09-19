@@ -74,15 +74,15 @@
       "release": "2026.09.04",
       "price": "₩1,045,000",
       "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
+      "rating": "4.9/5",
+      "reviews": "삼성닷컴 상품평 11,707건",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
       "image": "",
       "status": "verified-pending",
-      "officialUrl": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EA%B0%A4%EB%9F%AD%EC%8B%9C-s26-fe-%EA%B5%AD%EB%82%B4-%EC%B6%9C%EC%8B%9C",
+      "officialUrl": "https://www.samsung.com/sec/smartphones/galaxy-s26/buy/?modelCode=SM-S741NZKWKOO",
       "spec": "6.7형 AMOLED 120Hz · Exynos 2500 · 4,900mAh · IP68",
       "xiaohongshuQuery": "三星 S26 FE 手机"
     },
@@ -133,8 +133,8 @@
       "rank": 7,
       "name": "유그린 맥플로우 Qi2 25W 보조배터리",
       "category": "충전·배터리",
-      "release": "미확인",
-      "price": "미확인",
+      "release": "2025.09 공개",
+      "price": "₩62,400",
       "coupangPrice": "미확인",
       "rating": "미확인",
       "reviews": "미확인",
@@ -143,7 +143,10 @@
       "youtube": "미확인",
       "xiaohongshu": "미확인",
       "image": "https://kr.ugreen.com/cdn/shop/files/PB773-1.webp?v=1759135106&width=900",
-      "status": "verified-pending"
+      "status": "verified-pending",
+      "officialUrl": "https://kr.ugreen.com/products/magflow-magnetic-wireless-power-bank-qi2-25w-10000mah",
+      "spec": "10,000mAh · Qi2.2 25W 마그네틱 무선충전 · 30W 양방향 유선충전 · 내장 케이블",
+      "xiaohongshuQuery": "绿联 MagFlow Qi2 25W 磁吸充电宝"
     },
     {
       "id": "insta360-link2",
@@ -160,7 +163,10 @@
       "youtube": "미확인",
       "xiaohongshu": "미확인",
       "image": "https://res.insta360.com/dynamic/store/ba50458073ace427f278f8bf4bf52a93/2300_313f0fea-379b-42d7-ba3a-4e1319790080.png",
-      "status": "verified-pending"
+      "status": "verified-pending",
+      "officialUrl": "https://www.insta360.com/product/insta360-link2",
+      "spec": "4K · 1/2\" 센서 · F1.8 · 2축 짐벌 · AI 트래킹 · AI 노이즈 캔슬링",
+      "xiaohongshuQuery": "影石 Link 2 AI 摄像头"
     },
     {
       "id": "roborock-qrevo-edge3pro",
@@ -179,7 +185,7 @@
       "image": "",
       "status": "verified-pending",
       "officialUrl": "https://global.roborock.com/pages/roborock-qrevo-edge-3-pro",
-      "spec": "36,000Pa · 100°C mop wash · 7.95cm low-clearance · Reactive AI",
+      "spec": "36,000Pa · 100°C 물걸레 세척 · 최대 8.8cm 이중 문턱 · 7.95cm 낮은 공간 진입",
       "xiaohongshuQuery": "石头 Qrevo Edge 3 Pro 扫地机器人"
     }
   ]
