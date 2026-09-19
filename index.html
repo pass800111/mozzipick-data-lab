@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded',function(){
  const detailKeywords=document.getElementById('detailKeywords');
  const detailLinks=document.getElementById('detailLinks');
  const detailStores=document.getElementById('detailStores');
+ const detailStorePrices=document.getElementById('detailStorePrices');
  const detailPros=document.getElementById('detailPros');
  const detailCons=document.getElementById('detailCons');
  const detailMarket=document.getElementById('detailMarket');
@@ -74,14 +75,25 @@ document.addEventListener('DOMContentLoaded',function(){
      const name=(card.querySelector('.name')||{}).textContent||'';
      const detailVerified={
  '인스타360 링크 2 AI 웹캠':{
-   price:'₩299,000', priceSource:'공식몰 표시가 · 확인일 2026.09.20',
+   price:'₩239,000~', priceSource:'확인된 국내 판매처 기준 · 판매가/할인은 수시 변동 · 확인일 2026.09.20',
+   storePrices:[
+    ['컴퓨존','239,000원','https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=7&DivNo=0&MediumDivNo=1046&ProductNo=1268212'],
+    ['쿠팡','299,000원','https://www.coupang.com/vp/products/8351255468?itemId=24127019073'],
+    ['공식몰','299,000원','https://store.insta360.com/kr/product/link-2'],
+    ['다나와','299,000원부터 · 12몰','https://search.danawa.com/dsearch.php?query=%EC%9D%B8%EC%8A%A4%ED%83%80360+Link+2']
+   ],
    market:'공식몰 평점 4.7/5 (85개 평가) · 다나와 12몰 가격비교 확인 · 판매처별 가격은 변동 가능',
    pros:['4K 화질과 얼굴·바디 트래킹 성능이 강점','노이즈 감소 마이크와 주요 화상회의/스트리밍 앱 호환성이 좋음','설치가 간단하고 화이트보드·오버헤드 모드 활용 가능'],
    cons:['제스처 인식이 항상 안정적이지 않다는 전문 리뷰','프레임 밖으로 나갔다 돌아오면 자동 재추적이 매끄럽지 않을 수 있음','고급 기능은 PC 성능 요구가 커질 수 있음'],
    cuts:['컷씬 1 · 사람이 움직여도 AI가 따라오는 트래킹 시연','컷씬 2 · 일반 웹캠 대비 4K 화질/보케/노이즈 감소 비교','컷씬 3 · 책상 위 오버헤드 모드로 제품·문서 촬영 시연']
  },
  '유그린 맥플로우 Qi2 25W 보조배터리':{
-   price:'판매처별 변동', priceSource:'실시간 판매가 재확인 필요 · 확인일 2026.09.20',
+   price:'₩72,900~', priceSource:'확인된 국내 판매처 기준 · 판매가/할인은 수시 변동 · 확인일 2026.09.20',
+   storePrices:[
+    ['쿠팡','72,900원','https://www.coupang.com/vp/products/9213038854?itemId=27217130748'],
+    ['11번가','72,900원','https://www.11st.co.kr/products/9305870040'],
+    ['G마켓','72,900원','https://www.gmarket.co.kr/n/search?keyword=%EC%9C%A0%EA%B7%B8%EB%A6%B0+%EB%B3%B4%EC%A1%B0%EB%B0%B0%ED%84%B0%EB%A6%AC']
+   ],
    market:'공개 실측: 10,000mAh · 유선 최대 30W · Qi2.2 무선 최대 25W · 확인된 판매처 버튼에서 현재가 확인',
    pros:['Qi2.2 최대 25W 무선충전과 최대 30W 유선충전 지원','내장 USB-C 케이블로 별도 케이블 없이 사용 가능','LCD 배터리 표시와 유·무선 활용성이 좋음'],
    cons:['10,000mAh급 제품이라 부피감이 있다는 전문 리뷰','일반 맥세이프 보조배터리보다 가격대가 높은 편','고출력 무선충전은 발열 관리가 중요한 제품'],
@@ -104,6 +116,13 @@ const reviewData={
      detailCons.innerHTML=d?d.cons.map(x=>'• '+x).join('<br>'):'검증 리뷰 수집 예정';
      if(detailPrice) detailPrice.innerHTML=vd?'<div style="font-size:11px;color:#667085;font-weight:800">현재 가격</div><div style="font-size:24px;line-height:1.3;font-weight:950;color:#101828;margin-top:2px">'+vd.price+'</div><div style="font-size:11px;color:#667085;margin-top:3px">'+vd.priceSource+'</div>':'<div style="font-size:12px;color:#667085;font-weight:800">현재 가격</div><div style="font-size:16px;font-weight:900;margin-top:3px">가격 데이터 확인 중</div>';
      if(detailMarket) detailMarket.innerHTML=vd?'<b>검증 데이터</b><br>'+vd.market:'판매·가격·평점 검증 데이터 수집 예정';
+     if(detailStorePrices){
+       if(vd&&vd.storePrices){
+         detailStorePrices.innerHTML='<div style="font-size:12px;font-weight:900;color:#101828;margin-bottom:7px">사이트별 가격 비교</div>'+
+         '<div style="border:1px solid #e4e7ec;border-radius:12px;overflow:hidden">'+vd.storePrices.map((x,i)=>'<a href="'+x[2]+'" target="_blank" rel="noopener" style="display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 12px;text-decoration:none;color:#101828;background:'+(i%2?'#fafafa':'#fff')+';border-top:'+(i?'1px solid #eaecf0':'0')+'"><b>'+x[0]+'</b><strong>'+x[1]+' ↗</strong></a>').join('')+'</div>'+
+         '<div style="font-size:10px;color:#98a2b3;margin-top:6px">표시 가격은 확인 시점 기준이며 쿠폰·회원·카드 할인 및 재고에 따라 달라질 수 있습니다.</div>';
+       }else detailStorePrices.innerHTML='<div style="font-size:12px;color:#98a2b3">사이트별 가격 비교 데이터 수집 예정</div>';
+     }
      const cutBox=Array.from(document.querySelectorAll('#productDetailModal div')).find(x=>x.textContent&&x.textContent.includes('컷씬 1·2·3'));
      if(cutBox&&vd&&vd.cuts){
        const body=cutBox.querySelector('div');
@@ -162,6 +181,7 @@ const reviewData={
 <div id="detailKeywords" style="margin-top:12px"></div>
 <div id="detailLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"></div>
 <div style="margin-top:18px"><b>판매처 비교</b><div style="font-size:10px;color:#98a2b3;margin-top:3px">정확한 동일 모델 판매 페이지를 확인한 경우에만 활성화</div><div id="detailStores" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div>
+<div id="detailStorePrices" style="margin-top:12px"></div>
 <div id="detailPrice" style="margin-top:12px;padding:12px 14px;border:1px solid #dbeafe;background:#f5f9ff;border-radius:12px"></div>
 <div id="detailMarket" style="margin-top:10px;font-size:13px;line-height:1.7;color:#475467"></div></div>
    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px">
