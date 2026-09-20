@@ -703,4 +703,26 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  };
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('footer button[data-mobile-view="favorites"],.side nav button[data-view="favorites"]');if(!b)return;setTimeout(()=>window.MOZZIPICK_DRAW_FAVORITES&&window.MOZZIPICK_DRAW_FAVORITES(),350)},true);
  document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('footer button[data-mobile-view="favorites"]');if(!b)return;setTimeout(()=>window.MOZZIPICK_DRAW_FAVORITES&&window.MOZZIPICK_DRAW_FAVORITES(),350)},true);
-})();</script></body></html>
+})();</script><script>/* FAVORITES CARD DIRECT CLONE v8 */
+(function(){
+ const K='mozzipick_favorites_v1';
+ function names(){try{return JSON.parse(localStorage.getItem(K)||'[]').map(x=>String(x).replace(/[★☆]/g,'').trim())}catch(e){return[]}}
+ function cloneNow(){
+  const panel=document.getElementById('menuDataView');if(!panel||panel.hidden)return;
+  const f=names(), cards=[...document.querySelectorAll('#ranking .product.product-redesign')];
+  const norm=x=>String(x||'').replace(/[★☆]/g,'').trim();
+  const selected=f.map(n=>cards.find(c=>norm(c.querySelector('.name')?.dataset.favName||c.querySelector('.name')?.textContent)===norm(n))).filter(Boolean);
+  if(!selected.length)return;
+  const list=document.createElement('div');list.className='favorites-full-list';
+  selected.forEach(c=>{const x=c.cloneNode(true);x.removeAttribute('id');x.style.display='';x.classList.add('favorite-cloned-card');x.querySelectorAll('.rank,.mini,.trend').forEach(e=>e.remove());x.querySelectorAll('.fav-action-v4').forEach(b=>{b.classList.add('on');const i=b.querySelector('.fav-icon');if(i)i.textContent='★'});list.appendChild(x)});
+  panel.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+selected.length+'개</strong></div>';
+  panel.appendChild(list);
+ }
+ window.MOZZIPICK_DRAW_FAVORITES=cloneNow;
+ function hit(e){const b=e.target.closest&&e.target.closest('footer button[data-mobile-view="favorites"],.side nav button[data-view="favorites"]');if(!b)return;setTimeout(cloneNow,50);setTimeout(cloneNow,500)}
+ document.addEventListener('click',hit,true);document.addEventListener('touchend',hit,true);
+})();
+</script><style>
+.favorite-cloned-card{margin:14px 0!important;width:100%!important}
+@media(max-width:850px){.favorite-cloned-card{grid-template-columns:minmax(0,1fr)!important}.favorite-cloned-card .thumb{width:100%!important}.favorite-cloned-card .product-video{grid-column:1!important}}
+</style></body></html>
