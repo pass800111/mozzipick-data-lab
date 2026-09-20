@@ -24,7 +24,8 @@ jobs:
           with open(p,encoding='utf-8') as f: d=json.load(f)
           products=d.get('products',[])
           seen=set()
-          required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']\n          coupang_fields={'coupangMatchGrade':'미확인','coupangMatchType':'미확인','coupangMatchedProduct':'미확인','coupangUrl':'미확인','coupangVerifiedAt':'미확인'}
+          required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
+          coupang_fields={'coupangMatchGrade':'미확인','coupangMatchType':'미확인','coupangMatchedProduct':'미확인','coupangUrl':'미확인','coupangVerifiedAt':'미확인'}
           now=datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z')
           clean=[]
           for x in products:
