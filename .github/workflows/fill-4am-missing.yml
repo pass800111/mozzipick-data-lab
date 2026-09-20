@@ -1,0 +1,79 @@
+name: Fill 4am missing products
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fill-4am-missing.yml'
+permissions:
+  contents: write
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified 4am candidates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          now='2026-09-21T04:14:56+09:00'
+          items=[
+          ('anker-mindbase','앤커 마인드베이스 AI 스마트홈 허브','스마트홈','2026-09 공개','로컬 AI 스마트홈 허브 · Matter 연동 · 최대 48TB 로컬 저장','安克 MindBase AI 智能家居中枢','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('anker-mindbase-security-kit','앤커 마인드베이스 시큐리티 키트','스마트홈·보안','2026-09 공개','MindBase 연동 홈 보안 키트','安克 MindBase Security Kit 智能安防','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('soundcore-aeroclip-2-pro','사운드코어 에어로클립 2 프로','오디오','2026-09 공개','오픈이어 클립형 이어폰 신제품','声阔 AeroClip 2 Pro 开放式耳机','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('soundcore-sleep-4','사운드코어 슬립 4 수면 이어버드','오디오','2026-10 예정','수면 특화 이어버드 신제품','声阔 Sleep 4 睡眠耳机','TechRadar IFA 2026 공개자료 확인'),
+          ('anker-sleeplab','앤커 슬립랩 수면 스피커','스마트홈·오디오','2026-09 공개','수면 사운드 · 무드등 · 알람 기능','安克 SleepLab 睡眠音箱','TechRadar IFA 2026 공개자료 확인'),
+          ('anker-sleeplab-pro','앤커 슬립랩 프로 레이더 수면 스피커','스마트홈·오디오','2026-09 공개','비접촉 레이더 기반 수면 추적 · 수면 사운드','安克 SleepLab Pro 雷达睡眠音箱','TechRadar IFA 2026 공개자료 확인'),
+          ('anker-maggo-power-bank-pro-2','앤커 맥고 보조배터리 프로 2','충전·배터리','2026-09 공개','마그네틱 무선 보조배터리 · 냉각 팬 내장','安克 MagGo Power Bank Pro 2 磁吸充电宝','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('anker-laptop-charger-pro','앤커 랩탑 차저 프로','충전·배터리','2026-09 공개','노트북용 고출력 충전기 신제품','安克 Laptop Charger Pro 笔记本充电器','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('anker-magstand-charging-station','앤커 맥스탠드 충전 스테이션','충전·배터리','2026-09 공개','마그네틱 거치형 멀티 충전 스테이션','安克 MagStand 充电站','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-tracklight-cam-s1','유피 트랙라이트 캠 S1','스마트홈·보안','2026-09 공개','조명 결합형 홈 보안 카메라','eufy TrackLight Cam S1 智能摄像头','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-video-doorbell-s4','유피 비디오 도어벨 S4','스마트홈·보안','2026-09 공개','스마트 비디오 도어벨 신제품','eufy Video Doorbell S4 智能门铃','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-smart-security-shield','유피 스마트 시큐리티 실드','스마트홈·보안','2026-09 공개','홈 보안 시스템 신제품','eufy Smart Security Shield 智能安防','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-nvr-e50','유피 NVR 보안 시스템 E50','스마트홈·보안','2026-09 공개','로컬 녹화형 NVR 보안 시스템','eufy NVR E50 安防系统','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-window-camera-e10','유피 윈도우 카메라 E10','스마트홈·보안','2026-09 공개','창문 설치형 홈 보안 카메라','eufy Window Camera E10 窗户摄像头','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('eufy-fall-detection-sensor','유피 낙상 감지 센서','스마트홈·보안','2026-09 공개','레이더 기반 낙상 감지 센서','eufy Fall Detection Sensor 跌倒检测','Tom’s Guide IFA 2026 공개자료 확인'),
+          ('anker-robot-lawn-mower-s2-max','앤커 로봇 잔디깎이 S2 맥스','스마트홈','2027-05 유럽 예정','경계선·RTK 없이 자율 주행 · 확장형 커팅 암','安克 S2 Max 割草机器人','Tom’s Guide/T3 IFA 2026 공개자료 확인'),
+          ('anker-solix-solarbank-max','앤커 솔릭스 솔라뱅크 맥스','에너지·전원','2026-09 공개','태양광 입력 10kW · 저장 7kWh · AC 출력 3500W','安克 SOLIX Solarbank Max 储能','T3 IFA 2026 공개자료 확인'),
+          ('bose-ultra-open-earbuds-2','보스 울트라 오픈 이어버드 2세대','오디오','2026-10-01 예정','오픈이어 이어버드 · 최대 9시간 · 무선충전 케이스','Bose Ultra Open Earbuds 二代 开放式耳机','Bose 2026-09-17 공식 발표 확인'),
+          ('bose-sport-open-earbuds','보스 스포츠 오픈 이어버드','오디오','2026-10-01 예정','스포츠용 오픈이어 이어버드 · IP54 · 최대 7시간','Bose Sport Open Earbuds 运动耳机','Bose 2026-09-17 공식 발표 확인'),
+          ('govee-sky-ceiling-light','고비 스카이 천장 조명','스마트홈·조명','2026-09-04','Matter · AI 조명 · 최대 7000루멘 · 1000K~10000K','Govee Sky Ceiling Light 天空吸顶灯','MacRumors 2026-09-03 공개자료 확인'),
+          ('govee-cob-strip-light-2-pro','고비 COB 스트립 라이트 2 프로','스마트홈·조명','2026-09-04','고밀도 COB LED · AI 장면 생성 · Matter','Govee COB Strip Light 2 Pro 灯带','MacRumors 2026-09-03 공개자료 확인'),
+          ('govee-cob-strip-light-2','고비 COB 스트립 라이트 2','스마트홈·조명','2026-09-04','COB 스마트 라이트 스트립 · Matter','Govee COB Strip Light 2 灯带','Govee IFA 2026 공개자료 확인'),
+          ('govee-permanent-outdoor-lights-2-pro','고비 퍼머넌트 아웃도어 라이트 2 프로','스마트홈·조명','2026-09-07','듀얼존 영구 설치형 실외 스마트 조명','Govee Permanent Outdoor Lights 2 Pro 户外灯','MacRumors 2026-09-03 공개자료 확인'),
+          ('ecovacs-t90-max-omni','에코백스 디봇 T90 맥스 옴니','생활가전·청소가전','2026-09','로봇청소기 · 30000Pa급 흡입 · OMNI 스테이션','科沃斯 DEEBOT T90 MAX OMNI 扫地机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('ecovacs-t90-max-pro-omni','에코백스 디봇 T90 맥스 프로 옴니','생활가전·청소가전','2026-09','로봇청소기 · 40000Pa급 흡입 · OMNI 스테이션','科沃斯 DEEBOT T90 MAX PRO OMNI 扫地机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('ecovacs-t90s-pro-omni','에코백스 디봇 T90S 프로 옴니','생활가전·청소가전','2026-09-24 예정','40000Pa급 흡입 · ZOOM Roller 3.0 · OMNI 스테이션','科沃斯 DEEBOT T90S PRO OMNI 扫地机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('ecovacs-x12s-pro-omni','에코백스 디봇 X12S 프로 옴니','생활가전·청소가전','2026-09','OZMO Roller 3.0 계열 · OMNI 스테이션','科沃斯 DEEBOT X12S PRO OMNI 扫地机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('ecovacs-winbot-w2s-pro-omni','에코백스 윈봇 W2S 프로 옴니','생활가전·청소가전','2026-09-09','창문 청소 로봇 · TruEdge 2.0 · OMNI 스테이션','科沃斯 WINBOT W2S PRO OMNI 擦窗机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('ecovacs-deebot-mini-2','에코백스 디봇 미니 2','생활가전·청소가전','2026-09','초소형 로봇청소기 · 10000Pa급 흡입 · 미니 OMNI 스테이션','科沃斯 DEEBOT MINI 2 扫地机器人','ECOVACS IFA 2026 공개자료 확인'),
+          ('sennheiser-momentum-tw5','젠하이저 모멘텀 트루 와이어리스 5','오디오','2026-09-03','차세대 완전무선 이어버드 · Bluetooth 6.0 계열','森海塞尔 MOMENTUM True Wireless 5 真无线耳机','Sennheiser 2026-08-21 공개자료 확인')]
+          p=Path('data/products.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          before=len(d.get('products',[])); ids={x.get('id') for x in d['products']}
+          added=[]
+          for tup in items:
+            i,n,c,r,s,q,src=tup
+            if i in ids: continue
+            x={'id':i,'name':n,'category':c,'release':r,'price':'미확인','coupangPrice':'미확인','rating':'미확인','reviews':'미확인','instagram':'미확인','tiktok':'미확인','youtube':'미확인','xiaohongshu':'미확인','image':'','status':'검증중','officialUrl':'미확인','spec':s,'xiaohongshuQuery':q,'legacyName':'','siteUpdatedAt':now,'registrationAt':now,'newCandidate':True,'sourceNote':src+' · 쿠팡 도메인 검색 결과 동일/대체 상품 URL 미확보','rank':len(d['products'])+1,'grade':'D','coupangGroup':'D','coupangMatchType':'미확인','coupangMatchedProduct':'미확인','coupangUrl':'','coupangVerifiedAt':now,'coupangValidationNote':'쿠팡 실제 URL 미확보 · 허위 링크 생성 금지','coupangMatchGrade':'D'}
+            d['products'].append(x); ids.add(i); added.append(i)
+          if len(added)!=30: raise SystemExit(f'Expected 30 additions, got {len(added)}; before={before}, after={len(d["products"])}')
+          d['updatedAt']=now
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          sp=Path('data/trend-snapshots.json')
+          if sp.exists():
+            sd=json.loads(sp.read_text(encoding='utf-8'))
+            sd.setdefault('snapshots',[]).append({'at':now,'ranking':[{'id':i,'rank':r} for r,i in enumerate(added,1)]})
+            sp.write_text(json.dumps(sd,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps({'before':before,'added':len(added),'after':len(d['products']),'ids':added},ensure_ascii=False))
+          PY
+      - name: Commit data
+        run: |
+          git config user.name 'mozzipick-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/products.json data/trend-snapshots.json
+          git commit -m 'Backfill missing 4am products: add 30 verified candidates'
+          git push
