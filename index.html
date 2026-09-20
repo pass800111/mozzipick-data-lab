@@ -399,7 +399,7 @@ function right(){let box=document.getElementById('mozzFavoritesList');if(!box)re
 function left(){let nav=document.querySelector('.side nav button[data-view="favorites"].on'),box=document.getElementById('menuDataView');if(!nav||!box||box.hidden)return;let f=read();lp=Math.min(lp,Math.max(1,Math.ceil(f.length/10)));let a=f.slice((lp-1)*10,lp*10);box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>★ 즐겨찾기</h2></div><strong>'+f.length+'개</strong></div>'+(a.length?'<div class="favorites-simple-list">'+a.map(x=>'<button type="button" class="fav-menu-item" data-name="'+esc(x)+'"><span>★</span><b>'+esc(x)+'</b><em>해제</em></button>').join('')+'</div>'+pager(lp,f.length,10,'l'):'<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>')}
 function act(e){let b=e.target.closest&&e.target.closest('.fav-action-v4,.fav-side-item,.fav-menu-item');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b.dataset.name)}
 document.addEventListener('click',act,true);
-document.addEventListener('touchend',function(e){let b=e.target.closest&&e.target.closest('.fav-action-v4,.fav-side-item,.fav-menu-item');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b.dataset.name)},{capture:true,passive:false});
+/* Samsung Internet: click 이벤트 하나만 사용해 중복 토글 방지 */
 document.addEventListener('click',e=>{let b=e.target.closest('.fav-pagination button');if(b){e.preventDefault();if(b.closest('[data-favpager="r"]'))rp=+b.dataset.page;else lp=+b.dataset.page;render()}if(e.target.closest('.side nav button[data-view="favorites"]'))setTimeout(left,80)},true);
 const go=()=>{mount();setTimeout(mount,700)};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();
 })();
