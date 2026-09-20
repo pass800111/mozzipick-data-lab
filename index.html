@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
 </style><script>
 /* V1 JSON LIVE RANK + DETAIL + PAGING v1 */
 (function(){
- const PAGE_SIZE=5; let page=1, category='전체', hours='0', products=[];
+ const PAGE_SIZE=5; let page=1, category='전체', hours='0', products=[];window.addEventListener('mozzipick-home-time',e=>{hours=String(e.detail?.hours||'0');page=1;render()});
  const ranking=()=>document.getElementById('ranking');
  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
  function fmtSiteDate(v){if(!v)return '미확인';try{return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch(e){return v}}
@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{
   const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&!e.target.closest('a,button')){e.preventDefault();open(c._product);return}
   const cb=e.target.closest&&e.target.closest('.chips [data-category]');if(cb){category=cb.dataset.category;page=1;setTimeout(render,0);return}
-  const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){e.preventDefault();const same=hb.dataset.open==='1';document.querySelectorAll('.period [data-hours]').forEach(x=>{x.dataset.open='0';x.classList.remove('on')});if(same&&hb.dataset.hours!=='0'){hours='0';const live=document.querySelector('.period [data-hours="0"]');if(live){live.classList.add('on');live.dataset.open='1'}}else{hours=hb.dataset.hours;hb.classList.add('on');hb.dataset.open='1'}page=1;render();}
+ 
  },true);
  document.addEventListener('keydown',e=>{const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&e.key==='Enter')open(c._product)},true);
  async function load(){
@@ -564,4 +564,19 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
 
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#timeSnapshotResults .time-product-detail');if(!b)return;e.preventDefault();const id=b.dataset.productId;const c=[...document.querySelectorAll('#ranking .product[data-product-id]')].find(x=>x.dataset.productId===id);if(c){c.click();return}fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(!p)return;const m=document.getElementById('productDetailModal');if(!m)return;const n=document.getElementById('detailName'),meta=document.getElementById('detailMeta');if(n)n.textContent=p.name||id;if(meta)meta.innerHTML='<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인');m.style.display='block';})},true);
 })();
-</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script></body></html>
+</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script><script>
+/* HOME TIME RANK SAFE v1 — isolated from menu/category/favorites */
+(function(){
+ let selected='0';
+ const root=()=>document.querySelector('.controls .period');
+ function fire(hours){selected=hours;window.dispatchEvent(new CustomEvent('mozzipick-home-time',{detail:{hours}}))}
+ document.addEventListener('click',function(e){
+  const rootEl=root();if(!rootEl)return;const b=e.target.closest&&e.target.closest('.controls .period button[data-hours]');if(!b||!rootEl.contains(b))return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const h=b.dataset.hours,close=(h!=='0'&&selected===h);const next=close?'0':h;
+  rootEl.querySelectorAll('button[data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours===next));
+  fire(next);
+ },true);
+ window.MOZZIPICK_HOME_TIME={get:()=>selected};
+})();
+</script></body></html>
