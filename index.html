@@ -593,7 +593,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   const xhs=p.xiaohongshuQuery||'';
   const base=xhs||p.name||'';
   const cat=String(p.category||'');
-  const brand=(xhs.match(/^[A-Za-z0-9]+|^[\u4e00-\u9fff]{2,6}/)||[])[0]||'';
+  const brand=(xhs.match(/^[\u4e00-\u9fff]{2,6}/)||[])[0]||'';
   const rec=cat.includes('충전')?[(brand?brand+' ':'')+'大功率充电宝',(brand?brand+' ':'')+'快充移动电源',(brand?brand+' ':'')+'数显充电宝']:
     cat.includes('오디오')?[(brand?brand+' ':'')+'降噪耳机',(brand?brand+' ':'')+'无线耳机推荐',(brand?brand+' ':'')+'耳机实测']:
     cat.includes('청소')||cat.includes('생활가전')?[(brand?brand+' ':'')+'扫地机器人',(brand?brand+' ':'')+'智能清洁家电',(brand?brand+' ':'')+'清洁机器人测评']:
