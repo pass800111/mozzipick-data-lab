@@ -725,4 +725,32 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
 </script><style>
 .favorite-cloned-card{margin:14px 0!important;width:100%!important}
 @media(max-width:850px){.favorite-cloned-card{grid-template-columns:minmax(0,1fr)!important}.favorite-cloned-card .thumb{width:100%!important}.favorite-cloned-card .product-video{grid-column:1!important}}
-</style></body></html>
+</style><script>/* FAVORITES SINGLE SOURCE SYNC v9 */
+(function(){
+ const K='mozzipick_favorites_v1';
+ const norm=x=>String(x||'').replace(/[★☆]/g,'').trim();
+ const read=()=>{try{return JSON.parse(localStorage.getItem(K)||'[]').map(norm).filter(Boolean)}catch(e){return[]}};
+ const write=a=>localStorage.setItem(K,JSON.stringify([...new Set(a.map(norm).filter(Boolean))]));
+ function syncButtons(){
+  const f=read();document.querySelectorAll('.fav-action-v4').forEach(b=>{const n=norm(b.dataset.name||b.closest('.product')?.querySelector('.name')?.textContent);if(!n)return;b.dataset.name=n;const on=f.includes(n);b.classList.toggle('on',on);const i=b.querySelector('.fav-icon');if(i)i.textContent=on?'★':'☆'});
+ }
+ function redraw(){syncButtons();if(typeof window.MOZZIPICK_DRAW_FAVORITES==='function'&&!document.getElementById('menuDataView')?.hidden)window.MOZZIPICK_DRAW_FAVORITES()}
+ function toggleFrom(b){const n=norm(b.dataset.name||b.closest('.product')?.querySelector('.name')?.textContent);if(!n)return;let f=read();write(f.includes(n)?f.filter(x=>x!==n):f.concat(n));setTimeout(redraw,0)}
+ function act(e){const b=e.target.closest&&e.target.closest('.fav-action-v4');if(!b)return;e.preventDefault();e.stopImmediatePropagation();toggleFrom(b)}
+ document.addEventListener('click',act,true);
+ document.addEventListener('touchend',act,{capture:true,passive:false});
+ const old=window.MOZZIPICK_DRAW_FAVORITES;
+ window.MOZZIPICK_DRAW_FAVORITES=function(){
+  const panel=document.getElementById('menuDataView');if(!panel||panel.hidden)return;
+  const f=read(),cards=[...document.querySelectorAll('#ranking .product.product-redesign')];
+  const selected=f.map(n=>cards.find(c=>norm(c.querySelector('.name')?.dataset.favName||c.querySelector('.name')?.textContent)===n)).filter(Boolean);
+  panel.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+selected.length+'개</strong></div>';
+  if(!selected.length){panel.insertAdjacentHTML('beforeend','<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>');return}
+  const list=document.createElement('div');list.className='favorites-full-list';
+  selected.forEach(c=>{const x=c.cloneNode(true);x.style.display='';x.classList.add('favorite-cloned-card');x.querySelectorAll('.rank,.mini,.trend').forEach(e=>e.remove());const b=x.querySelector('.fav-action-v4');if(b){b.dataset.name=norm(c.querySelector('.name')?.dataset.favName||c.querySelector('.name')?.textContent);b.classList.add('on');const i=b.querySelector('.fav-icon');if(i)i.textContent='★'}list.appendChild(x)});panel.appendChild(list);
+ };
+ window.addEventListener('storage',e=>{if(e.key===K)redraw()});
+ document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('footer button[data-mobile-view="favorites"],.side nav button[data-view="favorites"]'))setTimeout(redraw,80)},true);
+ setTimeout(syncButtons,500);
+})();
+</script></body></html>
