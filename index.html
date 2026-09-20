@@ -538,34 +538,18 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
 })();
 </script><script>
-/* QUALITY VIEW MOVE FIX v1 — hide from home, show only in 검증 menu */
+/* MOBILE NAV SINGLE CLICK v2 */
 (function(){
- const dq=document.getElementById('dataQualityPanel');if(dq)dq.hidden=true;
- function enforce(v){if(dq)dq.hidden=true;}
- document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('[data-mobile-view],[data-view]');if(b)setTimeout(()=>enforce(b.dataset.mobileView||b.dataset.view),0)},true);
-})();
-</script><script>
-/* MOBILE BOTTOM NAV FIX v1 — behavior only; V1 layout/design unchanged */
-(function(){
- function side(v){return document.querySelector('.side nav button[data-view="'+v+'"]')}
- function sync(v){document.querySelectorAll('footer button[data-mobile-view]').forEach(b=>b.classList.toggle('on',b.dataset.mobileView===v))}
- function go(v){
-   const target=side(v);
-   if(typeof window.MOZZIPICK_MENU_RENDER==='function'){window.MOZZIPICK_MENU_RENDER(v);sync(v);window.scrollTo({top:0,behavior:'smooth'});return;}
-   if(target){target.click();sync(v);window.scrollTo({top:0,behavior:'smooth'});}
- }
- function act(e){
-   const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
-   e.preventDefault();e.stopPropagation();go(b.dataset.mobileView);
- }
- document.addEventListener('click',act,true);
- document.addEventListener('touchend',function(e){
-   const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
-   e.preventDefault();e.stopPropagation();go(b.dataset.mobileView);
- },{capture:true,passive:false});
+ function sync(v){document.querySelectorAll('footer button[data-mobile-view]').forEach(x=>x.classList.toggle('on',x.dataset.mobileView===v))}
  document.addEventListener('click',function(e){
-   const b=e.target.closest&&e.target.closest('.side nav button[data-view]');if(b)sync(b.dataset.view);
- },true);
+   const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
+   e.preventDefault();
+   const v=b.dataset.mobileView;
+   if(typeof window.MOZZIPICK_MENU_RENDER==='function')window.MOZZIPICK_MENU_RENDER(v);
+   else{const side=document.querySelector('.side nav button[data-view="'+v+'"]');if(side)side.click()}
+   sync(v);
+   window.scrollTo(0,0);
+ },false);
 })();
 </script><script>
 /* TIME SNAPSHOT DISPLAY FIX v1 — time view only */
