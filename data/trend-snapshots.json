@@ -1018,21 +1018,21 @@
       "at": "2026-09-21T05:30:00+09:00",
       "source": "쿠팡 '전자기기' 검색결과 · 쿠팡 랭킹순",
       "sourceUrl": "https://www.coupang.com/np/search?q=%EC%A0%84%EC%9E%90%EA%B8%B0%EA%B8%B0",
-      "note": "쿠팡 모바일에서 검색 URL이 접근 거부될 수 있어 검색 링크를 바로가기처럼 사용하지 않음. 검증된 직접 상품 URL만 버튼 표시.",
+      "note": "쿠팡에서 실제 확인된 공개 페이지를 연결. /np/search 검색 URL은 사용하지 않음. 개별 /vp/products URL이 확인되지 않은 상품은 쿠팡 공개 기획전/상품 노출 페이지로 연결.",
       "ranking": [
         {
           "id": "coupang-ciiece-gb2500",
           "rank": 1,
           "name": "CIIECE 레트로 휴대용 미니 게임기 GB2500 블랙",
           "reviewCount": 210,
-          "coupangUrl": null
+          "coupangUrl": "https://pages.coupang.com/m/138969"
         },
         {
           "id": "coupang-samsung-evo-plus-512",
           "rank": 2,
           "name": "삼성전자 공식인증 마이크로SD EVO PLUS 512GB",
           "reviewCount": 35755,
-          "coupangUrl": null
+          "coupangUrl": "https://pages.coupang.com/m/31694"
         },
         {
           "id": "coupang-galaxy-fit3",
@@ -1044,5 +1044,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-09-21T05:20:00+09:00"
+  "updatedAt": "2026-09-21T05:24:00+09:00"
 }
