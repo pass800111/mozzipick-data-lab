@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-0452 coupang-tabs-fix -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-0455 coupang-load-fix -->
 <title>MOZZIPICK DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -579,30 +579,15 @@ const MOZZIPICK_SNAPSHOT_NAMES={
 'ecovacs-deebot-mini-2':'에코백스 디봇 Mini 2',
 'sennheiser-momentum-tw5':'젠하이저 모멘텀 TW5'
 };
-/* COUPANG CATEGORY DATA v3 — distinct lists */
+/* COUPANG CATEGORY DATA v4 */
 (function(){
  const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
- const latest=a=>(a.snapshots||[]).slice().sort((x,y)=>new Date(y.at)-new Date(x.at))[0]||null;
- function listFor(key,snap){
-  const all=(snap?.ranking||[]).slice();
-  if(key==='coupang-reviews') return all.filter(x=>Number(x.reviewCount)>0).sort((a,b)=>Number(b.reviewCount)-Number(a.reviewCount));
-  if(key==='coupang-sales') return all;
-  return [];
- }
- function draw(body,key,snap,page){
-  const all=listFor(key,snap),pages=Math.max(1,Math.ceil(all.length/5)),pg=Math.min(Math.max(1,page),pages);
-  if(!all.length){body.innerHTML='<div class="time-note">현재 검증된 별도 데이터가 없습니다.<br>다음 쿠팡 갱신 때 이 항목을 따로 수집합니다.</div>';body._coupang=null;return}
-  const rows=all.slice((pg-1)*5,pg*5).map(x=>'<div class="coupang-rank-card"><div class="coupang-rank-copy"><b>'+esc(x.rank)+'. '+esc(x.name||x.id)+'</b>'+(x.reviewCount?'<small>리뷰 '+Number(x.reviewCount).toLocaleString('ko-KR')+'개</small>':'')+'</div>'+(x.coupangUrl?'<a class="coupang-go" href="'+esc(x.coupangUrl)+'" target="_blank" rel="noopener noreferrer">쿠팡 바로가기 ↗</a>':'')+'</div>').join('');
-  const pager=pages>1?'<div class="time-pager">'+Array.from({length:pages},(_,i)=>'<button type="button" data-coupang-page="'+(i+1)+'" class="'+(i+1===pg?'on':'')+'">'+(i+1)+'</button>').join('')+'</div>':'';
-  body.innerHTML='<div class="time-note">'+esc(snap.source||'쿠팡 공개 데이터')+' · 확인 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+all.length+'개</div>'+rows+pager;body._coupang={key,snap};
- }
- document.addEventListener('click',async e=>{
-  const sum=e.target.closest&&e.target.closest('#menuDataView details.time-acc > summary');if(!sum)return;
-  const d=sum.parentElement;setTimeout(async()=>{if(!d.open)return;document.querySelectorAll('#menuDataView details.time-acc[open]').forEach(x=>{if(x!==d)x.removeAttribute('open')});
-  const body=d.querySelector('.time-acc-body'),key=d.dataset.key;body.innerHTML='<div class="time-note">데이터 확인 중...</div>';
-  try{const a=await fetch('data/trend-snapshots.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());draw(body,key,latest(a),1)}catch(err){body.innerHTML='<div class="time-note">데이터를 불러오지 못했습니다.</div>'}},0);
- },true);
- document.addEventListener('click',e=>{const b=e.target.closest?.('#menuDataView [data-coupang-page]');if(!b)return;e.preventDefault();const body=b.closest('.time-acc-body');if(body?._coupang)draw(body,body._coupang.key,body._coupang.snap,Number(b.dataset.coupangPage))},true);
+ function latest(a){return (a.snapshots||[]).slice().sort((x,y)=>new Date(y.at)-new Date(x.at))[0]||null}
+ function getList(key,snap){const a=(snap&&snap.ranking?snap.ranking:[]).slice();if(key==='coupang-sales')return a;if(key==='coupang-reviews')return a.filter(x=>+x.reviewCount>0).sort((x,y)=>(+y.reviewCount)-(+x.reviewCount));return []}
+ function paint(body,key,snap){const a=getList(key,snap);if(!a.length){body.innerHTML='<div class="time-note">현재 검증된 별도 데이터가 없습니다.</div>';return}body.innerHTML='<div class="time-note">'+esc(snap.source||'쿠팡 공개 데이터')+' · 확인 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+a.length+'개</div>'+a.slice(0,10).map(x=>'<div class="coupang-rank-card"><div class="coupang-rank-copy"><b>'+esc(x.rank)+'. '+esc(x.name||x.id)+'</b>'+(x.reviewCount?'<small>리뷰 '+Number(x.reviewCount).toLocaleString('ko-KR')+'개</small>':'')+'</div>'+(x.coupangUrl?'<a class="coupang-go" href="'+esc(x.coupangUrl)+'" target="_blank" rel="noopener noreferrer">쿠팡 바로가기 ↗</a>':'')+'</div>').join('')}
+ async function load(d){const body=d.querySelector('.time-acc-body');if(!body)return;body.innerHTML='<div class="time-note">데이터 확인 중...</div>';try{const a=await fetch('./data/trend-snapshots.json?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()});paint(body,d.dataset.key,latest(a))}catch(e){body.innerHTML='<div class="time-note">데이터 로드 오류 · 새로고침 후 다시 눌러주세요.</div>'}}
+ document.addEventListener('click',function(e){const sum=e.target.closest&&e.target.closest('#menuDataView details.time-acc summary');if(!sum)return;const d=sum.parentElement;setTimeout(function(){if(d.open)load(d)},80)},false);
+ document.addEventListener('toggle',function(e){const d=e.target;if(d&&d.matches&&d.matches('#menuDataView details.time-acc')&&d.open)load(d)},true);
 })();
 </script><script>
 /* TIME NATIVE PRODUCT DETAIL v1 */
