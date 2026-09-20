@@ -490,8 +490,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
     [(brand?brand+' ':'')+'数码新品',(brand?brand+' ':'')+'科技好物',(brand?brand+' ':'')+'产品实测'];
   const kwRow=(label,val)=>'<div style="display:flex;align-items:center;gap:7px;margin-top:7px"><span style="width:48px;font-size:10px;font-weight:900;color:#667085">'+label+'</span><code style="flex:1;background:#f5f7fa;border:1px solid #e4e7ec;border-radius:9px;padding:8px 10px;font-size:12px;overflow-wrap:anywhere">'+esc(val||'미확인')+'</code>'+(val?'<button type="button" class="detail-copy-xhs" data-copy="'+esc(val)+'" style="border:1px solid #d8e5f7;background:#f3f8ff;color:#175cd3;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:900;cursor:pointer">복사</button>':'')+'</div>';
   set('detailKeywords','<div style="font-size:11px;font-weight:900;color:#667085;margin-bottom:4px">샤오홍슈 중국어 검색 단어</div>'+kwRow('본상품',xhs)+kwRow('추천 1',rec[0])+kwRow('추천 2',rec[1])+kwRow('추천 3',rec[2]));
-  let links='';if(p.officialUrl)links+='<a href="'+esc(p.officialUrl)+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';else links+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
-  set('detailLinks',links);
+  set('detailLinks','');
   set('detailPrice','<b>가격</b><div style="margin-top:4px;font-weight:900">'+esc(p.price||'미확인')+'</div><div style="margin-top:5px;font-size:10px;color:#667085">쿠팡 '+esc(p.coupangPrice||'미확인')+' · 리뷰 '+esc(p.reviews||'미확인')+'</div>');
   set('detailMarket','<b>검증 상태</b> · '+esc(p.status||'미확인')+(p.reviewSummary?'<br><b>리뷰 요약</b> · '+esc(p.reviewSummary):''));
   let stores='';
