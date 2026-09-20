@@ -26,7 +26,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 1
+      "rank": 1,
+      "grade": "C",
+      "coupangGroup": "C"
     },
     {
       "id": "lexar-muse-ssd",
@@ -51,7 +53,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 2
+      "rank": 2,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "philips-hue-liane360",
@@ -76,7 +80,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 3
+      "rank": 3,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "irobot-max875-combo",
@@ -101,7 +107,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 4
+      "rank": 4,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "creatulize-x1-pro",
@@ -126,7 +134,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 5
+      "rank": 5,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "dreo-heater-720s",
@@ -151,7 +161,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 6
+      "rank": 6,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "euhomy-rock-pro-ice-maker",
@@ -176,7 +188,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 7
+      "rank": 7,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "dreame-h50-selfclean-humidifier",
@@ -201,7 +215,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 8
+      "rank": 8,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "uwant-swiftvac-v700-pro",
@@ -226,7 +242,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 9
+      "rank": 9,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "xiaomi-robot-vacuum-7-max",
@@ -251,7 +269,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 10
+      "rank": 10,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "switchbot-lock-ultra-max-vision-pro",
@@ -276,7 +296,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 11
+      "rank": 11,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "dreame-pano10-station",
@@ -301,7 +323,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 12
+      "rank": 12,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "tplink-archer-8-ultra",
@@ -326,7 +350,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 13
+      "rank": 13,
+      "grade": "C",
+      "coupangGroup": "C"
     },
     {
       "id": "tapo-t150",
@@ -351,7 +377,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 14
+      "rank": 14,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "tplink-deco-8-ultra",
@@ -376,7 +404,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 15
+      "rank": 15,
+      "grade": "C",
+      "coupangGroup": "C"
     },
     {
       "id": "aiper-irrisense-2",
@@ -401,7 +431,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 16
+      "rank": 16,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "airseekers-aranix",
@@ -426,7 +458,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 17
+      "rank": 17,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "roborock-f25-pro-turbo-combo",
@@ -451,7 +485,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 18
+      "rank": 18,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "xlean-tr1",
@@ -476,7 +512,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 19
+      "rank": 19,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "ugreen-homeagent-ha100-pro",
@@ -501,7 +539,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 20
+      "rank": 20,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "ugreen-homeagent-ha100",
@@ -526,7 +566,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 21
+      "rank": 21,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "ugreen-masteragent-ma100",
@@ -551,7 +593,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 22
+      "rank": 22,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "navimow-h510-pro",
@@ -576,7 +620,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 23
+      "rank": 23,
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "dreame-aqua20-pro-ultra",
@@ -601,7 +647,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 24
+      "rank": 24,
+      "grade": "D",
+      "coupangGroup": "D"
     },
     {
       "id": "esr-qi2-25w-cooling",
@@ -626,7 +674,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 25
+      "rank": 25,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "esr-geo-wallet-2026",
@@ -651,7 +701,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 26
+      "rank": 26,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "belkin-slim-ring-stand",
@@ -676,7 +728,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 27
+      "rank": 27,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "belkin-ultracharge-display",
@@ -701,7 +755,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 28
+      "rank": 28,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "belkin-surefind-wallet",
@@ -726,7 +782,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 29
+      "rank": 29,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "belkin-surefind-loop",
@@ -751,7 +809,9 @@
       "registrationAt": "2026-09-21T03:00:00+09:00",
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
-      "rank": 30
+      "rank": 30,
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "switchbot-s30-mini",
