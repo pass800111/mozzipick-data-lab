@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    if(cr&&!pr)isNew=true; else if(cr&&pr)ch=pr.rank-cr.rank;
   }
   const move=isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+Math.abs(ch)+'단계 상승</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';
-  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+move+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
+  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="site-updated">사이트 등록 '+esc(p.siteUpdatedAt&&p.siteUpdatedAt!=='미확인'?new Date(p.siteUpdatedAt).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+move+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
   a._product=p; return a;
  }
  function currentList(){
