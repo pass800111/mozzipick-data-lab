@@ -410,27 +410,6 @@ document.addEventListener('DOMContentLoaded',()=>{
  }catch(err){console.warn('MOZZIPICK data layer fallback',err)}
 })();
 </script><script>
-/* TIME TREND CLICK FIX v1 */
-(function(){
- const HOURS={'3':3,'6':6,'12':12,'24':24,'7d':168,'15d':360,'30d':720,'3m':2160,'6m':4320,'1y':8760};
- function paint(btn){
-  const panel=document.getElementById('menuDataView');if(!panel)return;
-  panel.querySelectorAll('[data-time-filter]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
-  const key=btn.dataset.timeFilter, label=btn.querySelector('b')?.textContent||key, note=panel.querySelector('.time-note');
-  const td=window.MOZZIPICK_TRENDS||{snapshots:[]},snaps=(td.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
-  if(!note)return;
-  if(!HOURS[key]){note.innerHTML='<b>'+label+'</b> · 기간 설정 오류';return}
-  const target=Date.now()-HOURS[key]*3600000,old=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target);
-  if(!old){note.innerHTML='<b>'+label+'</b> · 데이터 누적 중 — 해당 시점의 실제 스냅샷이 아직 없습니다.';return}
-  const cur=snaps[snaps.length-1];if(!cur){note.innerHTML='<b>'+label+'</b> · 데이터 누적 중';return}
-  const om=Object.fromEntries((old.ranking||[]).map(x=>[x.id||x.name,x.rank]));
-  const changes=(cur.ranking||[]).slice(0,10).map(x=>{const id=x.id||x.name,p=om[id];return '<div class="time-result-row"><b>'+x.rank+'위 · '+(x.name||id)+'</b><span>'+(p==null?'NEW':p>x.rank?'▲ '+(p-x.rank):p<x.rank?'▼ '+(x.rank-p):'－ 유지')+'</span></div>'}).join('');
-  note.innerHTML='<div class="time-result-head"><b>'+label+' 비교</b><small>실제 저장 스냅샷 기준</small></div>'+changes;
- }
- document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();paint(b)},true);
- document.addEventListener('touchend',function(e){const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();paint(b)},{capture:true,passive:false});
-})();
-</script><script>
 /* MOZZIPICK FAVORITES v4 */
 (function(){
 const K='mozzipick_favorites_v1';let rp=1,lp=1;
