@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T07:10:01+09:00",
+  "updatedAt": "2026-09-21T08:09:28+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -130,7 +130,7 @@
       "coupangGroup": "B"
     }
   ],
-  "lastValidationAt": "2026-09-21T07:10:01+09:00",
+  "lastValidationAt": "2026-09-21T08:09:28+09:00",
   "newCandidateGradeCounts": {
     "A": 0,
     "B": 0,
