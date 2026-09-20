@@ -543,7 +543,8 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productId=p.id||'';
    const img=p.image?'<div class="thumb"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
    const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
-   a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">TRACK<b>자동 갱신</b></div>';
+   const ch=Number(p.rankChange||0), badge=p.isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+ch+'</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'</b>':'<b style="color:#98a2b3">―</b>';
+  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+badge+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
    ranking.appendChild(a);existing.add(norm(p.name));
   });
   const count=ranking.querySelectorAll('.product.product-redesign').length;
@@ -675,7 +676,8 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    let snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=want);
    if(!snap){host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'해당 시간')+'</b> 기준으로 저장된 과거 데이터가 없습니다. 없는 데이터는 추정하지 않습니다.</div>';return}
    const map=new Map((p.products||[]).map(x=>[x.id,x]));
-   const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id);return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+'</small></div><span>'+esc(q?.release||'미확인')+'</span></div>'}).join('');
+   const prev=snaps[snaps.indexOf(snap)-1], pm=new Map((prev?.ranking||[]).map(x=>[x.id,x.rank]));
+   const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id), old=pm.get(x.id), d=old==null?null:old-x.rank, mv=old==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'</b>':'<b style="color:#98a2b3">―</b>';return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+' · '+esc(q?.release||'미확인')+'</small></div><span>'+mv+'</span></div>'}).join('');
    host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'')+'</b> · 실제 저장 시각 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+(snap.ranking||[]).length+'개</div><div class="time-snapshot-list">'+rows+'</div>';
   }catch(e){host.innerHTML='<div class="time-note">시간별 데이터를 불러오지 못했습니다.</div>'}
  }
