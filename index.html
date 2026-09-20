@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   let arr=products.slice();
   if(hours!=='0'&&window.MOZZIPICK_TRENDS?.snapshots?.length){
    const target=Date.now()-Number(hours)*3600000, snaps=window.MOZZIPICK_TRENDS.snapshots.slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
-   const snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target);
+   const snap=snaps.length?[...snaps].sort((a,b)=>Math.abs(new Date(a.at).getTime()-target)-Math.abs(new Date(b.at).getTime()-target))[0]:null;
    if(snap){const pos=new Map((snap.ranking||[]).map(x=>[x.id||x.name,x.rank]));arr=arr.filter(p=>pos.has(p.id)||pos.has(p.name)).map(p=>({...p,rank:pos.get(p.id)||pos.get(p.name)}));}
   }
   if(category!=='전체')arr=arr.filter(p=>p.category===category);
@@ -660,8 +660,8 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   host.innerHTML='<div class="time-note">실제 저장된 데이터를 확인 중입니다.</div>';
   try{
    const {t,p}=await data(), snaps=(t.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at)), want=Date.now()-targetMs(btn.dataset.timeFilter);
-   let snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=want);
-   if(!snap){host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'해당 시간')+'</b> 기준으로 저장된 과거 데이터가 없습니다. 없는 데이터는 추정하지 않습니다.</div>';return}
+   let snap=snaps.length?[...snaps].sort((a,b)=>Math.abs(new Date(a.at).getTime()-want)-Math.abs(new Date(b.at).getTime()-want))[0]:null;
+   if(!snap){host.innerHTML='<div class="time-note">아직 저장된 순위 데이터가 없습니다.</div>';return}
    const map=new Map((p.products||[]).map(x=>[x.id,x]));
    const prev=snaps[snaps.indexOf(snap)-1], pm=new Map((prev?.ranking||[]).map(x=>[x.id,x.rank]));
    const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id), old=pm.get(x.id), d=old==null?null:old-x.rank, mv=old==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'단계 상승</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+' · '+esc(q?.release||'미확인')+'</small></div><span>'+mv+'</span></div>'}).join('');
