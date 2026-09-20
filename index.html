@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{
   const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&!e.target.closest('a,button')){e.preventDefault();open(c._product);return}
   const cb=e.target.closest&&e.target.closest('.chips [data-category]');if(cb){category=cb.dataset.category;page=1;setTimeout(render,0);return}
-  const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){e.preventDefault();const same=hb.classList.contains('on')&&hours===hb.dataset.hours;if(same&&hours!=='0'){hours='0';document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours==='0'));}else{hours=hb.dataset.hours;document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x===hb));}page=1;render();}
+  const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){e.preventDefault();const same=hb.dataset.open==='1';document.querySelectorAll('.period [data-hours]').forEach(x=>{x.dataset.open='0';x.classList.remove('on')});if(same&&hb.dataset.hours!=='0'){hours='0';const live=document.querySelector('.period [data-hours="0"]');if(live){live.classList.add('on');live.dataset.open='1'}}else{hours=hb.dataset.hours;hb.classList.add('on');hb.dataset.open='1'}page=1;render();}
  },true);
  document.addEventListener('keydown',e=>{const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&e.key==='Enter')open(c._product)},true);
  async function load(){
@@ -504,6 +504,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    const [pr,tr]=await Promise.all([fetch('data/products.json?v='+Date.now(),{cache:'no-store'}),fetch('data/trend-snapshots.json?v='+Date.now(),{cache:'no-store'})]);
    if(!pr.ok)throw new Error('products '+pr.status);const pd=await pr.json();products=Array.isArray(pd.products)?pd.products:[];
    if(tr.ok)window.MOZZIPICK_TRENDS=await tr.json();
+   const live=document.querySelector('.period [data-hours="0"]');if(live)live.dataset.open='1';
    render();
   }catch(e){console.error('[MOZZIPICK V1 live]',e)}
  }
