@@ -1042,7 +1042,36 @@
           "coupangUrl": null
         }
       ]
+    },
+    {
+      "at": "2026-09-21T06:08:51+09:00",
+      "ranking": [
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 1
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 2
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 3
+        },
+        {
+          "id": "roborock-qrevo-edge3pro",
+          "rank": 4
+        },
+        {
+          "id": "soundcore-space-2-pro",
+          "rank": 5
+        },
+        {
+          "id": "roborock-f25-ultra-steam-gen2",
+          "rank": 6
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-21T05:24:00+09:00"
+  "updatedAt": "2026-09-21T06:08:51+09:00"
 }
