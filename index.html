@@ -428,30 +428,6 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  }
  document.addEventListener('click',e=>{const b=e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();apply(b)},true);
 })();
-</script><script>
-/* PRODUCTS JSON CARD SYNC V1 — append products missing from static V1 cards without changing approved layout */
-(async function(){
- try{
-  const res=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'});
-  if(!res.ok)throw new Error('products.json '+res.status);
-  const data=await res.json(), ranking=document.getElementById('ranking');
-  if(!ranking||!Array.isArray(data.products))return;
-  const norm=x=>(x||'').replace(/[★☆]/g,'').trim();
-  const existing=new Set([...ranking.querySelectorAll('.product.product-redesign')].map(c=>norm(c.querySelector('.name')?.textContent)));
-  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  data.products.sort((a,b)=>(a.rank||999)-(b.rank||999)).forEach(p=>{
-   if(existing.has(norm(p.name)))return;
-   const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productId=p.id||'';
-   const img=p.image?'<div class="thumb"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
-   const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
-   const ch=Number(p.rankChange||0), badge=p.isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+ch+'</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'</b>':'<b style="color:#98a2b3">―</b>';
-  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="site-updated" style="font-size:10px;color:#667085;margin-top:4px;font-weight:700">사이트 등록 '+esc(fmtSiteDate(p.siteUpdatedAt))+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+badge+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
-   ranking.appendChild(a);existing.add(norm(p.name));
-  });
-  const count=ranking.querySelectorAll('.product.product-redesign').length;
-  const stat=document.querySelector('.heroStats article:first-child b');if(stat)stat.textContent=count;
- }catch(e){console.error('[MOZZIPICK products sync]',e)}
-})();
 </script><style>
 /* V1 pagination: visual structure unchanged; only visibility/navigation is added */
 #mozzipickPager{display:flex;justify-content:center;align-items:center;gap:6px;margin:14px 0 22px;flex-wrap:wrap}
