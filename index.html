@@ -366,7 +366,7 @@ else if(v==='viral'){const a=cards().filter(c=>/NEW|신규|후크|강점|공식 
 else if(v==='verified'){panel.innerHTML="<section id=\"dataQualityPanel\" class=\"data-quality\">\n  <div class=\"dq-head\"><span>DATA QUALITY</span><h2>공식 출처 확인 정보</h2><p>순위가 아닙니다. 제조사·공식 공개 출처에서 확인된 출시일·가격·동일 모델 등의 참고 정보만 표시합니다.</p></div>\n  <div class=\"dq-grid\">\n    <article><b>Galaxy S26 FE</b><small>공식 출시 확인</small><strong>2026.09.04 · 1,045,000원</strong><em>Samsung 공식</em></article>\n    <article><b>UGREEN PB773</b><small>동일 모델 이미지</small><strong>공식 이미지 적용</strong><em>UGREEN 공식</em></article>\n    <article><b>Insta360 Link 2</b><small>동일 모델 이미지</small><strong>공식 이미지 적용</strong><em>Insta360 공식</em></article>\n    <article><b>Roborock Qrevo Edge 3 Pro</b><small>공식 제품 확인</small><strong>제품 페이지 검증</strong><em>Roborock 공식</em></article>\n  </div>\n  <p class=\"dq-note\">※ 시간별 순위 변화는 실제 시점별 스냅샷이 누적된 뒤 표시합니다. 현재 존재하지 않는 과거 수치는 생성하지 않습니다.</p>\n</section>"}
 else{const f=favs(),a=cards().filter(c=>f.includes(nm(c)));panel.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+a.length+'개</strong></div>'+(a.length?'<div class="favorites-simple-list">'+a.map(c=>{const n=nm(c),m=meta(c),link=({ '유그린 맥플로우 Qi2 25W 보조배터리':'https://www.coupang.com/vp/products/9213038854?itemId=27217130748','인스타360 링크 2 AI 웹캠':'https://www.coupang.com/vp/products/8351255468?itemId=24127019073'})[n];return '<div class="favorite-simple-item"><button type="button" data-jump="'+rk(c)+'"><b>'+n+'</b><small>'+m+'</small></button>'+(link?'<a href="'+link+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'')+'</div>'}).join('')+'</div>':'<div class="menu-empty">저장한 즐겨찾기이 없습니다.<br>제품명 옆 ☆를 눌러 추가하세요.</div>')}
 }
-nav.forEach(b=>{b.onclick=e=>{e.preventDefault();render(b.dataset.view);if(b.dataset.view==='favorites'&&typeof window.MOZZIPICK_DRAW_FAVORITES==='function')setTimeout(()=>window.MOZZIPICK_DRAW_FAVORITES(),0)}});window.MOZZIPICK_MENU_RENDER=function(v){render(v);if(v==='favorites'&&typeof window.MOZZIPICK_DRAW_FAVORITES==='function')setTimeout(()=>window.MOZZIPICK_DRAW_FAVORITES(),0)};panel.addEventListener('click',e=>{const b=e.target.closest('button[data-jump]');if(!b)return;render('home');const t=cards().find(c=>rk(c)===b.dataset.jump);if(t){t.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>t.click(),350)}})})();</script><script>
+nav.forEach(b=>{b.onclick=e=>{e.preventDefault();render(b.dataset.view);if(b.dataset.view==='favorites'&&typeof window.MOZZIPICK_FAVORITES_REFRESH==='function')setTimeout(()=>window.MOZZIPICK_FAVORITES_REFRESH(),0)}});window.MOZZIPICK_MENU_RENDER=function(v){render(v);if(v==='favorites'&&typeof window.MOZZIPICK_FAVORITES_REFRESH==='function')setTimeout(()=>window.MOZZIPICK_FAVORITES_REFRESH(),0)};panel.addEventListener('click',e=>{const b=e.target.closest('button[data-jump]');if(!b)return;render('home');const t=cards().find(c=>rk(c)===b.dataset.jump);if(t){t.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>t.click(),350)}})})();</script><script>
 (()=>{const input=document.getElementById('productSearch'),out=document.getElementById('searchResults'),clear=document.getElementById('searchClear');if(!input)return;
 const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
 function close(){out.style.display='none'}
@@ -404,24 +404,32 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(ranking.length && (!last || now-last.ts>30*60*1000)){rows.push({ts:now,ranking});rows=rows.filter(x=>now-x.ts<366*24*3600*1000);localStorage.setItem(KEY,JSON.stringify(rows));}
 });
 </script><script>
-/* MOZZIPICK FAVORITES v4 */
+/* MOZZIPICK FAVORITES CLEAN v11 */
 (function(){
-const K='mozzipick_favorites_v1';let rp=1,lp=1;
-const read=()=>{try{return JSON.parse(localStorage.getItem(K)||'[]')}catch(e){return[]}},write=a=>localStorage.setItem(K,JSON.stringify([...new Set(a)]));
-const esc=x=>String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
-const name=c=>{let t=c.querySelector('.name');return t?(t.dataset.favName||t.textContent.replace(/[★☆]/g,'').trim()):''};
-const toggle=n=>{if(!n)return;let a=read();write(a.includes(n)?a.filter(x=>x!==n):a.concat(n));render()};
-const pager=(p,n,z,w)=>n<=z?'':'<div class="fav-pagination" data-favpager="'+w+'">'+Array.from({length:Math.ceil(n/z)},(_,i)=>'<button type="button" data-page="'+(i+1)+'" class="'+(p===i+1?'active':'')+'">'+(i+1)+'</button>').join('')+'</div>';
-function mount(){cards().forEach(c=>{let t=c.querySelector('.name');if(!t)return;if(!t.dataset.favName)t.dataset.favName=t.textContent.replace(/[★☆]/g,'').trim();c.querySelectorAll('.fav-action-v4').forEach(x=>x.remove());let b=document.createElement('button');b.type='button';b.className='fav-action-v4';b.dataset.name=t.dataset.favName;b.innerHTML='<span class="fav-icon">☆</span><span>즐겨찾기</span>';let host=c.querySelector('.product-actions,.actions,.status-actions,.product-right')||t.parentElement;host.appendChild(b)});render()}
-function render(){let f=read();document.querySelectorAll('.fav-action-v4').forEach(b=>{let on=f.includes(b.dataset.name);b.classList.toggle('on',on);b.querySelector('.fav-icon').textContent=on?'★':'☆'});right();left()}
-function right(){let box=document.getElementById('mozzFavoritesList');if(!box)return;let f=read();rp=Math.min(rp,Math.max(1,Math.ceil(f.length/5)));let a=f.slice((rp-1)*5,rp*5);box.innerHTML='<div class="fav-panel-title">즐겨찾기 <strong>'+f.length+'</strong></div>'+(a.length?a.map(x=>'<button type="button" class="fav-side-item" data-name="'+esc(x)+'"><span>★</span><b>'+esc(x)+'</b><em>해제</em></button>').join('')+pager(rp,f.length,5,'r'):'<div class="fav-empty">아직 즐겨찾기한 제품이 없습니다.</div>')}
-function left(){let box=document.getElementById('menuDataView');if(!box||box.hidden)return;let f=read(),all=cards(),norm=x=>String(x||'').replace(/[★☆]/g,'').trim(),a=f.map(n=>all.find(c=>norm(name(c))===norm(n))).filter(Boolean);box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+a.length+'개</strong></div>';if(!a.length){box.insertAdjacentHTML('beforeend','<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>');return}let list=document.createElement('div');list.className='favorites-full-list';a.forEach(c=>{let x=c.cloneNode(true);x.style.display='';x.querySelectorAll('.rank,.mini,.trend').forEach(e=>e.remove());list.appendChild(x)});box.appendChild(list)}
-function act(e){let b=e.target.closest&&e.target.closest('.fav-action-v4,.fav-side-item,.fav-menu-item');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b.dataset.name)}
-document.addEventListener('click',act,true);
-document.addEventListener('touchend',function(e){let b=e.target.closest&&e.target.closest('.fav-action-v4,.fav-side-item,.fav-menu-item');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b.dataset.name)},{capture:true,passive:false});
-document.addEventListener('click',e=>{let b=e.target.closest('.fav-pagination button');if(b){e.preventDefault();if(b.closest('[data-favpager="r"]'))rp=+b.dataset.page;else lp=+b.dataset.page;render()}if(e.target.closest('.side nav button[data-view="favorites"]'))setTimeout(left,80)},true);
-const go=()=>{mount();setTimeout(mount,700)};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();
+ const K='mozzipick_favorites_v1';
+ const read=()=>{try{return JSON.parse(localStorage.getItem(K)||'[]')}catch(e){return[]}};
+ const write=a=>localStorage.setItem(K,JSON.stringify([...new Set(a)]));
+ const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
+ const name=c=>{const t=c.querySelector('.name');return t?(t.dataset.favName||t.textContent.replace(/[★☆]/g,'').trim()):''};
+ function paint(){
+  const f=read();
+  document.querySelectorAll('.fav-action-v4').forEach(b=>{const on=f.includes(b.dataset.name);b.classList.toggle('on',on);const i=b.querySelector('.fav-icon');if(i)i.textContent=on?'★':'☆'});
+ }
+ function mount(){
+  cards().forEach(c=>{const t=c.querySelector('.name');if(!t)return;const n=name(c);t.dataset.favName=n;let b=c.querySelector('.fav-action-v4');if(!b){b=document.createElement('button');b.type='button';b.className='fav-action-v4';b.innerHTML='<span class="fav-icon">☆</span><span>즐겨찾기</span>';const host=c.querySelector('.product-actions,.actions,.status-actions,.product-right')||t.parentElement;host.appendChild(b)}b.dataset.name=n});paint();
+ }
+ function menu(){
+  const box=document.getElementById('menuDataView');if(!box||box.hidden)return;
+  const f=read(),all=cards(),a=f.map(n=>all.find(c=>name(c)===n)).filter(Boolean);
+  box.innerHTML='<div class="favorites-simple-head"><div><span>MY PICKS</span><h2>즐겨찾기</h2></div><strong>'+a.length+'개</strong></div>';
+  if(!a.length){box.insertAdjacentHTML('beforeend','<div class="menu-empty">저장한 즐겨찾기가 없습니다.</div>');return}
+  const list=document.createElement('div');list.className='favorites-full-list';
+  a.forEach(c=>{const x=c.cloneNode(true);x.style.display='';x.querySelectorAll('.rank,.mini,.trend').forEach(e=>e.remove());list.appendChild(x)});box.appendChild(list);paint();
+ }
+ function toggle(b){const n=b.dataset.name||name(b.closest('.product'));if(!n)return;const f=read();write(f.includes(n)?f.filter(x=>x!==n):f.concat(n));paint();menu()}
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.fav-action-v4');if(!b)return;e.preventDefault();e.stopPropagation();toggle(b)},true);
+ window.MOZZIPICK_FAVORITES_REFRESH=function(){mount();menu()};
+ document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>setTimeout(mount,900)):setTimeout(mount,900);
 })();
 </script><script>
 document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power Bank 26K 300W':'앤커 프라임 보조배터리 26K 300W','DJI ROMO 2 P2 / A2':'DJI 로모 2 P2 / A2','VIOFO T340 4CH':'비오포 T340 4채널 블랙박스','Aurzen ZIP Pro 포켓 프로젝터':'오르젠 ZIP Pro 포켓 프로젝터','soundcore Sleep A30':'사운드코어 슬립 A30'};document.querySelectorAll('#ranking .name').forEach(e=>{const raw=[...e.childNodes].find(n=>n.nodeType===3);if(raw){const n=raw.textContent.trim();if(map[n])raw.textContent=map[n]+' '}})});</script><script>
