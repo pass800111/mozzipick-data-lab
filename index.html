@@ -593,8 +593,11 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  }
  function targetMs(v){const n=Number(String(v).replace(/[^0-9]/g,''));if(String(v).endsWith('d'))return n*864e5;if(String(v).endsWith('m'))return n*30*864e5;if(String(v).endsWith('y'))return n*365*864e5;return n*36e5}
  async function show(btn){
-  const box=panel();if(!box)return;box.querySelectorAll('[data-time-filter]').forEach(x=>x.classList.toggle('active',x===btn));
-  box.querySelectorAll('.time-inline-results').forEach(x=>{if(x.dataset.timeResults!==btn.dataset.timeFilter)x.innerHTML=''});let host=box.querySelector('.time-inline-results[data-time-results="'+btn.dataset.timeFilter+'"]');if(!host){host=document.createElement('div');host.className='time-inline-results';btn.insertAdjacentElement('afterend',host)}
+  const box=panel();if(!box)return;
+  let host=box.querySelector('.time-inline-results[data-time-results="'+btn.dataset.timeFilter+'"]');if(!host){host=document.createElement('div');host.className='time-inline-results';host.dataset.timeResults=btn.dataset.timeFilter;btn.insertAdjacentElement('afterend',host)}
+  if(btn.classList.contains('active')&&host.innerHTML.trim()){btn.classList.remove('active');host.innerHTML='';return}
+  box.querySelectorAll('[data-time-filter]').forEach(x=>x.classList.toggle('active',x===btn));
+  box.querySelectorAll('.time-inline-results').forEach(x=>{if(x!==host)x.innerHTML=''});
   host.innerHTML='<div class="time-note">실제 저장된 데이터를 확인 중입니다.</div>';
   try{
    const {t,p}=await data(), snaps=(t.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at)), want=Date.now()-targetMs(btn.dataset.timeFilter);
