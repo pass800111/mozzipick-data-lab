@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T04:14:56+09:00",
+  "updatedAt": "2026-09-21T05:09:56+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
       "id": "anker-maggo-pro2",
-      "rank": 36,
+      "rank": 1,
       "name": "앤커 프라임 보조배터리 26K 300W",
       "category": "충전·배터리",
       "release": "미확인",
@@ -41,7 +41,7 @@
     },
     {
       "id": "soundcore-sleep-4-pro",
-      "rank": 41,
+      "rank": 2,
       "name": "사운드코어 슬립 A30",
       "category": "오디오",
       "release": "미확인",
@@ -71,7 +71,7 @@
     },
     {
       "id": "ugreen-pb773",
-      "rank": 42,
+      "rank": 3,
       "name": "유그린 MagFlow 마그네틱 보조배터리 10000mAh 25W",
       "category": "충전·배터리",
       "release": "2025.09 공개",
@@ -101,7 +101,7 @@
     },
     {
       "id": "roborock-qrevo-edge3pro",
-      "rank": 44,
+      "rank": 4,
       "name": "로보락 Qrevo Edge 3 Pro 로봇청소기",
       "category": "생활가전",
       "release": "미확인",
@@ -133,7 +133,7 @@
     },
     {
       "id": "soundcore-space-2-pro",
-      "rank": 51,
+      "rank": 5,
       "name": "사운드코어 Space 2 Pro",
       "category": "오디오·이어폰·스피커",
       "release": "2026.09.22 예정",
@@ -163,7 +163,7 @@
     },
     {
       "id": "roborock-f25-ultra-steam-gen2",
-      "rank": 63,
+      "rank": 6,
       "name": "로보락 F25 Ultra Steam Gen 2",
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
@@ -192,7 +192,7 @@
       "coupangGroup": "B"
     }
   ],
-  "lastValidationAt": "2026-09-21T04:08:34+09:00",
+  "lastValidationAt": "2026-09-21T05:09:56+09:00",
   "newCandidateGradeCounts": {
     "A": 0,
     "B": 0,
@@ -206,8 +206,8 @@
     "D": 0
   },
   "validationSummary": {
-    "newCandidateCount": 30,
-    "newGradeTotal": 30,
+    "newCandidateCount": 0,
+    "newGradeTotal": 0,
     "coupangMissingLinkDowngraded": 0,
     "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
