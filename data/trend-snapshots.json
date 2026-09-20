@@ -1018,31 +1018,31 @@
       "at": "2026-09-21T05:30:00+09:00",
       "source": "쿠팡 '전자기기' 검색결과 · 쿠팡 랭킹순",
       "sourceUrl": "https://www.coupang.com/np/search?q=%EC%A0%84%EC%9E%90%EA%B8%B0%EA%B8%B0",
-      "note": "쿠팡 검색결과에서 광고 표시는 제외하고 화면에 표시된 쿠팡 랭킹 번호를 그대로 저장. 검색결과 순위는 시점에 따라 변경될 수 있음.",
+      "note": "쿠팡 모바일에서 검색 URL이 접근 거부될 수 있어 검색 링크를 바로가기처럼 사용하지 않음. 검증된 직접 상품 URL만 버튼 표시.",
       "ranking": [
         {
           "id": "coupang-ciiece-gb2500",
           "rank": 1,
           "name": "CIIECE 레트로 휴대용 미니 게임기 GB2500 블랙",
           "reviewCount": 210,
-          "coupangUrl": "https://www.coupang.com/np/search?q=CIIECE+GB2500"
+          "coupangUrl": null
         },
         {
           "id": "coupang-samsung-evo-plus-512",
           "rank": 2,
           "name": "삼성전자 공식인증 마이크로SD EVO PLUS 512GB",
           "reviewCount": 35755,
-          "coupangUrl": "https://www.coupang.com/np/search?q=%EC%82%BC%EC%84%B1+EVO+PLUS+512GB"
+          "coupangUrl": null
         },
         {
           "id": "coupang-galaxy-fit3",
           "rank": 3,
           "name": "삼성전자 갤럭시 핏3 SM-R390N",
           "reviewCount": 12373,
-          "coupangUrl": "https://www.coupang.com/np/search?q=%EA%B0%A4%EB%9F%AD%EC%8B%9C+%ED%95%8F3+SM-R390N"
+          "coupangUrl": null
         }
       ]
     }
   ],
-  "updatedAt": "2026-09-21T05:30:00+09:00"
+  "updatedAt": "2026-09-21T05:20:00+09:00"
 }
