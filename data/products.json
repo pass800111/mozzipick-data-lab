@@ -311,9 +311,9 @@
       "category": "생활가전",
       "release": "미확인",
       "price": "미확인",
-      "coupangPrice": "미확인",
+      "coupangPrice": "1,389,000원",
       "rating": "미확인",
-      "reviews": "미확인",
+      "reviews": "20",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -325,7 +325,13 @@
       "xiaohongshuQuery": "石头 Qrevo Edge 3 Pro 扫地机器人",
       "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
       "videoUrl": "https://www.youtube.com/watch?v=7vUWJO7Dwds",
-      "videoSource": "Roborock Support 공식 YouTube"
+      "videoSource": "Roborock Support 공식 YouTube",
+      "coupangMatchGrade": "B",
+      "coupangMatchType": "기존/이전 버전",
+      "coupangMatchedProduct": "로보락 Qrevo Edge 2 로봇청소기",
+      "coupangUrl": "https://www.coupang.com/np/search?q=%EB%A1%9C%EB%B3%B4%EB%9D%BD+qrevo+edge",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "soundcore-space-2-pro",
@@ -592,9 +598,9 @@
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
       "price": "미확인",
-      "coupangPrice": "미확인",
+      "coupangPrice": "859,000원",
       "rating": "미확인",
-      "reviews": "미확인",
+      "reviews": "445",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -604,7 +610,13 @@
       "officialUrl": "https://global.roborock.com/pages/ifa-2026",
       "spec": "VaporFlow 2.0 스팀 · SensEdge AI 로봇암 · WaveFlow 열 세척",
       "xiaohongshuQuery": "石头 F25 Ultra Steam Gen 2 洗地机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "coupangMatchGrade": "B",
+      "coupangMatchType": "기존/이전 버전",
+      "coupangMatchedProduct": "로보락 F25 Ultra 무선 청소기",
+      "coupangUrl": "https://www.coupang.com/vp/products/9254566420",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "acer-sff-rtx-spark",
