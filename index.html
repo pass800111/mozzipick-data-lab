@@ -678,11 +678,28 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    if(!snap){host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'해당 시간')+'</b> 기준으로 저장된 과거 데이터가 없습니다. 없는 데이터는 추정하지 않습니다.</div>';return}
    const map=new Map((p.products||[]).map(x=>[x.id,x]));
    const prev=snaps[snaps.indexOf(snap)-1], pm=new Map((prev?.ranking||[]).map(x=>[x.id,x.rank]));
-   const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id), old=pm.get(x.id), d=old==null?null:old-x.rank, mv=old==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'</b>':'<b style="color:#98a2b3">―</b>';return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+' · '+esc(q?.release||'미확인')+'</small></div><span>'+mv+'</span></div>'}).join('');
+   const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id), old=pm.get(x.id), d=old==null?null:old-x.rank, mv=old==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'단계 상승</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+' · '+esc(q?.release||'미확인')+'</small></div><span>'+mv+'</span></div>'}).join('');
    host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'')+'</b> · 실제 저장 시각 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+(snap.ranking||[]).length+'개</div><div class="time-snapshot-list">'+rows+'</div>';
   }catch(e){host.innerHTML='<div class="time-note">시간별 데이터를 불러오지 못했습니다.</div>'}
  }
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},true);
  document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},{capture:true,passive:false});
 })();
-</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script></body></html>
+</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script><script>/* RANK MOVEMENT FALLBACK v1 */
+(function(){
+ function apply(){
+  const snaps=(window.MOZZIPICK_TRENDS?.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
+  if(snaps.length<2)return;
+  const prev=snaps[snaps.length-2], cur=snaps[snaps.length-1];
+  const pm=new Map((prev.ranking||[]).map(x=>[x.id,x.rank]));
+  const cm=new Map((cur.ranking||[]).map(x=>[x.id,x.rank]));
+  document.querySelectorAll('#ranking article[data-product-id]').forEach(c=>{
+   const id=c.dataset.productId,n=cm.get(id),o=pm.get(id); if(n==null)return;
+   const d=o==null?null:o-n;
+   const html=o==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'단계 상승</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';
+   const t=c.querySelector('.trend'); if(t)t.innerHTML='RANK '+html+'<b>자동 갱신</b>';
+  });
+ }
+ window.addEventListener('load',()=>setTimeout(apply,900));
+})();
+</script></body></html>
