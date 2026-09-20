@@ -236,7 +236,7 @@
       "price": "US $199.99",
       "coupangPrice": "미확인",
       "rating": "미확인",
-      "reviews": "331 reviews",
+      "reviews": "17",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -246,7 +246,13 @@
       "officialUrl": "https://www.soundcore.com/products/d1301-sleep-a30-smart-anc-earbuds-for-sleeping",
       "spec": "Triple noise reduction · 3g · 8–10h · IPX4",
       "xiaohongshuQuery": "soundcore Sleep A30 睡眠耳机",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "coupangMatchGrade": "A",
+      "coupangMatchType": "동일제품",
+      "coupangMatchedProduct": "앤커 슬립A30 블루투스 이어폰 D1301",
+      "coupangUrl": "https://pages.coupang.com/p/165446",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "ugreen-pb773",
@@ -330,7 +336,7 @@
       "price": "US $199.99",
       "coupangPrice": "미확인",
       "rating": "미확인",
-      "reviews": "공식 페이지 리뷰 없음 (확인 시점)",
+      "reviews": "22",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -340,7 +346,13 @@
       "officialUrl": "https://www.soundcore.com/uk/products/d1406",
       "spec": "Thus AI Chip · 6-mic AI call clarity · Adaptive ANC 3.0 · LDAC · 최대 60시간",
       "xiaohongshuQuery": "声阔 Space 2 Pro 头戴式耳机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "coupangMatchGrade": "B",
+      "coupangMatchType": "기존/유사 라인업",
+      "coupangMatchedProduct": "앤커 스페이스 원 프로 노이즈캔슬링 헤드폰 A3062",
+      "coupangUrl": "https://pages.coupang.com/p/165446",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "tcl-p80-ultra",
