@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{
   const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&!e.target.closest('a,button')){e.preventDefault();open(c._product);return}
   const cb=e.target.closest&&e.target.closest('.chips [data-category]');if(cb){category=cb.dataset.category;page=1;setTimeout(render,0);return}
-  const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){e.preventDefault();document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x===hb));hours=hb.dataset.hours;page=1;render();}
+  /* home period handled by HOME PERIOD ACCORDION v2 */
  },true);
  document.addEventListener('keydown',e=>{const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&e.key==='Enter')open(c._product)},true);
  async function load(){
@@ -599,14 +599,8 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 /* TIME NATIVE PRODUCT DETAIL v1 */
 document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('#menuDataView .native-time-product');if(!b)return;e.preventDefault();e.stopPropagation();const id=b.dataset.productId,c=document.querySelector('#ranking .product[data-product-id="'+CSS.escape(id)+'"]');if(c){c.click();return}fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(!p)return;const m=document.getElementById('productDetailModal'),n=document.getElementById('detailName'),meta=document.getElementById('detailMeta');if(!m)return;if(n)n.textContent=p.name||id;if(meta)meta.innerHTML='<b>카테고리</b> '+(p.category||'미확인')+'<br><b>출시</b> '+(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+(p.spec||'미확인');m.style.display='block';});},true);
 </script><script>
-/* HOME PERIOD ACCORDION v1 — same behavior as time menu */
-(function(){
- const bar=document.querySelector('.controls .period');if(!bar)return;
- let open='';
- document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('.controls .period [data-hours]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();const h=b.dataset.hours;
-  if(h==='0'){open='';bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:'0'}}));return}
-  if(open===h){open='';bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.hours==='0'));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:'0'}}));return}
-  open=h;bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:h}}));
- },true);
+/* HOME PERIOD ACCORDION v2 — single owner */
+(function(){const bar=document.querySelector('.controls .period');if(!bar)return;let open='';
+bar.addEventListener('click',function(e){const b=e.target.closest('[data-hours]');if(!b)return;e.preventDefault();e.stopPropagation();const h=b.dataset.hours,next=(h!=='0'&&open===h)?'0':h;open=next==='0'?'':next;bar.querySelectorAll('[data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours===next));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:next}}));},false);
 })();
 </script></body></html>
