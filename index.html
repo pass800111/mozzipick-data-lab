@@ -408,30 +408,6 @@ const go=()=>{mount();setTimeout(mount,700)};document.readyState==='loading'?doc
 })();
 </script><script>
 document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power Bank 26K 300W':'앤커 프라임 보조배터리 26K 300W','DJI ROMO 2 P2 / A2':'DJI 로모 2 P2 / A2','VIOFO T340 4CH':'비오포 T340 4채널 블랙박스','Aurzen ZIP Pro 포켓 프로젝터':'오르젠 ZIP Pro 포켓 프로젝터','soundcore Sleep A30':'사운드코어 슬립 A30'};document.querySelectorAll('#ranking .name').forEach(e=>{const raw=[...e.childNodes].find(n=>n.nodeType===3);if(raw){const n=raw.textContent.trim();if(map[n])raw.textContent=map[n]+' '}})});</script><script>
-/* TIME SNAPSHOT RANKING ADDON v1 — isolated, no layout/style changes */
-(function(){
- const H={'0':0,'3':3,'6':6,'12':12,'24':24};
- const cards=()=>[...document.querySelectorAll('#ranking .product.product-redesign')];
- const cleanName=c=>{const e=c.querySelector('.name');return e?(e.dataset.favName||[...e.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim()||e.textContent.replace(/[★☆]/g,'').trim()):''};
- function showCurrent(){cards().forEach(c=>{c.style.display='';c.style.order=''});}
- function apply(btn){
-   const hrs=H[btn.dataset.hours]; if(hrs===undefined)return;
-   document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x===btn));
-   if(hrs===0){showCurrent();return}
-   const td=window.MOZZIPICK_TRENDS||{snapshots:[]},snaps=(td.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
-   const target=Date.now()-hrs*3600000, snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target);
-   if(!snap){showCurrent();return}
-   const rankByName=new Map(),rankById=new Map();
-   (snap.ranking||[]).forEach(x=>{if(x.name)rankByName.set(x.name,x.rank);if(x.id)rankById.set(x.id,x.rank)});
-   cards().forEach(c=>{
-     const r=rankById.get(c.dataset.productId)||rankByName.get(cleanName(c));
-     c.style.display=r?'':'none';c.style.order=r||999;
-     const re=c.querySelector('.rank');if(re&&r)re.textContent=r;
-   });
- }
- document.addEventListener('click',e=>{const b=e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();apply(b)},true);
-})();
-</script><script>
 /* PRODUCTS JSON CARD SYNC V1 — append products missing from static V1 cards without changing approved layout */
 (async function(){
  try{
