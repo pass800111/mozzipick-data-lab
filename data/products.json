@@ -120,9 +120,9 @@
       "category": "충전·배터리",
       "release": "미확인",
       "price": "US $329.99 (Charging Base bundle)",
-      "coupangPrice": "미확인",
+      "coupangPrice": "209,900원",
       "rating": "미확인",
-      "reviews": "16 reviews (bundle page)",
+      "reviews": "149",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -133,7 +133,13 @@
       "spec": "26,250mAh · 300W · 140W USB-C · model A110A/B110A",
       "xiaohongshuQuery": "安克 Prime 充电宝 26K 300W",
       "legacyName": "앤커 맥고 보조배터리 프로 2",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "coupangMatchGrade": "A",
+      "coupangMatchType": "동일제품",
+      "coupangMatchedProduct": "앤커 프라임 파워뱅크 26250mAh 300W",
+      "coupangUrl": "https://www.coupang.com/vp/products/9246902602",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "dji-romo",
@@ -249,9 +255,9 @@
       "category": "충전·배터리",
       "release": "2025.09 공개",
       "price": "₩62,400 (UGREEN KR 공식몰, 확인 시점 기준)",
-      "coupangPrice": "미확인",
+      "coupangPrice": "72,900원",
       "rating": "미확인",
-      "reviews": "19 reviews (UGREEN US 공개 페이지)",
+      "reviews": "100",
       "instagram": "미확인",
       "tiktok": "미확인",
       "youtube": "미확인",
@@ -261,7 +267,13 @@
       "officialUrl": "https://kr.ugreen.com/products/magflow-magnetic-wireless-power-bank-qi2-25w-10000mah",
       "spec": "10,000mAh · Qi2 25W 마그네틱 무선충전 · 내장 USB-C 케이블 30W 입출력 · 최대 3기기 동시 충전 · SKU 65958",
       "xiaohongshuQuery": "绿联 MagFlow Qi2 25W 10000mAh 磁吸充电宝",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "coupangMatchGrade": "A",
+      "coupangMatchType": "동일제품",
+      "coupangMatchedProduct": "UGREEN MagFlow Qi2 25W 10000mAh",
+      "coupangUrl": "https://www.coupang.com/vp/products/9213038854",
+      "coupangVerifiedAt": "2026-09-21",
+      "coupangEligible": true
     },
     {
       "id": "insta360-link2",
