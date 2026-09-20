@@ -188,3 +188,11 @@ body.menu-view-active #menuDataView{display:block!important}
 
 /* stable additions only */
 .time-filter-status{margin:0 0 10px;padding:10px 13px;border:1px solid #dbeafe;border-radius:11px;background:#f8fbff;color:#64748b;font-size:11px}.time-filter-status b{color:#2563eb}.period button{pointer-events:auto!important;touch-action:manipulation!important}.period button.on{background:#2563eb!important;color:#fff!important}
+
+/* mobile home controls clearance v1 — keep time/category controls above fixed bottom nav */
+@media(max-width:850px){
+ .controls{position:relative!important;z-index:11!important;margin-bottom:18px!important}
+ .period{position:relative!important;z-index:12!important}
+ footer{z-index:100!important}
+ .main{padding-bottom:145px!important}
+}
