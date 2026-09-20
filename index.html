@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    const img=p.image?'<div class="thumb"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
    const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
    const ch=Number(p.rankChange||0), badge=p.isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+ch+'</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'</b>':'<b style="color:#98a2b3">―</b>';
-  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+badge+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
+  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="site-updated" style="font-size:10px;color:#667085;margin-top:4px;font-weight:700">사이트 등록 '+esc(fmtSiteDate(p.siteUpdatedAt))+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+badge+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
    ranking.appendChild(a);existing.add(norm(p.name));
   });
   const count=ranking.querySelectorAll('.product.product-redesign').length;
@@ -463,6 +463,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  const PAGE_SIZE=5; let page=1, category='전체', hours='0', products=[];
  const ranking=()=>document.getElementById('ranking');
  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ function fmtSiteDate(v){if(!v)return '미확인';try{return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch(e){return v}}
  function card(p){
   const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productId=p.id||'';a.dataset.liveJson='1';
   const img=p.image?'<div class="thumb product-photo"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\');this.parentElement.classList.add(\'product-noimage\');this.parentElement.innerHTML=\'<span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small>\'"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
