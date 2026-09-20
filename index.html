@@ -615,4 +615,22 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
 
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#timeSnapshotResults .time-product-detail');if(!b)return;e.preventDefault();const id=b.dataset.productId;const c=[...document.querySelectorAll('#ranking .product[data-product-id]')].find(x=>x.dataset.productId===id);if(c){c.click();return}fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(!p)return;const m=document.getElementById('productDetailModal');if(!m)return;const n=document.getElementById('detailName'),meta=document.getElementById('detailMeta');if(n)n.textContent=p.name||id;if(meta)meta.innerHTML='<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인');m.style.display='block';})},true);
 })();
-</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script></body></html>
+</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script><script>/* SITE UPDATED BADGE FALLBACK v1 */
+(function(){
+ function fmt(v){if(!v||v==='미확인')return '미확인';try{return new Date(v).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return v}}
+ async function apply(){
+  try{
+   const r=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)return;
+   const d=await r.json(),map=new Map((d.products||[]).map(p=>[p.id,p]));
+   document.querySelectorAll('#ranking .product[data-product-id]').forEach(c=>{
+    const p=map.get(c.dataset.productId);if(!p)return;
+    let el=c.querySelector('.site-updated');
+    if(!el){el=document.createElement('div');el.className='site-updated';const meta=c.querySelector('.meta');if(meta)meta.insertAdjacentElement('afterend',el)}
+    if(el)el.textContent='사이트 등록 '+fmt(p.siteUpdatedAt);
+   });
+  }catch(e){console.error('[site updated badge]',e)}
+ }
+ window.addEventListener('load',()=>{apply();setTimeout(apply,800);setTimeout(apply,2200)});
+ new MutationObserver(()=>apply()).observe(document.getElementById('ranking'),{childList:true});
+})();
+</script></body></html>
