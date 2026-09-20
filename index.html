@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
      const re=c.querySelector('.rank');if(re&&r)re.textContent=r;
    });
  }
- document.addEventListener('click',e=>{const b=e.target.closest('.period [data-hours]');if(!b)return;e.preventDefault();apply(b)},true);
+ /* home period clicks are handled by HOME PERIOD ACCORDION v1 below */
 })();
 </script><style>
 /* V1 pagination: visual structure unchanged; only visibility/navigation is added */
@@ -439,6 +439,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
 /* V1 JSON LIVE RANK + DETAIL + PAGING v1 */
 (function(){
  const PAGE_SIZE=5; let page=1, category='전체', hours='0', products=[];
+ window.addEventListener('mozzipick-home-hours',e=>{hours=String(e.detail?.hours||'0');page=1;render()});
  const ranking=()=>document.getElementById('ranking');
  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
  function fmtSiteDate(v){if(!v)return '미확인';try{return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch(e){return v}}
@@ -597,4 +598,15 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 </script><script>
 /* TIME NATIVE PRODUCT DETAIL v1 */
 document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('#menuDataView .native-time-product');if(!b)return;e.preventDefault();e.stopPropagation();const id=b.dataset.productId,c=document.querySelector('#ranking .product[data-product-id="'+CSS.escape(id)+'"]');if(c){c.click();return}fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(!p)return;const m=document.getElementById('productDetailModal'),n=document.getElementById('detailName'),meta=document.getElementById('detailMeta');if(!m)return;if(n)n.textContent=p.name||id;if(meta)meta.innerHTML='<b>카테고리</b> '+(p.category||'미확인')+'<br><b>출시</b> '+(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+(p.spec||'미확인');m.style.display='block';});},true);
+</script><script>
+/* HOME PERIOD ACCORDION v1 — same behavior as time menu */
+(function(){
+ const bar=document.querySelector('.controls .period');if(!bar)return;
+ let open='';
+ document.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('.controls .period [data-hours]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();const h=b.dataset.hours;
+  if(h==='0'){open='';bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:'0'}}));return}
+  if(open===h){open='';bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.hours==='0'));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:'0'}}));return}
+  open=h;bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:h}}));
+ },true);
+})();
 </script></body></html>
