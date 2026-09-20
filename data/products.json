@@ -86,7 +86,9 @@
       "officialUrl": "https://www.samsung.com/sec/smartphones/galaxy-s26/buy/?modelCode=SM-S741NZKWKOO",
       "spec": "6.7형 AMOLED 120Hz · Exynos 2500 · 4,900mAh · IP68",
       "xiaohongshuQuery": "三星 S26 FE 手机",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "videoUrl": "https://www.youtube.com/watch?v=cdC0sSWM3Bo",
+      "videoSource": "Samsung 공식 YouTube"
     },
     {
       "id": "aurzen-zip-pro",
@@ -170,7 +172,9 @@
       "officialUrl": "https://www.insta360.com/product/insta360-link2",
       "spec": "4K · 1/2 센서 · F1.8 · 2축 짐벌 · AI 트래킹 · AI 노이즈 캔슬링",
       "xiaohongshuQuery": "影石 Link 2 AI 摄像头",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "videoUrl": "https://www.youtube.com/watch?v=PwJSAmCtByw",
+      "videoSource": "Insta360 공식 YouTube"
     },
     {
       "id": "roborock-qrevo-edge3pro",
@@ -191,7 +195,9 @@
       "officialUrl": "https://global.roborock.com/pages/roborock-qrevo-edge-3-pro",
       "spec": "36,000Pa · 100°C 물걸레 세척 · 최대 8.8cm 이중 문턱 · 7.95cm 낮은 공간 진입",
       "xiaohongshuQuery": "石头 Qrevo Edge 3 Pro 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "videoUrl": "https://www.youtube.com/watch?v=7vUWJO7Dwds",
+      "videoSource": "Roborock Support 공식 YouTube"
     },
     {
       "id": "soundcore-space-2-pro",
