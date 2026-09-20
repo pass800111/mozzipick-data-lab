@@ -753,4 +753,17 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('footer button[data-mobile-view="favorites"],.side nav button[data-view="favorites"]'))setTimeout(redraw,80)},true);
  setTimeout(syncButtons,500);
 })();
+</script><script>/* FAVORITES POINTER FIX v10 */
+(function(){
+ const K='mozzipick_favorites_v1', norm=x=>String(x||'').replace(/[★☆]/g,'').trim();
+ function read(){try{return JSON.parse(localStorage.getItem(K)||'[]').map(norm).filter(Boolean)}catch(e){return[]}}
+ function paint(){const f=read();document.querySelectorAll('.fav-action-v4').forEach(b=>{const n=norm(b.dataset.name||b.closest('.product')?.querySelector('.name')?.textContent);if(!n)return;b.dataset.name=n;const on=f.includes(n);b.classList.toggle('on',on);const i=b.querySelector('.fav-icon');if(i)i.textContent=on?'★':'☆'})}
+ function toggle(b){const n=norm(b.dataset.name||b.closest('.product')?.querySelector('.name')?.textContent);if(!n)return;let f=read();localStorage.setItem(K,JSON.stringify(f.includes(n)?f.filter(x=>x!==n):[...f,n]));paint();if(!document.getElementById('menuDataView')?.hidden&&typeof window.MOZZIPICK_DRAW_FAVORITES==='function')window.MOZZIPICK_DRAW_FAVORITES()}
+ function handler(e){const b=e.target.closest&&e.target.closest('.fav-action-v4');if(!b)return;e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();toggle(b)}
+ document.addEventListener('pointerup',handler,true);
+ /* neutralize older duplicate click/touch handlers for favorite buttons by consuming them after pointerup */
+ document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('.fav-action-v4')){e.preventDefault();e.stopImmediatePropagation()}},true);
+ document.addEventListener('touchend',e=>{if(e.target.closest&&e.target.closest('.fav-action-v4')){e.preventDefault();e.stopImmediatePropagation()}},{capture:true,passive:false});
+ new MutationObserver(()=>paint()).observe(document.body,{childList:true,subtree:true});paint();
+})();
 </script></body></html>
