@@ -683,6 +683,271 @@
           "rank": 30
         }
       ]
+    },
+    {
+      "at": "2026-09-20T18:26:47.055700+00:00",
+      "ranking": [
+        {
+          "id": "oukitel-rg14p",
+          "rank": 1
+        },
+        {
+          "id": "lexar-muse-ssd",
+          "rank": 2
+        },
+        {
+          "id": "philips-hue-liane360",
+          "rank": 3
+        },
+        {
+          "id": "irobot-max875-combo",
+          "rank": 4
+        },
+        {
+          "id": "creatulize-x1-pro",
+          "rank": 5
+        },
+        {
+          "id": "dreo-heater-720s",
+          "rank": 6
+        },
+        {
+          "id": "euhomy-rock-pro-ice-maker",
+          "rank": 7
+        },
+        {
+          "id": "dreame-h50-selfclean-humidifier",
+          "rank": 8
+        },
+        {
+          "id": "uwant-swiftvac-v700-pro",
+          "rank": 9
+        },
+        {
+          "id": "xiaomi-robot-vacuum-7-max",
+          "rank": 10
+        },
+        {
+          "id": "switchbot-lock-ultra-max-vision-pro",
+          "rank": 11
+        },
+        {
+          "id": "dreame-pano10-station",
+          "rank": 12
+        },
+        {
+          "id": "tplink-archer-8-ultra",
+          "rank": 13
+        },
+        {
+          "id": "tapo-t150",
+          "rank": 14
+        },
+        {
+          "id": "tplink-deco-8-ultra",
+          "rank": 15
+        },
+        {
+          "id": "aiper-irrisense-2",
+          "rank": 16
+        },
+        {
+          "id": "airseekers-aranix",
+          "rank": 17
+        },
+        {
+          "id": "roborock-f25-pro-turbo-combo",
+          "rank": 18
+        },
+        {
+          "id": "xlean-tr1",
+          "rank": 19
+        },
+        {
+          "id": "ugreen-homeagent-ha100-pro",
+          "rank": 20
+        },
+        {
+          "id": "ugreen-homeagent-ha100",
+          "rank": 21
+        },
+        {
+          "id": "ugreen-masteragent-ma100",
+          "rank": 22
+        },
+        {
+          "id": "navimow-h510-pro",
+          "rank": 23
+        },
+        {
+          "id": "dreame-aqua20-pro-ultra",
+          "rank": 24
+        },
+        {
+          "id": "esr-qi2-25w-cooling",
+          "rank": 25
+        },
+        {
+          "id": "esr-geo-wallet-2026",
+          "rank": 26
+        },
+        {
+          "id": "belkin-slim-ring-stand",
+          "rank": 27
+        },
+        {
+          "id": "belkin-ultracharge-display",
+          "rank": 28
+        },
+        {
+          "id": "belkin-surefind-wallet",
+          "rank": 29
+        },
+        {
+          "id": "belkin-surefind-loop",
+          "rank": 30
+        },
+        {
+          "id": "switchbot-s30-mini",
+          "rank": 31
+        },
+        {
+          "id": "esr-cryoboost-25w",
+          "rank": 32
+        },
+        {
+          "id": "ecoflow-river-260-gen4",
+          "rank": 33
+        },
+        {
+          "id": "dyson-r3-nurovi-spot-scrub-uv",
+          "rank": 34
+        },
+        {
+          "id": "jackery-explorer-2000-plus-v2",
+          "rank": 35
+        },
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 36
+        },
+        {
+          "id": "dji-romo",
+          "rank": 37
+        },
+        {
+          "id": "viofo-t340",
+          "rank": 38
+        },
+        {
+          "id": "galaxy-s26-fe",
+          "rank": 39
+        },
+        {
+          "id": "aurzen-zip-pro",
+          "rank": 40
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 41
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 42
+        },
+        {
+          "id": "insta360-link2",
+          "rank": 43
+        },
+        {
+          "id": "roborock-qrevo-edge3pro",
+          "rank": 44
+        },
+        {
+          "id": "soundcore-space-2-pro",
+          "rank": 45
+        },
+        {
+          "id": "tcl-p80-ultra",
+          "rank": 46
+        },
+        {
+          "id": "ecovacs-x12s-omnicyclone",
+          "rank": 47
+        },
+        {
+          "id": "anker-nano-universal-100w",
+          "rank": 48
+        },
+        {
+          "id": "belkin-boostsolid-cell-10k-60w",
+          "rank": 49
+        },
+        {
+          "id": "belkin-soundform-isolate",
+          "rank": 50
+        },
+        {
+          "id": "belkin-soundform-dot",
+          "rank": 51
+        },
+        {
+          "id": "belkin-surefind",
+          "rank": 52
+        },
+        {
+          "id": "belkin-ultracharge-smart-display",
+          "rank": 53
+        },
+        {
+          "id": "roborock-rockaqua-p1",
+          "rank": 54
+        },
+        {
+          "id": "roborock-saros-20-flow",
+          "rank": 55
+        },
+        {
+          "id": "roborock-saros-20-neo",
+          "rank": 56
+        },
+        {
+          "id": "roborock-f25-ultra-steam-gen2",
+          "rank": 57
+        },
+        {
+          "id": "acer-sff-rtx-spark",
+          "rank": 58
+        },
+        {
+          "id": "lenovo-yoga-pro-9n-15-11",
+          "rank": 59
+        },
+        {
+          "id": "soundcore-liberty-buds-2",
+          "rank": 60
+        },
+        {
+          "id": "soundcore-aeroclip-2",
+          "rank": 61
+        },
+        {
+          "id": "eufy-omni-e35",
+          "rank": 62
+        },
+        {
+          "id": "tuya-doova",
+          "rank": 63
+        },
+        {
+          "id": "dreame-aqua20-pro-ultra-roller-x",
+          "rank": 64
+        },
+        {
+          "id": "dreame-leaptic-cube",
+          "rank": 65
+        }
+      ]
     }
   ]
 }
