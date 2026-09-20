@@ -82,6 +82,107 @@
           "rank": 9
         }
       ]
+    },
+    {
+      "at": "2026-09-20T00:33:21.942476+00:00",
+      "ranking": [
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 1
+        },
+        {
+          "id": "dji-romo",
+          "rank": 2
+        },
+        {
+          "id": "viofo-t340",
+          "rank": 3
+        },
+        {
+          "id": "galaxy-s26-fe",
+          "rank": 4
+        },
+        {
+          "id": "aurzen-zip-pro",
+          "rank": 5
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 6
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 7
+        },
+        {
+          "id": "insta360-link2",
+          "rank": 8
+        },
+        {
+          "id": "roborock-qrevo-edge3pro",
+          "rank": 9
+        },
+        {
+          "id": "soundcore-space-2-pro",
+          "rank": 10
+        },
+        {
+          "id": "tcl-p80-ultra",
+          "rank": 11
+        },
+        {
+          "id": "ecovacs-x12s-omnicyclone",
+          "rank": 12
+        },
+        {
+          "id": "anker-nano-universal-100w",
+          "rank": 13
+        },
+        {
+          "id": "belkin-boostsolid-cell-10k-60w",
+          "rank": 14
+        },
+        {
+          "id": "belkin-soundform-isolate",
+          "rank": 15
+        },
+        {
+          "id": "belkin-soundform-dot",
+          "rank": 16
+        },
+        {
+          "id": "belkin-surefind",
+          "rank": 17
+        },
+        {
+          "id": "belkin-ultracharge-smart-display",
+          "rank": 18
+        },
+        {
+          "id": "roborock-rockaqua-p1",
+          "rank": 19
+        },
+        {
+          "id": "roborock-saros-20-flow",
+          "rank": 20
+        },
+        {
+          "id": "roborock-saros-20-neo",
+          "rank": 21
+        },
+        {
+          "id": "roborock-f25-ultra-steam-gen2",
+          "rank": 22
+        },
+        {
+          "id": "acer-sff-rtx-spark",
+          "rank": 23
+        },
+        {
+          "id": "lenovo-yoga-pro-9n-15-11",
+          "rank": 24
+        }
+      ]
     }
   ]
 }
