@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  }
  function render(){
   const r=ranking();if(!r)return;const arr=currentList(),pages=Math.max(1,Math.ceil(arr.length/PAGE_SIZE));page=Math.min(page,pages);
-  r.innerHTML='';arr.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).forEach(p=>r.appendChild(card(p)));
+  r.innerHTML='';arr.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).forEach((p,i)=>{const q={...p,rank:(page-1)*PAGE_SIZE+i+1};r.appendChild(card(q))});
   let pg=document.getElementById('mozzipickPager');if(!pg){pg=document.createElement('div');pg.id='mozzipickPager';r.insertAdjacentElement('afterend',pg);}
   pg.innerHTML='';for(let i=1;i<=pages;i++){const b=document.createElement('button');b.type='button';b.textContent=i;b.className=i===page?'on':'';b.onclick=()=>{page=i;render();r.scrollIntoView({behavior:'smooth',block:'start'})};pg.appendChild(b)}
   const stat=document.querySelector('.heroStats article:first-child b');if(stat)stat.textContent=arr.length;
