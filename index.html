@@ -651,4 +651,21 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  window.addEventListener('load',()=>{apply();setTimeout(apply,800);setTimeout(apply,2200)});
  new MutationObserver(()=>apply()).observe(document.getElementById('ranking'),{childList:true});
 })();
+</script><script>/* FAVORITES LIVE CARD REMOUNT v5 */
+(function(){
+ function remount(){
+  const cards=[...document.querySelectorAll('#ranking .product.product-redesign')];
+  cards.forEach(c=>{
+   if(c.querySelector('.fav-action-v4'))return;
+   const t=c.querySelector('.name');if(!t)return;
+   const n=(t.dataset.favName||t.textContent.replace(/[★☆]/g,'').trim());t.dataset.favName=n;
+   const b=document.createElement('button');b.type='button';b.className='fav-action-v4';b.dataset.name=n;b.innerHTML='<span class="fav-icon">☆</span><span>즐겨찾기</span>';
+   const host=c.querySelector('.product-actions,.actions,.status-actions,.product-right')||t.parentElement;host.appendChild(b);
+   try{const a=JSON.parse(localStorage.getItem('mozzipick_favorites_v1')||'[]');if(a.includes(n)){b.classList.add('on');b.querySelector('.fav-icon').textContent='★'}}catch(e){}
+  });
+ }
+ const r=document.getElementById('ranking');if(r)new MutationObserver(()=>setTimeout(remount,0)).observe(r,{childList:true,subtree:false});
+ document.addEventListener('DOMContentLoaded',()=>{remount();setTimeout(remount,900);setTimeout(remount,2400)});
+ window.addEventListener('load',()=>setTimeout(remount,400));
+})();
 </script></body></html>
