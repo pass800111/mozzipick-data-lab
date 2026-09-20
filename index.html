@@ -384,32 +384,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(ranking.length && (!last || now-last.ts>30*60*1000)){rows.push({ts:now,ranking});rows=rows.filter(x=>now-x.ts<366*24*3600*1000);localStorage.setItem(KEY,JSON.stringify(rows));}
 });
 </script><script>
-/* MOZZIPICK v1 data layer: JSON is the source of truth for data/status, while existing verified cards remain the visual renderer. */
-(async()=>{
- const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
- const hours={3:3,6:6,12:12,24:24,'7d':168,'15d':360,'30d':720,'3m':2160,'6m':4320,'1y':8760};
- try{
-  const [pd,td]=await Promise.all([fetch('./data/products.json?v=2026092006').then(r=>r.json()),fetch('./data/trend-snapshots.json?v=1').then(r=>r.json())]);
-  window.MOZZIPICK_DATA=pd; window.MOZZIPICK_TRENDS=td;
-  const byName={};pd.products.forEach(x=>{byName[x.name]=x;if(x.legacyName)byName[x.legacyName]=x});
-  $$('#ranking .product.product-redesign').forEach(card=>{
-   const el=card.querySelector('.name');if(!el)return;
-   const n=[...el.childNodes].filter(x=>x.nodeType===3).map(x=>x.textContent).join('').trim()||el.textContent.replace(/[★☆]/g,'').trim();
-   const p=byName[n];if(!p)return;card.dataset.productId=p.id;if(p.legacyName&&p.name!==n){const tn=[...el.childNodes].find(x=>x.nodeType===3);if(tn)tn.textContent=p.name+' ';}
-   const thumb=card.querySelector('.thumb');if(thumb&&p.image&&!thumb.querySelector('img')){thumb.classList.add('product-photo');thumb.innerHTML='<img src="'+p.image+'" alt="'+p.name+'" loading="lazy" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\')">'}
-  });
-  document.addEventListener('click',e=>{
-   const b=e.target.closest('[data-time-filter]');if(!b)return;const key=b.dataset.timeFilter,hrs=hours[key];if(!hrs)return;
-   const now=Date.now(),target=now-hrs*3600000,snaps=(td.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
-   const old=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target),note=$('.time-note');
-   if(!note)return;
-   if(!old){note.innerHTML='<b>'+b.querySelector('b').textContent+'</b> · 데이터 누적 중 — 해당 시점의 실제 스냅샷이 아직 없습니다.';return}
-   const cur=snaps[snaps.length-1],om=Object.fromEntries(old.ranking.map(x=>[x.id,x.rank]));
-   note.innerHTML='<b>'+b.querySelector('b').textContent+'</b><div class="trend-compare">'+cur.ranking.map(x=>{const p=pd.products.find(y=>y.id===x.id),o=om[x.id],d=o?o-x.rank:null,st=o==null?'NEW':d>0?'▲ '+d:d<0?'▼ '+Math.abs(d):'－ 유지';return '<span><strong>'+x.rank+'</strong> '+(p?p.name:x.id)+' <em>'+st+'</em></span>'}).join('')+'</div>';
-  });
- }catch(err){console.warn('MOZZIPICK data layer fallback',err)}
-})();
-</script><script>
 /* MOZZIPICK FAVORITES v4 */
 (function(){
 const K='mozzipick_favorites_v1';let rp=1,lp=1;
@@ -629,7 +603,10 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'')+'</b> · 실제 저장 시각 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+(snap.ranking||[]).length+'개</div><div class="time-snapshot-list">'+rows+'</div>';
   }catch(e){host.innerHTML='<div class="time-note">시간별 데이터를 불러오지 못했습니다.</div>'}
  }
- window.addEventListener('mozzipick-time-default',()=>{});document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();show(b)},true);
+ window.addEventListener('mozzipick-time-default',()=>{});
+ const activate=e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)};
+ document.addEventListener('click',activate,true);
+ document.addEventListener('touchend',activate,{capture:true,passive:false});
 
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#timeSnapshotResults .time-product-detail');if(!b)return;e.preventDefault();const id=b.dataset.productId;const c=[...document.querySelectorAll('#ranking .product[data-product-id]')].find(x=>x.dataset.productId===id);if(c){c.click();return}fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(!p)return;const m=document.getElementById('productDetailModal');if(!m)return;const n=document.getElementById('detailName'),meta=document.getElementById('detailMeta');if(n)n.textContent=p.name||id;if(meta)meta.innerHTML='<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인');m.style.display='block';})},true);
 })();
