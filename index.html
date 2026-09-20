@@ -590,12 +590,21 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   const set=(id,html)=>{const e=document.getElementById(id);if(e)e.innerHTML=html};
   set('detailName',esc(p.name));
   set('detailMeta','<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인'));
-  set('detailKeywords','');
+  set('detailKeywords','<div style="font-size:11px;font-weight:900;color:#667085;margin-bottom:6px">샤오홍슈 검색 단어</div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><code style="background:#f5f7fa;border:1px solid #e4e7ec;border-radius:9px;padding:8px 10px;font-size:12px">'+esc(p.xiaohongshuQuery||'미확인')+'</code>'+(p.xiaohongshuQuery?'<button type="button" class="detail-copy-xhs" data-copy="'+esc(p.xiaohongshuQuery)+'" style="border:1px solid #d8e5f7;background:#f3f8ff;color:#175cd3;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:900;cursor:pointer">복사</button>':'')+'</div>');
   let links='';if(p.officialUrl)links+='<a href="'+esc(p.officialUrl)+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';else links+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
   set('detailLinks',links);
   set('detailPrice','<b>가격</b><div style="margin-top:4px;font-weight:900">'+esc(p.price||'미확인')+'</div><div style="margin-top:5px;font-size:10px;color:#667085">쿠팡 '+esc(p.coupangPrice||'미확인')+' · 리뷰 '+esc(p.reviews||'미확인')+'</div>');
   set('detailMarket','검증 상태 · '+esc(p.status||'미확인'));
-  set('detailStores','');set('detailStorePrices','');set('detailPros','검증 리뷰 수집 예정');set('detailCons','검증 리뷰 수집 예정');
+  let stores='';
+  const storeBtn=(label,url,ok)=>ok?'<a href="'+esc(url)+'" target="_blank" rel="noopener" style="border:1px solid #dbeafe;background:#f8fbff;color:#175cd3;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:900;text-decoration:none">'+label+' 판매 확인 · 바로가기 ↗</a>':'<span style="border:1px solid #e4e7ec;background:#f8f9fb;color:#98a2b3;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:800">'+label+' 미확인</span>';
+  stores+=storeBtn('공식몰',p.officialUrl,!!p.officialUrl);
+  stores+=storeBtn('쿠팡',p.coupangUrl,!!p.coupangUrl);
+  stores+=storeBtn('Instagram',p.instagramUrl,!!p.instagramUrl);
+  stores+=storeBtn('TikTok',p.tiktokUrl,!!p.tiktokUrl);
+  stores+=storeBtn('YouTube',p.youtubeUrl,!!p.youtubeUrl);
+  stores+=storeBtn('샤오홍슈',p.xiaohongshuUrl,!!p.xiaohongshuUrl);
+  set('detailStores',stores);
+  set('detailStorePrices','<div style="font-size:11px;line-height:1.8;color:#667085"><b>공식 가격</b> '+esc(p.price||'미확인')+' · <b>쿠팡 가격</b> '+esc(p.coupangPrice||'미확인')+'</div>');set('detailPros','검증 리뷰 수집 예정');set('detailCons','검증 리뷰 수집 예정');
   m.style.display='block';
  }
  document.addEventListener('click',e=>{
@@ -661,4 +670,4 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},true);
  document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},{capture:true,passive:false});
 })();
-</script></body></html>
+</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script></body></html>
