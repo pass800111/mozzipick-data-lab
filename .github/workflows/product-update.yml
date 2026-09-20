@@ -16,30 +16,83 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate product data and refresh ranks
+      - name: Validate all product data, Coupang grades and KST timestamps
         run: |
           python - <<'PY'
-          import json, datetime
-          p='data/products.json'
-          with open(p,encoding='utf-8') as f: d=json.load(f)
-          products=d.get('products',[])
+          import json, datetime, re
+          from zoneinfo import ZoneInfo
+
+          path='data/products.json'
+          with open(path,encoding='utf-8') as f:
+              data=json.load(f)
+          products=data.get('products',[])
           seen=set()
-          required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
-          coupang_fields={'coupangMatchGrade':'미확인','coupangMatchType':'미확인','coupangMatchedProduct':'미확인','coupangUrl':'미확인','coupangVerifiedAt':'미확인'}
-          now=datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z')
           clean=[]
+          kst=ZoneInfo('Asia/Seoul')
+          now=datetime.datetime.now(kst).replace(microsecond=0).isoformat()
+          required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
+
+          def valid_coupang_url(v):
+              if not isinstance(v,str): return False
+              v=v.strip()
+              return bool(re.match(r'^https://([a-z0-9-]+\.)*coupang\.com/',v,re.I))
+
+          downgraded=[]
           for x in products:
-              if not x.get('id') or x['id'] in seen: continue
-              seen.add(x['id'])
-              for k in required:
-                  if not x.get(k): x[k]='미확인'
+              pid=x.get('id')
+              if not pid or pid in seen:
+                  continue
+              seen.add(pid)
+              for key in required:
+                  if not x.get(key): x[key]='미확인'
+
+              grade=x.get('grade') or x.get('coupangGroup') or x.get('coupangMatchGrade') or 'D'
+              grade=str(grade).upper()
+              url=x.get('coupangUrl')
+
+              # A/B/C are allowed only when an actual Coupang destination URL exists.
+              if grade in ('A','B','C') and not valid_coupang_url(url):
+                  downgraded.append((pid,grade))
+                  grade='D'
+                  x['coupangMatchType']='미확인'
+                  x['coupangMatchedProduct']='미확인'
+                  x['coupangUrl']='미확인'
+                  x['coupangVerifiedAt']='미확인'
+                  x['coupangValidationNote']='쿠팡 실제 URL 미확보로 D 자동 재분류'
+              elif grade in ('A','B','C'):
+                  x['coupangVerifiedAt']=x.get('coupangVerifiedAt') if x.get('coupangVerifiedAt') not in (None,'') else now
+                  x['coupangValidationNote']='쿠팡 URL 보유 · 매칭 등급 유지'
+              else:
+                  grade='D'
+
+              x['grade']=grade
+              x['coupangGroup']=grade
+              # Legacy field is synchronized only as fallback compatibility.
+              x['coupangMatchGrade']=grade
               clean.append(x)
+
           clean.sort(key=lambda x:x.get('siteUpdatedAt',''),reverse=True)
-          for i,x in enumerate(clean,1): x['rank']=i
-          d['products']=clean
-          d['updatedAt']=now
-          with open(p,'w',encoding='utf-8') as f: json.dump(d,f,ensure_ascii=False,indent=2)
-          print('validated',len(clean),'products')
+          for i,x in enumerate(clean,1):
+              x['rank']=i
+
+          new=[x for x in clean if x.get('newCandidate')]
+          counts={g:sum(1 for x in new if x.get('grade')==g) for g in 'ABCD'}
+          total_counts={g:sum(1 for x in clean if x.get('grade')==g) for g in 'ABCD'}
+
+          data['products']=clean
+          data['updatedAt']=now
+          data['lastValidationAt']=now
+          data['newCandidateGradeCounts']=counts
+          data['gradeCounts']=total_counts
+          data['validationSummary']={
+              'newCandidateCount':len(new),
+              'newGradeTotal':sum(counts.values()),
+              'coupangMissingLinkDowngraded':len(downgraded),
+              'rule':'A/B/C require a real coupang.com URL; otherwise D'
+          }
+          with open(path,'w',encoding='utf-8') as f:
+              json.dump(data,f,ensure_ascii=False,indent=2)
+          print('validated',len(clean),'products; new',len(new),'counts',counts,'downgraded',len(downgraded),'at',now)
           PY
       - name: Commit data changes
         run: |
@@ -47,5 +100,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/products.json
           git diff --cached --quiet && exit 0
-          git commit -m "data: hourly product validation refresh"
+          git commit -m "data: hourly full product validation refresh"
           git push
