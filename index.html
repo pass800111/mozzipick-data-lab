@@ -595,9 +595,9 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  async function show(btn){
   const box=panel();if(!box)return;
   let host=box.querySelector('.time-inline-results[data-time-results="'+btn.dataset.timeFilter+'"]');if(!host){host=document.createElement('div');host.className='time-inline-results';host.dataset.timeResults=btn.dataset.timeFilter;btn.insertAdjacentElement('afterend',host)}
-  if(btn.classList.contains('active')&&host.innerHTML.trim()){btn.classList.remove('active');host.innerHTML='';return}
+  if(host.dataset.open==='1'){host.dataset.open='0';host.innerHTML='';btn.classList.remove('active');return}host.dataset.open='1';
   box.querySelectorAll('[data-time-filter]').forEach(x=>x.classList.toggle('active',x===btn));
-  box.querySelectorAll('.time-inline-results').forEach(x=>{if(x!==host)x.innerHTML=''});
+  box.querySelectorAll('.time-inline-results').forEach(x=>{if(x!==host){x.innerHTML='';x.dataset.open='0'}});
   host.innerHTML='<div class="time-note">실제 저장된 데이터를 확인 중입니다.</div>';
   try{
    const {t,p}=await data(), snaps=(t.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at)), want=Date.now()-targetMs(btn.dataset.timeFilter);
