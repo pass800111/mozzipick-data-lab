@@ -566,7 +566,13 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productId=p.id||'';a.dataset.liveJson='1';
   const img=p.image?'<div class="thumb product-photo"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\');this.parentElement.classList.add(\'product-noimage\');this.parentElement.innerHTML=\'<span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small>\'"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
   const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
-  const ch=Number(p.rankChange||0), move=p.isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+Math.abs(ch)+'단계 상승</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';
+  let ch=Number(p.rankChange||0), isNew=!!p.isNew;
+  if(!p.rankChange&&!p.isNew&&window.MOZZIPICK_TRENDS?.snapshots?.length>1){
+   const ss=window.MOZZIPICK_TRENDS.snapshots.slice().sort((x,y)=>new Date(x.at)-new Date(y.at)),cur=ss[ss.length-1],prev=ss[ss.length-2];
+   const cr=(cur.ranking||[]).find(x=>x.id===p.id),pr=(prev.ranking||[]).find(x=>x.id===p.id);
+   if(cr&&!pr)isNew=true; else if(cr&&pr)ch=pr.rank-cr.rank;
+  }
+  const move=isNew?'<b style="color:#175cd3">NEW</b>':ch>0?'<b style="color:#d92d20">▲ '+Math.abs(ch)+'단계 상승</b>':ch<0?'<b style="color:#1570ef">▼ '+Math.abs(ch)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';
   a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">RANK '+move+'<b>'+(p.score!=null?esc(p.score)+'점':'자동 갱신')+'</b></div>';
   a._product=p; return a;
  }
@@ -685,21 +691,4 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},true);
  document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},{capture:true,passive:false});
 })();
-</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script><script>/* RANK MOVEMENT FALLBACK v1 */
-(function(){
- function apply(){
-  const snaps=(window.MOZZIPICK_TRENDS?.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
-  if(snaps.length<2)return;
-  const prev=snaps[snaps.length-2], cur=snaps[snaps.length-1];
-  const pm=new Map((prev.ranking||[]).map(x=>[x.id,x.rank]));
-  const cm=new Map((cur.ranking||[]).map(x=>[x.id,x.rank]));
-  document.querySelectorAll('#ranking article[data-product-id]').forEach(c=>{
-   const id=c.dataset.productId,n=cm.get(id),o=pm.get(id); if(n==null)return;
-   const d=o==null?null:o-n;
-   const html=o==null?'<b style="color:#175cd3">NEW</b>':d>0?'<b style="color:#d92d20">▲ '+d+'단계 상승</b>':d<0?'<b style="color:#1570ef">▼ '+Math.abs(d)+'단계 하락</b>':'<b style="color:#98a2b3">― 변동없음</b>';
-   const t=c.querySelector('.trend'); if(t)t.innerHTML='RANK '+html+'<b>자동 갱신</b>';
-  });
- }
- window.addEventListener('load',()=>setTimeout(apply,900));
-})();
-</script></body></html>
+</script><script>/* DETAIL XHS COPY FIX v1 */document.addEventListener('click',async function(e){const b=e.target.closest&&e.target.closest('.detail-copy-xhs');if(!b)return;e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='복사됨';setTimeout(()=>b.textContent=t,900)}catch(x){const a=document.createElement('textarea');a.value=b.dataset.copy;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}},true);</script></body></html>
