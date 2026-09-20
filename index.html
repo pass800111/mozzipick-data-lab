@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
  function fmtSiteDate(v){if(!v)return '미확인';try{return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch(e){return v}}
  function card(p){
-  const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productGrade=p.coupangMatchGrade||p.grade||p.coupangGroup||'D';a.dataset.productId=p.id||'';a.dataset.liveJson='1';
+  const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productGrade=p.grade||p.coupangGroup||p.coupangMatchGrade||'D';a.dataset.productId=p.id||'';a.dataset.liveJson='1';
   const img=p.image?'<div class="thumb product-photo"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\');this.parentElement.classList.add(\'product-noimage\');this.parentElement.innerHTML=\'<span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small>\'"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
   const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
   let ch=Number(p.rankChange||0), isNew=!!p.isNew;
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    const snap=snaps.length?[...snaps].sort((a,b)=>Math.abs(new Date(a.at).getTime()-target)-Math.abs(new Date(b.at).getTime()-target))[0]:null;
    if(snap){const pos=new Map((snap.ranking||[]).map(x=>[x.id||x.name,x.rank]));arr=arr.filter(p=>pos.has(p.id)||pos.has(p.name)).map(p=>({...p,rank:pos.get(p.id)||pos.get(p.name)}));}
   }
-  if(category!=='전체')arr=arr.filter(p=>(p.coupangMatchGrade||p.grade||p.coupangGroup||'D')===category);
+  if(category!=='전체')arr=arr.filter(p=>(p.grade||p.coupangGroup||p.coupangMatchGrade||'D')===category);
   /* 실시간 홈은 최신 업데이트에서 새로 들어온 상품을 첫 페이지에 우선 노출.
      시간별 조회는 해당 시점의 실제 순위를 그대로 유지한다. */
   if(hours==='0'){
@@ -593,7 +593,7 @@ document.addEventListener('toggle',async e=>{const d=e.target;if(!d.matches?.('.
   const d=e.target;if(!d.matches?.('#menuDataView details.grade-acc')||!d.open)return;
   document.querySelectorAll('#menuDataView details.grade-acc[open]').forEach(x=>{if(x!==d)x.removeAttribute('open')});
   const body=d.querySelector('.grade-acc-body');body.innerHTML='<div class="time-note">상품 확인 중...</div>';
-  try{const data=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());const grade=d.dataset.grade,all=(data.products||[]).filter(p=>(p.coupangMatchGrade||'D')===grade);draw(body,all,1)}catch(x){body.innerHTML='<div class="time-note">상품을 불러오지 못했습니다.</div>'}
+  try{const data=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());const grade=d.dataset.grade,all=(data.products||[]).filter(p=>(p.grade||p.coupangGroup||p.coupangMatchGrade||'D')===grade);draw(body,all,1)}catch(x){body.innerHTML='<div class="time-note">상품을 불러오지 못했습니다.</div>'}
  },true);
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-grade-page]');if(!b)return;e.preventDefault();e.stopPropagation();const body=b.closest('.grade-acc-body');if(body&&body._gradeProducts)draw(body,body._gradeProducts,Number(b.dataset.gradePage))},true);
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.native-grade-product');if(!b)return;e.preventDefault();e.stopPropagation();const id=b.dataset.productId;fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{const p=(d.products||[]).find(x=>x.id===id);if(p&&window.MOZZIPICK_OPEN_PRODUCT_DETAIL)window.MOZZIPICK_OPEN_PRODUCT_DETAIL(p)})},true);
