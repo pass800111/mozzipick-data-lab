@@ -59,17 +59,7 @@ document.addEventListener('DOMContentLoaded',function(){
      const words=Array.from(card.querySelectorAll('.rec-word')).map(x=>x.getAttribute('data-copy')).filter(Boolean);
      detailKeywords.innerHTML=words.length?'<b style="font-size:12px">샤오홍슈 추천단어</b><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">'+words.map(w=>'<button type="button" class="copy-cn" data-copy="'+w+'" style="border:1px solid #e3e7ee;background:#f7f8fa;border-radius:999px;padding:5px 9px;font-size:10px;cursor:pointer">'+w+'</button>').join('')+'</div>':'';
    }
-   if(detailLinks){
-     const anchors=Array.from(card.querySelectorAll('a'));
-     const official=anchors.find(a=>/공식/.test(a.textContent));
-     const coupang=anchors.find(a=>/쿠팡/.test(a.textContent)||/coupang\.com/.test(a.href));
-     let html='';
-     if(coupang) html+='<a href="'+coupang.href+'" target="_blank" rel="noopener" style="background:#111827;color:white;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">쿠팡 바로가기 ↗</a>';
-     else html+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">쿠팡 미확인</span>';
-     if(official) html+='<a href="'+official.href+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';
-     else html+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
-     detailLinks.innerHTML=html;
-   }
+   if(detailLinks) detailLinks.innerHTML='';
    
    if(detailPros&&detailCons){
      const name=(card.querySelector('.name')||{}).textContent||'';
@@ -220,26 +210,7 @@ const reviewData={
      const detailCuts=document.getElementById('detailCuts');
      if(detailCuts) detailCuts.innerHTML=(vd&&vd.cuts)?vd.cuts.map(x=>'• '+x).join('<br>'):'제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.';
    }
-   if(detailStores){
-     const anchors=Array.from(card.querySelectorAll('a'));
-     const stores=[
-       ['쿠팡',a=>/쿠팡/.test(a.textContent)||/coupang\.com/.test(a.href)],
-       ['네이버',a=>/네이버/.test(a.textContent)||/naver\.com/.test(a.href)],
-       ['11번가',a=>/11번가/.test(a.textContent)||/11st\.co\.kr/.test(a.href)],
-       ['G마켓',a=>/G마켓|지마켓/.test(a.textContent)||/gmarket\.co\.kr/.test(a.href)],
-       ['옥션',a=>/옥션/.test(a.textContent)||/auction\.co\.kr/.test(a.href)],
-       ['Amazon',a=>/Amazon|아마존/.test(a.textContent)||/amazon\./.test(a.href)],
-       ['AliExpress',a=>/AliExpress|알리/.test(a.textContent)||/aliexpress\.com/.test(a.href)]
-     ];
-     const official=anchors.find(a=>/공식/.test(a.textContent));
-     let out='';
-     stores.forEach(([label,test])=>{
-       const a=anchors.find(test);
-       out+=a?'<a href="'+a.href+'" target="_blank" rel="noopener" style="border:1px solid #d0d5dd;background:#fff;color:#344054;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:800;text-decoration:none">'+label+' ✓ ↗</a>':'<span style="border:1px solid #eaecf0;background:#f9fafb;color:#98a2b3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:700">'+label+' 미확인</span>';
-     });
-     out+=official?'<a href="'+official.href+'" target="_blank" rel="noopener" style="border:1px solid #b2ddff;background:#eff8ff;color:#175cd3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:800;text-decoration:none">공식몰 ✓ ↗</a>':'<span style="border:1px solid #eaecf0;background:#f9fafb;color:#98a2b3;padding:7px 10px;border-radius:9px;font-size:10px;font-weight:700">공식몰 미확인</span>';
-     detailStores.innerHTML=out;
-   }
+   if(detailStores) detailStores.innerHTML='';
    if(modal) modal.style.display='block';
  }
  cards.forEach(card=>{
