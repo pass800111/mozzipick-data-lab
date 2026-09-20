@@ -29,7 +29,7 @@
     <article><b>Roborock Qrevo Edge 3 Pro</b><small>공식 제품 확인</small><strong>제품 페이지 검증</strong><em>Roborock 공식</em></article>
   </div>
   <p class="dq-note">※ 시간별 순위 변화는 실제 시점별 스냅샷이 누적된 뒤 표시합니다. 현재 존재하지 않는 과거 수치는 생성하지 않습니다.</p>
-</section></main></div><footer><button class="on">⌁<span>홈</span></button><button>▦<span>카테고리</span></button><button>✦<span>바이럴</span></button><button>♡<span>즐겨찾기</span></button></footer><script>
+</section></main></div><footer><button class="on" data-mobile-view="home">⌁<span>홈</span></button><button data-mobile-view="categories">▦<span>카테고리</span></button><button data-mobile-view="viral">✦<span>바이럴</span></button><button data-mobile-view="favorites">♡<span>즐겨찾기</span></button></footer><script>
 document.addEventListener('DOMContentLoaded',function(){
  const buttons=Array.from(document.querySelectorAll('.chips [data-category]'));
  const cards=Array.from(document.querySelectorAll('#ranking article.product'));
@@ -613,5 +613,26 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   }catch(e){console.error('[MOZZIPICK V1 live]',e)}
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
+})();
+</script><script>
+/* MOBILE BOTTOM NAV FIX v1 — behavior only; V1 layout/design unchanged */
+(function(){
+ function side(v){return document.querySelector('.side nav button[data-view="'+v+'"]')}
+ function sync(v){document.querySelectorAll('footer button[data-mobile-view]').forEach(b=>b.classList.toggle('on',b.dataset.mobileView===v))}
+ function go(v){
+   const target=side(v); if(target){target.click();sync(v);window.scrollTo({top:0,behavior:'smooth'});}
+ }
+ function act(e){
+   const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
+   e.preventDefault();e.stopPropagation();go(b.dataset.mobileView);
+ }
+ document.addEventListener('click',act,true);
+ document.addEventListener('touchend',function(e){
+   const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
+   e.preventDefault();e.stopPropagation();go(b.dataset.mobileView);
+ },{capture:true,passive:false});
+ document.addEventListener('click',function(e){
+   const b=e.target.closest&&e.target.closest('.side nav button[data-view]');if(b)sync(b.dataset.view);
+ },true);
 })();
 </script></body></html>
