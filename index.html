@@ -601,6 +601,6 @@ document.addEventListener('click',function(e){const b=e.target.closest&&e.target
 </script><script>
 /* HOME PERIOD ACCORDION v2 — single owner */
 (function(){const bar=document.querySelector('.controls .period');if(!bar)return;let open='';
-bar.addEventListener('click',function(e){const b=e.target.closest('[data-hours]');if(!b)return;e.preventDefault();e.stopPropagation();const h=b.dataset.hours,next=(h!=='0'&&open===h)?'0':h;open=next==='0'?'':next;bar.querySelectorAll('[data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours===next));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:next}}));},false);
+bar.addEventListener('click',function(e){const b=e.target.closest('[data-hours]');if(!b)return;e.preventDefault();e.stopPropagation();const h=b.dataset.hours,next=(h!=='0'&&open===h)?'0':h;open=next==='0'?'':next;bar.querySelectorAll('[data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours===next));const home=document.querySelector('.side nav [data-view="home"]');if(typeof window.MOZZIPICK_MENU_RENDER==='function')window.MOZZIPICK_MENU_RENDER('home');if(home)document.querySelectorAll('.side nav [data-view]').forEach(x=>x.classList.toggle('on',x===home));document.querySelectorAll('footer button[data-mobile-view]').forEach(x=>x.classList.toggle('on',x.dataset.mobileView==='home'));window.dispatchEvent(new CustomEvent('mozzipick-home-hours',{detail:{hours:next}}));},false);
 })();
 </script></body></html>
