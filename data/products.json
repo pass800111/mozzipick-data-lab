@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T07:02:08+09:00",
+  "updatedAt": "2026-09-21T07:10:01+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -35,7 +35,7 @@
       "reviewSummary": "쿠팡 공개 상품 페이지에서 동일 모델 A110A와 상품평 수를 확인했습니다.",
       "reviewSource": "쿠팡 공개 상품 페이지",
       "reviewVerifiedAt": "2026-09-21T07:02:08+09:00",
-      "coupangValidationNote": "쿠팡 실제 상품 상세 URL 검증 완료",
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A"
     },
@@ -65,7 +65,7 @@
       "coupangUrl": "https://www.coupang.com/vp/products/9312466102",
       "coupangVerifiedAt": "2026-09-21T07:02:08+09:00",
       "coupangEligible": true,
-      "coupangValidationNote": "쿠팡 실제 상품 상세 URL 검증 완료",
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A"
     },
@@ -95,7 +95,7 @@
       "coupangUrl": "https://www.coupang.com/vp/products/9213038854",
       "coupangVerifiedAt": "2026-09-21T07:02:08+09:00",
       "coupangEligible": true,
-      "coupangValidationNote": "쿠팡 실제 상품 상세 URL 검증 완료 · 공개 페이지 상품평 100개",
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A"
     },
@@ -125,19 +125,28 @@
       "coupangUrl": "https://www.coupang.com/vp/products/9254566420",
       "coupangVerifiedAt": "2026-09-21T07:02:08+09:00",
       "coupangEligible": true,
-      "coupangValidationNote": "쿠팡 실제 상품 상세 URL 검증 완료 · 공개 페이지 상품평 445개",
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "B",
       "coupangGroup": "B"
     }
   ],
-  "lastValidationAt": "2026-09-21T07:02:08+09:00",
-  "newCandidateGradeCounts": {"A": 0, "B": 0, "C": 0, "D": 0},
-  "gradeCounts": {"A": 3, "B": 1, "C": 0, "D": 0},
+  "lastValidationAt": "2026-09-21T07:10:01+09:00",
+  "newCandidateGradeCounts": {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 0
+  },
+  "gradeCounts": {
+    "A": 3,
+    "B": 1,
+    "C": 0,
+    "D": 0
+  },
   "validationSummary": {
     "newCandidateCount": 0,
     "newGradeTotal": 0,
-    "coupangLinksCorrected": 2,
-    "invalidEntriesRemoved": 2,
-    "rule": "A/B/C require a verified Coupang product-detail URL; search/store/landing URLs are not eligible"
+    "coupangMissingLinkDowngraded": 0,
+    "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
 }
