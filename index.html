@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   const cb=e.target.closest&&e.target.closest('.chips [data-category]');if(cb){category=cb.dataset.category;page=1;setTimeout(render,0);return}
   const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){
    e.preventDefault();
-   const same=hb.classList.contains('on')&&hours===hb.dataset.hours&&hours!=='0';
+   const same=hours===hb.dataset.hours&&hours!=='0';
    if(same){hours='0';document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x.dataset.hours==='0'))}
    else{hours=hb.dataset.hours;document.querySelectorAll('.period [data-hours]').forEach(x=>x.classList.toggle('on',x===hb))}
    page=1;render();
