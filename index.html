@@ -584,6 +584,18 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    if(snap){const pos=new Map((snap.ranking||[]).map(x=>[x.id||x.name,x.rank]));arr=arr.filter(p=>pos.has(p.id)||pos.has(p.name)).map(p=>({...p,rank:pos.get(p.id)||pos.get(p.name)}));}
   }
   if(category!=='전체')arr=arr.filter(p=>p.category===category);
+  /* 실시간 홈은 최신 업데이트에서 새로 들어온 상품을 첫 페이지에 우선 노출.
+     시간별 조회는 해당 시점의 실제 순위를 그대로 유지한다. */
+  if(hours==='0'){
+   const snaps=(window.MOZZIPICK_TRENDS?.snapshots||[]).slice().sort((x,y)=>new Date(x.at)-new Date(y.at));
+   const prev=snaps.length>1?snaps[snaps.length-2]:null, oldIds=new Set((prev?.ranking||[]).map(x=>x.id||x.name));
+   arr.sort((a,b)=>{
+    const an=!oldIds.has(a.id||a.name),bn=!oldIds.has(b.id||b.name);
+    if(an!==bn)return an?-1:1;
+    return (a.rank||999)-(b.rank||999);
+   });
+   return arr;
+  }
   return arr.sort((a,b)=>(a.rank||999)-(b.rank||999));
  }
  function render(){
