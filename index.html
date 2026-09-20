@@ -550,4 +550,68 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   const stat=document.querySelector('.heroStats article:first-child b');if(stat)stat.textContent=count;
  }catch(e){console.error('[MOZZIPICK products sync]',e)}
 })();
+</script><style>
+/* V1 pagination: visual structure unchanged; only visibility/navigation is added */
+#mozzipickPager{display:flex;justify-content:center;align-items:center;gap:6px;margin:14px 0 22px;flex-wrap:wrap}
+#mozzipickPager button{border:1px solid #dfe6ef;background:#fff;border-radius:9px;min-width:34px;height:34px;padding:0 9px;font-size:11px;font-weight:900;cursor:pointer}
+#mozzipickPager button.on{background:#111827;color:#fff;border-color:#111827}
+</style><script>
+/* V1 JSON LIVE RANK + DETAIL + PAGING v1 */
+(function(){
+ const PAGE_SIZE=5; let page=1, category='전체', hours='0', products=[];
+ const ranking=()=>document.getElementById('ranking');
+ const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ function card(p){
+  const a=document.createElement('article');a.className='product product-redesign';a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label','제품 상세 보기');a.dataset.productCategory=p.category||'기타';a.dataset.productId=p.id||'';a.dataset.liveJson='1';
+  const img=p.image?'<div class="thumb product-photo"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.remove();this.parentElement.classList.remove(\'product-photo\');this.parentElement.classList.add(\'product-noimage\');this.parentElement.innerHTML=\'<span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small>\'"></div>':'<div class="thumb product-noimage"><span>MOZZIPICK</span><b>PRODUCT</b><small>전자기기 트렌드</small></div>';
+  const tags=(p.spec||'').split('·').map(x=>x.trim()).filter(Boolean).slice(0,4).map(x=>'<span class="tag">'+esc(x)+'</span>').join('');
+  a.innerHTML='<div class="rank">'+esc(p.rank||'')+'</div>'+img+'<div><div class="name">'+esc(p.name)+'</div><div style="font-size:10px;line-height:1.55;color:#7b8494;margin-top:3px">CN <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span></div><div class="meta">'+esc(p.category||'기타')+' · '+esc(p.release||'미확인')+'</div><div class="status">'+tags+'</div></div><div class="mini"></div><div class="trend">TRACK<b>자동 갱신</b></div>';
+  a._product=p; return a;
+ }
+ function currentList(){
+  let arr=products.slice();
+  if(hours!=='0'&&window.MOZZIPICK_TRENDS?.snapshots?.length){
+   const target=Date.now()-Number(hours)*3600000, snaps=window.MOZZIPICK_TRENDS.snapshots.slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
+   const snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=target);
+   if(snap){const pos=new Map((snap.ranking||[]).map(x=>[x.id||x.name,x.rank]));arr=arr.filter(p=>pos.has(p.id)||pos.has(p.name)).map(p=>({...p,rank:pos.get(p.id)||pos.get(p.name)}));}
+  }
+  if(category!=='전체')arr=arr.filter(p=>p.category===category);
+  return arr.sort((a,b)=>(a.rank||999)-(b.rank||999));
+ }
+ function render(){
+  const r=ranking();if(!r)return;const arr=currentList(),pages=Math.max(1,Math.ceil(arr.length/PAGE_SIZE));page=Math.min(page,pages);
+  r.innerHTML='';arr.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).forEach(p=>r.appendChild(card(p)));
+  let pg=document.getElementById('mozzipickPager');if(!pg){pg=document.createElement('div');pg.id='mozzipickPager';r.insertAdjacentElement('afterend',pg);}
+  pg.innerHTML='';for(let i=1;i<=pages;i++){const b=document.createElement('button');b.type='button';b.textContent=i;b.className=i===page?'on':'';b.onclick=()=>{page=i;render();r.scrollIntoView({behavior:'smooth',block:'start'})};pg.appendChild(b)}
+  const stat=document.querySelector('.heroStats article:first-child b');if(stat)stat.textContent=arr.length;
+ }
+ function open(p){
+  const m=document.getElementById('productDetailModal');if(!m)return;
+  const set=(id,html)=>{const e=document.getElementById(id);if(e)e.innerHTML=html};
+  set('detailName',esc(p.name));
+  set('detailMeta','<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인'));
+  set('detailKeywords','');
+  let links='';if(p.officialUrl)links+='<a href="'+esc(p.officialUrl)+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';else links+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
+  set('detailLinks',links);
+  set('detailPrice','<b>가격</b><div style="margin-top:4px;font-weight:900">'+esc(p.price||'미확인')+'</div><div style="margin-top:5px;font-size:10px;color:#667085">쿠팡 '+esc(p.coupangPrice||'미확인')+' · 리뷰 '+esc(p.reviews||'미확인')+'</div>');
+  set('detailMarket','검증 상태 · '+esc(p.status||'미확인'));
+  set('detailStores','');set('detailStorePrices','');set('detailPros','검증 리뷰 수집 예정');set('detailCons','검증 리뷰 수집 예정');
+  m.style.display='block';
+ }
+ document.addEventListener('click',e=>{
+  const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&!e.target.closest('a,button')){e.preventDefault();open(c._product);return}
+  const cb=e.target.closest&&e.target.closest('.chips [data-category]');if(cb){category=cb.dataset.category;page=1;setTimeout(render,0);return}
+  const hb=e.target.closest&&e.target.closest('.period [data-hours]');if(hb){hours=hb.dataset.hours;page=1;setTimeout(render,0)}
+ },true);
+ document.addEventListener('keydown',e=>{const c=e.target.closest&&e.target.closest('#ranking .product[data-live-json="1"]');if(c&&e.key==='Enter')open(c._product)},true);
+ async function load(){
+  try{
+   const [pr,tr]=await Promise.all([fetch('data/products.json?v='+Date.now(),{cache:'no-store'}),fetch('data/trend-snapshots.json?v='+Date.now(),{cache:'no-store'})]);
+   if(!pr.ok)throw new Error('products '+pr.status);const pd=await pr.json();products=Array.isArray(pd.products)?pd.products:[];
+   if(tr.ok)window.MOZZIPICK_TRENDS=await tr.json();
+   render();
+  }catch(e){console.error('[MOZZIPICK V1 live]',e)}
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
+})();
 </script></body></html>
