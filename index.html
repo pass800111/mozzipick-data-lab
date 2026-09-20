@@ -592,15 +592,15 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
   set('detailMeta','<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인'));
   const xhs=p.xiaohongshuQuery||'';
   const base=xhs||p.name||'';
-  const core=(p.name||base).replace(/[0-9]+(?:W|mAh|K)?/gi,'').replace(/[()\/·-]/g,' ').replace(/\s+/g,' ').trim();
   const cat=String(p.category||'');
-  const rec=cat.includes('충전')?[core+' 大功率充电宝',core+' 快充移动电源',core+' 数显充电宝']:
-    cat.includes('오디오')?[core+' 降噪耳机',core+' 无线耳机推荐',core+' 耳机实测']:
-    cat.includes('청소')||cat.includes('생활가전')?[core+' 扫地机器人',core+' 智能清洁家电',core+' 清洁机器人测评']:
-    cat.includes('자동차')?[core+' 车载电子产品',core+' 汽车数码好物',core+' 车载设备测评']:
-    cat.includes('카메라')?[core+' 数码相机',core+' 创作者设备',core+' 相机实测']:
-    cat.includes('모바일')?[core+' 手机数码好物',core+' 手机配件',core+' 数码新品']:
-    [core+' 数码新品',core+' 科技好物',core+' 产品实测'];
+  const brand=(xhs.match(/^[A-Za-z0-9]+|^[\u4e00-\u9fff]{2,6}/)||[])[0]||'';
+  const rec=cat.includes('충전')?[(brand?brand+' ':'')+'大功率充电宝',(brand?brand+' ':'')+'快充移动电源',(brand?brand+' ':'')+'数显充电宝']:
+    cat.includes('오디오')?[(brand?brand+' ':'')+'降噪耳机',(brand?brand+' ':'')+'无线耳机推荐',(brand?brand+' ':'')+'耳机实测']:
+    cat.includes('청소')||cat.includes('생활가전')?[(brand?brand+' ':'')+'扫地机器人',(brand?brand+' ':'')+'智能清洁家电',(brand?brand+' ':'')+'清洁机器人测评']:
+    cat.includes('자동차')?[(brand?brand+' ':'')+'车载电子产品',(brand?brand+' ':'')+'汽车数码好物',(brand?brand+' ':'')+'车载设备测评']:
+    cat.includes('카메라')?[(brand?brand+' ':'')+'数码相机',(brand?brand+' ':'')+'创作者设备',(brand?brand+' ':'')+'相机实测']:
+    cat.includes('모바일')?[(brand?brand+' ':'')+'手机数码好物',(brand?brand+' ':'')+'手机配件',(brand?brand+' ':'')+'数码新品']:
+    [(brand?brand+' ':'')+'数码新品',(brand?brand+' ':'')+'科技好物',(brand?brand+' ':'')+'产品实测'];
   const kwRow=(label,val)=>'<div style="display:flex;align-items:center;gap:7px;margin-top:7px"><span style="width:48px;font-size:10px;font-weight:900;color:#667085">'+label+'</span><code style="flex:1;background:#f5f7fa;border:1px solid #e4e7ec;border-radius:9px;padding:8px 10px;font-size:12px;overflow-wrap:anywhere">'+esc(val||'미확인')+'</code>'+(val?'<button type="button" class="detail-copy-xhs" data-copy="'+esc(val)+'" style="border:1px solid #d8e5f7;background:#f3f8ff;color:#175cd3;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:900;cursor:pointer">복사</button>':'')+'</div>';
   set('detailKeywords','<div style="font-size:11px;font-weight:900;color:#667085;margin-bottom:4px">샤오홍슈 중국어 검색 단어</div>'+kwRow('본상품',xhs)+kwRow('추천 1',rec[0])+kwRow('추천 2',rec[1])+kwRow('추천 3',rec[2]));
   let links='';if(p.officialUrl)links+='<a href="'+esc(p.officialUrl)+'" target="_blank" rel="noopener" style="background:#eef5ff;color:#175cd3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:900;text-decoration:none">공식 판매처 바로가기 ↗</a>';else links+='<span style="background:#f2f4f7;color:#98a2b3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800">공식 판매처 미확인</span>';
