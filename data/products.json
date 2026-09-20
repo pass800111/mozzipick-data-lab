@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T03:00:00+09:00",
+  "updatedAt": "2026-09-21T04:03:16+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -27,8 +27,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 1,
-      "grade": "C",
-      "coupangGroup": "C"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "lexar-muse-ssd",
@@ -54,8 +60,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 2,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "philips-hue-liane360",
@@ -81,8 +93,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 3,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "irobot-max875-combo",
@@ -109,7 +127,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 4,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "creatulize-x1-pro",
@@ -135,8 +154,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 5,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "dreo-heater-720s",
@@ -162,8 +187,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 6,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "euhomy-rock-pro-ice-maker",
@@ -189,8 +220,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 7,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "dreame-h50-selfclean-humidifier",
@@ -216,8 +253,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 8,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "uwant-swiftvac-v700-pro",
@@ -244,7 +287,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 9,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "xiaomi-robot-vacuum-7-max",
@@ -270,8 +314,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 10,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "switchbot-lock-ultra-max-vision-pro",
@@ -297,8 +347,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 11,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "dreame-pano10-station",
@@ -324,8 +380,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 12,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "tplink-archer-8-ultra",
@@ -351,8 +413,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 13,
-      "grade": "C",
-      "coupangGroup": "C"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "tapo-t150",
@@ -379,7 +447,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 14,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "tplink-deco-8-ultra",
@@ -405,8 +474,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 15,
-      "grade": "C",
-      "coupangGroup": "C"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "aiper-irrisense-2",
@@ -432,8 +507,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 16,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "airseekers-aranix",
@@ -460,7 +541,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 17,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-f25-pro-turbo-combo",
@@ -486,8 +568,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 18,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "xlean-tr1",
@@ -514,7 +602,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 19,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "ugreen-homeagent-ha100-pro",
@@ -541,7 +630,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 20,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "ugreen-homeagent-ha100",
@@ -568,7 +658,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 21,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "ugreen-masteragent-ma100",
@@ -595,7 +686,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 22,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "navimow-h510-pro",
@@ -621,8 +713,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 23,
-      "grade": "B",
-      "coupangGroup": "B"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "dreame-aqua20-pro-ultra",
@@ -649,7 +747,8 @@
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 24,
       "grade": "D",
-      "coupangGroup": "D"
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "esr-qi2-25w-cooling",
@@ -675,8 +774,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 25,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "esr-geo-wallet-2026",
@@ -702,8 +807,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 26,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-slim-ring-stand",
@@ -729,8 +840,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 27,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-ultracharge-display",
@@ -756,8 +873,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 28,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-surefind-wallet",
@@ -783,8 +906,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 29,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-surefind-loop",
@@ -810,8 +939,14 @@
       "newCandidate": true,
       "sourceNote": "2026-09 공개자료 기반 신규 후보 · 상세 판매/쿠팡/소셜 교차검증 진행중",
       "rank": 30,
-      "grade": "A",
-      "coupangGroup": "A"
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인",
+      "coupangUrl": "미확인",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "switchbot-s30-mini",
@@ -833,7 +968,10 @@
       "xiaohongshuQuery": "SwitchBot S30 Mini 扫地机器人",
       "legacyName": "",
       "siteUpdatedAt": "2026-09-21T03:00:00+09:00",
-      "rank": 31
+      "rank": 31,
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "esr-cryoboost-25w",
@@ -855,7 +993,10 @@
       "xiaohongshuQuery": "ESR CryoBoost 25W 无线充电",
       "legacyName": "",
       "siteUpdatedAt": "2026-09-21T03:00:00+09:00",
-      "rank": 32
+      "rank": 32,
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "ecoflow-river-260-gen4",
@@ -877,7 +1018,10 @@
       "xiaohongshuQuery": "EcoFlow River 260 Gen4 户外电源",
       "legacyName": "",
       "siteUpdatedAt": "2026-09-21T03:00:00+09:00",
-      "rank": 33
+      "rank": 33,
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "dyson-r3-nurovi-spot-scrub-uv",
@@ -899,7 +1043,10 @@
       "xiaohongshuQuery": "Dyson R3 Nurovi 扫地机器人",
       "legacyName": "",
       "siteUpdatedAt": "2026-09-21T03:00:00+09:00",
-      "rank": 34
+      "rank": 34,
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "jackery-explorer-2000-plus-v2",
@@ -921,7 +1068,10 @@
       "xiaohongshuQuery": "Jackery Explorer 2000 Plus v2 户外电源",
       "legacyName": "",
       "siteUpdatedAt": "2026-09-21T03:00:00+09:00",
-      "rank": 35
+      "rank": 35,
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "anker-maggo-pro2",
@@ -954,7 +1104,10 @@
       "reviewCons": "약 600g으로 휴대 시 무게 부담, 일반 보조배터리 대비 높은 가격대",
       "reviewSummary": "공개 구매후기에서는 충전 속도와 고출력·대용량 만족도가 반복적으로 언급되며, 무게와 가격은 부담 요소로 언급됩니다.",
       "reviewSource": "앤커코리아 공개 구매후기",
-      "reviewVerifiedAt": "2026-09-21"
+      "reviewVerifiedAt": "2026-09-21",
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "dji-romo",
@@ -975,7 +1128,10 @@
       "officialUrl": "https://www.dji.com/media-center/announcements/dji-best-ifa-2026-awards-multiple",
       "spec": "36,000Pa · 123° 로봇암 · 최대 8.5cm 문턱",
       "xiaohongshuQuery": "DJI ROMO 2 P2 A2 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "viofo-t340",
@@ -996,7 +1152,10 @@
       "officialUrl": "https://www.viofo.com/",
       "spec": "4K+2K+2K+2K · IR cabin · 4x optical zoom · Wi‑Fi 6 · GPS",
       "xiaohongshuQuery": "VIOFO T340 四路 行车记录仪",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "galaxy-s26-fe",
@@ -1019,7 +1178,10 @@
       "xiaohongshuQuery": "三星 S26 FE 手机",
       "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
       "videoUrl": "https://www.youtube.com/watch?v=cdC0sSWM3Bo",
-      "videoSource": "Samsung 공식 YouTube"
+      "videoSource": "Samsung 공식 YouTube",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "aurzen-zip-pro",
@@ -1040,7 +1202,10 @@
       "officialUrl": "https://aurzen.com/",
       "spec": "Tri-fold · native 1080p Full HD · pocket projector",
       "xiaohongshuQuery": "Aurzen ZIP Pro 便携投影仪",
-      "siteUpdatedAt": "2026-09-20T05:00:00+09:00"
+      "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "soundcore-sleep-4-pro",
@@ -1067,7 +1232,10 @@
       "coupangMatchedProduct": "앤커 슬립A30 블루투스 이어폰 D1301",
       "coupangUrl": "https://pages.coupang.com/p/165446",
       "coupangVerifiedAt": "2026-09-21",
-      "coupangEligible": true
+      "coupangEligible": true,
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "ugreen-pb773",
@@ -1094,7 +1262,10 @@
       "coupangMatchedProduct": "UGREEN MagFlow Qi2 25W 10000mAh",
       "coupangUrl": "https://www.coupang.com/vp/products/9213038854",
       "coupangVerifiedAt": "2026-09-21",
-      "coupangEligible": true
+      "coupangEligible": true,
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "A",
+      "coupangGroup": "A"
     },
     {
       "id": "insta360-link2",
@@ -1117,7 +1288,10 @@
       "xiaohongshuQuery": "影石 Link 2 AI 摄像头",
       "siteUpdatedAt": "2026-09-20T05:00:00+09:00",
       "videoUrl": "https://www.youtube.com/watch?v=PwJSAmCtByw",
-      "videoSource": "Insta360 공식 YouTube"
+      "videoSource": "Insta360 공식 YouTube",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-qrevo-edge3pro",
@@ -1146,11 +1320,158 @@
       "coupangMatchedProduct": "로보락 Qrevo Edge 2 로봇청소기",
       "coupangUrl": "https://www.coupang.com/np/search?q=%EB%A1%9C%EB%B3%B4%EB%9D%BD+qrevo+edge",
       "coupangVerifiedAt": "2026-09-21",
-      "coupangEligible": true
+      "coupangEligible": true,
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "B",
+      "coupangGroup": "B"
+    },
+    {
+      "id": "soundcore-liberty-buds-2",
+      "rank": 45,
+      "name": "사운드코어 Liberty Buds 2",
+      "category": "오디오·이어폰·스피커",
+      "release": "2026.09.22 출하 예정",
+      "price": "€129.99",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "공식 페이지 리뷰 없음",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://www.soundcore.com/fr/products/d1206-liberty-buds-2-ai-powered-in-ear-earbuds-for-calls",
+      "spec": "ANKER Thus AI Chip · 6마이크+2 골전도 센서 · ANC · 최대 12시간/케이스 46시간",
+      "xiaohongshuQuery": "声阔 Liberty Buds 2 AI 降噪耳机",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
+    },
+    {
+      "id": "soundcore-aeroclip-2",
+      "rank": 46,
+      "name": "사운드코어 AeroClip 2",
+      "category": "오디오·이어폰·스피커",
+      "release": "2026.09.22 출시",
+      "price": "US $169.99",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "미확인",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://www.soundcore.com/blogs/open-ear/aeroclip-vs-aeroclip-2",
+      "spec": "C-bridge 오픈이어 클립 · 4-mic AI 통화 · 최대 8시간 · IP57",
+      "xiaohongshuQuery": "声阔 AeroClip 2 开放式耳夹耳机",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
+    },
+    {
+      "id": "eufy-omni-e35",
+      "rank": 47,
+      "name": "유피 Robot Vacuum Omni E35",
+      "category": "생활가전·청소가전",
+      "release": "2026.09 공개·미국 09.25 출시 예정",
+      "price": "US $1,299.99",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "미확인",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://us.eufy.com/products/t210m111-eufy-robot-vacuum-omni-e35",
+      "spec": "35,000Pa · HydroJet 셀프클리닝 롤러 · DuoSpiral 브러시 · AI See 3.0 · 온수 세척/건조 도크",
+      "xiaohongshuQuery": "eufy Omni E35 扫地机器人",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
+    },
+    {
+      "id": "tuya-doova",
+      "rank": 48,
+      "name": "Tuya Doova AI 홈 컴패니언 로봇",
+      "category": "AI·신기술 기기",
+      "release": "2026.09.04 IFA 공개",
+      "price": "미확인",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "미확인",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://www.tuya.com/news-details/Kfx9813ozlbff",
+      "spec": "LDS LiDAR · 4마이크 음원 위치추적 · AI 자세 인식 · 10.1형 디스플레이 · 자동 도킹",
+      "xiaohongshuQuery": "涂鸦智能 Doova AI 陪伴机器人",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
+    },
+    {
+      "id": "dreame-aqua20-pro-ultra-roller-x",
+      "rank": 49,
+      "name": "드리미 Aqua20 Pro Ultra Roller X Complete",
+      "category": "생활가전·청소가전",
+      "release": "2026.09.21 출시 예정",
+      "price": "미확인",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "미확인",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://fr.dreametech.com/pages/dreame-aqua20-pro-ultra-roller-x-complete-aspirateur-robot-nouveau-lancement",
+      "spec": "고온 스팀 이중 물걸레 · 100°C 자동 세척 · 8cm 확장형 롤러 · 최대 10cm 장애물 통과 · OmniSight 4.0 AI",
+      "xiaohongshuQuery": "追觅 Aqua20 Pro Ultra Roller X Complete 扫地机器人",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
+    },
+    {
+      "id": "dreame-leaptic-cube",
+      "rank": 50,
+      "name": "드리미 LEAPTIC Cube 미니 카메라",
+      "category": "카메라·웹캠·크리에이터 기기",
+      "release": "2026.09 IFA 공개·10월 출시 예정",
+      "price": "€429 예정",
+      "coupangPrice": "미확인",
+      "rating": "미확인",
+      "reviews": "미확인",
+      "instagram": "미확인",
+      "tiktok": "미확인",
+      "youtube": "미확인",
+      "xiaohongshu": "미확인",
+      "image": "",
+      "status": "verified-pending",
+      "officialUrl": "https://be.dreametech.com/pages/ifa",
+      "spec": "미니 액션 카메라 · 8K 촬영 · 수심 10m 방수 · AI 기능",
+      "xiaohongshuQuery": "追觅 LEAPTIC Cube 8K 迷你相机",
+      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "soundcore-space-2-pro",
-      "rank": 45,
+      "rank": 51,
       "name": "사운드코어 Space 2 Pro",
       "category": "오디오·이어폰·스피커",
       "release": "2026.09.22 예정",
@@ -1173,11 +1494,14 @@
       "coupangMatchedProduct": "앤커 스페이스 원 프로 노이즈캔슬링 헤드폰 A3062",
       "coupangUrl": "https://pages.coupang.com/p/165446",
       "coupangVerifiedAt": "2026-09-21",
-      "coupangEligible": true
+      "coupangEligible": true,
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "tcl-p80-ultra",
-      "rank": 46,
+      "rank": 52,
       "name": "TCL P80 Ultra NXTPAPER",
       "category": "스마트폰·모바일 액세서리",
       "release": "2026.09.04 판매 시작(유럽 일부 시장)",
@@ -1194,11 +1518,14 @@
       "officialUrl": "https://www.tcl.com/uk/en/mobile/tcl-p80-ultra",
       "spec": "6.83형 1.5K AMOLED · 120Hz · 3200nits · NXTPAPER · 50MP 3x periscope · 5800mAh · 45W",
       "xiaohongshuQuery": "TCL P80 Ultra NXTPAPER 手机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "ecovacs-x12s-omnicyclone",
-      "rank": 47,
+      "rank": 53,
       "name": "에코백스 DEEBOT X12S OmniCyclone",
       "category": "생활가전·청소가전",
       "release": "2026.09.09 판매 시작(유럽 일부 시장)",
@@ -1215,11 +1542,14 @@
       "officialUrl": "https://www.ecovacs.com/global/deebot-robotic-vacuum-cleaner/deebot-x12s-omnicyclone",
       "spec": "OmniCyclone bagless dock · OZMO Roller 3.0 · 53AW BLAST · AIVI 3D 4.0 · 98mm body",
       "xiaohongshuQuery": "科沃斯 DEEBOT X12S OmniCyclone 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "anker-nano-universal-100w",
-      "rank": 48,
+      "rank": 54,
       "name": "앤커 Nano Universal Charger 100W",
       "category": "충전·배터리",
       "release": "2026.09 신제품",
@@ -1236,11 +1566,14 @@
       "officialUrl": "https://www.anker.com/",
       "spec": "US/UK/EU 내장 플러그 · 200+ 국가/지역 · 3×USB-C + 1×USB-A · 최대 100W · 1.3형 LCD",
       "xiaohongshuQuery": "安克 Nano Universal Charger 100W 万能旅行充电器",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-boostsolid-cell-10k-60w",
-      "rank": 49,
+      "rank": 55,
       "name": "벨킨 BoostSolid Cell Power Bank 10K 60W",
       "category": "충전·배터리",
       "release": "2026.09.16 출하 예정",
@@ -1257,11 +1590,14 @@
       "officialUrl": "https://www.belkin.com/p/power-bank-10k-with-boostsolid-cell/BBA022ttSA.html",
       "spec": "10,000mAh · 최대 60W USB-C · 2×USB-C + 1×USB-A · 3기기 동시 충전 · BoostSolid Cell",
       "xiaohongshuQuery": "贝尔金 BoostSolid Cell 10000mAh 60W 充电宝",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-soundform-isolate",
-      "rank": 50,
+      "rank": 56,
       "name": "벨킨 SoundForm Isolate",
       "category": "오디오·이어폰·스피커",
       "release": "2026.09.03 발표",
@@ -1278,11 +1614,14 @@
       "officialUrl": "https://www.belkin.com/pr-belkin-expands-soundform-audio-lineup-at-ifa2026.html",
       "spec": "Belkin IFA 2026 신형 이어버드 · 강력한 ANC · 윙팁 고정 설계",
       "xiaohongshuQuery": "贝尔金 SoundForm Isolate 降噪耳机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-soundform-dot",
-      "rank": 51,
+      "rank": 57,
       "name": "벨킨 SoundForm Dot",
       "category": "오디오·이어폰·스피커",
       "release": "2026.09.03 발표",
@@ -1299,11 +1638,14 @@
       "officialUrl": "https://www.belkin.com/pr-belkin-expands-soundform-audio-lineup-at-ifa2026.html",
       "spec": "컴팩트 이어버드 · ANC 및 non-ANC 옵션",
       "xiaohongshuQuery": "贝尔金 SoundForm Dot 无线耳机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-surefind",
-      "rank": 52,
+      "rank": 58,
       "name": "벨킨 SureFind 컬렉션",
       "category": "스마트폰·모바일 액세서리",
       "release": "2026.09.03 발표",
@@ -1320,11 +1662,14 @@
       "officialUrl": "https://www.belkin.com/pr-belkin-introduces-new-solutions-to-power-locate-and-personalize.html",
       "spec": "IFA 2026 공개 위치추적 액세서리 컬렉션",
       "xiaohongshuQuery": "贝尔金 SureFind 定位器",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "belkin-ultracharge-smart-display",
-      "rank": 53,
+      "rank": 59,
       "name": "벨킨 UltraCharge Smart Display Power Bank",
       "category": "충전·배터리",
       "release": "2026.09.03 발표",
@@ -1341,11 +1686,14 @@
       "officialUrl": "https://www.belkin.com/pr-belkin-introduces-new-solutions-to-power-locate-and-personalize.html",
       "spec": "스마트 디스플레이 탑재 보조배터리 라인",
       "xiaohongshuQuery": "贝尔金 UltraCharge 智能显示屏 充电宝",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-rockaqua-p1",
-      "rank": 54,
+      "rank": 60,
       "name": "로보락 RockAqua P1",
       "category": "기타 전자기기",
       "release": "2026.09 IFA 공개",
@@ -1362,11 +1710,14 @@
       "officialUrl": "https://global.roborock.com/pages/ifa-2026",
       "spec": "무선 풀 클리너 · 15cm 얕은 플랫폼 청소 · ClearVision 순찰 청소 · 6,800 GPH 흡입",
       "xiaohongshuQuery": "石头 RockAqua P1 泳池清洁机器人",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-saros-20-flow",
-      "rank": 55,
+      "rank": 61,
       "name": "로보락 Saros 20 Flow Complete",
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
@@ -1383,11 +1734,14 @@
       "officialUrl": "https://global.roborock.com/pages/ifa-2026",
       "spec": "SpiraFlow 2.0 · 36,000Pa HyperForce · AdaptiLift Traverse 3.0",
       "xiaohongshuQuery": "石头 Saros 20 Flow Complete 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-saros-20-neo",
-      "rank": 56,
+      "rank": 62,
       "name": "로보락 Saros 20 Neo",
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
@@ -1404,11 +1758,14 @@
       "officialUrl": "https://global.roborock.com/pages/ifa-2026",
       "spec": "AdaptiLift Chassis 3.0 · 7.95cm 낮은 공간 진입 · 엉킴 방지 청소",
       "xiaohongshuQuery": "石头 Saros 20 Neo 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "roborock-f25-ultra-steam-gen2",
-      "rank": 57,
+      "rank": 63,
       "name": "로보락 F25 Ultra Steam Gen 2",
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
@@ -1431,11 +1788,14 @@
       "coupangMatchedProduct": "로보락 F25 Ultra 무선 청소기",
       "coupangUrl": "https://www.coupang.com/vp/products/9254566420",
       "coupangVerifiedAt": "2026-09-21",
-      "coupangEligible": true
+      "coupangEligible": true,
+      "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
+      "grade": "B",
+      "coupangGroup": "B"
     },
     {
       "id": "acer-sff-rtx-spark",
-      "rank": 58,
+      "rank": 64,
       "name": "에이서 SFF RTX Spark",
       "category": "PC·미니PC·저장장치",
       "release": "2026.09.02 IFA 공개",
@@ -1452,11 +1812,14 @@
       "officialUrl": "https://news.acer.com/acer-showcases-design-powered-by-nvidia-rtx-spark-at-ifa-2026",
       "spec": "컴팩트 AI 데스크톱 디자인 · 최대 1 PFLOP AI · 최대 128GB 통합 메모리",
       "xiaohongshuQuery": "宏碁 SFF RTX Spark AI 迷你主机",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     },
     {
       "id": "lenovo-yoga-pro-9n-15-11",
-      "rank": 59,
+      "rank": 65,
       "name": "레노버 Yoga Pro 9n (15, 11)",
       "category": "PC·미니PC·저장장치",
       "release": "2026.09.03 발표",
@@ -1473,133 +1836,29 @@
       "officialUrl": "https://news.lenovo.com/pressroom/press-releases/yoga-portfolio-new-ai-pcs-and-tablets/",
       "spec": "NVIDIA RTX Spark 기반 프리미엄 크리에이터 노트북",
       "xiaohongshuQuery": "联想 Yoga Pro 9n 15 11 RTX Spark 笔记本",
-      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00"
-    },
-    {
-      "id": "soundcore-liberty-buds-2",
-      "rank": 60,
-      "name": "사운드코어 Liberty Buds 2",
-      "category": "오디오·이어폰·스피커",
-      "release": "2026.09.22 출하 예정",
-      "price": "€129.99",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "공식 페이지 리뷰 없음",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://www.soundcore.com/fr/products/d1206-liberty-buds-2-ai-powered-in-ear-earbuds-for-calls",
-      "spec": "ANKER Thus AI Chip · 6마이크+2 골전도 센서 · ANC · 최대 12시간/케이스 46시간",
-      "xiaohongshuQuery": "声阔 Liberty Buds 2 AI 降噪耳机",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
-    },
-    {
-      "id": "soundcore-aeroclip-2",
-      "rank": 61,
-      "name": "사운드코어 AeroClip 2",
-      "category": "오디오·이어폰·스피커",
-      "release": "2026.09.22 출시",
-      "price": "US $169.99",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://www.soundcore.com/blogs/open-ear/aeroclip-vs-aeroclip-2",
-      "spec": "C-bridge 오픈이어 클립 · 4-mic AI 통화 · 최대 8시간 · IP57",
-      "xiaohongshuQuery": "声阔 AeroClip 2 开放式耳夹耳机",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
-    },
-    {
-      "id": "eufy-omni-e35",
-      "rank": 62,
-      "name": "유피 Robot Vacuum Omni E35",
-      "category": "생활가전·청소가전",
-      "release": "2026.09 공개·미국 09.25 출시 예정",
-      "price": "US $1,299.99",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://us.eufy.com/products/t210m111-eufy-robot-vacuum-omni-e35",
-      "spec": "35,000Pa · HydroJet 셀프클리닝 롤러 · DuoSpiral 브러시 · AI See 3.0 · 온수 세척/건조 도크",
-      "xiaohongshuQuery": "eufy Omni E35 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
-    },
-    {
-      "id": "tuya-doova",
-      "rank": 63,
-      "name": "Tuya Doova AI 홈 컴패니언 로봇",
-      "category": "AI·신기술 기기",
-      "release": "2026.09.04 IFA 공개",
-      "price": "미확인",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://www.tuya.com/news-details/Kfx9813ozlbff",
-      "spec": "LDS LiDAR · 4마이크 음원 위치추적 · AI 자세 인식 · 10.1형 디스플레이 · 자동 도킹",
-      "xiaohongshuQuery": "涂鸦智能 Doova AI 陪伴机器人",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
-    },
-    {
-      "id": "dreame-aqua20-pro-ultra-roller-x",
-      "rank": 64,
-      "name": "드리미 Aqua20 Pro Ultra Roller X Complete",
-      "category": "생활가전·청소가전",
-      "release": "2026.09.21 출시 예정",
-      "price": "미확인",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://fr.dreametech.com/pages/dreame-aqua20-pro-ultra-roller-x-complete-aspirateur-robot-nouveau-lancement",
-      "spec": "고온 스팀 이중 물걸레 · 100°C 자동 세척 · 8cm 확장형 롤러 · 최대 10cm 장애물 통과 · OmniSight 4.0 AI",
-      "xiaohongshuQuery": "追觅 Aqua20 Pro Ultra Roller X Complete 扫地机器人",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
-    },
-    {
-      "id": "dreame-leaptic-cube",
-      "rank": 65,
-      "name": "드리미 LEAPTIC Cube 미니 카메라",
-      "category": "카메라·웹캠·크리에이터 기기",
-      "release": "2026.09 IFA 공개·10월 출시 예정",
-      "price": "€429 예정",
-      "coupangPrice": "미확인",
-      "rating": "미확인",
-      "reviews": "미확인",
-      "instagram": "미확인",
-      "tiktok": "미확인",
-      "youtube": "미확인",
-      "xiaohongshu": "미확인",
-      "image": "",
-      "status": "verified-pending",
-      "officialUrl": "https://be.dreametech.com/pages/ifa",
-      "spec": "미니 액션 카메라 · 8K 촬영 · 수심 10m 방수 · AI 기능",
-      "xiaohongshuQuery": "追觅 LEAPTIC Cube 8K 迷你相机",
-      "siteUpdatedAt": "2026-09-20T03:25:50.499534+00:00"
+      "siteUpdatedAt": "2026-09-20T00:33:21.942476+00:00",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D"
     }
-  ]
+  ],
+  "lastValidationAt": "2026-09-21T04:03:16+09:00",
+  "newCandidateGradeCounts": {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 30
+  },
+  "gradeCounts": {
+    "A": 3,
+    "B": 3,
+    "C": 0,
+    "D": 59
+  },
+  "validationSummary": {
+    "newCandidateCount": 30,
+    "newGradeTotal": 30,
+    "coupangMissingLinkDowngraded": 21,
+    "rule": "A/B/C require a real coupang.com URL; otherwise D"
+  }
 }
