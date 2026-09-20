@@ -1,0 +1,50 @@
+name: Product Update Pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate product data and refresh ranks
+        run: |
+          python - <<'PY'
+          import json, datetime
+          p='data/products.json'
+          with open(p,encoding='utf-8') as f: d=json.load(f)
+          products=d.get('products',[])
+          seen=set()
+          required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z')
+          clean=[]
+          for x in products:
+              if not x.get('id') or x['id'] in seen: continue
+              seen.add(x['id'])
+              for k in required:
+                  if not x.get(k): x[k]='미확인'
+              clean.append(x)
+          clean.sort(key=lambda x:x.get('siteUpdatedAt',''),reverse=True)
+          for i,x in enumerate(clean,1): x['rank']=i
+          d['products']=clean
+          d['updatedAt']=now
+          with open(p,'w',encoding='utf-8') as f: json.dump(d,f,ensure_ascii=False,indent=2)
+          print('validated',len(clean),'products')
+          PY
+      - name: Commit data changes
+        run: |
+          git config user.name "mozzipick-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/products.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: hourly product validation refresh"
+          git push
