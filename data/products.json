@@ -5,7 +5,7 @@
   "products": [
     {
       "id": "oukitel-rg14p",
-      "name": "Oukitel RG14-P Solar Laptop",
+      "name": "아우키텔 RG14-P 태양광 노트북",
       "category": "컴퓨팅",
       "release": "2026-11 예정",
       "price": "미확인",
@@ -32,7 +32,7 @@
     },
     {
       "id": "lexar-muse-ssd",
-      "name": "Lexar Muse Magnetic SSD",
+      "name": "렉사 뮤즈 마그네틱 SSD",
       "category": "저장장치",
       "release": "2026-09",
       "price": "미확인",
@@ -59,7 +59,7 @@
     },
     {
       "id": "philips-hue-liane360",
-      "name": "Philips Hue Liane 360° Rope Light",
+      "name": "필립스 휴 리안 360도 로프 조명",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -86,7 +86,7 @@
     },
     {
       "id": "irobot-max875-combo",
-      "name": "iRobot Roomba Max 875 Combo + AutoWash Dock",
+      "name": "아이로봇 룸바 맥스 875 콤보",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -113,7 +113,7 @@
     },
     {
       "id": "creatulize-x1-pro",
-      "name": "Creatulize X1 PRO Robot Bed Vacuum Cleaner",
+      "name": "크리에이툴라이즈 X1 프로 침대 청소로봇",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -140,7 +140,7 @@
     },
     {
       "id": "dreo-heater-720s",
-      "name": "DREO Whole-Room Heater 720S",
+      "name": "드레오 720S 전실 난방기",
       "category": "생활가전",
       "release": "2026-09",
       "price": "미확인",
@@ -167,7 +167,7 @@
     },
     {
       "id": "euhomy-rock-pro-ice-maker",
-      "name": "Euhomy Rock Pro Sphere Ice Maker",
+      "name": "유호미 락 프로 구형 얼음제조기",
       "category": "생활가전",
       "release": "2026-09",
       "price": "미확인",
@@ -194,7 +194,7 @@
     },
     {
       "id": "dreame-h50-selfclean-humidifier",
-      "name": "Dreame H50 SelfClean Humidifier",
+      "name": "드리미 H50 셀프클린 가습기",
       "category": "생활가전",
       "release": "2026-09",
       "price": "미확인",
@@ -221,7 +221,7 @@
     },
     {
       "id": "uwant-swiftvac-v700-pro",
-      "name": "UWANT SwiftVac V700 Pro",
+      "name": "유원트 스위프트백 V700 프로 청소기",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -248,7 +248,7 @@
     },
     {
       "id": "xiaomi-robot-vacuum-7-max",
-      "name": "Xiaomi Robot Vacuum 7 Max",
+      "name": "샤오미 로봇청소기 7 맥스",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -275,7 +275,7 @@
     },
     {
       "id": "switchbot-lock-ultra-max-vision-pro",
-      "name": "SwitchBot Lock Ultra Max Vision Pro Combo",
+      "name": "스위치봇 락 울트라 맥스 비전 프로 콤보",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -302,7 +302,7 @@
     },
     {
       "id": "dreame-pano10-station",
-      "name": "Dreame Pano 10 Station",
+      "name": "드리미 파노 10 스테이션 창문청소 로봇",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -329,7 +329,7 @@
     },
     {
       "id": "tplink-archer-8-ultra",
-      "name": "TP-Link Archer 8 Ultra",
+      "name": "티피링크 아처 8 울트라 공유기",
       "category": "네트워크",
       "release": "2026-09",
       "price": "미확인",
@@ -356,7 +356,7 @@
     },
     {
       "id": "tapo-t150",
-      "name": "Tapo T150",
+      "name": "타포 T150 스마트홈 기기",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -383,7 +383,7 @@
     },
     {
       "id": "tplink-deco-8-ultra",
-      "name": "TP-Link Deco 8 Ultra",
+      "name": "티피링크 데코 8 울트라 메시 공유기",
       "category": "네트워크",
       "release": "2026-09",
       "price": "미확인",
@@ -410,7 +410,7 @@
     },
     {
       "id": "aiper-irrisense-2",
-      "name": "Aiper IrriSense 2",
+      "name": "아이퍼 이리센스 2 스마트 관개기",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -437,7 +437,7 @@
     },
     {
       "id": "airseekers-aranix",
-      "name": "AIRSEEKERS ARANIX",
+      "name": "에어시커스 아라닉스",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -464,7 +464,7 @@
     },
     {
       "id": "roborock-f25-pro-turbo-combo",
-      "name": "Roborock F25 Pro Turbo Combo",
+      "name": "로보락 F25 프로 터보 콤보",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -491,7 +491,7 @@
     },
     {
       "id": "xlean-tr1",
-      "name": "xLean TR1",
+      "name": "엑스린 TR1 청소로봇",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -518,7 +518,7 @@
     },
     {
       "id": "ugreen-homeagent-ha100-pro",
-      "name": "UGREEN HomeAgent HA100 Pro",
+      "name": "유그린 홈에이전트 HA100 프로",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -545,7 +545,7 @@
     },
     {
       "id": "ugreen-homeagent-ha100",
-      "name": "UGREEN HomeAgent HA100",
+      "name": "유그린 홈에이전트 HA100",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -572,7 +572,7 @@
     },
     {
       "id": "ugreen-masteragent-ma100",
-      "name": "UGREEN MasterAgent MA100",
+      "name": "유그린 마스터에이전트 MA100",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -599,7 +599,7 @@
     },
     {
       "id": "navimow-h510-pro",
-      "name": "Navimow H510 Pro",
+      "name": "나비모우 H510 프로 로봇 잔디깎이",
       "category": "스마트홈",
       "release": "2026-09",
       "price": "미확인",
@@ -626,7 +626,7 @@
     },
     {
       "id": "dreame-aqua20-pro-ultra",
-      "name": "Dreame Aqua20 Pro Ultra Roller X Complete",
+      "name": "드리미 아쿠아20 프로 울트라 로봇청소기",
       "category": "생활가전·청소가전",
       "release": "2026-09",
       "price": "미확인",
@@ -653,7 +653,7 @@
     },
     {
       "id": "esr-qi2-25w-cooling",
-      "name": "ESR Qi2 25W Active Cooling Charger",
+      "name": "ESR Qi2 25W 액티브 쿨링 무선충전기",
       "category": "충전·배터리",
       "release": "2026-09",
       "price": "미확인",
@@ -680,7 +680,7 @@
     },
     {
       "id": "esr-geo-wallet-2026",
-      "name": "ESR Geo Wallet",
+      "name": "ESR 지오 위치추적 지갑",
       "category": "스마트 액세서리",
       "release": "2026-09",
       "price": "미확인",
@@ -707,7 +707,7 @@
     },
     {
       "id": "belkin-slim-ring-stand",
-      "name": "Belkin BoostCharge Slim Magnetic Ring Stand",
+      "name": "벨킨 부스트차지 슬림 마그네틱 링 스탠드",
       "category": "충전·배터리",
       "release": "2026-09",
       "price": "미확인",
@@ -734,7 +734,7 @@
     },
     {
       "id": "belkin-ultracharge-display",
-      "name": "Belkin UltraCharge Smart Display Power Bank",
+      "name": "벨킨 울트라차지 스마트 디스플레이 보조배터리",
       "category": "충전·배터리",
       "release": "2026-09",
       "price": "미확인",
@@ -761,7 +761,7 @@
     },
     {
       "id": "belkin-surefind-wallet",
-      "name": "Belkin SureFind Wallet Stand",
+      "name": "벨킨 슈어파인드 월렛 스탠드",
       "category": "스마트 액세서리",
       "release": "2026-09",
       "price": "미확인",
@@ -788,7 +788,7 @@
     },
     {
       "id": "belkin-surefind-loop",
-      "name": "Belkin SureFind Loop Cable Tag",
+      "name": "벨킨 슈어파인드 루프 케이블 태그",
       "category": "스마트 액세서리",
       "release": "2026-09",
       "price": "미확인",
