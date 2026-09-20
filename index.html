@@ -635,4 +635,30 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
    const b=e.target.closest&&e.target.closest('.side nav button[data-view]');if(b)sync(b.dataset.view);
  },true);
 })();
+</script><script>
+/* TIME SNAPSHOT DISPLAY FIX v1 — time view only */
+(function(){
+ const panel=()=>document.getElementById('menuDataView');
+ const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ async function data(){
+  const [tr,pr]=await Promise.all([fetch('data/trend-snapshots.json?v='+Date.now(),{cache:'no-store'}),fetch('data/products.json?v='+Date.now(),{cache:'no-store'})]);
+  return {t:tr.ok?await tr.json():{snapshots:[]},p:pr.ok?await pr.json():{products:[]}};
+ }
+ function targetMs(v){const n=Number(String(v).replace(/[^0-9]/g,''));if(String(v).endsWith('d'))return n*864e5;if(String(v).endsWith('m'))return n*30*864e5;if(String(v).endsWith('y'))return n*365*864e5;return n*36e5}
+ async function show(btn){
+  const box=panel();if(!box)return;box.querySelectorAll('[data-time-filter]').forEach(x=>x.classList.toggle('active',x===btn));
+  let host=box.querySelector('#timeSnapshotResults');if(!host){host=document.createElement('div');host.id='timeSnapshotResults';box.appendChild(host)}
+  host.innerHTML='<div class="time-note">실제 저장된 데이터를 확인 중입니다.</div>';
+  try{
+   const {t,p}=await data(), snaps=(t.snapshots||[]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at)), want=Date.now()-targetMs(btn.dataset.timeFilter);
+   let snap=[...snaps].reverse().find(x=>new Date(x.at).getTime()<=want);
+   if(!snap){host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'해당 시간')+'</b> 기준으로 저장된 과거 데이터가 없습니다. 없는 데이터는 추정하지 않습니다.</div>';return}
+   const map=new Map((p.products||[]).map(x=>[x.id,x]));
+   const rows=(snap.ranking||[]).map(x=>{const q=map.get(x.id);return '<div class="menu-product-row simple"><div><b>'+esc(x.rank)+'. '+esc(q?.name||x.id)+'</b><small>'+esc(q?.category||'')+'</small></div><span>'+esc(q?.release||'미확인')+'</span></div>'}).join('');
+   host.innerHTML='<div class="time-note"><b>'+esc(btn.querySelector('b')?.textContent||'')+'</b> · 실제 저장 시각 '+esc(new Date(snap.at).toLocaleString('ko-KR'))+' · '+(snap.ranking||[]).length+'개</div><div class="time-snapshot-list">'+rows+'</div>';
+  }catch(e){host.innerHTML='<div class="time-note">시간별 데이터를 불러오지 못했습니다.</div>'}
+ }
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},true);
+ document.addEventListener('touchend',e=>{const b=e.target.closest&&e.target.closest('#menuDataView [data-time-filter]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();show(b)},{capture:true,passive:false});
+})();
 </script></body></html>
