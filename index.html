@@ -684,7 +684,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'Anker Prime Power 
  const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
  const fmt=v=>{if(!v)return '미확인';try{return new Date(v).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return v}};
  async function draw(){
-  const panel=document.getElementById('menuDataView'),nav=document.querySelector('.side nav button[data-view="favorites"].on');if(!panel||!nav||panel.hidden)return;
+  const panel=document.getElementById('menuDataView');if(!panel||panel.hidden)return;
   let fav=[];try{fav=JSON.parse(localStorage.getItem(K)||'[]')}catch(e){}
   let data=[];try{data=(await (await fetch('data/products.json?v='+Date.now(),{cache:'no-store'})).json()).products||[]}catch(e){}
   const norm=x=>String(x||'').replace(/[★☆]/g,'').trim();
