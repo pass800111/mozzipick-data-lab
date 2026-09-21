@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'앤커 Prime Power
   const m=document.getElementById('productDetailModal');if(!m)return;m.dataset.liveJsonDetail='1';
   const set=(id,html)=>{const e=document.getElementById(id);if(e)e.innerHTML=html};
   set('detailName',esc(p.name));
-  set('detailMeta','<b>쿠팡 등급</b> '+esc(p.coupangMatchGrade||'D')+' · '+esc(p.coupangMatchType||'연결상품 없음')+'<br><b>쿠팡 연결상품</b> '+esc(p.coupangMatchedProduct||'미확인')+'<br><b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인'));
+  set('detailMeta','<b>분류</b> '+esc(p.rankingExcluded===true?((p.grade||'미분류')+'등급 · 바이럴 레이더'):(p.rankingLabel||p.rankingType||'쿠팡 상품'))+'<br><b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>등록일</b> '+esc(p.siteUpdatedAt?new Date(p.siteUpdatedAt).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'미확인')+'<br><b>출시</b> '+esc(p.release||'미확인')+'<br><b>상품 설명</b> '+esc(p.description||p.spec||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||'미확인'));
   const xhs=p.xiaohongshuQuery||'';
   const base=xhs||p.name||'';
   const cat=String(p.category||'');
