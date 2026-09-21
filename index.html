@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.1-detail-open-authority -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.2-detail-xhs-copy-restored -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -773,6 +773,8 @@ function show(p){const m=document.getElementById('productDetailModal');if(!m||!p
 const set=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v};
 const n=document.getElementById('detailName');if(n)n.textContent=p.name||'제품 상세';
 set('detailMeta','<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시/등록</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||p.description||'미확인'));
+const kw=[p.xiaohongshuQuery].concat(Array.isArray(p.xiaohongshuRecommended)?p.xiaohongshuRecommended:[]).filter(Boolean);
+set('detailKeywords',kw.length?'<b style="font-size:12px">샤오홍슈 복사 단어</b><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">'+kw.map(w=>'<button type="button" class="copy-cn detail-copy-xhs" data-copy="'+esc(w)+'" style="border:1px solid #e3e7ee;background:#f7f8fa;border-radius:999px;padding:6px 10px;font-size:11px;cursor:pointer">'+esc(w)+'</button>').join('')+'</div>':'');
 set('detailPrice','<b>가격/쿠팡 상태</b><br>'+esc(p.price||p.coupangPrice||'상세 링크에서 확인'));
 set('detailMarket','<b>모찌픽 분류</b><br>'+esc(p.viralRadar===true?'바이럴 · '+(p.grade||p.viralGrade||'후보'):'쿠팡 랭킹 · '+(p.rankingType||p.rankingLabel||'판매중')));
 const links=document.getElementById('detailLinks');if(links){const u=p.coupangUrl||p.sourceUrl||'';links.innerHTML=u?'<a href="'+esc(u)+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'쿠팡 링크 확인 중';}
