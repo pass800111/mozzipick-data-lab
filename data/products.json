@@ -73,9 +73,7 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 2,
-      "image": "https://m.oa-mall.co.kr/web/product/extra/big/202508/1a1837fc47573f737ccae24be3d6dd27.jpg",
-      "imageSource": "verified public product image"
+      "rank": 2
     },
     {
       "id": "coupang-korea-plug-adapter-9614108008",
@@ -110,9 +108,7 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 3,
-      "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
-      "imageSource": "verified public product image"
+      "rank": 3
     },
     {
       "id": "coupang-covank-5in1-vacuum-9726842970",
@@ -1131,7 +1127,6 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://kr.ugreen.com/cdn/shop/files/PB773-1.webp?v=1759135106&width=900",
       "status": "verified-pending",
       "officialUrl": "https://kr.ugreen.com/products/magflow-magnetic-wireless-power-bank-qi2-25w-10000mah",
       "spec": "10,000mAh · Qi2 25W 마그네틱 무선충전 · 내장 USB-C 케이블 30W 입출력 · 최대 3기기 동시 충전 · SKU 65958",
@@ -1161,7 +1156,6 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://global.roborock.com/cdn/shop/files/F25-Ultra-main.png",
       "status": "verified-pending",
       "officialUrl": "https://global.roborock.com/pages/ifa-2026",
       "spec": "VaporFlow 2.0 스팀 · SensEdge AI 로봇암 · WaveFlow 열 세척",
@@ -1175,8 +1169,7 @@
       "coupangEligible": true,
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "B",
-      "coupangGroup": "B",
-      "imageSource": "Roborock official product image"
+      "coupangGroup": "B"
     }
   ],
   "lastValidationAt": "2026-09-21T12:11:08+09:00",
