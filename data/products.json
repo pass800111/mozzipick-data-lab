@@ -147,7 +147,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 4
+      "rank": 4,
+      "image": "assets/products/covank-5in1.svg",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "coupang-bike-turn-tail-light-9725169460",
@@ -182,7 +184,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 5
+      "rank": 5,
+      "image": "assets/products/bike-tail-light.svg",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "viral-anker-maggo-powerbank-2-pro",
@@ -567,7 +571,9 @@
       "coupangGroup": "A",
       "coupangMatchGrade": "A",
       "rank": 16,
-      "viralRadar": true
+      "viralRadar": true,
+      "image": "assets/products/tabang-airpump.svg",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "viral-glofo-mini-air-duster-6000",
@@ -598,7 +604,9 @@
       "coupangGroup": "B",
       "coupangMatchGrade": "B",
       "rank": 17,
-      "viralRadar": true
+      "viralRadar": true,
+      "image": "assets/products/glopo-airduster.svg",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "viral-ottocast-mini-edge-2026",
@@ -722,7 +730,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "assets/products/ssausta-label.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "2026년 2월 · 블루투스 · 감열식",
@@ -738,7 +746,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "coupang-artmu-qi2-9296128136",
@@ -787,7 +796,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "assets/products/smartek-qi2.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "Qi2 25W · 10000mAh · C타입 · 잔량표시",
@@ -803,7 +812,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "coupang-speedy-docking-6888281723",
@@ -885,7 +895,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "assets/products/joytron-minimax.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "5000mAh · 마그네틱 무선충전 · 울트라 슬림",
@@ -901,7 +911,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "coupang-runhome-x7-9009430238",
@@ -917,7 +928,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "assets/products/runhome-x7.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "블루투스 5.0+ · LED · 6시간 · 10W",
@@ -933,7 +944,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "coupang-smatec-fold-keyboard-8442554119",
@@ -1015,7 +1027,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "assets/products/desimin-projector.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "미니 · 무선 · 블루투스 · USB 재생",
@@ -1031,7 +1043,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "모찌픽 생성 대체 이미지 — 실제 상품사진 아님"
     },
     {
       "id": "viral-mini-label-printer-niimbot-b21",
