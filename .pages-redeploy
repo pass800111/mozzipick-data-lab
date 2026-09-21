@@ -1,3 +1,2 @@
-redeploy 2026-09-21 image-repeat
-products image fix 48355a39d8b1f3204261b3a2d94d774faba3c466
-fallback renderer 1e1878d0e2cc79f40df6986a207852dfdbfdea3c
+redeploy v3.0 command-1 viral radar
+source commit 3a4131d1f0bff5df6312a62b60d14ee78149b28f
