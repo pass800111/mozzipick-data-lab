@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v2.8-single-home-pager -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v2.8-pager-hotfix -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -845,4 +845,9 @@ function draw(){const h=document.getElementById('ranking');if(!h)return;const ca
 function start(){const h=document.getElementById('ranking');if(!h)return;draw();new MutationObserver(()=>{clearTimeout(window.__mpPagerT);window.__mpPagerT=setTimeout(draw,40)}).observe(h,{childList:true})}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',start):start();window.모찌픽_HOME5_REFRESH=draw;
 })();
+</script><style id="pager-emergency-fix">
+#ranking>.v29-global-pager,#ranking>.v29-home-pager,#ranking>.home-pagination,#ranking>.pagination,#ranking>.mp-single-pager{display:none!important}
+#ranking + .home-pager-v18 ~ .home-pager-v18{display:none!important}
+</style><script id="pager-emergency-fix-js">
+(()=>{function fix(){const h=document.getElementById('ranking');if(!h)return;h.querySelectorAll(':scope>.v29-global-pager,:scope>.v29-home-pager,:scope>.home-pagination,:scope>.pagination,:scope>.mp-single-pager').forEach(x=>x.remove());const a=[...document.querySelectorAll('.home-pager-v18')];a.slice(0,-1).forEach(x=>x.remove())}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>setTimeout(fix,150)):setTimeout(fix,150);new MutationObserver(()=>setTimeout(fix,0)).observe(document.documentElement,{childList:true,subtree:true})})();
 </script></body></html>
