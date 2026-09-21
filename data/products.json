@@ -110,7 +110,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 3
+      "rank": 3,
+      "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
+      "imageSource": "Notebook114 product image"
     },
     {
       "id": "coupang-covank-5in1-vacuum-9726842970",
