@@ -151,8 +151,8 @@
       "coupangGroup": "reels",
       "coupangMatchGrade": "D",
       "rank": 4,
-      "image": "https://thelights4u.com/cdn/shop/files/Handheld-Cordless-Car-Vacuum-Cleaner-15000Pa.jpg",
-      "imageSource": "동일형 15000Pa 5in1 제품 이미지",
+      "image": "assets/products/covank-5in1-v3.svg",
+      "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
       "viralGrade": null
     },
     {
@@ -189,8 +189,8 @@
       "coupangGroup": "reels",
       "coupangMatchGrade": "D",
       "rank": 5,
-      "image": "https://www.lenonlures.com/cdn/shop/files/71luacsj9hL.jpg?v=1747274773&width=1946",
-      "imageSource": "동일 기능·형태 무선 리모컨 방향지시 테일라이트 공개 실물 이미지",
+      "image": "assets/products/bike-turn-tail-v3.svg",
+      "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
       "viralGrade": null
     },
     {
@@ -610,8 +610,8 @@
       "coupangMatchGrade": "B",
       "rank": 17,
       "viralRadar": true,
-      "image": "https://resources.sanborns.com.mx/medios-plazavip/mkt/634f81111cbf3_21jpg.jpg?qlty=75&scale=500",
-      "imageSource": "동일 6000mAh 무선 에어더스터 공개 실물 이미지"
+      "image": "assets/products/glopo-airduster-v3.svg",
+      "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지"
     },
     {
       "id": "viral-ottocast-mini-edge-2026",
@@ -813,7 +813,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://img.artmu.co.kr/products/qb610_01_01.jpg",
+      "image": "assets/products/smatec-qit10-v3.svg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "Qi2 25W · 10000mAh · C타입 · 잔량표시",
@@ -830,7 +830,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "D",
       "coupangGroup": "sales",
-      "imageSource": "동일 Qi2 25W 10000mAh 규격 참고 실물 이미지 — STPB-QIT10 공식 이미지 교체 우선",
+      "imageSource": "STPB-QIT10 제품별 대체 이미지 — 공식 실물 확보 전",
       "viralRadar": false,
       "rankingExcluded": false,
       "viralGrade": null,
