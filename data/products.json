@@ -185,8 +185,8 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 5,
-      "image": "https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/",
-      "imageSource": "쿠팡 동일 상품 페이지 이미지 확인"
+      "image": "",
+      "imageSource": "정확한 동일 상품 이미지 재검증 필요"
     },
     {
       "id": "viral-anker-maggo-powerbank-2-pro",
@@ -605,8 +605,8 @@
       "coupangMatchGrade": "B",
       "rank": 17,
       "viralRadar": true,
-      "image": "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/",
-      "imageSource": "쿠팡 동일 상품 페이지 이미지 확인"
+      "image": "",
+      "imageSource": "정확한 동일 상품 이미지 재검증 필요"
     },
     {
       "id": "viral-ottocast-mini-edge-2026",
@@ -796,7 +796,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://media.karousell.com/media/photos/products/2025/9/9/ugreen_qi22_10000mah_magnetic__1757428156_99c88d9a.jpg",
+      "image": "",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "Qi2 25W · 10000mAh · C타입 · 잔량표시",
@@ -813,7 +813,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "동일 사양 참고 이미지 — 브랜드 이미지 확보 전 임시"
+      "imageSource": "정확한 동일 상품 이미지 재검증 필요"
     },
     {
       "id": "coupang-speedy-docking-6888281723",
@@ -928,7 +928,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://www.yeahbox.cc/cdn/shop/files/RGB.jpg?v=1739188020&width=1350",
+      "image": "",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "블루투스 5.0+ · LED · 6시간 · 10W",
@@ -945,7 +945,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "LED 블루투스 스피커 실물형 참고 이미지"
+      "imageSource": "정확한 동일 상품 이미지 재검증 필요"
     },
     {
       "id": "coupang-smatec-fold-keyboard-8442554119",
@@ -1027,7 +1027,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/",
+      "image": "",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "미니 · 무선 · 블루투스 · USB 재생",
@@ -1044,7 +1044,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "쿠팡 데시민 동일 상품 페이지 이미지 확인"
+      "imageSource": "정확한 동일 상품 이미지 재검증 필요"
     },
     {
       "id": "viral-mini-label-printer-niimbot-b21",
