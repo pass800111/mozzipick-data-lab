@@ -1174,7 +1174,132 @@
           "basis": "업무 불편 해결형·전후 비교 콘텐츠"
         }
       ]
+    },
+    {
+      "at": "2026-09-21T10:09:16+09:00",
+      "ranking": [
+        {
+          "id": "viral-mini-label-printer-niimbot-b21",
+          "rank": 1
+        },
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 2
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 3
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 4
+        },
+        {
+          "id": "roborock-f25-ultra-steam-gen2",
+          "rank": 5
+        },
+        {
+          "id": "coupang-thousta-mini-label-8874008319",
+          "rank": 6
+        },
+        {
+          "id": "coupang-artmu-qi2-9296128136",
+          "rank": 7
+        },
+        {
+          "id": "coupang-smatec-qi2-9481042825",
+          "rank": 8
+        },
+        {
+          "id": "coupang-speedy-docking-6888281723",
+          "rank": 9
+        },
+        {
+          "id": "coupang-smatec-20000-8639482507",
+          "rank": 10
+        },
+        {
+          "id": "coupang-joytron-slim-8476098818",
+          "rank": 11
+        },
+        {
+          "id": "coupang-runhome-x7-9009430238",
+          "rank": 12
+        },
+        {
+          "id": "coupang-smatec-fold-keyboard-8442554119",
+          "rank": 13
+        },
+        {
+          "id": "coupang-gclicker-op25-8790277927",
+          "rank": 14
+        },
+        {
+          "id": "coupang-descimin-projector-8179311042",
+          "rank": 15
+        },
+        {
+          "id": "viral-ottocast-mini-edge-2026",
+          "rank": 16
+        },
+        {
+          "id": "viral-portable-blender-rexqueen-2026",
+          "rank": 17
+        },
+        {
+          "id": "viral-180-mini-projector-2026",
+          "rank": 18
+        },
+        {
+          "id": "viral-joytron-wm70-wireless-mic",
+          "rank": 19
+        },
+        {
+          "id": "viral-tabang-portable-tire-inflator",
+          "rank": 20
+        },
+        {
+          "id": "viral-glofo-mini-air-duster-6000",
+          "rank": 21
+        },
+        {
+          "id": "viral-bose-ultra-open-2-2026",
+          "rank": 22
+        },
+        {
+          "id": "viral-camp-snap-110d-2026",
+          "rank": 23
+        },
+        {
+          "id": "viral-dji-mic-mini-2s-2026",
+          "rank": 24
+        },
+        {
+          "id": "viral-insta360-x6-2026",
+          "rank": 25
+        },
+        {
+          "id": "viral-cmf-clip-pro-2026",
+          "rank": 26
+        },
+        {
+          "id": "viral-ikea-kallsup-speaker-2026",
+          "rank": 27
+        },
+        {
+          "id": "viral-anker-maggo-powerbank-2-pro",
+          "rank": 28
+        },
+        {
+          "id": "viral-simplisafe-video-doorbell-series2",
+          "rank": 29
+        },
+        {
+          "id": "viral-govee-sky-ceiling-light-2026",
+          "rank": 30
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-21T11:15:00+09:00"
+  "updatedAt": "2026-09-21T10:09:16+09:00"
 }
