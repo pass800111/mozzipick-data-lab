@@ -37,7 +37,12 @@
       "coupangMatchGrade": "D",
       "rank": 1,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "便携式无线CarPlay车载屏 测评",
+        "便携式无线CarPlay车载屏 推荐",
+        "便携式无线CarPlay车载屏 开箱"
+      ]
     },
     {
       "id": "viral-obd2-diagnostic-scanner-sep2026",
@@ -73,7 +78,12 @@
       "coupangMatchGrade": "D",
       "rank": 2,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "OBD2汽车故障诊断仪 测评",
+        "OBD2汽车故障诊断仪 推荐",
+        "OBD2汽车故障诊断仪 开箱"
+      ]
     },
     {
       "id": "viral-led-trunk-strip-sep2026",
@@ -109,7 +119,12 @@
       "coupangMatchGrade": "D",
       "rank": 3,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "汽车后备箱LED灯带 测评",
+        "汽车后备箱LED灯带 推荐",
+        "汽车后备箱LED灯带 开箱"
+      ]
     },
     {
       "id": "viral-magnetic-phone-fan-sep2026",
@@ -145,7 +160,12 @@
       "coupangMatchGrade": "D",
       "rank": 4,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "磁吸手机散热器 测评",
+        "磁吸手机散热器 推荐",
+        "磁吸手机散热器 开箱"
+      ]
     },
     {
       "id": "viral-portable-electric-screwdriver-sep2026",
@@ -181,7 +201,12 @@
       "coupangMatchGrade": "D",
       "rank": 5,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "迷你充电式电动螺丝刀 测评",
+        "迷你充电式电动螺丝刀 推荐",
+        "迷你充电式电动螺丝刀 开箱"
+      ]
     },
     {
       "id": "viral-portable-digital-microscope-sep2026",
@@ -217,7 +242,12 @@
       "coupangMatchGrade": "D",
       "rank": 6,
       "imageStatus": "확인중",
-      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00",
+      "xiaohongshuRecommended": [
+        "便携式数码显微镜 测评",
+        "便携式数码显微镜 推荐",
+        "便携式数码显微镜 开箱"
+      ]
     },
     {
       "id": "coupang-pout-hands7-pro-9640903038",
@@ -443,7 +473,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 12,
-      "imageSource": "verified product image search"
+      "imageSource": "verified product image search",
+      "xiaohongshuRecommended": [
+        "Anker MagGo Power Bank 2 Pro 磁吸 充电宝 测评",
+        "Anker MagGo Power Bank 2 Pro 磁吸 充电宝 推荐",
+        "Anker MagGo Power Bank 2 Pro 磁吸 充电宝 开箱"
+      ]
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
@@ -479,7 +514,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 13,
-      "imageSource": "SimpliSafe official page (renderer fallback)"
+      "imageSource": "SimpliSafe official page (renderer fallback)",
+      "xiaohongshuRecommended": [
+        "SimpliSafe Video Doorbell Series 2 智能 门铃 测评",
+        "SimpliSafe Video Doorbell Series 2 智能 门铃 推荐",
+        "SimpliSafe Video Doorbell Series 2 智能 门铃 开箱"
+      ]
     },
     {
       "id": "viral-govee-sky-ceiling-light-2026",
@@ -515,7 +555,12 @@
       "coupangMatchGrade": "D",
       "rank": 14,
       "image": "https://www.matteralpha.com/media/cache/article_og_image/uploads/celling-light-ultra-2.jpg",
-      "imageSource": "Matter Alpha Govee Sky Ceiling Light"
+      "imageSource": "Matter Alpha Govee Sky Ceiling Light",
+      "xiaohongshuRecommended": [
+        "Govee Sky Ceiling Light 智能 吸顶灯 测评",
+        "Govee Sky Ceiling Light 智能 吸顶灯 推荐",
+        "Govee Sky Ceiling Light 智能 吸顶灯 开箱"
+      ]
     },
     {
       "id": "viral-insta360-x6-2026",
@@ -551,7 +596,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 15,
-      "imageSource": "verified product image search"
+      "imageSource": "verified product image search",
+      "xiaohongshuRecommended": [
+        "Insta360 X6 全景 运动相机 测评",
+        "Insta360 X6 全景 运动相机 推荐",
+        "Insta360 X6 全景 运动相机 开箱"
+      ]
     },
     {
       "id": "viral-cmf-clip-pro-2026",
@@ -587,7 +637,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 16,
-      "imageSource": "verified product image search"
+      "imageSource": "verified product image search",
+      "xiaohongshuRecommended": [
+        "CMF Clip Pro 开放式 夹耳 耳机 测评",
+        "CMF Clip Pro 开放式 夹耳 耳机 推荐",
+        "CMF Clip Pro 开放式 夹耳 耳机 开箱"
+      ]
     },
     {
       "id": "viral-ikea-kallsup-speaker-2026",
@@ -623,7 +678,12 @@
       "coupangMatchGrade": "D",
       "rank": 17,
       "image": "https://www.ikea.com/gb/en/images/products/kallsup-portable-bluetooth-speaker-white__1360235_pe954577_s5.jpg",
-      "imageSource": "IKEA KALLSUP official product image"
+      "imageSource": "IKEA KALLSUP official product image",
+      "xiaohongshuRecommended": [
+        "宜家 KALLSUP 迷你 蓝牙音箱 测评",
+        "宜家 KALLSUP 迷你 蓝牙音箱 推荐",
+        "宜家 KALLSUP 迷你 蓝牙音箱 开箱"
+      ]
     },
     {
       "id": "viral-bose-ultra-open-2-2026",
@@ -658,7 +718,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 18,
-      "imageSource": "Bose Ultra Open Earbuds product image"
+      "imageSource": "Bose Ultra Open Earbuds product image",
+      "xiaohongshuRecommended": [
+        "Bose Ultra Open 2 开放式 耳机 测评",
+        "Bose Ultra Open 2 开放式 耳机 推荐",
+        "Bose Ultra Open 2 开放式 耳机 开箱"
+      ]
     },
     {
       "id": "viral-camp-snap-110d-2026",
@@ -693,7 +758,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 19,
-      "imageSource": "Camp Snap product image"
+      "imageSource": "Camp Snap product image",
+      "xiaohongshuRecommended": [
+        "Camp Snap 110D 无屏 数码相机 复古 测评",
+        "Camp Snap 110D 无屏 数码相机 复古 推荐",
+        "Camp Snap 110D 无屏 数码相机 复古 开箱"
+      ]
     },
     {
       "id": "viral-dji-mic-mini-2s-2026",
@@ -728,7 +798,12 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 20,
-      "imageSource": "DJI Mic Mini 2S product image"
+      "imageSource": "DJI Mic Mini 2S product image",
+      "xiaohongshuRecommended": [
+        "DJI Mic Mini 2S 无线 麦克风 降噪 测评",
+        "DJI Mic Mini 2S 无线 麦克风 降噪 推荐",
+        "DJI Mic Mini 2S 无线 麦克风 降噪 开箱"
+      ]
     },
     {
       "id": "viral-joytron-wm70-wireless-mic",
@@ -761,7 +836,12 @@
       "rank": 21,
       "viralRadar": true,
       "image": "https://img.joytron.co.kr/joytron/wm70/860.jpg",
-      "imageSource": "조이트론 공식몰 WM70"
+      "imageSource": "조이트론 공식몰 WM70",
+      "xiaohongshuRecommended": [
+        "无线 领夹麦克风 降噪 Type-C 测评",
+        "无线 领夹麦克风 降噪 Type-C 推荐",
+        "无线 领夹麦克风 降噪 Type-C 开箱"
+      ]
     },
     {
       "id": "viral-tabang-portable-tire-inflator",
@@ -794,7 +874,12 @@
       "rank": 22,
       "viralRadar": true,
       "image": "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/12a1/0c38671b92550d457b226754c6b70f9c27238b8253312c92233934d4385f.jpg",
-      "imageSource": "쿠팡 타방 6000mAh 동일 상품 검색 결과 이미지"
+      "imageSource": "쿠팡 타방 6000mAh 동일 상품 검색 결과 이미지",
+      "xiaohongshuRecommended": [
+        "便携 充气泵 汽车 轮胎 6000mAh 测评",
+        "便携 充气泵 汽车 轮胎 6000mAh 推荐",
+        "便携 充气泵 汽车 轮胎 6000mAh 开箱"
+      ]
     },
     {
       "id": "viral-glofo-mini-air-duster-6000",
@@ -827,7 +912,12 @@
       "rank": 23,
       "viralRadar": true,
       "image": "assets/products/glopo-airduster-v3.svg",
-      "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지"
+      "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
+      "xiaohongshuRecommended": [
+        "无线 电动 吹尘器 键盘 汽车 清洁 测评",
+        "无线 电动 吹尘器 键盘 汽车 清洁 推荐",
+        "无线 电动 吹尘器 键盘 汽车 清洁 开箱"
+      ]
     },
     {
       "id": "viral-ottocast-mini-edge-2026",
@@ -863,7 +953,12 @@
       "coupangMatchGrade": "A",
       "rank": 24,
       "viralRadar": true,
-      "imageSource": "Ottocast Mini product image"
+      "imageSource": "Ottocast Mini product image",
+      "xiaohongshuRecommended": [
+        "无线 CarPlay 适配器 安卓 Auto 车载 测评",
+        "无线 CarPlay 适配器 安卓 Auto 车载 推荐",
+        "无线 CarPlay 适配器 安卓 Auto 车载 开箱"
+      ]
     },
     {
       "id": "viral-portable-blender-rexqueen-2026",
@@ -899,7 +994,12 @@
       "coupangMatchGrade": "B",
       "rank": 25,
       "viralRadar": true,
-      "imageSource": "Danawa REXHAAN portable blender"
+      "imageSource": "Danawa REXHAAN portable blender",
+      "xiaohongshuRecommended": [
+        "便携 榨汁杯 无线 迷你 搅拌机 测评",
+        "便携 榨汁杯 无线 迷你 搅拌机 推荐",
+        "便携 榨汁杯 无线 迷你 搅拌机 开箱"
+      ]
     },
     {
       "id": "viral-180-mini-projector-2026",
@@ -937,7 +1037,12 @@
       "viralRadar": true,
       "imageSource": "180 degree WiFi6 mini projector",
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "180度 旋转 迷你 投影仪 WiFi6 蓝牙 测评",
+        "180度 旋转 迷你 投影仪 WiFi6 蓝牙 推荐",
+        "180度 旋转 迷你 投影仪 WiFi6 蓝牙 开箱"
+      ]
     },
     {
       "id": "coupang-thousta-mini-label-8874008319",
@@ -975,7 +1080,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "迷你 蓝牙 热敏 标签打印机 测评",
+        "迷你 蓝牙 热敏 标签打印机 推荐",
+        "迷你 蓝牙 热敏 标签打印机 开箱"
+      ]
     },
     {
       "id": "coupang-artmu-qi2-9296128136",
@@ -1013,7 +1123,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "Qi2 25W 磁吸 充电宝 10000mAh 测评",
+        "Qi2 25W 磁吸 充电宝 10000mAh 推荐",
+        "Qi2 25W 磁吸 充电宝 10000mAh 开箱"
+      ]
     },
     {
       "id": "coupang-smatec-qi2-9481042825",
@@ -1051,7 +1166,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "Qi2 25W 磁吸 充电宝 测评",
+        "Qi2 25W 磁吸 充电宝 推荐",
+        "Qi2 25W 磁吸 充电宝 开箱"
+      ]
     },
     {
       "id": "coupang-speedy-docking-6888281723",
@@ -1089,7 +1209,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "迷你 直插 充电宝 Type-C 测评",
+        "迷你 直插 充电宝 Type-C 推荐",
+        "迷你 直插 充电宝 Type-C 开箱"
+      ]
     },
     {
       "id": "coupang-smatec-20000-8639482507",
@@ -1127,7 +1252,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "PD 快充 20000mAh 移动电源 LED 测评",
+        "PD 快充 20000mAh 移动电源 LED 推荐",
+        "PD 快充 20000mAh 移动电源 LED 开箱"
+      ]
     },
     {
       "id": "coupang-joytron-slim-8476098818",
@@ -1165,7 +1295,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "超薄 磁吸 充电宝 5000mAh 测评",
+        "超薄 磁吸 充电宝 5000mAh 推荐",
+        "超薄 磁吸 充电宝 5000mAh 开箱"
+      ]
     },
     {
       "id": "coupang-runhome-x7-9009430238",
@@ -1203,7 +1338,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "迷你 LED 蓝牙音箱 X7 测评",
+        "迷你 LED 蓝牙音箱 X7 推荐",
+        "迷你 LED 蓝牙音箱 X7 开箱"
+      ]
     },
     {
       "id": "coupang-smatec-fold-keyboard-8442554119",
@@ -1241,7 +1381,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "折叠 迷你 蓝牙 键盘 测评",
+        "折叠 迷你 蓝牙 键盘 推荐",
+        "折叠 迷你 蓝牙 键盘 开箱"
+      ]
     },
     {
       "id": "coupang-gclicker-op25-8790277927",
@@ -1279,7 +1424,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "迷你 双模 蓝牙 无线鼠标 测评",
+        "迷你 双模 蓝牙 无线鼠标 推荐",
+        "迷你 双模 蓝牙 无线鼠标 开箱"
+      ]
     },
     {
       "id": "coupang-descimin-projector-8179311042",
@@ -1317,7 +1467,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "迷你 无线 蓝牙 投影仪 测评",
+        "迷你 无线 蓝牙 投影仪 推荐",
+        "迷你 无线 蓝牙 投影仪 开箱"
+      ]
     },
     {
       "id": "viral-mini-label-printer-niimbot-b21",
@@ -1360,7 +1515,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "迷你 标签打印机 蓝牙 热敏 测评",
+        "迷你 标签打印机 蓝牙 热敏 推荐",
+        "迷你 标签打印机 蓝牙 热敏 开箱"
+      ]
     },
     {
       "id": "anker-maggo-pro2",
@@ -1402,7 +1562,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "安克 Prime 充电宝 26K 300W 测评",
+        "安克 Prime 充电宝 26K 300W 推荐",
+        "安克 Prime 充电宝 26K 300W 开箱"
+      ]
     },
     {
       "id": "soundcore-sleep-4-pro",
@@ -1438,7 +1603,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "soundcore Sleep A30 睡眠耳机 测评",
+        "soundcore Sleep A30 睡眠耳机 推荐",
+        "soundcore Sleep A30 睡眠耳机 开箱"
+      ]
     },
     {
       "id": "ugreen-pb773",
@@ -1474,7 +1644,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "sales",
-      "rankingLabel": "판매순"
+      "rankingLabel": "판매순",
+      "xiaohongshuRecommended": [
+        "绿联 MagFlow Qi2 25W 10000mAh 磁吸充电宝 测评",
+        "绿联 MagFlow Qi2 25W 10000mAh 磁吸充电宝 推荐",
+        "绿联 MagFlow Qi2 25W 10000mAh 磁吸充电宝 开箱"
+      ]
     },
     {
       "id": "roborock-f25-ultra-steam-gen2",
@@ -1510,7 +1685,12 @@
       "rankingExcluded": false,
       "viralGrade": null,
       "rankingType": "reviews",
-      "rankingLabel": "인기"
+      "rankingLabel": "인기",
+      "xiaohongshuRecommended": [
+        "石头 F25 Ultra Steam Gen 2 洗地机 测评",
+        "石头 F25 Ultra Steam Gen 2 洗地机 推荐",
+        "石头 F25 Ultra Steam Gen 2 洗地机 开箱"
+      ]
     }
   ],
   "lastValidationAt": "2026-09-21T15:15:35+09:00",
