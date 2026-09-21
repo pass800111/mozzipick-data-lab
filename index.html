@@ -782,4 +782,65 @@ m.style.display='block';m.scrollTop=0}
 window.모찌픽_OPEN_제품_DETAIL=show;
 document.addEventListener('click',async e=>{const b=e.target.closest?.('[data-u-detail]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();try{const d=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());show((d.products||[]).find(x=>x.id===b.dataset.uDetail))}catch(_){}},true);
 })();
+</script><style id="v30-pc-mobile-unified-authority">
+/* v3.0 final authority: PC/mobile use the same card anatomy and ordering */
+#ranking>article.product.product-redesign{grid-template-areas:"rank thumb copy trend" ". thumb actions trend"!important}
+#ranking>article.product.product-redesign>.rank{grid-area:rank!important}
+#ranking>article.product.product-redesign>.thumb{grid-area:thumb!important}
+#ranking>article.product.product-redesign>.product-copy-v18{grid-area:copy!important}
+#ranking>article.product.product-redesign>.mp-actions-v6{grid-area:actions!important}
+#ranking>article.product.product-redesign>.trend{grid-area:trend!important}
+@media(max-width:760px){
+ #ranking>article.product.product-redesign{display:grid!important;grid-template-columns:26px 92px minmax(0,1fr) 72px!important;grid-template-rows:116px 38px!important;grid-template-areas:"rank thumb copy trend" ". thumb actions trend"!important;gap:7px!important;padding:10px!important;height:auto!important;min-height:174px!important;overflow:hidden!important}
+ #ranking>article.product.product-redesign>.thumb{width:92px!important;height:154px!important;min-width:92px!important;min-height:154px!important;max-width:92px!important;max-height:154px!important;margin:0!important}
+ #ranking>article.product.product-redesign>.thumb img{width:100%!important;height:100%!important;object-fit:cover!important}
+ #ranking>article.product.product-redesign>.product-copy-v18{min-width:0!important;overflow:hidden!important}
+ #ranking>article.product.product-redesign>.product-copy-v18 .name{font-size:12px!important;line-height:1.3!important}
+ #ranking>article.product.product-redesign>.product-copy-v18 .status{display:flex!important;flex-wrap:wrap!important}
+ #ranking>article.product.product-redesign>.trend{display:block!important;min-width:0!important;width:auto!important;padding:8px 3px!important;align-self:stretch!important;text-align:center!important}
+ #ranking>article.product.product-redesign>.mp-actions-v6{display:flex!important;gap:5px!important;margin:0!important;transform:none!important;align-self:end!important}
+ #ranking .mp-actions-v6 button{flex:1!important;min-width:0!important;height:34px!important;padding:0 3px!important;font-size:9px!important}
+ #menuDataView .v29-home-card{display:grid!important;grid-template-columns:26px 82px minmax(0,1fr) 72px!important;grid-template-rows:auto 38px!important;gap:7px!important;width:100%!important}
+ #menuDataView .v29-card-rank{grid-column:1!important;grid-row:1!important}
+ #menuDataView .v29-card-thumb{grid-column:2!important;grid-row:1/3!important;width:82px!important;height:112px!important}
+ #menuDataView .v29-card-copy{grid-column:3!important;grid-row:1!important}
+ #menuDataView .v29-card-actions{grid-column:3!important;grid-row:2!important;display:flex!important;flex-wrap:nowrap!important;gap:4px!important}
+ #menuDataView .v29-card-trend{grid-column:4!important;grid-row:1/3!important}
+ #productDetailModal{padding:10px!important}
+ #productDetailModal>div{width:auto!important;max-width:720px!important;margin:2vh auto!important;padding:16px!important}
+ #productDetailModal .v30-detail-hero{grid-template-columns:120px minmax(0,1fr)!important}
+}
+@media(max-width:390px){
+ #ranking>article.product.product-redesign{grid-template-columns:22px 78px minmax(0,1fr) 62px!important;grid-template-rows:108px 36px!important}
+ #ranking>article.product.product-redesign>.thumb{width:78px!important;height:144px!important;min-width:78px!important;min-height:144px!important;max-width:78px!important;max-height:144px!important}
+ #ranking>article.product.product-redesign>.product-copy-v18 .name{font-size:11px!important}
+}
+.v30-detail-hero{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;align-items:start;margin-top:14px}
+.v30-detail-image{width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#f4f6f8;border:1px solid #e5e7eb}
+.v30-detail-image img{width:100%;height:100%;object-fit:contain;display:block}
+</style>
+<script id="v30-detail-content-authority">
+(()=>{
+ const old=window.모찌픽_OPEN_제품_DETAIL;
+ function enrich(p){
+   if(typeof old==='function')old(p);
+   const m=document.getElementById('productDetailModal'); if(!m||!p)return;
+   const meta=document.getElementById('detailMeta');
+   let hero=m.querySelector('.v30-detail-hero');
+   if(!hero&&meta){
+     hero=document.createElement('div');hero.className='v30-detail-hero';
+     const image=document.createElement('div');image.className='v30-detail-image';
+     const img=document.createElement('img');img.alt=p.name||'제품 이미지';img.src=p.image||'assets/products/image-fallback.svg';img.onerror=()=>{img.src='assets/products/image-fallback.svg'};
+     image.appendChild(img);
+     const info=document.createElement('div');info.className='v30-detail-info';
+     meta.parentNode.insertBefore(hero,meta);hero.append(image,info);info.appendChild(meta);
+     const kw=document.getElementById('detailKeywords');if(kw)info.appendChild(kw);
+     const links=document.getElementById('detailLinks');if(links)info.appendChild(links);
+   }else if(hero){const img=hero.querySelector('img');if(img){img.src=p.image||'assets/products/image-fallback.svg';img.alt=p.name||'제품 이미지'}}
+   const pros=document.getElementById('detailPros');if(pros)pros.textContent=p.reviewPros||'검증된 장점 리뷰 수집 예정';
+   const cons=document.getElementById('detailCons');if(cons)cons.textContent=p.reviewCons||'검증된 단점 리뷰 수집 예정';
+   const cuts=document.getElementById('detailCuts');if(cuts)cuts.textContent=p.cuts||p.description||p.spec||'제품 기능, 실제 리뷰 포인트, 확보된 영상 소스를 연결해 제작 방향을 표시합니다.';
+ }
+ window.모찌픽_OPEN_제품_DETAIL=enrich;
+})();
 </script></body></html>
