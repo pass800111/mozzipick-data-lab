@@ -738,4 +738,16 @@ function mount(){
 document.addEventListener('click',e=>{const b=e.target.closest?.('#ranking .fav-action-v4');if(!b)return;setTimeout(mount,0)},true);
 window.addEventListener('mozzipick-production-change',mount);document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>{mount();setTimeout(mount,1000)}):(mount(),setTimeout(mount,1000));
 })();
+</script><style id="home-actions-force-visible-v4-style">
+#ranking>article.product.product-redesign{position:relative!important;padding-bottom:62px!important}
+#ranking>article.product.product-redesign>.home-actions-force{position:absolute!important;left:260px!important;bottom:14px!important;display:flex!important;gap:8px!important;z-index:20!important}
+#ranking .home-actions-force button{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;height:36px!important;padding:0 13px!important;border:1px solid #d9dee8!important;border-radius:9px!important;background:#fff!important;font-size:11px!important;font-weight:900!important;cursor:pointer!important;color:#344054!important}
+#ranking .home-actions-force .prod-card-add{color:#175cd3!important;border-color:#bfd4f7!important}
+@media(max-width:760px){#ranking>article.product.product-redesign{padding-bottom:58px!important}#ranking>article.product.product-redesign>.home-actions-force{left:16px!important;right:16px!important;bottom:10px!important}#ranking .home-actions-force button{flex:1!important;padding:0 5px!important}}
+</style>
+<script id="home-actions-force-visible-v4">
+(()=>{const Q='mozzipick_reels_queue_v1',K='mozzipick_reels_made_v1',F='mozzipick_favorites_v1';const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
+function sync(){document.querySelectorAll('#ranking>article.product.product-redesign').forEach(card=>{const n=(card.querySelector('.name')?.dataset.favName||card.querySelector('.name')?.textContent||'').replace(/[★☆]/g,'').trim();if(!n)return;let w=card.querySelector(':scope>.home-actions-force');if(!w){w=document.createElement('div');w.className='home-actions-force';w.innerHTML='<button type="button" class="home-fav-force">♡ 즐겨찾기</button><button type="button" class="prod-card-add">▣ 제작관리 담기</button>';card.appendChild(w)}w.querySelector('.home-fav-force').dataset.name=n;w.querySelector('.prod-card-add').dataset.name=n;const q=read(Q,'[]'),m=read(K,'{}');const pb=w.querySelector('.prod-card-add');const on=q.includes(n)||!!m[n];pb.textContent=on?'✓ 미제작 담김':'▣ 제작관리 담기';pb.classList.toggle('on',on)})}
+document.addEventListener('click',e=>{const b=e.target.closest?.('.home-fav-force');if(!b)return;e.preventDefault();e.stopPropagation();const n=b.dataset.name;const existing=[...document.querySelectorAll('#ranking .fav-action-v4')].find(x=>(x.dataset.favName||'').trim()===n);if(existing)existing.click()},true);
+const go=()=>{sync();setTimeout(sync,500);setTimeout(sync,1500)};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();window.addEventListener('mozzipick-production-change',sync)})();
 </script></body></html>
