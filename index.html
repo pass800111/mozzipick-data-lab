@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.7-absolute-last-mobile -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.8-repeat-all-mobile-cards -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -977,5 +977,56 @@ document.addEventListener('click',async e=>{const b=e.target.closest?.('[data-u-
 #ranking>article.product.product-redesign>.mp-actions-v6 button{width:100%!important;min-width:0!important;height:38px!important;padding:0 4px!important;font-size:10px!important;white-space:nowrap!important}
 #ranking>article.product.product-redesign>.trend{grid-area:trend!important;position:static!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:100%!important;height:32px!important;min-width:0!important;margin:0!important;padding:0 6px!important;background:#f8fafc!important;border-radius:9px!important;box-sizing:border-box!important;white-space:nowrap!important}
 #ranking>article.product.product-redesign>.trend>*{display:inline!important;margin:0!important;padding:0!important;font-size:9px!important;line-height:1!important;white-space:nowrap!important}
+}
+</style><style id="mobile-v38-repeat-all-cards">
+@media(max-width:760px){
+/* FINAL MOBILE CARD AUTHORITY: every menu card follows the same readable geometry */
+#menuDataView .v29-card-grid,#menuDataView .favorites-simple-list{display:flex!important;flex-direction:column!important;gap:10px!important}
+#menuDataView .v29-home-card{
+ display:grid!important;grid-template-columns:30px 82px minmax(0,1fr)!important;
+ grid-template-rows:auto 38px!important;grid-template-areas:"rank thumb copy" ". actions actions"!important;
+ gap:9px!important;align-items:center!important;width:100%!important;min-height:0!important;height:auto!important;
+ padding:10px!important;border:1px solid #e1e5ea!important;border-radius:14px!important;background:#fff!important;
+ box-sizing:border-box!important;overflow:hidden!important
+}
+#menuDataView .v29-home-card>strong,#menuDataView .v29-card-rank{grid-area:rank!important;position:static!important;width:30px!important;min-width:30px!important;height:auto!important;margin:0!important;text-align:center!important;align-self:center!important;font-size:16px!important}
+#menuDataView .v29-card-thumb{grid-area:thumb!important;position:static!important;width:82px!important;height:76px!important;min-width:82px!important;min-height:76px!important;max-width:82px!important;max-height:76px!important;margin:0!important;border-radius:12px!important;overflow:hidden!important}
+#menuDataView .v29-card-copy{grid-area:copy!important;min-width:0!important;align-self:start!important;overflow:hidden!important}
+#menuDataView .v29-card-copy b{font-size:13px!important;line-height:1.35!important;overflow-wrap:anywhere!important;word-break:keep-all!important}
+#menuDataView .v29-card-copy small{font-size:10px!important;line-height:1.4!important}
+#menuDataView .v29-card-actions{grid-area:actions!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;width:100%!important;min-width:0!important;margin:0!important}
+#menuDataView .v29-card-actions button{display:block!important;width:100%!important;min-width:0!important;height:38px!important;padding:0 3px!important;font-size:9px!important;line-height:1!important;white-space:nowrap!important;overflow:hidden!important}
+#menuDataView .v29-card-trend{display:none!important}
+
+/* favorites + production: stop the three buttons crushing into the text */
+#menuDataView .favorite-simple-item{
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-auto-rows:auto!important;
+ gap:7px!important;width:100%!important;min-height:0!important;height:auto!important;
+ padding:10px!important;border:1px solid #e1e5ea!important;border-radius:14px!important;
+ box-sizing:border-box!important;overflow:hidden!important;background:#fff!important
+}
+#menuDataView .favorite-simple-item>button[data-fav-detail],
+#menuDataView .favorite-simple-item>button[data-prod-detail]{
+ display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:8px 10px!important;
+ text-align:left!important;border:0!important;background:transparent!important;overflow:hidden!important
+}
+#menuDataView .favorite-simple-item>button[data-fav-detail] b,
+#menuDataView .favorite-simple-item>button[data-prod-detail] b{display:block!important;font-size:13px!important;line-height:1.35!important;word-break:keep-all!important;overflow-wrap:anywhere!important}
+#menuDataView .favorite-simple-item>button[data-fav-detail] small,
+#menuDataView .favorite-simple-item>button[data-prod-detail] small{display:block!important;margin-top:5px!important;font-size:10px!important;line-height:1.4!important;color:#667085!important}
+#menuDataView .favorite-simple-item>.fav-remove,
+#menuDataView .production-item>.prod-toggle,
+#menuDataView .production-item>.prod-menu-remove{position:static!important;width:100%!important;min-width:0!important;height:38px!important;margin:0!important;padding:0 8px!important;font-size:10px!important;white-space:nowrap!important;box-sizing:border-box!important}
+#menuDataView .production-item>.prod-date{margin:0!important;padding:2px 8px!important}
+
+/* grade/coupang accordions: give product copy real width and actions their own row */
+#menuDataView .grade-product-card,#menuDataView .coupang-product-card{
+ display:grid!important;grid-template-columns:30px 82px minmax(0,1fr)!important;grid-template-rows:auto auto!important;
+ gap:9px!important;width:100%!important;height:auto!important;min-height:0!important;padding:10px!important;
+ box-sizing:border-box!important;overflow:hidden!important
+}
+#menuDataView .grade-product-card .grade-card-actions,#menuDataView .coupang-product-card .grade-card-actions{grid-column:2/4!important;display:flex!important;gap:6px!important;min-width:0!important;width:100%!important}
+#menuDataView .grade-product-card .grade-card-actions>*,
+#menuDataView .coupang-product-card .grade-card-actions>*{min-width:0!important;font-size:9px!important;white-space:nowrap!important}
 }
 </style></body></html>
