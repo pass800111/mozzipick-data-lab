@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.8-repeat-all-mobile-cards -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.9-repeat-visual-fix -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -1029,4 +1029,49 @@ document.addEventListener('click',async e=>{const b=e.target.closest?.('[data-u-
 #menuDataView .grade-product-card .grade-card-actions>*,
 #menuDataView .coupang-product-card .grade-card-actions>*{min-width:0!important;font-size:9px!important;white-space:nowrap!important}
 }
-</style></body></html>
+</style><style id="mobile-v39-repeat-visual-fix">
+@media(max-width:760px){
+/* REPEAT: production card — keep copy and controls in separate rows */
+#menuDataView .production-item{
+ display:grid!important;grid-template-columns:30px 92px minmax(0,1fr)!important;
+ grid-template-rows:minmax(112px,auto) 42px 42px!important;column-gap:10px!important;row-gap:7px!important;
+ padding:12px!important;overflow:hidden!important
+}
+#menuDataView .production-item>button[data-prod-detail]{
+ grid-column:1/4!important;grid-row:1!important;display:grid!important;
+ grid-template-columns:30px 92px minmax(0,1fr)!important;gap:10px!important;
+ min-height:112px!important;padding:0!important;overflow:hidden!important
+}
+#menuDataView .production-item>button[data-prod-detail] b{grid-column:3!important;align-self:start!important;padding-top:3px!important}
+#menuDataView .production-item>button[data-prod-detail] small{grid-column:3!important;align-self:start!important}
+#menuDataView .production-item>.prod-toggle{grid-column:1/4!important;grid-row:2!important;width:100%!important}
+#menuDataView .production-item>.prod-menu-remove{grid-column:1/4!important;grid-row:3!important;width:100%!important}
+#menuDataView .production-item>.prod-date{grid-column:1/4!important;grid-row:4!important}
+
+/* grade cards — image must never leak broken alt text */
+#menuDataView .grade-product-card{
+ grid-template-columns:30px 145px minmax(0,1fr)!important;
+ grid-template-rows:minmax(145px,auto) 44px!important;column-gap:12px!important;row-gap:8px!important;
+ align-items:start!important;padding:12px!important;overflow:hidden!important
+}
+#menuDataView .grade-product-card .rank,#menuDataView .grade-product-card>.rank{grid-column:1!important;grid-row:1!important;align-self:center!important}
+#menuDataView .grade-product-card .thumb,#menuDataView .grade-product-card>.thumb,
+#menuDataView .grade-product-card .v29-card-thumb{
+ grid-column:2!important;grid-row:1!important;width:145px!important;height:145px!important;min-width:145px!important;
+ max-width:145px!important;min-height:145px!important;max-height:145px!important;overflow:hidden!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;background:#f5f7fa!important;border-radius:12px!important
+}
+#menuDataView .grade-product-card .thumb img,#menuDataView .grade-product-card>.thumb img,
+#menuDataView .grade-product-card .v29-card-thumb img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;font-size:0!important;color:transparent!important;overflow:hidden!important}
+#menuDataView .grade-product-card .grade-card-copy,#menuDataView .grade-product-card .v29-card-copy{grid-column:3!important;grid-row:1!important;min-width:0!important;overflow:hidden!important}
+#menuDataView .grade-product-card .grade-card-actions{grid-column:2/4!important;grid-row:2!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;width:100%!important}
+#menuDataView .grade-product-card .grade-card-actions>*{width:100%!important;min-width:0!important;height:42px!important;margin:0!important;padding:0 4px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:10px!important;overflow:hidden!important}
+
+/* bad image fallback: clean placeholder instead of browser broken-image text */
+#menuDataView img[data-v39-bad="1"]{display:none!important}
+#menuDataView .v39-img-fallback{width:100%!important;height:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;font-size:10px!important;font-weight:900!important;color:#98a2b3!important;padding:8px!important;box-sizing:border-box!important}
+}
+</style>
+<script id="mobile-v39-broken-image-guard">
+(()=>{function fix(root=document){root.querySelectorAll('#menuDataView img').forEach(img=>{if(img.dataset.v39Bound)return;img.dataset.v39Bound='1';const bad=()=>{img.dataset.v39Bad='1';const p=img.parentElement;if(p&&!p.querySelector('.v39-img-fallback')){const s=document.createElement('span');s.className='v39-img-fallback';s.textContent='MOZZIPICK\n이미지 확인 중';p.appendChild(s)}};img.addEventListener('error',bad,{once:true});if(img.complete&&(!img.naturalWidth||!img.naturalHeight))bad()})}new MutationObserver(()=>fix()).observe(document.documentElement,{childList:true,subtree:true});document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>fix()):fix()})();
+</script></body></html>
