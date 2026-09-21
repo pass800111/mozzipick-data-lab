@@ -232,7 +232,7 @@
       "tiktok": "스마트홈 보안 시연형 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://simplisafe.com/video-doorbell-series-2",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "스마트 비디오 도어벨 · 방문자 확인",
@@ -253,7 +253,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 7
+      "rank": 7,
+      "imageSource": "SimpliSafe official page (renderer fallback)"
     },
     {
       "id": "viral-govee-sky-ceiling-light-2026",
@@ -287,7 +288,9 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 8
+      "rank": 8,
+      "image": "https://www.matteralpha.com/media/cache/article_og_image/uploads/celling-light-ultra-2.jpg",
+      "imageSource": "Matter Alpha Govee Sky Ceiling Light"
     },
     {
       "id": "viral-insta360-x6-2026",
@@ -393,7 +396,9 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 11
+      "rank": 11,
+      "image": "https://www.ikea.com/gb/en/images/products/kallsup-portable-bluetooth-speaker-white__1360235_pe954577_s5.jpg",
+      "imageSource": "IKEA KALLSUP official product image"
     },
     {
       "id": "viral-bose-ultra-open-2-2026",
@@ -442,7 +447,7 @@
       "tiktok": "레트로·스크린리스 카메라 시각형 콘텐츠 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://picturecity.ph/cdn/shop/files/1_4e2d5827-7a8b-4e46-bd22-b323fbd74d79.jpg?v=1743757453&width=480",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "8MP · 화면 없는 포인트앤슛 · 내장 필터 · USB-C",
@@ -462,7 +467,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 13
+      "rank": 13,
+      "imageSource": "Camp Snap product image"
     },
     {
       "id": "viral-dji-mic-mini-2s-2026",
@@ -607,7 +613,7 @@
       "tiktok": "동일 기능 제품군 강한 판매 반응 확인 · 2026 무선 CarPlay 어댑터 100.2K sold 사례",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://i.ebayimg.com/images/g/SSwAAOSw8xVoNncn/s-l1200.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "유선 CarPlay/Android Auto → 무선 변환 · USB · Bluetooth/Wi-Fi",
@@ -627,7 +633,8 @@
       "coupangGroup": "A",
       "coupangMatchGrade": "A",
       "rank": 18,
-      "viralRadar": true
+      "viralRadar": true,
+      "imageSource": "Ottocast Mini product image"
     },
     {
       "id": "viral-portable-blender-rexqueen-2026",
@@ -642,7 +649,7 @@
       "tiktok": "휴대용 USB 충전 블렌더 제품군 TikTok Shop 바이럴 상품 확인",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://img.danawa.com/prod_img/500000/432/647/img/15647432_1.jpg?_v=20240311172626&shrink=360%3A360",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "휴대용 · 텀블러형 · 충전식 미니 블렌더",
@@ -662,7 +669,8 @@
       "coupangGroup": "B",
       "coupangMatchGrade": "B",
       "rank": 19,
-      "viralRadar": true
+      "viralRadar": true,
+      "imageSource": "Danawa REXHAAN portable blender"
     },
     {
       "id": "viral-180-mini-projector-2026",
@@ -677,7 +685,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록 · 시각적 시연형 후보",
-      "image": "",
+      "image": "https://i5.walmartimages.com/asr/60dcbe61-2cdf-4390-861d-a97cb7c1939c.aee59ed7ff7f31d3bf731ae0479e14c3.jpeg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "180° 회전 · Wi‑Fi 6 · Bluetooth 5.4 · 앱 내장",
@@ -697,7 +705,8 @@
       "coupangGroup": "C",
       "coupangMatchGrade": "C",
       "rank": 20,
-      "viralRadar": true
+      "viralRadar": true,
+      "imageSource": "180 degree WiFi6 mini projector"
     },
     {
       "id": "coupang-thousta-mini-label-8874008319",
@@ -810,7 +819,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://img.danawa.com/prod_img/500000/434/052/img/74052434_1.jpg?_v=20250109111733&shrink=360%3A360",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "4900mAh · C타입 도킹 · 잔량표시",
@@ -826,7 +835,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "Danawa SPEEDY 4900mAh"
     },
     {
       "id": "coupang-smatec-20000-8639482507",
@@ -842,7 +852,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/108629989754808-4fef93a5-9b34-46dd-9555-ddfadf87dcbf.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "20000mAh · PD 고속충전 · LED 잔량표시",
@@ -858,7 +868,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "Coupang SMARTEK 20000mAh"
     },
     {
       "id": "coupang-joytron-slim-8476098818",
@@ -938,7 +949,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://img.danawa.com/prod_img/500000/870/634/img/94634870_1.jpg?_v=20250724095946&shrink=360%3A360",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "접이식 · 미니 · 블루투스 무선키보드",
@@ -954,7 +965,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "Danawa SMARTEK STBK-4000"
     },
     {
       "id": "coupang-gclicker-op25-8790277927",
@@ -1073,7 +1085,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://m.media-amazon.com/images/I/61f8VqUZzHL._AC_SL1500_.jpg",
       "status": "verified-pending",
       "officialUrl": "https://ankerkorea.co.kr/lp/a110a.html",
       "spec": "26,250mAh · 최대 합계 출력 300W · 단일 포트 최대 140W · 최대 입력 250W · USB-C 2개 + USB-A 1개 · 약 600g · 160×63×38mm",
@@ -1093,7 +1105,8 @@
       "reviewVerifiedAt": "2026-09-21T07:02:08+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "Anker Prime 26K 300W product image"
     },
     {
       "id": "soundcore-sleep-4-pro",
@@ -1109,7 +1122,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://m.media-amazon.com/images/I/61QeR4v5vPL._AC_SL1500_.jpg",
       "status": "verified-pending",
       "officialUrl": "https://www.soundcore.com/products/d1301-sleep-a30-smart-anc-earbuds-for-sleeping",
       "spec": "Triple noise reduction · 3g · 8–10h · IPX4",
@@ -1123,7 +1136,8 @@
       "coupangEligible": true,
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "Soundcore Sleep A30 product image"
     },
     {
       "id": "ugreen-pb773",
@@ -1183,7 +1197,9 @@
       "coupangEligible": true,
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "B",
-      "coupangGroup": "B"
+      "coupangGroup": "B",
+      "image": "https://roborock.co.nz/cdn/shop/files/F25_Ultra-11.png?v=1762319811",
+      "imageSource": "Roborock F25 Ultra official store image"
     }
   ],
   "lastValidationAt": "2026-09-21T12:11:08+09:00",
