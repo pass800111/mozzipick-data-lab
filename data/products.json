@@ -36,9 +36,7 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 1,
-      "image": "https://www.frisbeekorea.com/data/goods/2026/08/33/10000018639/10000018639_detail_054.jpg",
-      "imageSource": "verified exact/same-type public product image"
+      "rank": 1
     },
     {
       "id": "coupang-oa-heatspot-s-9036708525",
@@ -73,9 +71,7 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 2,
-      "image": "https://m.oa-mall.co.kr/web/product/extra/big/202508/1a1837fc47573f737ccae24be3d6dd27.jpg",
-      "imageSource": "verified exact/same-type public product image"
+      "rank": 2
     },
     {
       "id": "coupang-korea-plug-adapter-9614108008",
@@ -110,9 +106,7 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 3,
-      "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
-      "imageSource": "verified exact/same-type public product image"
+      "rank": 3
     },
     {
       "id": "coupang-covank-5in1-vacuum-9726842970",
@@ -196,7 +190,7 @@
       "tiktok": "충전·배터리 제품군 바이럴 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "https://gagadget.com/media/post_big2/anker-maggo-power-bank-2-pro-tai-01.webp",
+      "image": "",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "MagGo 신형 보조배터리 · 9월 신제품",
@@ -217,8 +211,7 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 6,
-      "imageSource": "verified public product image"
+      "rank": 6
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
