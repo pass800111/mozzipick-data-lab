@@ -36,7 +36,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 1
+      "rank": 1,
+      "image": "https://gi.esmplus.com/bros0409/pout/hands7_pro/black_01.jpg",
+      "imageSource": "verified public product image"
     },
     {
       "id": "coupang-oa-heatspot-s-9036708525",
@@ -190,7 +192,7 @@
       "tiktok": "충전·배터리 제품군 바이럴 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://gagadget.com/media/post_big2/anker-maggo-power-bank-2-pro-tai-01.webp",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "MagGo 신형 보조배터리 · 9월 신제품",
@@ -211,7 +213,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 6
+      "rank": 6,
+      "imageSource": "verified public product image"
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
