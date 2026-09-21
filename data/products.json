@@ -405,7 +405,7 @@
       "tiktok": "2026년 9월 최신 오픈이어/클립형 오디오 트렌드 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://d2e6ccujb3mkqf.cloudfront.net/8beedbb3-bbe5-4625-82d4-eea3e67a6b50-2_29df8925-c39e-487d-9b0c-c30de311949c.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "오픈이어 커프형 · 무선충전 케이스 · 통화/배터리 개선",
@@ -425,7 +425,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 12
+      "rank": 12,
+      "imageSource": "Bose Ultra Open Earbuds product image"
     },
     {
       "id": "viral-camp-snap-110d-2026",
@@ -473,7 +474,7 @@
       "tiktok": "크리에이터용 초소형 무선 마이크 콘텐츠 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://nofilmschool.com/media-library/dji-mic-mini-2s.jpg?coordinates=0%2C0%2C0%2C0&height=700&id=67571767&quality=50&width=1245",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "초소형 무선 마이크 · 내부 녹음 · AI 노이즈 캔슬링",
@@ -493,7 +494,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 14
+      "rank": 14,
+      "imageSource": "DJI Mic Mini 2S product image"
     },
     {
       "id": "viral-joytron-wm70-wireless-mic",
@@ -1028,7 +1030,7 @@
       "tiktok": "바이럴 제품군 확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://niimbot.com.ph/cdn/shop/files/JC-B21-004_e73c0a6a-cb61-41c5-9135-4f3bd46ad5df.png?v=1776914392&width=823",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "휴대용 · 무선 블루투스 · 라벨 즉시 출력",
@@ -1049,7 +1051,8 @@
       "reviewVerifiedAt": "2026-09-21T09:02:59+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "C",
-      "coupangGroup": "C"
+      "coupangGroup": "C",
+      "imageSource": "NIIMBOT product image"
     },
     {
       "id": "anker-maggo-pro2",
