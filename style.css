@@ -44,7 +44,7 @@
 }
 .product-redesign a{font-size:13px!important;font-weight:850!important}
 .product-redesign::before{
- content:"PRODUCT";grid-column:1!important;grid-row:1 / span 6!important;
+ content:"상품";grid-column:1!important;grid-row:1 / span 6!important;
  display:flex!important;align-items:center!important;justify-content:center!important;
  height:180px!important;margin:44px 0 0!important;border-radius:14px!important;
  background:linear-gradient(145deg,#f4f6f8,#e9edf2)!important;color:#98a2b3!important;
