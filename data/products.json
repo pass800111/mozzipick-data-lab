@@ -526,7 +526,9 @@
       "coupangGroup": "A",
       "coupangMatchGrade": "A",
       "rank": 15,
-      "viralRadar": true
+      "viralRadar": true,
+      "image": "https://img.joytron.co.kr/joytron/wm70/860.jpg",
+      "imageSource": "조이트론 공식몰 WM70"
     },
     {
       "id": "viral-tabang-portable-tire-inflator",
@@ -966,7 +968,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://image.yes24.com/goods/147100144/XL",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "블루투스+2.4GHz 리시버 · 미니",
@@ -982,7 +984,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "YES24 OP25 동일모델"
     },
     {
       "id": "coupang-descimin-projector-8179311042",
