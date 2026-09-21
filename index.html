@@ -646,32 +646,4 @@ document.addEventListener('click',function(e){const b=e.target.closest&&e.target
  },true);
  document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.viral-live-detail');if(!b)return;viralProducts().then(all=>{const p=all.find(x=>x.id===b.dataset.productId);if(p&&window.모찌픽_OPEN_제품_DETAIL)window.모찌픽_OPEN_제품_DETAIL(p)})},true);
 })();
-</script><script id="v29-live-card-fields">
-(()=>{const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const fmt=t=>{if(!t)return '등록시간 미확인';try{return new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});}catch(e){return t}};window.MOZZIPICK_V29_FIELDS=p=>'<div class="v29-extra" style="margin-top:8px;font-size:11px;line-height:1.65;color:#667085"><div><b>등록시간</b> '+esc(fmt(p.siteUpdatedAt||p.updatedAt))+'</div><div><b>상품설명</b> '+esc(p.spec||p.evidence||p.coupangValidationNote||'상세 설명 확인 중')+'</div><div><b>샤오홍슈 상품명</b> <span class="cn-term">'+esc(p.xiaohongshuQuery||'미확인')+'</span> <button type="button" class="copy-cn" data-copy="'+esc(p.xiaohongshuQuery||'')+'">복사</button></div><div><b>추천 검색어</b> '+((p.xiaohongshuRecommended||[]).slice(0,3).map(w=>'<button type="button" class="copy-cn rec-word" data-copy="'+esc(w)+'">'+esc(w)+'</button>').join(' ')||'미확인')+'</div></div>'})();
-</script><style id="v29-menu-clean-style">
-#menuDataView{width:100%;max-width:none}
-#menuDataView .v29-section{margin:0 0 18px;border:1px solid #e4e7ec;border-radius:16px;background:#fff;overflow:hidden}
-#menuDataView .v29-section>summary{display:flex;align-items:center;justify-content:space-between;padding:16px;cursor:pointer;list-style:none}
-#menuDataView .v29-section>summary::-webkit-details-marker{display:none}
-#menuDataView .v29-section>summary b{font-size:15px}
-#menuDataView .v29-section>summary span{font-size:11px;color:#667085}
-#menuDataView .v29-list{padding:0 12px 12px}
-#menuDataView .v29-card{display:block;width:100%;text-align:left;border:0;border-top:1px solid #eef2f6;background:#fff;padding:13px 4px;cursor:pointer}
-#menuDataView .v29-card b{display:block;font-size:14px;line-height:1.4;color:#101828}
-#menuDataView .v29-card small{display:block;margin-top:5px;font-size:11px;line-height:1.45;color:#667085}
-#menuDataView .v29-empty{padding:15px 4px;color:#98a2b3;font-size:12px}
-#menuDataView .v29-pager{display:flex;gap:6px;padding-top:10px}
-#menuDataView .v29-pager button{border:1px solid #d0d5dd;background:#fff;border-radius:8px;padding:6px 9px;font-size:11px;font-weight:800}
-@media(max-width:850px){#menuDataView .v29-section{border-radius:14px}#menuDataView .v29-section>summary{padding:14px}#menuDataView .v29-card{padding:12px 3px}}
-</style><script id="v29-menu-clean-render">
-(()=>{
- const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
- const load=()=>fetch('./data/products.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>d.products||[]);
- const sort=a=>a.slice().sort((x,y)=>new Date(y.siteUpdatedAt||y.updatedAt||0)-new Date(x.siteUpdatedAt||x.updatedAt||0));
- const card=p=>'<button type="button" class="v29-card" data-v29-id="'+esc(p.id)+'"><b>'+esc(p.name||'제품')+'</b><small>'+esc((p.category||'기타')+(p.siteUpdatedAt?' · '+new Date(p.siteUpdatedAt).toLocaleString('ko-KR'):'')+(p.grade?' · '+p.grade+'등급':'')+(p.reviews!=null?' · 리뷰 '+Number(p.reviews).toLocaleString('ko-KR'):'') )+'</small></button>';
- const body=(a,page=1)=>{const pages=Math.ceil(a.length/5)||1,p=Math.min(page,pages),rows=a.slice((p-1)*5,p*5).map(card).join('')||'<div class="v29-empty">등록 상품 없음</div>';return '<div class="v29-list">'+rows+(pages>1?'<div class="v29-pager">'+Array.from({length:pages},(_,i)=>'<button data-v29-page="'+(i+1)+'">'+(i+1)+'</button>').join('')+'</div>':'')+'</div>'};
- const section=(name,a)=>'<details class="v29-section" data-v29-name="'+esc(name)+'" open><summary><b>'+esc(name)+'</b><span>'+a.length+'개</span></summary>'+body(a)+'</details>';
- async function render(view){const host=document.getElementById('menuDataView');if(!host)return;const p=await load();if(view==='time'){const c=p.filter(x=>x.coupangEligible===true&&x.rankingExcluded!==true);const sales=sort(c.filter(x=>x.rankingType==='sales')),reviews=c.filter(x=>Number(x.reviews)>0).sort((a,b)=>Number(b.reviews)-Number(a.reviews)),rising=sort(c.filter(x=>x.rankingType==='rising')),reels=sort(c.filter(x=>x.rankingType==='reels'));host.innerHTML='<div class="menu-view-head"><span>COUPANG</span><h2>쿠팡 랭킹</h2><p>쿠팡 상품을 기준별로 분리해서 표시합니다.</p></div>'+section('판매 랭킹',sales)+section('리뷰많은순',reviews)+section('인기급상승',rising)+section('릴스제작추천',reels)}else{const v=p.filter(x=>x.viralRadar===true);host.innerHTML='<div class="menu-view-head"><span>VIRAL GRADE</span><h2>등급</h2><p>바이럴 상품만 A/B/C 등급으로 표시합니다.</p></div>'+['A','B','C'].map(g=>section(g+'등급',sort(v.filter(x=>(x.grade||x.viralGrade)===g)))).join('')}}
- document.addEventListener('click',e=>{const n=e.target.closest?.('.side nav button[data-view]');if(n&&(n.dataset.view==='time'||n.dataset.view==='categories'))setTimeout(()=>render(n.dataset.view),40);const p=e.target.closest?.('[data-v29-page]');if(p){e.preventDefault();e.stopPropagation();const sec=p.closest('.v29-section'),name=sec.dataset.v29Name,page=Number(p.dataset.v29Page);load().then(all=>{let a=[];if(name==='판매 랭킹')a=sort(all.filter(x=>x.coupangEligible===true&&x.rankingExcluded!==true&&x.rankingType==='sales'));else if(name==='리뷰많은순')a=all.filter(x=>x.coupangEligible===true&&x.rankingExcluded!==true&&Number(x.reviews)>0).sort((x,y)=>Number(y.reviews)-Number(x.reviews));else if(name==='인기급상승')a=sort(all.filter(x=>x.coupangEligible===true&&x.rankingExcluded!==true&&x.rankingType==='rising'));else if(name==='릴스제작추천')a=sort(all.filter(x=>x.coupangEligible===true&&x.rankingExcluded!==true&&x.rankingType==='reels'));else a=sort(all.filter(x=>x.viralRadar===true&&(x.grade||x.viralGrade)===name[0]));sec.querySelector('.v29-list').outerHTML=body(a,page)})}const d=e.target.closest?.('[data-v29-id]');if(d){load().then(a=>{const x=a.find(z=>z.id===d.dataset.v29Id);if(x&&window.모찌픽_OPEN_제품_DETAIL)window.모찌픽_OPEN_제품_DETAIL(x)})}},true);
-})();
 </script></body></html>
