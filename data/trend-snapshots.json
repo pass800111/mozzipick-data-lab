@@ -1299,7 +1299,74 @@
           "rank": 30
         }
       ]
+    },
+    {
+      "at": "2026-09-21T11:35:00+09:00",
+      "type": "coupang-v2.9",
+      "source": "쿠팡 공개 상품 페이지 검증",
+      "note": "V2.9 1번 실행. 중복 제외. 판매량/리뷰 공개 신호와 릴스 제작 적합도를 분리 누적.",
+      "salesRanking": [
+        {
+          "rank": 1,
+          "name": "오아 히트스팟S 미니 손목 무선 EMS 온열 마사지기",
+          "url": "https://www.coupang.com/vp/products/9036708525",
+          "signal": "한 달간 300명 이상 구매 · 상품평 259"
+        },
+        {
+          "rank": 2,
+          "name": "해외직구용 110V→220V 과전류차단 변환 어댑터",
+          "url": "https://www.coupang.com/vp/products/9614108008",
+          "signal": "한 달간 300명 이상 구매 · 상품평 68"
+        },
+        {
+          "rank": 3,
+          "name": "파우트 핸즈7 프로 3in1 Qi2.2 25W 무선충전기",
+          "url": "https://www.coupang.com/vp/products/9640903038",
+          "signal": "한 달간 100명 이상 구매 · 상품평 22"
+        }
+      ],
+      "reviewRanking": [
+        {
+          "rank": 1,
+          "name": "오아 히트스팟S 미니 손목 무선 EMS 온열 마사지기",
+          "reviews": 259,
+          "url": "https://www.coupang.com/vp/products/9036708525"
+        },
+        {
+          "rank": 2,
+          "name": "해외직구용 110V→220V 과전류차단 변환 어댑터",
+          "reviews": 68,
+          "url": "https://www.coupang.com/vp/products/9614108008"
+        },
+        {
+          "rank": 3,
+          "name": "파우트 핸즈7 프로 3in1 Qi2.2 25W 무선충전기",
+          "reviews": 22,
+          "url": "https://www.coupang.com/vp/products/9640903038"
+        }
+      ],
+      "risingRanking": [],
+      "reelsRanking": [
+        {
+          "rank": 1,
+          "name": "코뱅크 5in1 15000Pa 무선 차량용 청소기",
+          "url": "https://www.coupang.com/vp/products/9726842970",
+          "basis": "5-in-1 기능 시연"
+        },
+        {
+          "rank": 2,
+          "name": "무선 리모컨 자전거 방향지시 테일라이트",
+          "url": "https://www.coupang.com/vp/products/9725169460",
+          "basis": "방향지시등 즉시 시각화"
+        },
+        {
+          "rank": 3,
+          "name": "파우트 핸즈7 프로 3in1 Qi2.2 25W 무선충전기",
+          "url": "https://www.coupang.com/vp/products/9640903038",
+          "basis": "3기기 동시충전 시연"
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-21T10:09:16+09:00"
+  "updatedAt": "2026-09-21T11:35:00+09:00"
 }
