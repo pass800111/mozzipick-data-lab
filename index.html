@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v2.8-five-per-page-hardfix -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v2.8-absolute-pager-fix -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -837,4 +837,8 @@ function bind(){document.querySelectorAll('.chips [data-category]').forEach(b=>b
 async function init(){try{const d=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());all=(d.products||[]).slice().sort((a,b)=>(a.rank||999)-(b.rank||999));bind();draw();window.모찌픽_HOME5_REFRESH=draw}catch(e){}}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
+</script><style id="absolute-pager-fix-v21">
+#ranking>.v29-global-pager,#ranking>.v29-home-pager,#ranking>.home-pagination,#ranking>.pagination,#ranking>.mp-single-pager{display:none!important}
+</style><script id="absolute-pager-fix-v21-js">
+(()=>{const P=5;function enforce(){const h=document.getElementById('ranking');if(!h)return;const external=[...document.querySelectorAll('.home-pager-v18')];if(external.length>1)external.slice(0,-1).forEach(x=>x.remove());h.querySelectorAll(':scope>.v29-global-pager,:scope>.v29-home-pager,:scope>.home-pagination,:scope>.pagination,:scope>.mp-single-pager').forEach(x=>x.remove());const cards=[...h.querySelectorAll(':scope>article.product.product-redesign')];cards.slice(P).forEach(x=>x.remove())}function boot(){enforce();setInterval(enforce,250)}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',boot):boot()})();
 </script></body></html>
