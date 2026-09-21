@@ -1159,11 +1159,15 @@ function render(){
  const panel=document.getElementById('menuDataView');if(!panel)return;
  panel.hidden=false;
  const list=DATA[tab]||[];
- panel.innerHTML='<div class="menu-view-head"><span>INSTAGRAM ELECTRONICS</span><h2>인스타 전자제품</h2></div><div id="instagramElectronics"><div class="ig-tabs"><button data-igtab="domestic" class="'+(tab==='domestic'?'on':'')+'">🇰🇷 국내상품</button><button data-igtab="overseas" class="'+(tab==='overseas'?'on':'')+'">🌎 해외상품</button></div><div class="ig-list">'+(list.length?list.map(x=>'<article class="ig-card"><div class="ig-info"><b>'+esc(x.product)+'</b><small>좋아요 '+esc(x.likes||'미확인')+' · 댓글 '+esc(x.comments||'미확인')+'</small></div><div class="ig-links"><a class="ig-reel" href="'+esc(x.reel)+'" target="_blank" rel="noopener">릴스 바로가기 ↗</a><a class="ig-account" href="'+esc(x.account)+'" target="_blank" rel="noopener">계정 바로가기 ↗</a></div></article>').join(''):'<article class="ig-card"><div class="ig-info"><b>검색 결과 준비 중</b><small>1-1 / 1-2 검색 결과가 등록되면 최신순으로 표시됩니다.</small></div></article>')+'</div></div>';
+ panel.innerHTML='<div class="menu-view-head"><span>INSTAGRAM ELECTRONICS</span><h2>인스타 전자제품</h2></div><div id="instagramElectronics"><div class="ig-tabs"><button data-igtab="domestic" class="'+(tab==='domestic'?'on':'')+'">🇰🇷 국내상품</button><button data-igtab="overseas" class="'+(tab==='overseas'?'on':'')+'">🌎 해외상품</button></div><div class="ig-list">'+(list.length?list.map(x=>'<article class="ig-card"><div class="ig-info"><b>'+esc(x.product)+'</b><small>좋아요 '+esc(x.likes||'미확인')+' · 댓글 '+esc(x.comments||'미확인')+'</small></div><div class="ig-links"><a class="ig-reel" href="'+esc(x.reel)+'" target="_blank" rel="noopener">릴스 바로가기 ↗</a><a class="ig-account" href="'+esc(x.account)+'" target="_blank" rel="noopener">계정 바로가기 ↗</a></div></article>').join(''):'')+'</div></div>';
  panel.querySelectorAll('[data-igtab]').forEach(b=>b.onclick=()=>{tab=b.dataset.igtab;render()});
 }
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="instagram"],[data-mobile-view="instagram"]');if(!b)return;setTimeout(render,100)},true);
 })();
 </script>
+
+<style id="v31-mobile-footer-fit">
+@media(max-width:760px){footer{display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;overflow:visible!important;padding-left:4px!important;padding-right:4px!important;gap:0!important}footer button{min-width:0!important;width:auto!important;flex:none!important;padding-left:1px!important;padding-right:1px!important;font-size:9px!important}footer button span{font-size:9px!important;white-space:nowrap!important;letter-spacing:-.5px!important}}
+</style>
 </body></html>
