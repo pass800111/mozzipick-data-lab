@@ -148,8 +148,8 @@
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 4,
-      "image": "",
-      "imageSource": "이미지 재검증 중 — 잘못된 생성 목업 제거"
+      "image": "https://thelights4u.com/cdn/shop/files/Handheld-Cordless-Car-Vacuum-Cleaner-15000Pa.jpg",
+      "imageSource": "동일형 15000Pa 5in1 제품 이미지"
     },
     {
       "id": "coupang-bike-turn-tail-light-9725169460",
@@ -747,7 +747,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "쿠팡 THOUSTA 동일 제품 이미지"
+      "imageSource": "THOUSTA 동일 제품"
     },
     {
       "id": "coupang-artmu-qi2-9296128136",
@@ -796,7 +796,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://media.karousell.com/media/photos/products/2025/9/9/ugreen_qi22_10000mah_magnetic__1757428156_99c88d9a.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "Qi2 25W · 10000mAh · C타입 · 잔량표시",
@@ -813,7 +813,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "이미지 재검증 중 — 잘못된 생성 목업 제거"
+      "imageSource": "동일 사양 참고 이미지 — 브랜드 이미지 확보 전 임시"
     },
     {
       "id": "coupang-speedy-docking-6888281723",
@@ -912,7 +912,7 @@
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
       "coupangGroup": "A",
-      "imageSource": "MiniMax50 동일 모델 공개 이미지"
+      "imageSource": "조이트론 MiniMax50 동일 모델"
     },
     {
       "id": "coupang-runhome-x7-9009430238",
