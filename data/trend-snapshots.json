@@ -1113,7 +1113,32 @@
           "rank": 4
         }
       ]
+    },
+    {
+      "at": "2026-09-21T09:12:55+09:00",
+      "ranking": [
+        {
+          "id": "anker-maggo-pro2",
+          "rank": 1
+        },
+        {
+          "id": "soundcore-sleep-4-pro",
+          "rank": 2
+        },
+        {
+          "id": "ugreen-pb773",
+          "rank": 3
+        },
+        {
+          "id": "roborock-f25-ultra-steam-gen2",
+          "rank": 4
+        },
+        {
+          "id": "viral-mini-label-printer-niimbot-b21",
+          "rank": 5
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-21T08:08:15+09:00"
+  "updatedAt": "2026-09-21T09:12:55+09:00"
 }
