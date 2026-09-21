@@ -12,7 +12,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "휴대용 차량용 무선 CarPlay 디스플레이",
@@ -35,7 +35,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 1
+      "rank": 1,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "viral-obd2-diagnostic-scanner-sep2026",
@@ -46,7 +48,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "차량 고장코드·상태 확인용 OBD2 진단기",
@@ -69,7 +71,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 2
+      "rank": 2,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "viral-led-trunk-strip-sep2026",
@@ -80,7 +84,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "트렁크 개폐 시 시각 효과를 주는 LED 스트립",
@@ -103,7 +107,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 3
+      "rank": 3,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "viral-magnetic-phone-fan-sep2026",
@@ -114,7 +120,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "스마트폰 후면 부착형 휴대용 냉각팬",
@@ -137,7 +143,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 4
+      "rank": 4,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "viral-portable-electric-screwdriver-sep2026",
@@ -148,7 +156,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "소형 전자기기·DIY용 충전식 전동드라이버",
@@ -171,7 +179,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 5
+      "rank": 5,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "viral-portable-digital-microscope-sep2026",
@@ -182,7 +192,7 @@
       "coupangPrice": "확인 중",
       "reviews": "확인 중",
       "image": "assets/products/image-fallback.svg",
-      "imageSource": "정확한 동일 상품 이미지 확인 전",
+      "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
       "officialUrl": "",
       "spec": "휴대용 화면·스마트기기 연동형 디지털 확대 관찰기",
@@ -205,7 +215,9 @@
       "xiaohongshu": "검색어 등록",
       "coupangGroup": "미확인",
       "coupangMatchGrade": "D",
-      "rank": 6
+      "rank": 6,
+      "imageStatus": "확인중",
+      "imageCheckedAt": "2026-09-21T15:30:00+09:00"
     },
     {
       "id": "coupang-pout-hands7-pro-9640903038",
