@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T11:05:00+09:00",
+  "updatedAt": "2026-09-21T11:15:00+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -139,7 +139,7 @@
     {
       "id": "roborock-f25-ultra-steam-gen2",
       "rank": 5,
-      "name": "로보락 F25 Ultra Steam Gen 2",
+      "name": "로보락 F25 울트라 스팀 2세대",
       "category": "생활가전·청소가전",
       "release": "2026.09 IFA 공개",
       "price": "미확인",
@@ -169,7 +169,7 @@
     {
       "id": "coupang-thousta-mini-label-8874008319",
       "rank": 6,
-      "name": "THOUSTA 휴대용 미니 무선 라벨프린터",
+      "name": "싸우스타 휴대용 미니 무선 라벨프린터",
       "category": "생활전자·프린터",
       "release": "미확인",
       "price": "미확인",
@@ -361,7 +361,7 @@
     {
       "id": "coupang-runhome-x7-9009430238",
       "rank": 12,
-      "name": "RUNHome X7 LED 미니 블루투스 스피커",
+      "name": "런홈 X7 LED 미니 블루투스 스피커",
       "category": "오디오",
       "release": "미확인",
       "price": "미확인",
@@ -488,7 +488,7 @@
     },
     {
       "id": "viral-ottocast-mini-edge-2026",
-      "name": "OTTOCAST 미니 엣지 무선 카플레이·안드로이드 오토 어댑터",
+      "name": "오토캐스트 미니 엣지 무선 카플레이·안드로이드 오토 어댑터",
       "category": "자동차 전자기기",
       "release": "2026",
       "price": "미확인",
@@ -714,7 +714,7 @@
     },
     {
       "id": "viral-dji-mic-mini-2s-2026",
-      "name": "DJI Mic Mini 2S 무선 마이크",
+      "name": "디제이아이 마이크 미니 2S 무선 마이크",
       "category": "콘텐츠·오디오",
       "release": "2026.09",
       "price": "미확인",
@@ -773,7 +773,7 @@
     },
     {
       "id": "viral-cmf-clip-pro-2026",
-      "name": "CMF Clip Pro 오픈이어 클립형 이어버드",
+      "name": "씨엠에프 클립 프로 오픈이어 클립형 이어버드",
       "category": "오디오·웨어러블",
       "release": "2026.09",
       "price": "미확인",
@@ -803,7 +803,7 @@
     },
     {
       "id": "viral-ikea-kallsup-speaker-2026",
-      "name": "이케아 KALLSUP 초소형 블루투스 스피커",
+      "name": "이케아 칼숩 초소형 블루투스 스피커",
       "category": "오디오·생활전자",
       "release": "2026.09",
       "price": "US $10",
@@ -833,7 +833,7 @@
     },
     {
       "id": "viral-anker-maggo-powerbank-2-pro",
-      "name": "Anker MagGo Power Bank 2 Pro",
+      "name": "앤커 맥고 보조배터리 2 프로",
       "category": "충전·배터리",
       "release": "2026.09",
       "price": "미확인",
@@ -863,7 +863,7 @@
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
-      "name": "SimpliSafe Video Doorbell Series 2",
+      "name": "심플리세이프 비디오 도어벨 2세대",
       "category": "스마트홈·보안",
       "release": "2026.09",
       "price": "미확인",
@@ -893,7 +893,7 @@
     },
     {
       "id": "viral-govee-sky-ceiling-light-2026",
-      "name": "Govee Sky Ceiling Light",
+      "name": "고비 스카이 스마트 천장조명",
       "category": "스마트홈·조명",
       "release": "2026.09",
       "price": "미확인",
