@@ -827,4 +827,16 @@ function bind(){document.querySelectorAll('.chips [data-category]').forEach(b=>b
 async function init(){try{const d=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());all=(d.products||[]).slice().sort((a,b)=>(a.rank||999)-(b.rank||999));bind();draw();window.모찌픽_HOME5_REFRESH=draw}catch(e){}}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
+</script><style id="home-pager-single-v18">
+#ranking>.v29-global-pager,#ranking>.v29-home-pager,#ranking>.home-pagination,#ranking>.pagination{display:none!important}
+#ranking>.mp-single-pager{grid-column:1/-1!important;display:flex!important;justify-content:center!important;gap:7px!important;margin:10px 0 4px!important}
+#ranking>.mp-single-pager button{width:36px;height:36px;border:1px solid #d8e1ec;border-radius:9px;background:#fff;font-weight:900;cursor:pointer}
+#ranking>.mp-single-pager button.on{background:#111827;color:#fff;border-color:#111827}
+@media(max-width:760px){#ranking>.mp-single-pager{gap:5px!important;flex-wrap:wrap!important}#ranking>.mp-single-pager button{width:34px;height:34px}}
+</style><script id="home-pager-single-v18-js">
+(function(){const P=5;let page=1;
+function draw(){const h=document.getElementById('ranking');if(!h)return;const cards=[...h.querySelectorAll(':scope>article.product.product-redesign')];if(!cards.length)return;const pages=Math.max(1,Math.ceil(cards.length/P));page=Math.min(page,pages);cards.forEach((c,i)=>c.style.setProperty('display',i>=(page-1)*P&&i<page*P?'grid':'none','important'));h.querySelectorAll(':scope>.mp-single-pager').forEach(x=>x.remove());if(pages>1){const n=document.createElement('div');n.className='mp-single-pager';n.innerHTML=Array.from({length:pages},(_,i)=>'<button type="button" data-mp-page="'+(i+1)+'" class="'+(page===i+1?'on':'')+'">'+(i+1)+'</button>').join('');h.appendChild(n);n.querySelectorAll('button').forEach(b=>b.onclick=e=>{e.preventDefault();e.stopPropagation();page=+b.dataset.mpPage;draw();h.scrollIntoView({behavior:'smooth',block:'start'})})}}
+function start(){const h=document.getElementById('ranking');if(!h)return;draw();new MutationObserver(()=>{clearTimeout(window.__mpPagerT);window.__mpPagerT=setTimeout(draw,40)}).observe(h,{childList:true})}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',start):start();window.모찌픽_HOME5_REFRESH=draw;
+})();
 </script></body></html>
