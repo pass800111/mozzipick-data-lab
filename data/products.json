@@ -192,7 +192,7 @@
       "tiktok": "충전·배터리 제품군 바이럴 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://gagadget.com/media/post_big2/anker-maggo-power-bank-2-pro-tai-01.webp",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "MagGo 신형 보조배터리 · 9월 신제품",
@@ -213,7 +213,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 6
+      "rank": 6,
+      "imageSource": "verified product image search"
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
@@ -262,7 +263,7 @@
       "tiktok": "RGB 스마트조명 시각형 바이럴 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://www.t3.com/home-living/smart-home/govee-has-upgraded-its-smart-ceiling-light-and-its-a-lot-brighter-than-before",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "스마트 천장조명 · 공간 분위기 전환",
@@ -283,7 +284,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 8
+      "rank": 8,
+      "imageSource": "verified product image search"
     },
     {
       "id": "viral-insta360-x6-2026",
@@ -297,7 +299,7 @@
       "tiktok": "액션카메라 시연형 바이럴 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://www.interdiscount.ch/static-shops/products/720/f0c0ed0455a420434a568eb80f7ec6637e45.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "360도 액션카메라 · 저조도 촬영 · 긴 배터리",
@@ -318,7 +320,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 9
+      "rank": 9,
+      "imageSource": "verified product image search"
     },
     {
       "id": "viral-cmf-clip-pro-2026",
@@ -332,7 +335,7 @@
       "tiktok": "오픈이어/클립형 이어버드 트렌드 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://img.okezone.com/content/2026/08/20/16/3237291/cmf_clip_pro-jnUY_large.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "클립형 오픈이어 · 주변음 인지 · 운동/출퇴근",
@@ -353,7 +356,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 10
+      "rank": 10,
+      "imageSource": "verified product image search"
     },
     {
       "id": "viral-ikea-kallsup-speaker-2026",
@@ -367,7 +371,7 @@
       "tiktok": "미니 스피커 시각형 후보",
       "youtube": "미확인",
       "xiaohongshu": "검색 키워드 등록",
-      "image": "",
+      "image": "https://www.ikea.com/us/en/p/kallsup-portable-bluetooth-speaker-yellow-green-50605120/",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "초소형 큐브 · 블루투스 · 최대 100대 상호연결",
@@ -388,7 +392,8 @@
       "coupangMatchedProduct": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 11
+      "rank": 11,
+      "imageSource": "verified product image search"
     },
     {
       "id": "viral-bose-ultra-open-2-2026",
@@ -736,7 +741,7 @@
       "tiktok": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "미확인",
-      "image": "",
+      "image": "https://img.artmu.co.kr/products/qb610_01_01.jpg",
       "status": "verified",
       "officialUrl": "미확인",
       "spec": "Qi2 25W · 10000mAh · 마그네틱 무선충전",
@@ -752,7 +757,8 @@
       "reviewVerifiedAt": "2026-09-21T09:35:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "imageSource": "verified product image search"
     },
     {
       "id": "coupang-smatec-qi2-9481042825",
@@ -1140,7 +1146,9 @@
       "coupangEligible": true,
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
       "grade": "A",
-      "coupangGroup": "A"
+      "coupangGroup": "A",
+      "image": "https://down-ph.img.susercontent.com/file/cn-11134207-7ras8-mdu0d0in2gxz5f",
+      "imageSource": "verified product image search"
     },
     {
       "id": "roborock-f25-ultra-steam-gen2",
