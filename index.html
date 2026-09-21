@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.0-mobile-radar-unified-repeat -->
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><!-- build 20260921-v3.1-detail-open-authority -->
 <title>모찌픽 DATA LAB</title><link rel="stylesheet" href="style.css?v=20260920-detail-legacy1">
 <style>.side nav button{pointer-events:auto!important;position:relative!important;z-index:50!important;cursor:pointer!important}.side{z-index:40!important}.menu-data-view[hidden]{display:none!important}</style><style>
 .thumb.product-noimage{min-height:176px!important;background:linear-gradient(145deg,#f3f6fa,#e8eef6)!important;border:1px solid #e0e7f0!important;border-radius:14px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;color:#8a98aa!important;text-align:center!important;overflow:hidden!important}
@@ -767,4 +767,17 @@ function bind(){document.querySelectorAll('.chips [data-category]').forEach(b=>b
 async function init(){try{const d=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());all=(d.products||[]).slice().sort((a,b)=>(a.rank||999)-(b.rank||999));bind();draw();window.모찌픽_HOME5_REFRESH=draw}catch(e){}}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
-</script><script id="home-single-renderer-cleanup-v22">(()=>{function clean(){document.getElementById('mozzipickPager')?.remove();document.querySelectorAll('#ranking>.v29-global-pager,#ranking>.v29-home-pager,#ranking>.home-pagination,#ranking>.pagination,#ranking>.mp-single-pager').forEach(x=>x.remove());const a=[...document.querySelectorAll('.home-pager-v18')];a.slice(0,-1).forEach(x=>x.remove())}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',clean):clean();window.addEventListener('load',()=>setTimeout(clean,50))})();</script></body></html>
+</script><script id="home-single-renderer-cleanup-v22">(()=>{function clean(){document.getElementById('mozzipickPager')?.remove();document.querySelectorAll('#ranking>.v29-global-pager,#ranking>.v29-home-pager,#ranking>.home-pagination,#ranking>.pagination,#ranking>.mp-single-pager').forEach(x=>x.remove());const a=[...document.querySelectorAll('.home-pager-v18')];a.slice(0,-1).forEach(x=>x.remove())}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',clean):clean();window.addEventListener('load',()=>setTimeout(clean,50))})();</script><script id="detail-open-authority-v31">
+(()=>{const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function show(p){const m=document.getElementById('productDetailModal');if(!m||!p)return;delete m.dataset.disabled;
+const set=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v};
+const n=document.getElementById('detailName');if(n)n.textContent=p.name||'제품 상세';
+set('detailMeta','<b>카테고리</b> '+esc(p.category||'미확인')+'<br><b>출시/등록</b> '+esc(p.release||'미확인')+'<br><b>샤오홍슈 검색명</b> '+esc(p.xiaohongshuQuery||'미확인')+'<br><b>제품 사양</b> '+esc(p.spec||p.description||'미확인'));
+set('detailPrice','<b>가격/쿠팡 상태</b><br>'+esc(p.price||p.coupangPrice||'상세 링크에서 확인'));
+set('detailMarket','<b>모찌픽 분류</b><br>'+esc(p.viralRadar===true?'바이럴 · '+(p.grade||p.viralGrade||'후보'):'쿠팡 랭킹 · '+(p.rankingType||p.rankingLabel||'판매중')));
+const links=document.getElementById('detailLinks');if(links){const u=p.coupangUrl||p.sourceUrl||'';links.innerHTML=u?'<a href="'+esc(u)+'" target="_blank" rel="noopener">쿠팡 바로가기 ↗</a>':'쿠팡 링크 확인 중';}
+m.style.display='block';m.scrollTop=0}
+window.모찌픽_OPEN_제품_DETAIL=show;
+document.addEventListener('click',async e=>{const b=e.target.closest?.('[data-u-detail]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();try{const d=await fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());show((d.products||[]).find(x=>x.id===b.dataset.uDetail))}catch(_){}},true);
+})();
+</script></body></html>
