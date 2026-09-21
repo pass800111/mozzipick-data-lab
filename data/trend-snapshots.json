@@ -1138,7 +1138,43 @@
           "rank": 5
         }
       ]
+    },
+    {
+      "at": "2026-09-21T11:05:00+09:00",
+      "type": "coupang-mozzipick-recommendation",
+      "source": "쿠팡 공개 판매 페이지 + 모찌픽 추천",
+      "note": "공개 공식 랭킹이 충분하지 않아 실제 쿠팡 판매 확인 상품 중 모찌픽 추천 순위. 최종 선택은 운영자 판단.",
+      "ranking": [
+        {
+          "id": "coupang-ottocast-mini-edge-9721522228",
+          "rank": 1,
+          "name": "OTTOCAST 미니 엣지 무선 카플레이·안드로이드 오토 어댑터",
+          "coupangUrl": "https://www.coupang.com/vp/products/9721522228",
+          "basis": "차량 불편 해결·무선 전환 시연·릴스 후크"
+        },
+        {
+          "id": "coupang-mini-projector-9730952031",
+          "rank": 2,
+          "name": "180도 회전 Wi-Fi 6 블루투스 미니 프로젝터",
+          "coupangUrl": "https://www.coupang.com/vp/products/9730952031",
+          "basis": "180도 회전 시각효과·생활 활용 장면"
+        },
+        {
+          "id": "coupang-hqzoomee-fan-6407189109",
+          "rank": 3,
+          "name": "Hqzoomee 미니 USB 휴대용 선풍기",
+          "coupangUrl": "https://www.coupang.com/vp/products/6407189109",
+          "basis": "66개 상품평 공개 확인·휴대/탁상 활용"
+        },
+        {
+          "id": "coupang-bt-number-keyboard-8356057378",
+          "rank": 4,
+          "name": "무선 블루투스 숫자 키보드·숫자키패드",
+          "coupangUrl": "https://www.coupang.com/vp/products/8356057378",
+          "basis": "업무 불편 해결형·전후 비교 콘텐츠"
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-21T09:12:55+09:00"
+  "updatedAt": "2026-09-21T11:05:00+09:00"
 }
