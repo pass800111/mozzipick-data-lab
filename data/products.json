@@ -73,7 +73,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 2
+      "rank": 2,
+      "image": "https://m.oa-mall.co.kr/web/product/extra/big/202508/1a1837fc47573f737ccae24be3d6dd27.jpg",
+      "imageSource": "verified public product image"
     },
     {
       "id": "coupang-korea-plug-adapter-9614108008",
@@ -108,7 +110,9 @@
       "spec": "미확인",
       "coupangGroup": "D",
       "coupangMatchGrade": "D",
-      "rank": 3
+      "rank": 3,
+      "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
+      "imageSource": "verified public product image"
     },
     {
       "id": "coupang-covank-5in1-vacuum-9726842970",
