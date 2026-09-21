@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-09-21T15:15:35+09:00",
+  "updatedAt": "2026-09-21T16:11:47+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -14,17 +14,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "휴대용 차량용 무선 CarPlay 디스플레이",
       "xiaohongshuQuery": "便携式无线CarPlay车载屏",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "A",
-      "grade": "A",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -33,7 +33,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 1,
       "imageStatus": "확인중",
@@ -42,7 +42,9 @@
         "便携式无线CarPlay车载屏 测评",
         "便携式无线CarPlay车载屏 推荐",
         "便携式无线CarPlay车载屏 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "viral-obd2-diagnostic-scanner-sep2026",
@@ -55,17 +57,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "차량 고장코드·상태 확인용 OBD2 진단기",
       "xiaohongshuQuery": "OBD2汽车故障诊断仪",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "A",
-      "grade": "A",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -74,7 +76,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 2,
       "imageStatus": "확인중",
@@ -83,7 +85,9 @@
         "OBD2汽车故障诊断仪 测评",
         "OBD2汽车故障诊断仪 推荐",
         "OBD2汽车故障诊断仪 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "viral-led-trunk-strip-sep2026",
@@ -96,17 +100,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "트렁크 개폐 시 시각 효과를 주는 LED 스트립",
       "xiaohongshuQuery": "汽车后备箱LED灯带",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "B",
-      "grade": "B",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -115,7 +119,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 3,
       "imageStatus": "확인중",
@@ -124,7 +128,9 @@
         "汽车后备箱LED灯带 测评",
         "汽车后备箱LED灯带 推荐",
         "汽车后备箱LED灯带 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "viral-magnetic-phone-fan-sep2026",
@@ -137,17 +143,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "스마트폰 후면 부착형 휴대용 냉각팬",
       "xiaohongshuQuery": "磁吸手机散热器",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "A",
-      "grade": "A",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -156,7 +162,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 4,
       "imageStatus": "확인중",
@@ -165,7 +171,9 @@
         "磁吸手机散热器 测评",
         "磁吸手机散热器 推荐",
         "磁吸手机散热器 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "viral-portable-electric-screwdriver-sep2026",
@@ -178,17 +186,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "소형 전자기기·DIY용 충전식 전동드라이버",
       "xiaohongshuQuery": "迷你充电式电动螺丝刀",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "B",
-      "grade": "B",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -197,7 +205,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 5,
       "imageStatus": "확인중",
@@ -206,7 +214,9 @@
         "迷你充电式电动螺丝刀 测评",
         "迷你充电式电动螺丝刀 推荐",
         "迷你充电式电动螺丝刀 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "viral-portable-digital-microscope-sep2026",
@@ -219,17 +229,17 @@
       "image": "assets/products/image-fallback.svg",
       "imageSource": "2026-09-21 이미지 교차검색 완료 — 바이럴 원본은 제품군 단위이며 판매자/정확 모델 식별 불가, 유사 이미지 강제 적용 안 함",
       "status": "바이럴 검증",
-      "officialUrl": "",
+      "officialUrl": "미확인",
       "spec": "휴대용 화면·스마트기기 연동형 디지털 확대 관찰기",
       "xiaohongshuQuery": "便携式数码显微镜",
       "siteUpdatedAt": "2026-09-21T15:00:00+09:00",
       "viralGrade": "A",
-      "grade": "A",
+      "grade": "D",
       "coupangStatus": "미확인",
       "coupangEligible": false,
       "coupangUrl": "미확인",
-      "coupangVerifiedAt": "2026-09-21T15:00:00+09:00",
-      "coupangValidationNote": "동일 상품 쿠팡 링크 확인 전",
+      "coupangVerifiedAt": "미확인",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -238,7 +248,7 @@
       "instagram": "미확인",
       "youtube": "미확인",
       "xiaohongshu": "검색어 등록",
-      "coupangGroup": "미확인",
+      "coupangGroup": "D",
       "coupangMatchGrade": "D",
       "rank": 6,
       "imageStatus": "확인중",
@@ -247,7 +257,9 @@
         "便携式数码显微镜 测评",
         "便携式数码显微镜 推荐",
         "便携式数码显微镜 开箱"
-      ]
+      ],
+      "coupangMatchType": "미확인",
+      "coupangMatchedProduct": "미확인"
     },
     {
       "id": "coupang-pout-hands7-pro-9640903038",
@@ -1693,7 +1705,7 @@
       ]
     }
   ],
-  "lastValidationAt": "2026-09-21T15:15:35+09:00",
+  "lastValidationAt": "2026-09-21T16:11:47+09:00",
   "newCandidateGradeCounts": {
     "A": 0,
     "B": 0,
@@ -1704,12 +1716,12 @@
     "A": 3,
     "B": 2,
     "C": 1,
-    "D": 29
+    "D": 35
   },
   "validationSummary": {
     "newCandidateCount": 0,
     "newGradeTotal": 0,
-    "coupangMissingLinkDowngraded": 9,
+    "coupangMissingLinkDowngraded": 6,
     "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
 }
