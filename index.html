@@ -799,4 +799,23 @@ window.addEventListener('mozzipick-favorite-change',sync);window.addEventListene
    });
  }).catch(()=>{});
 })();
+</script><script id="card-data-hydrate-v17">
+(function(){
+ const norm=x=>(x||'').replace(/\s+/g,' ').trim().toLowerCase();
+ function status(p){
+   if(p.viralRadar===true){const g=p.viralGrade||p.grade||'';return ['바이럴',g&&g!=='D'?g+'등급':'바이럴','자동 갱신'];}
+   const g=String(p.coupangGroup||'');
+   if(/review|리뷰|rising|급상승|인기/i.test(g))return ['쿠팡 랭킹','인기','자동 갱신'];
+   return ['쿠팡 랭킹','판매순','자동 갱신'];
+ }
+ fetch('data/products.json?v='+Date.now()).then(r=>r.json()).then(j=>{
+   const ps=j.products||j, map=new Map(ps.map(p=>[norm(p.name),p]));
+   document.querySelectorAll('#ranking>article.product.product-redesign').forEach(card=>{
+    const n=card.querySelector('.name')?.textContent||'';const p=map.get(norm(n));if(!p)return;
+    const th=card.querySelector('.thumb');
+    if(th&&p.image){th.classList.remove('product-noimage');th.innerHTML='<img src="'+p.image+'" alt="'+p.name.replace(/"/g,'&quot;')+'" loading="lazy" referrerpolicy="no-referrer">';}
+    const t=card.querySelector('.trend');if(t){const x=status(p);t.innerHTML='<span class="status-kind">'+x[0]+'</span><b class="status-grade">'+x[1]+'</b><span class="status-auto">'+x[2]+'</span>';}
+   });
+ }).catch(()=>{});
+})();
 </script></body></html>
