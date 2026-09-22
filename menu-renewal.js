@@ -16,5 +16,6 @@ function liveHome(){let root=$(".mr-live-home");if(!root){root=document.createEl
 async function enhance(view){await load();setTimeout(()=>view==='home'?liveHome():wrap(view),260)}
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view],[data-mobile-view]');if(!b)return;const v=b.dataset.view||b.dataset.mobileView;if(info[v])enhance(v)},true);
 window.addEventListener('mozzipick-favorite-change',()=>{if($('.side [data-view="favorites"].on'))enhance('favorites')});window.addEventListener('mozzipick-production-change',()=>{if($('.side [data-view="production"].on'))enhance('production')});
-document.readyState==='loading'?document.addEventListener('DOMContentLoaded',load):load();
+function cleanLiteralBreaks(){[...document.body.childNodes].filter(n=>n.nodeType===3&&n.textContent.trim()==='\\n').forEach(n=>n.remove())}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>{cleanLiteralBreaks();load()}):(cleanLiteralBreaks(),load());
 })();
