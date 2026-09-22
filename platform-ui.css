@@ -133,3 +133,16 @@ footer{display:none!important}
  #ranking .product .name,#menuDataView .v29-card-copy b,#menuDataView .grade-product-card b{font-size:13px!important;line-height:1.42!important}
  #ranking .product .meta,#menuDataView .v29-card-copy small{font-size:11px!important;line-height:1.5!important}
 }
+/* Preserve fixed card height while fitting two-line readable text */
+.mp-showcase-body{padding:6px 14px!important}
+.mp-card-desc{margin-top:4px!important}
+.mp-card-price{margin-top:6px!important}
+.mp-showcase-meta{margin-top:4px!important}
+.mp-badges{margin-top:6px!important}
+@media(max-width:760px){
+ .mp-showcase-body{padding:5px 9px!important}
+ .mp-card-desc{margin-top:3px!important}
+ .mp-card-price{margin-top:5px!important}
+ .mp-showcase-meta{margin-top:3px!important}
+ .mp-badges{margin-top:5px!important}
+}
