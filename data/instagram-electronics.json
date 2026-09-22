@@ -1,6 +1,67 @@
 {
-  "domestic": [],
+  "domestic": [
+    {
+      "product": "#제공 @razer.kr 게임패드가 이렇게 접힌다고? 🎮 펼치면 모바일 컨트롤러, 접으면 주머니에 쏙. Razer Prio. 95g의 가벼운 ",
+      "likes": 86,
+      "comments": 8,
+      "views": 2993,
+      "reel": "https://www.instagram.com/p/DdJJLFShWgQ/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-11T10:00:09.000Z"
+    },
+    {
+      "product": "#광고 @sinjimoru_lab 3만원인데 25W 충전에 쿨링까지? 가성비가 알찬 충전기 하나 낋여왔습니다 👀⚡ 매일 쓰는 차량용 충전기, ",
+      "likes": 16,
+      "comments": 5,
+      "views": 944,
+      "reel": "https://www.instagram.com/p/DdYPz2FgBZF/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-17T06:46:46.000Z"
+    },
+    {
+      "product": "#광고 @benqkorea 지난 주, 벤큐 모니터 조명 세미나에 다녀왔습니다 💡 듀얼 모니터를 위한 스크린바 맥스부터 아이맥 전용 아이스크린바",
+      "likes": 29,
+      "comments": 2,
+      "views": 506,
+      "reel": "https://www.instagram.com/p/DdQc8P6OWsY/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-14T06:07:37.000Z"
+    },
+    {
+      "product": "#제공 키보드는 작게, 마우스 공간은 넓게 ⌨️🖱️ 레이저 레클루사 X 미니 65% 방향키는 그대로 챙기고, 책상 위 공간은 더 여유롭게🤔 ",
+      "likes": 30,
+      "comments": 2,
+      "views": 337,
+      "reel": "https://www.instagram.com/p/DdbwAIlJgdo/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-18T15:25:50.000Z"
+    },
+    {
+      "product": "#광고 스피커를 켰는데 책상이 울린다? 🔊 이 네모네모한 물건은 GADOL V2로 놀랍게도 스피커입니다👀 일반적인 스피커처럼 자체 진동판으로",
+      "likes": 22,
+      "comments": 3,
+      "views": 272,
+      "reel": "https://www.instagram.com/p/DdBKFJpO_8H/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-08T07:34:22.000Z"
+    },
+    {
+      "product": "#협찬 깔끔한 데스크테리어의 마무리, 오토노스 AX체어 🖥️ 기본에 충실한 디자인으로 완성하는 나만의 의자스타일링이 필요하다면..? 책상 위 ",
+      "likes": 18,
+      "comments": 1,
+      "views": 0,
+      "reel": "https://www.instagram.com/p/Ddar2aoE569/",
+      "account": "https://www.instagram.com/walter_it_review/",
+      "username": "walter_it_review",
+      "timestamp": "2026-09-18T05:28:33.000Z"
+    }
+  ],
   "overseas": [],
-  "updatedAt": null,
-  "source": "n8n-apify"
+  "updatedAt": "2026-09-22T02:56:07.063Z",
+  "source": "n8n-apify-instagram-scraper"
 }
