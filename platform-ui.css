@@ -68,3 +68,4 @@ footer{display:none!important}
 #mpPlatformHeader .mp-header-main,#mpPlatformHeader .mp-header-nav{width:100%!important;max-width:none!important}
 #mpPlatformHeader .mp-header-main{max-width:1440px!important}
 #mpPlatformHeader .mp-header-nav nav{width:100%!important;max-width:1440px!important}
+#mpLegacyControlsCompat{display:none!important}
