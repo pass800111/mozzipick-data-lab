@@ -58,7 +58,7 @@ async function openProduct(id){
  clickView("home");
  await new Promise(r=>setTimeout(r,180));
  const pages=$$(".home-pager-v18 button");
- for(const page of pages){page.click();await new Promise(r=>setTimeout(r,90));original=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');if(original){original.click();return}}
+ for(const page of pages){page.click();await new Promise(r=>setTimeout(r,180));original=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');if(original){original.click();return}}
  const p=state.products.find(x=>x.id===id),input=$("#productSearch");if(input&&p){input.value=p.name;input.dispatchEvent(new Event("input",{bubbles:true}));input.focus()}
 }
 function showHome(){
