@@ -63,3 +63,8 @@ footer{display:none!important}
  #productDetailModal{padding:8px!important}#productDetailModal>div,[role=dialog]{max-width:calc(100vw - 16px)!important;max-height:calc(100vh - 16px)!important;border-radius:14px!important}
 }
 @media(max-width:390px){#ranking,#menuDataView .v29-card-grid,#menuDataView #uBody>.v29-card-grid,.mp-showcase-grid{grid-template-columns:1fr!important}.mp-category-row{grid-template-columns:repeat(4,1fr)}}
+/* final header containment authority */
+#mpPlatformHeader.mp-platform-header{display:block!important;width:100%!important;max-width:none!important;flex:none!important;overflow:visible!important}
+#mpPlatformHeader .mp-header-main,#mpPlatformHeader .mp-header-nav{width:100%!important;max-width:none!important}
+#mpPlatformHeader .mp-header-main{max-width:1440px!important}
+#mpPlatformHeader .mp-header-nav nav{width:100%!important;max-width:1440px!important}
