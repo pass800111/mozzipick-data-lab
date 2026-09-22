@@ -3,6 +3,7 @@ const state={products:[],homeBuilt:false};
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 function setupHeader(){
+ const main=$(".main");if(main&&!$(".controls",main)){const compatibility=document.createElement("div");compatibility.className="controls";compatibility.hidden=true;main.insertBefore(compatibility,main.firstChild)}
  const app=$(".app"),side=$(".side"),nav=side?.querySelector("nav"),search=$(".main>.global-search");
  if(!app||!nav||!search||$("#mpPlatformHeader"))return;
  const header=document.createElement("header");header.id="mpPlatformHeader";header.className="mp-platform-header";
