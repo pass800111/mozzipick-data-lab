@@ -1151,10 +1151,11 @@ document.addEventListener('click',async e=>{const b=e.target.closest?.('[data-u-
 <!-- build 20260922-v3.1-instagram-electronics -->
 <style id="v31-instagram-electronics-style">
 #instagramElectronics{display:grid;gap:14px}.ig-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ig-tabs button{height:44px;border:1px solid #dfe6ef;background:#fff;border-radius:11px;font-weight:900;cursor:pointer}.ig-tabs button.on{background:#111827;color:#fff;border-color:#111827}.ig-list{display:grid;gap:10px}.ig-card{display:grid;grid-template-columns:minmax(0,1fr) 110px 110px;gap:10px;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}.ig-info{min-width:0}.ig-info b{display:block;font-size:14px;line-height:1.4;overflow-wrap:anywhere}.ig-info small{display:block;margin-top:6px;color:#667085;font-weight:800}.ig-links{display:contents}.ig-links a{display:flex;height:40px;align-items:center;justify-content:center;border-radius:9px;text-decoration:none;font-size:11px;font-weight:900;white-space:nowrap}.ig-reel{background:#111827;color:#fff}.ig-account{border:1px solid #cbd5e1;color:#111827;background:#fff}
-@media(max-width:760px){.ig-card{grid-template-columns:minmax(0,1fr);gap:9px;padding:12px}.ig-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ig-links a{width:100%;height:42px}.ig-info b{font-size:13px}.ig-info small{font-size:11px}.side nav button[data-view="instagram"]{display:flex}footer{overflow-x:auto;justify-content:flex-start}footer button{min-width:58px;flex:1 0 58px}}
+.ig-pager{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:4px 0 0}.ig-pager button{width:36px;height:36px;border:1px solid #d8e1ec;border-radius:9px;background:#fff;font-weight:900;cursor:pointer}.ig-pager button.on{background:#111827;color:#fff;border-color:#111827}
+@media(max-width:760px){.ig-card{grid-template-columns:minmax(0,1fr);gap:9px;padding:12px}.ig-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ig-links a{width:100%;height:42px}.ig-info b{font-size:13px}.ig-info small{font-size:11px}.ig-pager{gap:5px}.ig-pager button{width:34px;height:34px}.side nav button[data-view="instagram"]{display:flex}footer{overflow-x:auto;justify-content:flex-start}footer button{min-width:58px;flex:1 0 58px}}
 </style>
 <script id="v31-instagram-electronics">
-(()=>{const DATA={domestic:[],overseas:[]};let tab='domestic',loaded=false;
+(()=>{const DATA={domestic:[],overseas:[]},PAGE_SIZE=5;let tab='domestic',page=1,loaded=false;
 async function load(){
  if(loaded)return;loaded=true;
  try{
@@ -1168,12 +1169,16 @@ async function load(){
 function render(){
  const panel=document.getElementById('menuDataView');if(!panel)return;
  panel.hidden=false;
- const list=DATA[tab]||[];
- panel.innerHTML='<div class="menu-view-head"><span>INSTAGRAM ELECTRONICS</span><h2>인스타 전자제품</h2></div><div id="instagramElectronics"><div class="ig-tabs"><button data-igtab="domestic" class="'+(tab==='domestic'?'on':'')+'">🇰🇷 국내상품</button><button data-igtab="overseas" class="'+(tab==='overseas'?'on':'')+'">🌎 해외상품</button></div><div class="ig-list">'+(list.length?list.map(x=>'<article class="ig-card"><div class="ig-info"><b>'+esc(x.product)+'</b><small>좋아요 '+esc(x.likes||'미확인')+' · 댓글 '+esc(x.comments||'미확인')+'</small></div><div class="ig-links"><a class="ig-reel" href="'+esc(x.reel)+'" target="_blank" rel="noopener">릴스 바로가기 ↗</a><a class="ig-account" href="'+esc(x.account)+'" target="_blank" rel="noopener">계정 바로가기 ↗</a></div></article>').join(''):'')+'</div></div>';
- panel.querySelectorAll('[data-igtab]').forEach(b=>b.onclick=()=>{tab=b.dataset.igtab;render()});
+ const list=DATA[tab]||[],totalPages=Math.max(1,Math.ceil(list.length/PAGE_SIZE));
+ page=Math.min(Math.max(1,page),totalPages);
+ const pageList=list.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
+ const pager=totalPages>1?'<div class="ig-pager" aria-label="인스타 전자제품 페이지">'+Array.from({length:totalPages},(_,i)=>'<button type="button" data-igpage="'+(i+1)+'" class="'+(page===i+1?'on':'')+'" aria-label="'+(i+1)+'페이지">'+(i+1)+'</button>').join('')+'</div>':'';
+ panel.innerHTML='<div class="menu-view-head"><span>INSTAGRAM ELECTRONICS</span><h2>인스타 전자제품</h2></div><div id="instagramElectronics"><div class="ig-tabs"><button data-igtab="domestic" class="'+(tab==='domestic'?'on':'')+'">🇰🇷 국내상품</button><button data-igtab="overseas" class="'+(tab==='overseas'?'on':'')+'">🌎 해외상품</button></div><div class="ig-list">'+(pageList.length?pageList.map(x=>'<article class="ig-card"><div class="ig-info"><b>'+esc(x.product)+'</b><small>좋아요 '+esc(x.likes||'미확인')+' · 댓글 '+esc(x.comments||'미확인')+'</small></div><div class="ig-links"><a class="ig-reel" href="'+esc(x.reel)+'" target="_blank" rel="noopener">릴스 바로가기 ↗</a><a class="ig-account" href="'+esc(x.account)+'" target="_blank" rel="noopener">계정 바로가기 ↗</a></div></article>').join(''):'')+'</div>'+pager+'</div>';
+ panel.querySelectorAll('[data-igtab]').forEach(b=>b.onclick=()=>{tab=b.dataset.igtab;page=1;render()});
+ panel.querySelectorAll('[data-igpage]').forEach(b=>b.onclick=()=>{page=Number(b.dataset.igpage)||1;render();panel.scrollIntoView({behavior:'smooth',block:'start'})});
 }
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="instagram"],[data-mobile-view="instagram"]');if(!b)return;setTimeout(async()=>{await load();render()},100)},true);
+document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="instagram"],[data-mobile-view="instagram"]');if(!b)return;setTimeout(async()=>{await load();page=1;render()},100)},true);
 })();
 </script>
 
