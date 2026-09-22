@@ -52,11 +52,14 @@ function buildHome(){
  $$("[data-home-product]",root).forEach(b=>b.addEventListener("click",()=>openProduct(b.dataset.homeProduct)));
  state.homeBuilt=true;
 }
-function openProduct(id){
- const original=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');
+async function openProduct(id){
+ let original=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');
  if(original){original.click();return}
  clickView("home");
- let tries=0;const t=setInterval(()=>{const el=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');if(el){clearInterval(t);el.click()}else if(++tries>8){clearInterval(t);focusSearch();const p=state.products.find(x=>x.id===id);const input=$("#productSearch");if(input&&p){input.value=p.name;input.dispatchEvent(new Event("input",{bubbles:true}))}}},120);
+ await new Promise(r=>setTimeout(r,180));
+ const pages=$$(".home-pager-v18 button");
+ for(const page of pages){page.click();await new Promise(r=>setTimeout(r,90));original=$('#ranking [data-product-id="'+CSS.escape(id)+'"]');if(original){original.click();return}}
+ const p=state.products.find(x=>x.id===id),input=$("#productSearch");if(input&&p){input.value=p.name;input.dispatchEvent(new Event("input",{bubbles:true}));input.focus()}
 }
 function showHome(){
  document.body.classList.add("mp-home-active");closeMenu();
