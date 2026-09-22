@@ -1197,11 +1197,14 @@ document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="in
  if(sideNav&&originalHome&&!sideNav.querySelector('.main-home-btn')){
   const home=document.createElement('button');
   home.type='button';home.className='main-home-btn';home.innerHTML='⌂ <span>메인 홈</span>';
-  home.addEventListener('click',()=>originalHome.click());
+  function finishHome(){const panel=document.getElementById('menuDataView');if(panel)panel.hidden=true}
+  home.addEventListener('click',()=>{originalHome.click();setTimeout(finishHome,0)});
   sideNav.insertBefore(home,originalHome);
  }
- const mobileHome=document.querySelector('footer [data-mobile-view="home"] span');
+ const mobileHomeButton=document.querySelector('footer [data-mobile-view="home"]');
+ const mobileHome=mobileHomeButton?.querySelector('span');
  if(mobileHome)mobileHome.textContent='메인 홈';
+ if(mobileHomeButton)mobileHomeButton.addEventListener('click',()=>setTimeout(()=>{const panel=document.getElementById('menuDataView');if(panel)panel.hidden=true},0));
  function showQualityOnly(){
   const panel=document.getElementById('menuDataView');
   const quality=document.getElementById('dataQualityPanel');
