@@ -76,3 +76,35 @@ body{background:#f5f8fc!important;color:#15213a!important}
 .mr-copywords{display:flex;flex-wrap:wrap;gap:7px}.mr-copywords button{border:1px solid #dde5ef;background:#fff;border-radius:999px;padding:8px 10px;font-size:11px}.mr-copywords b{color:#6e4cf6}
 .mr-detail-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.mr-detail-actions a:first-child{border-color:#ffad9f;background:#fff4ef;color:#ff5138}
 @media(max-width:720px){.mr-detail-page{padding:12px;border-radius:14px}.mr-detail-main{grid-template-columns:1fr;gap:14px;padding:16px 0}.mr-detail-summary h1{font-size:21px}.mr-detail-summary dl,.mr-detail-grid{grid-template-columns:1fr}.mr-detail-grid section.wide{grid-column:auto}.mr-detail-top{align-items:flex-start}.mr-detail-quick{flex-direction:column}.mr-detail-top button{min-height:34px;font-size:11px}}
+
+
+/* MOZZIPICK V3.1 final-reference reinforcement */
+body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active .main{max-width:1460px!important}
+.mr-home-dashboard{background:#fff!important;border:1px solid #e5eaf1!important;border-radius:18px!important;padding:18px!important}
+.mr-home-section{margin-top:18px!important}
+.mr-home-section>.mr-section-title{display:flex!important;align-items:center!important;justify-content:space-between!important}
+.mr-route-view{background:#fff!important;border:1px solid #e6ebf2!important;border-radius:18px!important;padding:18px!important}
+.mr-route-hero{margin:-18px -18px 16px!important;border-radius:18px 18px 0 0!important;border-left:0!important;border-right:0!important;border-top:0!important;box-shadow:none!important}
+.mr-route-view[data-route="time"] .mr-route-hero{background:linear-gradient(105deg,#fff3b9,#fff9dd 62%,#fff)!important}
+.mr-route-view[data-route="categories"] .mr-route-hero{background:linear-gradient(105deg,#eaf3ff,#f5f9ff 65%,#fff)!important}
+.mr-route-view[data-route="viral"] .mr-route-hero{background:linear-gradient(105deg,#fff0f4,#fff7f9 65%,#fff)!important}
+.mr-route-view[data-route="instagram"] .mr-route-hero{background:linear-gradient(105deg,#f4efff,#fff3fa 65%,#fff)!important}
+.mr-route-view[data-route="favorites"] .mr-route-hero{background:linear-gradient(105deg,#fff0f6,#fff8fb 65%,#fff)!important}
+.mr-route-view[data-route="production"] .mr-route-hero{background:linear-gradient(105deg,#eafbf7,#f5fffc 65%,#fff)!important}
+.mr-route-view[data-route="quality"] .mr-route-hero{background:linear-gradient(105deg,#eefaf1,#f8fff9 65%,#fff)!important}
+.mr-card-visual:has(img) span,.mr-card-visual:has(img) b,.mr-card-visual:has(img) small{display:none!important}
+.mr-flags{position:absolute!important;top:9px!important;left:9px!important;right:9px!important;z-index:3!important;display:flex!important;gap:5px!important;flex-wrap:wrap!important}
+.mr-flags span{display:inline-flex!important;background:rgba(255,255,255,.94)!important;color:#24324a!important;border-radius:999px!important;padding:4px 7px!important;font-size:9px!important;font-weight:950!important;box-shadow:0 2px 7px rgba(0,0,0,.08)!important}
+.mr-flags .hot{background:#ff573d!important;color:#fff!important}
+.mr-card-actions button,.mr-card-actions a{display:flex!important;align-items:center!important;justify-content:center!important;border:1px solid #dde4ed!important;background:#fff!important;color:#33425a!important;text-decoration:none!important;cursor:pointer!important}
+.mr-state-select{width:100%!important;min-height:34px!important;border:1px solid #dfe6ef!important;border-radius:8px!important;background:#fff!important;font-weight:850!important}
+.mr-detail-page{background:#fff!important;border:1px solid #e3e9f1!important;border-radius:18px!important;padding:20px!important;box-shadow:0 8px 26px rgba(30,44,70,.055)!important}
+@media(max-width:720px){
+ .mr-home-dashboard,.mr-route-view{border-radius:14px!important;padding:10px!important}
+ .mr-route-hero{margin:-10px -10px 12px!important;border-radius:14px 14px 0 0!important}
+ .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .mr-card{border-radius:11px!important}
+ .mr-card-visual{height:132px!important;min-height:132px!important}
+ .mr-card-body{min-height:174px!important}
+ .mr-card-actions{display:grid!important;grid-template-columns:1fr!important}
+}
