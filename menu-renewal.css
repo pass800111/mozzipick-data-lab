@@ -575,3 +575,14 @@ html.mozzipick-v31-live body.mozzipick-v31-live.mr-route-active #mrCommandView{d
 html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrCommandView{display:block!important}
 html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrHomeDashboard,
 html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrRouteView{display:none!important}
+
+
+/* ROOT FIX 20260924 — remove the legacy page shell, not just its sections */
+html.mozzipick-v31-live body.mozzipick-v31-live .app{display:block!important;width:100%!important;max-width:none!important;margin:0!important}
+html.mozzipick-v31-live body.mozzipick-v31-live .app>.side{display:none!important}
+html.mozzipick-v31-live body.mozzipick-v31-live .main{display:block!important;width:min(100%,1560px)!important;max-width:1560px!important;margin:0 auto!important}
+html.mozzipick-v31-live body.mozzipick-v31-live .main>*:not(#mrHomeDashboard):not(#mrRouteView):not(#mrCommandView){display:none!important}
+html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader{display:block!important}
+html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .global-search{display:block!important;margin:0!important}
+html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav nav{display:flex!important}
+@media(min-width:761px){html.mozzipick-v31-live body.mozzipick-v31-live>footer{display:none!important}}
