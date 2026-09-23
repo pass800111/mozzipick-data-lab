@@ -1,6 +1,11 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T06:00:00+09:00",
-  "snapshots": [],
+  "updatedAt": "2026-09-24T07:09:33+09:00",
+  "snapshots": [
+    {
+      "at": "2026-09-24T07:09:33+09:00",
+      "ranking": []
+    }
+  ],
   "reset": "V3.1 clean start"
 }
