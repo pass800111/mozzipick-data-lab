@@ -557,3 +557,21 @@ body.mr-v31-reference-home #mrHomeDashboard .mr-command-chip{box-shadow:0 3px 12
  .mr-command-page .mr-command-grid{grid-template-columns:repeat(2,1fr)!important}.mr-command-layout{grid-template-columns:1fr!important}
  .mr-detail-top{align-items:flex-start!important;flex-direction:column!important}.mr-detail-quick{justify-content:flex-start!important}
 }
+
+
+/* V3.1 LIVE AUTHORITY: hide legacy application surfaces after renderer boot */
+html.mozzipick-v31-live body.mozzipick-v31-live .main>section:not(#mrHomeDashboard):not(#mrRouteView):not(#mrCommandView),
+html.mozzipick-v31-live body.mozzipick-v31-live #menuDataView,
+html.mozzipick-v31-live body.mozzipick-v31-live #dataQualityPanel{display:none!important}
+html.mozzipick-v31-live body.mozzipick-v31-live #mrHomeDashboard,
+html.mozzipick-v31-live body.mozzipick-v31-live #mrRouteView,
+html.mozzipick-v31-live body.mozzipick-v31-live #mrCommandView{position:relative!important;z-index:10!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-dashboard-active #mrHomeDashboard{display:block!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-dashboard-active #mrRouteView,
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-dashboard-active #mrCommandView{display:none!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-route-active #mrRouteView{display:block!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-route-active #mrHomeDashboard,
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-route-active #mrCommandView{display:none!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrCommandView{display:block!important}
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrHomeDashboard,
+html.mozzipick-v31-live body.mozzipick-v31-live.mr-command-active #mrRouteView{display:none!important}
