@@ -528,3 +528,32 @@ body.mr-v31-reference-home #mrHomeDashboard .mr-command-chip-copy small{margin-t
  .mr-report-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  .mr-detail-main{grid-template-columns:1fr!important;padding:10px!important}.mr-detail-media{min-height:280px!important}
 }
+
+
+/* FINAL MASTER SCREEN MATCH — all desktop/mobile views */
+body{font-family:Pretendard,"Noto Sans KR",Arial,sans-serif!important}
+body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active .main{max-width:1560px!important;padding-top:18px!important}
+.mp-header-nav{position:relative!important;z-index:20!important}.mp-header-nav nav{max-width:1510px!important;min-height:68px!important;gap:20px!important}.mp-header-nav nav button{min-height:68px!important;padding:0 17px!important;font-size:13px!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-hero{min-height:270px!important;grid-template-columns:1.08fr .62fr .58fr!important;padding:34px 44px!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-copy{max-width:560px!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-copy h1{font-size:44px!important;letter-spacing:-.055em!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-art{display:flex!important;flex-direction:column!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-hero>button{justify-self:end!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-chips{grid-template-columns:repeat(5,1fr)!important}
+body.mr-v31-reference-home #mrHomeDashboard .mr-command-chip{box-shadow:0 3px 12px rgba(23,48,85,.07)!important}
+.mr-route-showcase{min-height:142px!important;overflow:hidden!important}.mr-route-showcase-copy h1{font-size:31px!important}.mr-route-showcase-art{display:flex!important;align-items:center!important;justify-content:center!important;min-width:190px!important;font-size:50px!important}.mr-route-benefits{display:flex!important;flex-direction:column!important;gap:7px!important}.mr-route-benefits em{font-size:11px!important;font-style:normal!important;font-weight:900!important}
+.mr-route-list .mr-card-grid{grid-template-columns:repeat(4,1fr)!important}.mr-card{height:430px!important}.mr-card-visual{height:205px!important;min-height:205px!important;max-height:205px!important}.mr-card-body{height:225px!important;min-height:225px!important}
+.mr-command-page .mr-command-grid{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:12px!important;margin-top:15px!important}.mr-command-page .mr-command-grid>button{min-height:105px!important;border:1px solid #dfe7f1!important;border-radius:16px!important;background:#fff!important;box-shadow:0 3px 12px rgba(23,48,85,.06)!important}
+.mr-command-layout{display:grid!important;grid-template-columns:280px minmax(0,1fr) 260px!important;gap:14px!important}.mr-command-layout>aside,.mr-command-layout>main{border:1px solid #dfe7f1!important;border-radius:17px!important;background:#fff!important;padding:16px!important}
+.mr-detail-top{display:flex!important;justify-content:space-between!important;gap:10px!important}.mr-detail-quick{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:6px!important}
+@media(max-width:760px){
+ .mp-header-nav nav{min-height:54px!important;gap:0!important}.mp-header-nav nav button{min-height:54px!important;height:54px!important;padding:0 10px!important;font-size:9px!important}
+ body.mr-v31-reference-home #mrHomeDashboard .mr-command-hero{grid-template-columns:1fr!important;min-height:205px!important;padding:18px 16px!important}
+ body.mr-v31-reference-home #mrHomeDashboard .mr-command-art{display:none!important}
+ body.mr-v31-reference-home #mrHomeDashboard .mr-command-hero>button{justify-self:start!important}
+ body.mr-v31-reference-home #mrHomeDashboard .mr-command-chips{grid-template-columns:repeat(5,142px)!important}
+ .mr-route-showcase{min-height:116px!important;padding:15px!important}.mr-route-showcase-art{min-width:60px!important;font-size:30px!important}.mr-route-benefits{display:none!important}
+ .mr-route-list .mr-card-grid{grid-template-columns:repeat(2,1fr)!important}.mr-card{height:390px!important}.mr-card-visual{height:140px!important;min-height:140px!important;max-height:140px!important}.mr-card-body{height:250px!important;min-height:250px!important}
+ .mr-command-page .mr-command-grid{grid-template-columns:repeat(2,1fr)!important}.mr-command-layout{grid-template-columns:1fr!important}
+ .mr-detail-top{align-items:flex-start!important;flex-direction:column!important}.mr-detail-quick{justify-content:flex-start!important}
+}
