@@ -108,3 +108,6 @@ body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active
  .mr-card-body{min-height:174px!important}
  .mr-card-actions{display:grid!important;grid-template-columns:1fr!important}
 }
+
+/* Instagram electronics exact-card contract */
+.mr-instagram-card{height:auto!important;min-height:190px!important}.mr-instagram-card .mr-card-body{min-height:190px!important;padding:18px!important}.mr-card-name-static{display:block;color:var(--mr-navy);font-size:15px;line-height:1.45;font-weight:900;word-break:keep-all}.mr-instagram-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}.mr-instagram-metrics span{padding:12px;border-radius:10px;background:#f7f8fb;color:#66758c;font-size:11px;font-weight:800}.mr-instagram-metrics b{display:block;margin-top:3px;color:#1d2c43;font-size:15px}.mr-instagram-card .mr-card-actions{grid-template-columns:1fr 1fr!important;padding-top:0!important}.mr-link-missing{display:flex;align-items:center;justify-content:center;min-height:34px;border:1px solid #e4e8ef;border-radius:8px;color:#98a2b2;font-size:10px;font-weight:800}@media(max-width:620px){.mr-instagram-card{min-height:170px!important}.mr-instagram-card .mr-card-body{min-height:170px!important;padding:12px!important}.mr-instagram-metrics{margin:12px 0}.mr-instagram-card .mr-card-actions{grid-template-columns:1fr!important}}
