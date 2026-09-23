@@ -1,24 +1,129 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T07:11:09+09:00",
+  "updatedAt": "2026-09-24T07:30:00+09:00",
   "basis": "fresh collection only; verified public data only; unknown values are not estimated",
-  "products": [],
-  "lastValidationAt": "2026-09-24T07:11:09+09:00",
+  "products": [
+    {
+      "id": "viral-wireless-carplay-2026",
+      "name": "2026 무선 카플레이·안드로이드 오토 2in1 미니 어댑터",
+      "category": "차량용 전자기기",
+      "viralGrade": "A",
+      "viralRadar": true,
+      "reelsRecommended": true,
+      "coupangEligible": true,
+      "coupangStatus": "확인",
+      "coupangPrice": "38,990원",
+      "price": "38,990원",
+      "reviews": "3",
+      "coupangUrl": "https://www.coupang.com/vp/products/9622258065",
+      "siteUpdatedAt": "2026-09-24T07:30:00+09:00",
+      "hotAt": "2026-09-24T07:30:00+09:00",
+      "timestamp": "2026-09-24T07:30:00+09:00",
+      "spec": "유선 카플레이/안드로이드 오토를 무선으로 전환하는 USB-A/C 미니 동글. 자동 연결·플러그앤플레이.",
+      "viralEvidence": "TikTok Shop에서 2026 무선 CarPlay 어댑터 계열이 최근 차량용 가젯으로 노출되고 있으며, 쿠팡에서도 2026년 신제품 동일 기능군 판매를 확인.",
+      "xiaohongshuKeywords": [
+        "无线CarPlay适配器",
+        "无线CarPlay转换器",
+        "CarPlay无线盒子"
+      ],
+      "chineseName": "无线CarPlay适配器",
+      "tiktok": "https://shop.tiktok.com/us/k/tiktok-car-gadgets"
+    },
+    {
+      "id": "viral-car-vacuum-airduster-20k",
+      "name": "차량용 20000Pa 무선 청소기·에어건",
+      "category": "차량용 전자기기",
+      "viralGrade": "A",
+      "viralRadar": true,
+      "reelsRecommended": true,
+      "coupangEligible": true,
+      "coupangStatus": "확인",
+      "coupangPrice": "69,000원",
+      "price": "69,000원",
+      "reviews": "80",
+      "coupangUrl": "https://www.coupang.com/vp/products/9371796636",
+      "siteUpdatedAt": "2026-09-24T07:30:00+09:00",
+      "hotAt": "2026-09-24T07:30:00+09:00",
+      "timestamp": "2026-09-24T07:30:00+09:00",
+      "spec": "20000Pa 흡입력의 무선 차량용 청소기와 에어건을 결합한 휴대용 청소기.",
+      "viralEvidence": "TikTok Shop 차량용 가젯에서 20000Pa 무선 청소기/에어더스터 계열이 높은 판매량으로 노출되고, 쿠팡 동일 기능군 상품 판매와 리뷰를 확인.",
+      "xiaohongshuKeywords": [
+        "车载无线吸尘器",
+        "20000Pa车载吸尘器",
+        "车载吹吸一体机"
+      ],
+      "chineseName": "车载无线吸尘器",
+      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories"
+    },
+    {
+      "id": "viral-vacuum-magsafe-holder",
+      "name": "진공 흡착 맥세이프 차량용 자석 거치대",
+      "category": "차량용 전자기기",
+      "viralGrade": "A",
+      "viralRadar": true,
+      "reelsRecommended": true,
+      "coupangEligible": true,
+      "coupangStatus": "확인",
+      "coupangPrice": "14,800원",
+      "price": "14,800원",
+      "reviews": "11",
+      "coupangUrl": "https://www.coupang.com/vp/products/9292474204",
+      "siteUpdatedAt": "2026-09-24T07:30:00+09:00",
+      "hotAt": "2026-09-24T07:30:00+09:00",
+      "timestamp": "2026-09-24T07:30:00+09:00",
+      "spec": "진공 흡착 베이스와 자석 고정을 결합한 각도조절 차량용 휴대폰 거치대.",
+      "viralEvidence": "TikTok Shop 차량용 가젯에서 진공 흡착 자석 거치대 계열이 수만 건 판매로 노출되고, 쿠팡에서도 동일 형태 상품 판매를 확인.",
+      "xiaohongshuKeywords": [
+        "真空吸盘磁吸手机支架",
+        "车载真空磁吸支架",
+        "磁吸车载手机支架"
+      ],
+      "chineseName": "真空吸盘磁吸手机支架",
+      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories"
+    },
+    {
+      "id": "viral-retractable-car-charger",
+      "name": "75W 5in1 릴타입 차량용 고속충전기",
+      "category": "차량용 전자기기",
+      "viralGrade": "A",
+      "viralRadar": true,
+      "reelsRecommended": true,
+      "coupangEligible": true,
+      "coupangStatus": "확인",
+      "coupangPrice": "10,500원",
+      "price": "10,500원",
+      "reviews": "44",
+      "coupangUrl": "https://www.coupang.com/vp/products/9019443112",
+      "siteUpdatedAt": "2026-09-24T07:30:00+09:00",
+      "hotAt": "2026-09-24T07:30:00+09:00",
+      "timestamp": "2026-09-24T07:30:00+09:00",
+      "spec": "릴타입 케이블과 다중 포트를 결합해 여러 기기를 동시에 충전하는 차량용 고속충전기.",
+      "viralEvidence": "TikTok Shop에서 릴타입 75W/120W 차량용 충전기 계열이 최근 판매되고 있으며, 쿠팡에서도 75W 5in1 릴타입 상품과 리뷰를 확인.",
+      "xiaohongshuKeywords": [
+        "伸缩车载充电器",
+        "车载伸缩快充",
+        "75W车载充电器"
+      ],
+      "chineseName": "伸缩车载充电器",
+      "tiktok": "https://shop.tiktok.com/us/k/car-charger-retractable-how-to"
+    }
+  ],
+  "lastValidationAt": "2026-09-24T07:30:00+09:00",
   "newCandidateGradeCounts": {
-    "A": 0,
+    "A": 4,
     "B": 0,
     "C": 0,
     "D": 0
   },
   "gradeCounts": {
-    "A": 0,
+    "A": 4,
     "B": 0,
     "C": 0,
     "D": 0
   },
   "validationSummary": {
-    "newCandidateCount": 0,
-    "newGradeTotal": 0,
+    "newCandidateCount": 4,
+    "newGradeTotal": 4,
     "coupangMissingLinkDowngraded": 0,
     "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
