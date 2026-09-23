@@ -261,3 +261,46 @@ body.mr-route-active .main{max-width:1360px!important;padding:22px 22px 48px!imp
 
 /* Recent product delete controls 20260924 */
 .mr-command-recent h3>span{display:flex;align-items:center;gap:5px}.mr-command-recent .mr-recent-clear{height:25px;padding:0 8px;border:1px solid #e1e6ee;border-radius:7px;background:#fff;color:#78869a;font-size:8px;font-weight:900;cursor:pointer}.mr-recent-row{display:grid;grid-template-columns:minmax(0,1fr) 28px;align-items:center;border-bottom:1px solid #e5e9f0}.mr-recent-row:last-child{border-bottom:0}.mr-recent-row>[data-recent-product]{min-width:0;padding:7px 8px;border:0;background:transparent;text-align:left;cursor:pointer}.mr-recent-remove{width:26px;height:26px;border:0;border-radius:7px;background:transparent;color:#9aa5b4;font-size:16px;line-height:1;font-weight:700;cursor:pointer}.mr-recent-remove:hover{background:#fff0ed;color:#ed5a42}.mr-recent-clear:hover{border-color:#f0a391;color:#e4543b;background:#fff6f3}
+
+
+/* V3.1 MASTER VISUAL REPLACEMENT 20260924 */
+:root{--v31-red:#ff4f3b;--v31-blue:#3478f6;--v31-navy:#10254a;--v31-purple:#7558ef;--v31-bg:#f5f8fc;--v31-line:#dfe7f1;--v31-soft:#eef4fb}
+body.mr-dashboard-active,body.mr-route-active,body.mr-command-active{background:var(--v31-bg)!important;color:var(--v31-navy)!important}
+body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active .main{max-width:1500px!important;margin:0 auto!important;padding-left:18px!important;padding-right:18px!important}
+.mp-header-nav{background:#fff!important;border-bottom:1px solid #e8edf4!important;box-shadow:0 2px 8px rgba(25,52,91,.04)!important}
+.mp-header-nav nav{gap:4px!important}
+.mp-header-nav nav button{border-radius:8px!important;font-weight:900!important;color:#17305d!important}
+.mp-header-nav nav button.on{background:#fff!important;color:#ff4f3b!important;box-shadow:inset 0 -3px 0 #ff4f3b!important}
+.mr-command-hero{min-height:190px!important;border:1px solid #eadfff!important;border-radius:15px!important;background:linear-gradient(105deg,#f9edff 0%,#fff0f4 55%,#fff7f0 100%)!important;box-shadow:0 6px 18px rgba(83,62,130,.06)!important}
+.mr-command-copy h1{font-size:34px!important;line-height:1.18!important;color:#15264a!important}.mr-command-copy h1 em{color:#7356ee!important;font-style:normal!important}
+.mr-command-hero>button{background:linear-gradient(135deg,#7356ee,#8b61ff)!important;box-shadow:0 8px 18px rgba(117,86,238,.24)!important}
+.mr-command-chips{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px!important}
+.mr-command-chip{min-height:58px!important;height:auto!important;padding:8px 10px!important;border-radius:11px!important;box-shadow:0 3px 10px rgba(31,59,97,.04)!important}
+.mr-route-showcase{border:1px solid #e5ebf3!important;border-radius:14px!important;box-shadow:0 5px 16px rgba(31,59,97,.05)!important}
+.mr-route-showcase.gold{background:linear-gradient(110deg,#fff8dc,#fff2b8)!important}.mr-route-showcase.blue{background:linear-gradient(110deg,#eef5ff,#dfeaff)!important}.mr-route-showcase.viral{background:linear-gradient(110deg,#fff0f4,#ffe5e9)!important}.mr-route-showcase.insta{background:linear-gradient(110deg,#fff0fa,#f1e7ff)!important}.mr-route-showcase.pink{background:linear-gradient(110deg,#fff1f5,#ffe6ed)!important}.mr-route-showcase.mint,.mr-route-showcase.green{background:linear-gradient(110deg,#edfff8,#ddf7ec)!important}
+.mr-filter-shell{background:#fff!important;border-bottom:1px solid #edf1f6!important}.mr-filterbar button{height:36px!important;border-radius:8px!important;background:#f8fafd!important}.mr-filterbar button.active,.mr-filterbar button.on{border-color:#3d78ef!important;background:#3d78ef!important;color:#fff!important}
+.mr-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important}
+.mr-card{height:430px!important;border:1px solid #dfe7f1!important;border-radius:12px!important;box-shadow:0 4px 14px rgba(28,55,92,.055)!important;background:#fff!important}
+.mr-card-visual{height:165px!important;min-height:165px!important;max-height:165px!important;aspect-ratio:auto!important;background:#edf2f7!important}.mr-card-visual img{object-fit:cover!important}
+.mr-card-body{height:265px!important;min-height:265px!important;padding:11px 12px!important}
+.mr-card-name{font-size:14px!important;line-height:1.35!important;min-height:38px!important;max-height:38px!important;color:#15294d!important}
+.mr-card-desc{font-size:10px!important;line-height:1.45!important;min-height:29px!important;max-height:29px!important}.mr-card-price{font-size:18px!important;color:#ff4f32!important}
+.mr-card-actions{gap:5px!important}.mr-card-actions button,.mr-card-actions a,.mr-state-select{height:31px!important;min-height:31px!important;border-radius:7px!important;font-size:9px!important}
+.mr-card-actions .accent{border-color:#ff8268!important;color:#ff4f32!important;background:#fff!important}
+.mr-section-title h2{font-size:22px!important;color:#13284d!important}.mr-section-title p{font-size:10px!important}
+.mr-pager button{border-radius:7px!important}.mr-pager button.active,.mr-pager button.on{background:#3478f6!important;border-color:#3478f6!important;color:#fff!important}
+.mr-detail-page{max-width:1180px!important;margin:0 auto!important}.mr-detail-main,.mr-detail-grid>section{border-radius:12px!important;border-color:#e1e8f1!important;box-shadow:0 4px 14px rgba(28,55,92,.04)!important}
+.mr-command-page>header,.mr-command-detail>header{border-radius:14px!important;background:linear-gradient(105deg,#f7efff,#fff1f5)!important}
+@media(max-width:760px){
+ body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active .main{padding-left:8px!important;padding-right:8px!important}
+ .mr-command-hero{min-height:145px!important;padding:16px!important}.mr-command-copy h1{font-size:23px!important}
+ .mr-command-chips{grid-template-columns:1fr!important;gap:6px!important}
+ .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .mr-card{height:390px!important;min-height:390px!important;border-radius:10px!important}
+ .mr-card-visual{height:125px!important;min-height:125px!important;max-height:125px!important}
+ .mr-card-body{height:265px!important;min-height:265px!important;padding:8px!important}
+ .mr-card-name{font-size:12px!important;min-height:34px!important;max-height:34px!important}
+ .mr-card-desc{font-size:9px!important;min-height:26px!important;max-height:26px!important}
+ .mr-card-price{font-size:16px!important}.mr-card-actions button,.mr-card-actions a,.mr-state-select{font-size:8px!important}
+ .mr-route-showcase{border-radius:10px!important}
+}
