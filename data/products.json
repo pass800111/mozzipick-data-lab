@@ -1,9 +1,9 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T06:00:00+09:00",
+  "updatedAt": "2026-09-24T07:09:12+09:00",
   "basis": "fresh collection only; verified public data only; unknown values are not estimated",
   "products": [],
-  "lastValidationAt": "2026-09-24T06:00:00+09:00",
+  "lastValidationAt": "2026-09-24T07:09:12+09:00",
   "newCandidateGradeCounts": {
     "A": 0,
     "B": 0,
@@ -20,7 +20,6 @@
     "newCandidateCount": 0,
     "newGradeTotal": 0,
     "coupangMissingLinkDowngraded": 0,
-    "rule": "A/B/C require a real coupang.com URL; otherwise D",
-    "reset": "V3.1 clean start"
+    "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
 }
