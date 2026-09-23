@@ -420,3 +420,27 @@ body.mr-dashboard-active .mr-card-actions .accent{border-color:#ff745c!important
  body.mr-dashboard-active .mr-card-body{height:256px!important;min-height:256px!important;padding:9px!important}
 }
 @media(max-width:380px){body.mr-dashboard-active .mr-card-grid{grid-template-columns:1fr!important}}
+
+
+/* V3.1 APPROVED MASTER — forced home scope */
+body.mr-v31-reference-home.mr-dashboard-active{background:#fff!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard{display:block!important;width:100%!important;max-width:1540px!important;margin:0 auto!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-hero{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr) auto!important;align-items:center!important;gap:28px!important;min-height:252px!important;margin:20px 0!important;padding:30px 42px!important;border:0!important;border-radius:24px!important;background:linear-gradient(115deg,#fff0f2 0%,#fff8f5 38%,#f4efff 72%,#eee9ff 100%)!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-copy h1{font-size:42px!important;line-height:1.12!important;color:#10254a!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-art{display:flex!important;align-items:center!important;justify-content:center!important;min-height:170px!important;border-radius:28px!important;background:radial-gradient(circle at 50% 40%,#fff 0,#f1e8ff 46%,transparent 47%)!important;font-size:42px!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-hero>button{display:flex!important;align-items:center!important;justify-content:center!important;min-width:245px!important;height:62px!important;border:0!important;border-radius:32px!important;background:linear-gradient(100deg,#6849f4,#c64bf1)!important;color:#fff!important;font-size:17px!important;font-weight:950!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chips{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:14px!important;margin:18px 0 28px!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip{display:flex!important;align-items:center!important;gap:12px!important;min-height:106px!important;padding:16px!important;border:1px solid #dfe7f1!important;border-radius:18px!important;background:#fff!important;box-shadow:0 4px 12px rgba(25,52,91,.05)!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:58px!important;height:58px!important;border-radius:14px!important;background:#fff0f4!important;font-size:30px!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip-copy{display:flex!important;flex-direction:column!important;align-items:flex-start!important;text-align:left!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip-copy b{font-size:15px!important;color:#12264a!important}
+body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip-copy small{font-size:11px!important;color:#718198!important}
+@media(max-width:760px){
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-hero{grid-template-columns:1fr!important;gap:8px!important;min-height:190px!important;padding:20px 18px!important;border-radius:17px!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-copy h1{font-size:27px!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-art{display:none!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-hero>button{width:max-content!important;min-width:0!important;height:42px!important;padding:0 16px!important;font-size:11px!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chips{display:flex!important;overflow-x:auto!important;gap:8px!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip{flex:0 0 150px!important;min-height:82px!important;padding:10px!important}
+ body.mr-v31-reference-home.mr-dashboard-active #mrHomeDashboard .mr-command-chip-icon{width:42px!important;height:42px!important;font-size:22px!important}
+}
