@@ -16,3 +16,4 @@ body.mr-dashboard-active .main>*:not(#mrHomeDashboard),body.mr-route-active .mai
 @media(max-width:370px){.mr-card-grid{grid-template-columns:1fr}.mr-card{height:430px}}
 .mr-card-actions:has(a) .wide{grid-column:auto}
 .mr-state-select{grid-column:1/-1;width:100%;height:31px;border:1px solid #cbd7e6;border-radius:8px;background:#f7faff;padding:0 8px;color:#33425b;font-size:9px;font-weight:900}
+.mr-card-actions:has(.mr-state-select) .mr-state-select,.mr-card-actions:has(.mr-state-select) .wide{grid-column:auto}
