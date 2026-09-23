@@ -363,3 +363,60 @@ body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active
  .mr-card-grid{grid-template-columns:1fr!important}
  .mr-card{height:auto!important;min-height:390px!important}
 }
+
+
+/* V3.1 REFERENCE HOME STYLE — visual-only, based on approved master image */
+body.mr-dashboard-active{background:#fff!important}
+body.mr-dashboard-active .main{width:min(100%,1540px)!important;max-width:1540px!important;padding:0 28px 44px!important}
+body.mr-dashboard-active .mp-header-nav{border-bottom:1px solid #e9eef6!important;background:#fff!important;box-shadow:0 2px 10px rgba(25,52,91,.035)!important}
+body.mr-dashboard-active .mp-header-nav nav{min-height:64px!important;justify-content:center!important;gap:24px!important}
+body.mr-dashboard-active .mp-header-nav nav button{min-height:64px!important;padding:0 14px!important;border-radius:0!important;background:transparent!important;color:#142749!important;font-size:13px!important;font-weight:900!important}
+body.mr-dashboard-active .mp-header-nav nav button.on{color:#142749!important;box-shadow:inset 0 -3px 0 #ff543e!important}
+body.mr-dashboard-active .mr-command-hero{min-height:252px!important;margin-top:20px!important;padding:30px 42px!important;border:0!important;border-radius:24px!important;background:linear-gradient(115deg,#fff0f2 0%,#fff7f6 35%,#f3ecff 70%,#eee9ff 100%)!important;box-shadow:none!important;overflow:hidden!important}
+body.mr-dashboard-active .mr-command-copy{max-width:570px!important}
+body.mr-dashboard-active .mr-command-copy>span{color:#7658ed!important;font-size:15px!important;font-weight:950!important}
+body.mr-dashboard-active .mr-command-copy h1{margin:8px 0 10px!important;color:#10254a!important;font-size:42px!important;line-height:1.12!important;letter-spacing:-.055em!important}
+body.mr-dashboard-active .mr-command-copy h1 em{background:linear-gradient(90deg,#7658ed,#f04b94,#ff673e);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+body.mr-dashboard-active .mr-command-copy p{max-width:500px!important;color:#687a92!important;font-size:14px!important;line-height:1.55!important;font-weight:700!important}
+body.mr-dashboard-active .mr-command-hero>button{min-width:245px!important;height:62px!important;border-radius:32px!important;background:linear-gradient(100deg,#6849f4,#c64bf1)!important;font-size:17px!important;font-weight:950!important;box-shadow:0 12px 25px rgba(117,74,238,.20)!important}
+body.mr-dashboard-active .mr-command-chips{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:14px!important;margin:18px 0 28px!important}
+body.mr-dashboard-active .mr-command-chip{min-height:106px!important;padding:16px!important;border:1px solid #dfe7f1!important;border-radius:18px!important;background:#fff!important;box-shadow:0 4px 12px rgba(25,52,91,.05)!important;text-align:left!important}
+body.mr-dashboard-active .mr-command-chip b{font-size:15px!important;color:#12264a!important}
+body.mr-dashboard-active .mr-command-chip small{font-size:11px!important;color:#718198!important;line-height:1.5!important}
+body.mr-dashboard-active .mr-home-section{margin-top:12px!important}
+body.mr-dashboard-active .mr-section-title h2{font-size:28px!important;letter-spacing:-.045em!important;color:#10254a!important}
+body.mr-dashboard-active .mr-section-title p{font-size:12px!important;color:#73839a!important}
+body.mr-dashboard-active .mr-filter-shell{margin-top:12px!important;padding:10px 14px!important;border:1px solid #e0e7f0!important;border-radius:16px!important;background:#f9fbfe!important}
+body.mr-dashboard-active .mr-filterbar{gap:7px!important}
+body.mr-dashboard-active .mr-filterbar button{height:38px!important;padding:0 16px!important;border:1px solid #e2e8f1!important;border-radius:9px!important;background:#fff!important;color:#31517e!important;font-size:11px!important;font-weight:900!important}
+body.mr-dashboard-active .mr-filterbar button.active,body.mr-dashboard-active .mr-filterbar button.on{border-color:#ff4e79!important;background:linear-gradient(90deg,#ff4f82,#ff3f69)!important;color:#fff!important}
+body.mr-dashboard-active .mr-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important}
+body.mr-dashboard-active .mr-card{height:420px!important;border:1px solid #dfe7f1!important;border-radius:17px!important;box-shadow:0 4px 13px rgba(31,59,97,.045)!important}
+body.mr-dashboard-active .mr-card-visual{height:190px!important;min-height:190px!important;max-height:190px!important;background:#f5f7fa!important}
+body.mr-dashboard-active .mr-card-body{height:230px!important;min-height:230px!important;padding:12px 14px!important}
+body.mr-dashboard-active .mr-card-price{color:#ff4d32!important;font-size:18px!important}
+body.mr-dashboard-active .mr-card-actions .accent{border-color:#ff745c!important;color:#ff4d32!important}
+@media(max-width:760px){
+ body.mr-dashboard-active .main{padding:0 9px 30px!important}
+ body.mr-dashboard-active .mp-header-nav nav{justify-content:flex-start!important;gap:4px!important;overflow-x:auto!important}
+ body.mr-dashboard-active .mp-header-nav nav button{min-height:52px!important;height:52px!important;padding:0 10px!important;font-size:10px!important;white-space:nowrap!important}
+ body.mr-dashboard-active .mr-command-hero{min-height:188px!important;margin-top:10px!important;padding:20px 18px!important;border-radius:17px!important}
+ body.mr-dashboard-active .mr-command-copy{max-width:78%!important}
+ body.mr-dashboard-active .mr-command-copy>span{font-size:11px!important}
+ body.mr-dashboard-active .mr-command-copy h1{font-size:27px!important;line-height:1.14!important}
+ body.mr-dashboard-active .mr-command-copy p{font-size:10px!important}
+ body.mr-dashboard-active .mr-command-hero>button{min-width:0!important;width:auto!important;height:42px!important;padding:0 16px!important;font-size:11px!important}
+ body.mr-dashboard-active .mr-command-chips{grid-template-columns:repeat(5,minmax(128px,1fr))!important;gap:8px!important;overflow-x:auto!important;padding-bottom:5px!important;margin:10px 0 20px!important;scroll-snap-type:x proximity!important}
+ body.mr-dashboard-active .mr-command-chip{min-height:82px!important;padding:11px!important;border-radius:13px!important;scroll-snap-align:start!important}
+ body.mr-dashboard-active .mr-command-chip b{font-size:12px!important}
+ body.mr-dashboard-active .mr-command-chip small{font-size:9px!important}
+ body.mr-dashboard-active .mr-section-title h2{font-size:22px!important}
+ body.mr-dashboard-active .mr-filter-shell{margin-left:0!important;margin-right:0!important;border-radius:12px!important;padding:7px!important}
+ body.mr-dashboard-active .mr-filterbar{flex-wrap:nowrap!important}
+ body.mr-dashboard-active .mr-filterbar button{height:34px!important;padding:0 11px!important;font-size:9px!important}
+ body.mr-dashboard-active .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ body.mr-dashboard-active .mr-card{height:386px!important;border-radius:12px!important}
+ body.mr-dashboard-active .mr-card-visual{height:130px!important;min-height:130px!important;max-height:130px!important}
+ body.mr-dashboard-active .mr-card-body{height:256px!important;min-height:256px!important;padding:9px!important}
+}
+@media(max-width:380px){body.mr-dashboard-active .mr-card-grid{grid-template-columns:1fr!important}}
