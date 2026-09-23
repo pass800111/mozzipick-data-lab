@@ -158,3 +158,6 @@ body.mr-dashboard-active .main,body.mr-route-active .main,body.mr-command-active
  .mr-card{height:350px!important}
  .mr-card-visual{height:108px!important;min-height:108px!important}
 }
+
+/* Screenshot fix: compact Instagram cards and prevent caption overflow */
+.mr-instagram-card{overflow:hidden!important}.mr-instagram-card .mr-card-body{overflow:hidden!important}.mr-instagram-card .mr-card-name-static{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3!important;overflow:hidden!important;min-height:63px!important;max-height:63px!important}.mr-instagram-card .mr-instagram-metrics{flex:0 0 auto!important}.mr-instagram-card .mr-card-actions{margin-top:auto!important;flex:0 0 auto!important}@media(max-width:620px){.mr-instagram-card .mr-card-name-static{min-height:50px!important;max-height:50px!important;line-height:1.4!important;-webkit-line-clamp:3!important}.mr-instagram-card .mr-instagram-metrics{margin:7px 0!important}.mr-instagram-card{height:165px!important;min-height:165px!important;max-height:165px!important}.mr-instagram-card .mr-card-body{height:100%!important;min-height:0!important}}
