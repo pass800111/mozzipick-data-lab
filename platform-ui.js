@@ -44,7 +44,7 @@ function card(p){
 function section(title,items,view,subtitle=""){
  return '<section class="mp-home-section"><div class="mp-home-section-head"><div><h2>'+title+'</h2>'+(subtitle?'<p>'+subtitle+'</p>':'')+'</div><button type="button" data-section-view="'+view+'">전체보기 →</button></div><div class="mp-showcase-grid">'+(items.length?items.slice(0,4).map(card).join(""):'<div class="mp-home-empty">현재 조건에 맞는 실제 데이터가 없습니다.</div>')+'</div></section>';
 }
-function buildHome(){
+function openProduct(id){const target=$("[data-detail]").find(x=>x.dataset.detail===String(id));if(target){target.click();return}const nav=$("[data-view=home]");if(nav)nav.click()}\nfunction buildHome(){
  if(!state.products.length)return;
  const all=[...state.products].sort((a,b)=>new Date(b.siteUpdatedAt||0)-new Date(a.siteUpdatedAt||0)||Number(a.rank||999)-Number(b.rank||999));
  const viral=all.filter(p=>p.viralRadar||["A","B"].includes(p.viralGrade));
