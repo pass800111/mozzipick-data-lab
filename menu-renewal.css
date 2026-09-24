@@ -586,3 +586,13 @@ html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader{display:block!
 html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .global-search{display:block!important;margin:0!important}
 html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav nav{display:flex!important}
 @media(min-width:761px){html.mozzipick-v31-live body.mozzipick-v31-live>footer{display:none!important}}
+
+/* HOVER LIFT — controls only; product cards stay fixed */
+.mr-card:hover{transform:none!important}
+.mr-card-actions button,.mr-card-actions a,.mr-detail-quick button,.mr-command-chips button,[data-command]{
+ transition:transform .16s ease,box-shadow .16s ease!important
+}
+.mr-card-actions button:hover,.mr-card-actions a:hover,.mr-detail-quick button:hover,.mr-command-chips button:hover,[data-command]:hover{
+ transform:translateY(-3px)!important;
+ box-shadow:0 8px 18px rgba(31,45,70,.13)!important
+}
