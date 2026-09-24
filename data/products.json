@@ -1,6 +1,6 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T08:08:43+09:00",
+  "updatedAt": "2026-09-24T09:14:17+09:00",
   "basis": "fresh collection only; verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -136,7 +136,7 @@
       "rank": 4
     }
   ],
-  "lastValidationAt": "2026-09-24T08:08:43+09:00",
+  "lastValidationAt": "2026-09-24T09:14:17+09:00",
   "newCandidateGradeCounts": {
     "A": 0,
     "B": 0,
