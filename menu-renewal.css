@@ -385,3 +385,74 @@ body.mr-route-active .main{max-width:1360px!important;padding:22px 22px 48px!imp
  }
  footer button,footer a{flex:0 0 72px!important;width:72px!important;min-width:72px!important;height:55px!important;opacity:1!important}
 }
+
+
+/* Mobile bottom navigation v15 — all 8 destinations visible and readable */
+@media(max-width:760px){
+ footer{
+   display:grid!important;
+   grid-template-columns:repeat(8,minmax(0,1fr))!important;
+   gap:0!important;
+   overflow:hidden!important;
+   height:70px!important;
+   min-height:70px!important;
+   padding:4px 2px env(safe-area-inset-bottom)!important;
+ }
+ footer button,footer a{
+   display:flex!important;
+   flex-direction:column!important;
+   align-items:center!important;
+   justify-content:center!important;
+   gap:2px!important;
+   flex:none!important;
+   width:auto!important;
+   min-width:0!important;
+   height:60px!important;
+   padding:2px 0!important;
+   border:0!important;
+   border-radius:10px!important;
+   box-sizing:border-box!important;
+   overflow:visible!important;
+   white-space:nowrap!important;
+ }
+ footer button i,footer a i{
+   display:block!important;
+   font-style:normal!important;
+   font-size:22px!important;
+   line-height:25px!important;
+   height:25px!important;
+ }
+ footer button span,footer a span{
+   display:block!important;
+   width:100%!important;
+   max-width:100%!important;
+   overflow:hidden!important;
+   text-overflow:clip!important;
+   font-size:9px!important;
+   line-height:12px!important;
+   font-weight:800!important;
+   letter-spacing:-.7px!important;
+   text-align:center!important;
+ }
+ footer [data-mobile-view="home"] span{font-size:0!important}
+ footer [data-mobile-view="home"] span:after{content:"상품";font-size:9px!important}
+ footer [data-mobile-view="time"] span{font-size:0!important}
+ footer [data-mobile-view="time"] span:after{content:"쿠팡";font-size:9px!important}
+ footer [data-mobile-view="categories"] span{font-size:0!important}
+ footer [data-mobile-view="categories"] span:after{content:"등급";font-size:9px!important}
+ footer [data-mobile-view="viral"] span{font-size:0!important}
+ footer [data-mobile-view="viral"] span:after{content:"바이럴";font-size:9px!important}
+ footer [data-mobile-view="instagram"] span{font-size:0!important}
+ footer [data-mobile-view="instagram"] span:after{content:"인스타";font-size:9px!important}
+ footer [data-mobile-view="favorites"] span{font-size:0!important}
+ footer [data-mobile-view="favorites"] span:after{content:"즐겨찾기";font-size:9px!important}
+ footer [data-mobile-view="production"] span{font-size:0!important}
+ footer [data-mobile-view="production"] span:after{content:"제작관리";font-size:9px!important}
+ footer [data-mobile-view="quality"] span{font-size:0!important}
+ footer [data-mobile-view="quality"] span:after{content:"검증";font-size:9px!important}
+ body .main{padding-bottom:90px!important}
+}
+@media(max-width:390px){
+ footer button i,footer a i{font-size:20px!important}
+ footer button span:after,footer a span:after{font-size:8px!important}
+}
