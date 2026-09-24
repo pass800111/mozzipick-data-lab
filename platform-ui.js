@@ -87,6 +87,6 @@ async function loadProducts(){
 function qualityGuard(){
  document.addEventListener("click",e=>{const b=e.target.closest?.('[data-view="quality"],[data-mobile-view="quality"]');if(!b)return;setTimeout(()=>{$$("#menuDataView .coupang-rank-panel,#menuDataView .coupang-select,#menuDataView [data-coupang-section]").forEach(x=>x.remove())},180)},true)
 }
-function init(){setupHeader();createHome();setupListShell();qualityGuard();loadProducts();showHome()}
+function init(){document.body.classList.remove("mp-nav-open");setupHeader();document.body.classList.remove("mp-nav-open");createHome();setupListShell();qualityGuard();loadProducts();showHome()}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(init,0));else setTimeout(init,0);
 })();
