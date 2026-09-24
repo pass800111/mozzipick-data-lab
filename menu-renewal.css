@@ -365,3 +365,23 @@ body.mr-route-active .main{max-width:1360px!important;padding:22px 22px 48px!imp
  }
  body .main{padding-bottom:86px!important}
 }
+
+
+/* Mobile hard stop 20260924 — remove duplicate desktop drawer; bottom nav is the mobile navigation */
+@media(max-width:760px){
+ #mpPlatformHeader .mp-header-nav,
+ body.mp-nav-open #mpPlatformHeader .mp-header-nav,
+ .mp-nav-open #mpPlatformHeader .mp-header-nav,
+ #mpPlatformHeader.mp-nav-open .mp-header-nav,
+ .mp-header-nav{display:none!important;visibility:hidden!important;pointer-events:none!important}
+ #mpPlatformHeader .mp-menu-toggle,.mp-menu-toggle{display:none!important}
+ body.mp-nav-open{overflow:auto!important}
+ footer{
+   display:flex!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+   z-index:2000!important;width:100%!important;height:66px!important;min-height:66px!important;
+   padding:5px 4px env(safe-area-inset-bottom)!important;background:#fff!important;opacity:1!important;
+   overflow-x:auto!important;overflow-y:hidden!important;justify-content:flex-start!important;
+   border-top:1px solid #e1e7f0!important;box-shadow:0 -4px 16px rgba(34,51,78,.08)!important
+ }
+ footer button,footer a{flex:0 0 72px!important;width:72px!important;min-width:72px!important;height:55px!important;opacity:1!important}
+}
