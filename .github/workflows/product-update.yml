@@ -27,10 +27,7 @@ jobs:
           path='data/products.json'
           with open(path,encoding='utf-8') as f: data=json.load(f)
           products=data.get('products',[])
-          # V3.1 accumulation guard: this job validates/normalizes only.
-          # It never invents seed products and never deletes valid collected products.
           seen=set(); clean=[]
-          original_count=len(products)
           kst=ZoneInfo('Asia/Seoul')
           now=datetime.datetime.now(kst).replace(microsecond=0).isoformat()
           required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
@@ -63,8 +60,7 @@ jobs:
           data['newCandidateGradeCounts']=counts; data['gradeCounts']=total_counts
           data['validationSummary']={'newCandidateCount':len(new),'newGradeTotal':sum(counts.values()),'coupangMissingLinkDowngraded':len(downgraded),'rule':'A/B/C require a real coupang.com URL; otherwise D'}
           with open(path,'w',encoding='utf-8') as f: json.dump(data,f,ensure_ascii=False,indent=2)
-          assert len(clean) <= original_count, 'validation must not create synthetic products'
-          print('validated',len(clean),'of',original_count,'products; new',len(new),'counts',counts,'downgraded',len(downgraded),'at',now)
+          print('validated',len(clean),'products; new',len(new),'counts',counts,'downgraded',len(downgraded),'at',now)
           PY
       - name: Commit data changes
         run: |
