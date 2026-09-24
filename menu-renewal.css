@@ -456,3 +456,31 @@ body.mr-route-active .main{max-width:1360px!important;padding:22px 22px 48px!imp
  footer button i,footer a i{font-size:20px!important}
  footer button span:after,footer a span:after{font-size:8px!important}
 }
+
+
+/* Mobile fixed-nav content clearance v16 */
+@media(max-width:760px){
+ :root{--mp-mobile-bottom-clearance:104px}
+ body .main{
+   padding-bottom:var(--mp-mobile-bottom-clearance)!important;
+ }
+ #mpPlatformHome,
+ #mrHomeDashboard,
+ #mrRouteView,
+ #mrCommandView,
+ #menuDataView,
+ .layout,
+ .mr-detail-page{
+   padding-bottom:var(--mp-mobile-bottom-clearance)!important;
+   box-sizing:border-box!important;
+ }
+ #mpHomeSections,
+ .mr-route-list,
+ .mr-command-results,
+ #ranking{
+   margin-bottom:24px!important;
+ }
+ footer{
+   bottom:0!important;
+ }
+}
