@@ -1,6 +1,6 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T09:12:12+09:00",
+  "updatedAt": "2026-09-24T10:08:58+09:00",
   "snapshots": [
     {
       "at": "2026-09-24T07:09:33+09:00",
@@ -29,6 +29,27 @@
     },
     {
       "at": "2026-09-24T09:12:12+09:00",
+      "ranking": [
+        {
+          "id": "viral-wireless-carplay-2026",
+          "rank": 1
+        },
+        {
+          "id": "viral-car-vacuum-airduster-20k",
+          "rank": 2
+        },
+        {
+          "id": "viral-vacuum-magsafe-holder",
+          "rank": 3
+        },
+        {
+          "id": "viral-retractable-car-charger",
+          "rank": 4
+        }
+      ]
+    },
+    {
+      "at": "2026-09-24T10:08:58+09:00",
       "ranking": [
         {
           "id": "viral-wireless-carplay-2026",
