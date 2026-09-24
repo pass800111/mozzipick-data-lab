@@ -612,3 +612,18 @@ html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav
 .mr-card:hover{transform:translateY(-5px)!important;box-shadow:0 14px 30px rgba(31,45,70,.13)!important;border-color:#d7e0eb!important}
 .mr-card .mr-card-visual:hover,.mr-card .mr-card-name:hover,.mr-card .mr-card-body:hover{transform:none!important}
 [data-fav],[data-prod],.mp-header-nav button,.mp-header-actions [data-quick],footer [data-mobile-view]{pointer-events:auto!important;cursor:pointer!important}
+
+/* HEADER SEARCH LAYOUT REPAIR 20260924 */
+@media(min-width:761px){
+ #mpPlatformHeader .mp-header-main{height:80px!important;display:grid!important;grid-template-columns:300px minmax(420px,720px) minmax(280px,1fr)!important;gap:24px!important;align-items:center!important;padding:0 28px!important}
+ #mpPlatformHeader .mp-header-search{display:block!important;position:relative!important;min-width:0!important}
+ #mpPlatformHeader .global-search{display:block!important;position:relative!important;margin:0!important}
+ #mpPlatformHeader .global-search>div:first-child{height:54px!important;display:flex!important;align-items:center!important;padding:0 116px 0 18px!important;border:1px solid #dbe4f2!important;border-radius:18px!important;background:#fbfcff!important;box-sizing:border-box!important}
+ #mpPlatformHeader #productSearch{width:100%!important;height:100%!important;min-width:0!important;border:0!important;outline:0!important;background:transparent!important;padding:0 30px 0 4px!important;font-size:13px!important}
+ #mpPlatformHeader #searchClear{position:absolute!important;right:112px!important;top:50%!important;transform:translateY(-50%)!important;width:28px!important;height:28px!important;z-index:3!important}
+ #mpPlatformHeader .mr-command-button{position:absolute!important;right:92px!important;top:7px!important;height:40px!important;z-index:4!important}
+ #mpPlatformHeader .mp-search-submit{position:absolute!important;right:7px!important;top:7px!important;width:78px!important;height:40px!important;z-index:4!important}
+ #mpPlatformHeader .mp-header-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;min-width:0!important}
+ #mpPlatformHeader .mp-header-actions .mp-quick{display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important}
+ #mpPlatformHeader .mp-header-nav{position:relative!important;top:auto!important}
+}
