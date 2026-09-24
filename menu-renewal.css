@@ -586,3 +586,22 @@ html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader{display:block!
 html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .global-search{display:block!important;margin:0!important}
 html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav nav{display:flex!important}
 @media(min-width:761px){html.mozzipick-v31-live body.mozzipick-v31-live>footer{display:none!important}}
+
+/* DETAIL CARD REFINEMENT 20260924 */
+.mr-detail-page{max-width:1180px!important;margin:0 auto!important;padding:18px 20px 28px!important;border-radius:20px!important}
+.mr-detail-top{gap:14px!important}
+.mr-detail-quick{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important}
+.mr-detail-main{grid-template-columns:minmax(320px,46%) minmax(0,1fr)!important;gap:34px!important;align-items:center!important}
+.mr-detail-media{aspect-ratio:1/1!important;max-height:430px!important;background:#f6f8fb!important;border-radius:18px!important;padding:18px!important}
+.mr-detail-media img{object-fit:contain!important;border-radius:14px!important}
+.mr-detail-summary h1{font-size:30px!important;line-height:1.3!important}
+.mr-detail-summary>p{font-size:14px!important;line-height:1.7!important}
+.mr-detail-summary>strong{font-size:27px!important}
+.mr-detail-summary dl div{padding:13px 14px!important;border-radius:12px!important}
+.mr-detail-grid{margin-top:14px!important;gap:14px!important}
+.mr-detail-grid section{padding:18px!important;border-radius:15px!important;background:#fff!important}
+.mr-copywords button{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important}
+.mr-copywords button:hover{transform:translateY(-2px)!important;box-shadow:0 7px 16px rgba(31,45,70,.08)!important;border-color:#b9a8ff!important}
+.mr-detail-top button,.mr-detail-quick button{transition:transform .16s ease,box-shadow .16s ease!important}
+.mr-detail-top button:hover,.mr-detail-quick button:hover{transform:translateY(-2px)!important;box-shadow:0 7px 16px rgba(31,45,70,.08)!important}
+@media(max-width:720px){.mr-detail-page{padding:12px!important}.mr-detail-main{grid-template-columns:1fr!important;gap:16px!important}.mr-detail-media{max-height:none!important}.mr-detail-quick{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important}.mr-detail-summary h1{font-size:22px!important}}
