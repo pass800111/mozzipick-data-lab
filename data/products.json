@@ -1,6 +1,6 @@
 {
   "version": "3.1",
-  "updatedAt": "2026-09-24T07:30:00+09:00",
+  "updatedAt": "2026-09-24T12:10:39+09:00",
   "basis": "fresh collection only; verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -27,7 +27,14 @@
         "CarPlay无线盒子"
       ],
       "chineseName": "无线CarPlay适配器",
-      "tiktok": "https://shop.tiktok.com/us/k/tiktok-car-gadgets"
+      "tiktok": "https://shop.tiktok.com/us/k/tiktok-car-gadgets",
+      "release": "미확인",
+      "officialUrl": "미확인",
+      "xiaohongshuQuery": "미확인",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D",
+      "rank": 1
     },
     {
       "id": "viral-car-vacuum-airduster-20k",
@@ -53,7 +60,14 @@
         "车载吹吸一体机"
       ],
       "chineseName": "车载无线吸尘器",
-      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories"
+      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories",
+      "release": "미확인",
+      "officialUrl": "미확인",
+      "xiaohongshuQuery": "미확인",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D",
+      "rank": 2
     },
     {
       "id": "viral-vacuum-magsafe-holder",
@@ -79,7 +93,14 @@
         "磁吸车载手机支架"
       ],
       "chineseName": "真空吸盘磁吸手机支架",
-      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories"
+      "tiktok": "https://shop.tiktok.com/us/k/car-gadgets-accessories",
+      "release": "미확인",
+      "officialUrl": "미확인",
+      "xiaohongshuQuery": "미확인",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D",
+      "rank": 3
     },
     {
       "id": "viral-retractable-car-charger",
@@ -105,25 +126,32 @@
         "75W车载充电器"
       ],
       "chineseName": "伸缩车载充电器",
-      "tiktok": "https://shop.tiktok.com/us/k/car-charger-retractable-how-to"
+      "tiktok": "https://shop.tiktok.com/us/k/car-charger-retractable-how-to",
+      "release": "미확인",
+      "officialUrl": "미확인",
+      "xiaohongshuQuery": "미확인",
+      "grade": "D",
+      "coupangGroup": "D",
+      "coupangMatchGrade": "D",
+      "rank": 4
     }
   ],
-  "lastValidationAt": "2026-09-24T07:30:00+09:00",
+  "lastValidationAt": "2026-09-24T12:10:39+09:00",
   "newCandidateGradeCounts": {
-    "A": 4,
+    "A": 0,
     "B": 0,
     "C": 0,
     "D": 0
   },
   "gradeCounts": {
-    "A": 4,
+    "A": 0,
     "B": 0,
     "C": 0,
-    "D": 0
+    "D": 4
   },
   "validationSummary": {
-    "newCandidateCount": 4,
-    "newGradeTotal": 4,
+    "newCandidateCount": 0,
+    "newGradeTotal": 0,
     "coupangMissingLinkDowngraded": 0,
     "rule": "A/B/C require a real coupang.com URL; otherwise D"
   }
