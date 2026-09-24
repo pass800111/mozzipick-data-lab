@@ -632,3 +632,21 @@ html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav
  transform:translateY(-2px) scale(.98)!important
 }
 [data-fav],[data-prod]{cursor:pointer!important;position:relative!important;z-index:4!important;pointer-events:auto!important}
+
+/* CARD HOVER SINGLE-LIFT FIX 20260924
+   Product card moves as ONE unit. Internal image/title/actions never translate independently. */
+.mr-card[data-card-detail]:hover{transform:translateY(-6px)!important;box-shadow:0 16px 34px rgba(31,45,70,.14)!important}
+.mr-card[data-card-detail] .mr-card-visual,
+.mr-card[data-card-detail] .mr-card-visual:hover,
+.mr-card[data-card-detail] .mr-card-name,
+.mr-card[data-card-detail] .mr-card-name:hover,
+.mr-card[data-card-detail] .mr-card-body,
+.mr-card[data-card-detail] .mr-card-body:hover{
+ transform:none!important;
+ box-shadow:none!important
+}
+.mr-card[data-card-detail] .mr-card-actions button:hover,
+.mr-card[data-card-detail] .mr-card-actions a:hover{
+ transform:translateY(-3px)!important;
+ box-shadow:0 8px 18px rgba(31,45,70,.13)!important
+}
