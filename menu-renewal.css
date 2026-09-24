@@ -616,3 +616,19 @@ html.mozzipick-v31-live body.mozzipick-v31-live #mpPlatformHeader .mp-header-nav
  transform:translateY(-3px)!important;box-shadow:0 8px 18px rgba(31,45,70,.13)!important
 }
 .mr-card button:active,.mr-card a:active,.mr-detail-page button:active,.mr-detail-page a:active,.mr-command-page button:active,.mr-route-view button:active,.mp-platform-header button:active,footer button:active{transform:translateY(-1px) scale(.98)!important}
+
+/* COMMAND 1-5 LIFT 20260924 */
+.mr-command-chips>button,.mr-command-grid>button,.mr-detail-command,[data-command]{
+ transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important;
+ cursor:pointer!important
+}
+.mr-command-chips>button:hover,.mr-command-grid>button:hover,.mr-detail-command:hover,[data-command]:hover{
+ transform:translateY(-5px)!important;
+ box-shadow:0 12px 24px rgba(92,63,210,.18)!important;
+ position:relative!important;
+ z-index:3!important
+}
+.mr-command-chips>button:active,.mr-command-grid>button:active,.mr-detail-command:active,[data-command]:active{
+ transform:translateY(-2px) scale(.98)!important
+}
+[data-fav],[data-prod]{cursor:pointer!important;position:relative!important;z-index:4!important;pointer-events:auto!important}
