@@ -1,4 +1,4 @@
-(()=>{"use strict";
+(()=>{"use strict";window.MOZZIPICK_MODERN_UI=true;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)],esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const F="mozzipick_favorites_v1",Q="mozzipick_reels_queue_v1",M="mozzipick_reels_made_v1",S="mozzipick_production_states_v1",PAGE=12;
 const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k)||f)}catch(e){return JSON.parse(f)}},write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
