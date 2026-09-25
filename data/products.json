@@ -1,6 +1,6 @@
 {
   "version": "3.1-sab",
-  "updatedAt": "2026-09-26T04:47:00+09:00",
+  "updatedAt": "2026-09-26T05:11:01+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -24,7 +24,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -67,7 +67,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -110,7 +110,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -153,7 +153,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -196,7 +196,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -239,7 +239,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -299,7 +299,8 @@
       "imageSource": "기존 연결 이미지가 Qi2 15W Apple Watch 버전으로 확인되어 제거. Qi2.2 25W Galaxy 모델 정확 이미지 재검증 전까지 fallback 사용.",
       "viralGrade": "A",
       "imageStatus": "재검증",
-      "imageCheckedAt": "2026-09-26T04:47:00+09:00"
+      "imageCheckedAt": "2026-09-26T04:47:00+09:00",
+      "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상"
     },
     {
       "id": "coupang-oa-heatspot-s-9036708525",
@@ -337,7 +338,8 @@
       "rank": 8,
       "image": "https://m.oa-mall.co.kr/web/product/extra/big/202508/1a1837fc47573f737ccae24be3d6dd27.jpg",
       "imageSource": "오아몰 공식 상품 이미지",
-      "viralGrade": "A"
+      "viralGrade": "A",
+      "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상"
     },
     {
       "id": "coupang-korea-plug-adapter-9614108008",
@@ -375,7 +377,8 @@
       "rank": 9,
       "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
       "imageSource": "Notebook114 product image",
-      "viralGrade": "A"
+      "viralGrade": "A",
+      "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상"
     },
     {
       "id": "coupang-covank-5in1-vacuum-9726842970",
@@ -413,7 +416,8 @@
       "rank": 10,
       "image": "assets/products/covank-5in1-v3.svg",
       "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
-      "viralGrade": "A"
+      "viralGrade": "A",
+      "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상"
     },
     {
       "id": "coupang-bike-turn-tail-light-9725169460",
@@ -451,7 +455,8 @@
       "rank": 11,
       "image": "assets/products/bike-turn-tail-v3.svg",
       "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
-      "viralGrade": "A"
+      "viralGrade": "A",
+      "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상"
     },
     {
       "id": "viral-simplisafe-video-doorbell-series2",
@@ -477,7 +482,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -517,7 +522,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -559,7 +564,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -600,7 +605,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -640,7 +645,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -682,7 +687,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "reelsRecommended": true,
@@ -723,7 +728,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "viralEvidence": "TechRadar 2026년 9월 테스트 신제품으로 확인",
@@ -763,7 +768,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "viralEvidence": "Gear Patrol 2026-09-18 신제품 목록에서 확인",
@@ -803,7 +808,7 @@
       "coupangEligible": false,
       "coupangUrl": "미확인",
       "coupangVerifiedAt": "미확인",
-      "coupangValidationNote": "쿠팡 실제 URL 미확보로 D 자동 재분류",
+      "coupangValidationNote": "쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산",
       "rankingExcluded": true,
       "viralRadar": true,
       "viralEvidence": "Gear Patrol 2026-09-18 신제품 목록에서 확인",
@@ -1707,7 +1712,7 @@
       ]
     }
   ],
-  "lastValidationAt": "2026-09-26T04:47:00+09:00",
+  "lastValidationAt": "2026-09-26T05:11:01+09:00",
   "newCandidateGradeCounts": {
     "S": 0,
     "A": 0,
@@ -1721,7 +1726,7 @@
   "validationSummary": {
     "newCandidateCount": 0,
     "newGradeTotal": 0,
-    "imageMismatchCorrected": 1,
-    "rule": "S=등록/업데이트 후 3일 이내, A=3일 초과 15일 이내, B=15일 초과. C/D는 사용하지 않음."
+    "invalidCoupangLinks": 15,
+    "rule": "S=3일 이내, A=3일 초과~15일 이내, B=15일 초과; C/D 미사용"
   }
 }
