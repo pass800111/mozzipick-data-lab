@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate all product data, Coupang grades and KST timestamps
+      - name: Validate product data, SAB grades and KST timestamps
         run: |
           python - <<'PY'
           import json, datetime, re
@@ -29,38 +29,82 @@ jobs:
           products=data.get('products',[])
           seen=set(); clean=[]
           kst=ZoneInfo('Asia/Seoul')
-          now=datetime.datetime.now(kst).replace(microsecond=0).isoformat()
+          now_dt=datetime.datetime.now(kst).replace(microsecond=0)
+          now=now_dt.isoformat()
           required=['id','name','category','release','price','officialUrl','spec','xiaohongshuQuery','siteUpdatedAt']
+
           def valid_coupang_url(v):
               return isinstance(v,str) and bool(re.match(r'^https://([a-z0-9-]+\.)*coupang\.com/',v.strip(),re.I))
-          downgraded=[]
+
+          def parse_dt(v):
+              if not isinstance(v,str) or not v.strip():
+                  return None
+              try:
+                  t=datetime.datetime.fromisoformat(v.strip().replace('Z','+00:00'))
+                  if t.tzinfo is None: t=t.replace(tzinfo=kst)
+                  return t.astimezone(kst)
+              except Exception:
+                  return None
+
+          def sab_grade(x):
+              t=parse_dt(x.get('siteUpdatedAt') or x.get('registrationAt') or x.get('timestamp') or x.get('createdAt'))
+              if not t:
+                  legacy=str(x.get('viralGrade') or x.get('grade') or '').upper()
+                  return legacy if legacy in ('S','A','B') else 'B'
+              days=max(0,(now_dt-t).total_seconds()/86400)
+              if days<=3: return 'S'
+              if days<=15: return 'A'
+              return 'B'
+
+          invalid_links=0
           for x in products:
               pid=x.get('id')
               if not pid or pid in seen: continue
               seen.add(pid)
               for key in required:
                   if not x.get(key): x[key]='미확인'
-              grade=str(x.get('grade') or x.get('coupangGroup') or x.get('coupangMatchGrade') or 'D').upper()
-              if grade in ('A','B','C') and not valid_coupang_url(x.get('coupangUrl')):
-                  downgraded.append((pid,grade)); grade='D'
-                  x['coupangMatchType']='미확인'; x['coupangMatchedProduct']='미확인'; x['coupangUrl']='미확인'; x['coupangVerifiedAt']='미확인'
-                  x['coupangValidationNote']='쿠팡 실제 URL 미확보로 D 자동 재분류'
-              elif grade in ('A','B','C'):
-                  if not x.get('coupangVerifiedAt'): x['coupangVerifiedAt']=now
-                  x['coupangValidationNote']='쿠팡 URL 보유 · 매칭 등급 유지'
-              else: grade='D'
-              x['grade']=grade; x['coupangGroup']=grade; x['coupangMatchGrade']=grade
+
+              grade=sab_grade(x)
+              x['grade']=grade
+              x['viralGrade']=grade
+              x['coupangGroup']=grade
+              x['coupangMatchGrade']=grade
+
+              url=x.get('coupangUrl')
+              if valid_coupang_url(url):
+                  if not x.get('coupangVerifiedAt') or x.get('coupangVerifiedAt')=='미확인':
+                      x['coupangVerifiedAt']=now
+                  if not x.get('coupangValidationNote') or 'D 자동 재분류' in str(x.get('coupangValidationNote')):
+                      x['coupangValidationNote']='쿠팡 URL 보유 · 공개 판매 페이지 검증 대상'
+              else:
+                  invalid_links+=1
+                  if url not in ('미확인','',None):
+                      x['coupangUrl']='미확인'
+                  if not x.get('coupangValidationNote') or 'D 자동 재분류' in str(x.get('coupangValidationNote')):
+                      x['coupangValidationNote']='쿠팡 실제 URL 미확보 · 등급은 등록 시점 기준 S/A/B로 별도 계산'
+
               clean.append(x)
+
           clean.sort(key=lambda x:x.get('siteUpdatedAt',''),reverse=True)
           for i,x in enumerate(clean,1): x['rank']=i
+
           new=[x for x in clean if x.get('newCandidate')]
-          counts={g:sum(1 for x in new if x.get('grade')==g) for g in 'ABCD'}
-          total_counts={g:sum(1 for x in clean if x.get('grade')==g) for g in 'ABCD'}
-          data['products']=clean; data['updatedAt']=now; data['lastValidationAt']=now
-          data['newCandidateGradeCounts']=counts; data['gradeCounts']=total_counts
-          data['validationSummary']={'newCandidateCount':len(new),'newGradeTotal':sum(counts.values()),'coupangMissingLinkDowngraded':len(downgraded),'rule':'A/B/C require a real coupang.com URL; otherwise D'}
+          counts={g:sum(1 for x in new if x.get('grade')==g) for g in 'SAB'}
+          total_counts={g:sum(1 for x in clean if x.get('grade')==g) for g in 'SAB'}
+          data['version']='3.1-sab'
+          data['products']=clean
+          data['updatedAt']=now
+          data['lastValidationAt']=now
+          data['newCandidateGradeCounts']=counts
+          data['gradeCounts']=total_counts
+          data['validationSummary']={
+              'newCandidateCount':len(new),
+              'newGradeTotal':sum(counts.values()),
+              'invalidCoupangLinks':invalid_links,
+              'rule':'S=3일 이내, A=3일 초과~15일 이내, B=15일 초과; C/D 미사용'
+          }
           with open(path,'w',encoding='utf-8') as f: json.dump(data,f,ensure_ascii=False,indent=2)
-          print('validated',len(clean),'products; new',len(new),'counts',counts,'downgraded',len(downgraded),'at',now)
+          print('validated',len(clean),'products; counts',total_counts,'invalid links',invalid_links,'at',now)
           PY
       - name: Commit data changes
         run: |
