@@ -1,6 +1,6 @@
 {
   "version": "3.1-sab",
-  "updatedAt": "2026-09-26T07:10:23+09:00",
+  "updatedAt": "2026-09-26T08:09:42+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -1712,7 +1712,7 @@
       ]
     }
   ],
-  "lastValidationAt": "2026-09-26T07:10:23+09:00",
+  "lastValidationAt": "2026-09-26T08:09:42+09:00",
   "newCandidateGradeCounts": {
     "S": 0,
     "A": 0,
