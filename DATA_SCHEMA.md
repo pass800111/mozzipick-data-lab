@@ -53,3 +53,17 @@ Store one record per product per observation time:
 - rank
 - trend_score
 - source_signal_summary
+
+
+## MOZZIPICK grade policy
+- S: registered/updated within the last 3 days.
+- A: older than 3 days and within 15 days.
+- B: older than 15 days.
+- C/D are not used anywhere in the current site.
+- The hourly product-update workflow must recalculate grade, viralGrade, coupangGroup and coupangMatchGrade with the same S/A/B rule.
+
+## Link and image integrity
+- Product action links render only when the value is a valid http/https URL.
+- Descriptive source notes must not be treated as clickable URLs.
+- Every product must have an image value; if an external image fails or is not the exact verified variant, use assets/products/image-fallback.svg.
+- External image failures are caught by the global image fallback guard.
