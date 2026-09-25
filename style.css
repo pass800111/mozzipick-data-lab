@@ -196,3 +196,8 @@ body.menu-view-active #menuDataView{display:block!important}
  footer{z-index:100!important}
  .main{padding-bottom:145px!important}
 }
+
+
+/* FINAL QA image/link integrity styles — 2026-09-26 */
+.mp-image-fallback{object-fit:contain!important;background:#f7f8fa!important}
+.mp-invalid-product-link{opacity:.45!important;cursor:not-allowed!important;pointer-events:none!important;text-decoration:none!important}
