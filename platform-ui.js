@@ -17,12 +17,12 @@ function setupHeader(){
  $$("[data-view]",nav).forEach(b=>b.innerHTML='<i>'+(icons[b.dataset.view]||"•")+'</i><span>'+labels[b.dataset.view]+'</span>');
  const mobileIcons={home:"🏠",time:"🏆",categories:"📊",viral:"🔥",instagram:"📸",favorites:"❤️",production:"🎬",quality:"✅"};
  $$("footer [data-mobile-view]").forEach(b=>{const v=b.dataset.mobileView;b.innerHTML='<i>'+mobileIcons[v]+'</i><span>'+labels[v].replace(" 판매","").replace(" 전자제품","")+'</span>'});
- $(".mp-brand",header).addEventListener("click",showHome);
+ $(".mp-brand",header).addEventListener("click",e=>{if(window.MOZZIPICK_MODERN_UI)return;showHome(e)});
  $(".mp-menu-toggle",header).addEventListener("click",()=>{const open=document.body.classList.toggle("mp-nav-open");$(".mp-menu-toggle",header).setAttribute("aria-expanded",String(open))});
- $$("[data-quick]",header).forEach(b=>b.addEventListener("click",()=>clickView(b.dataset.quick)));
- nav.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.platformHome!==undefined){setTimeout(showHome,0)}else if(b.dataset.view){leaveHome(b.dataset.view)}closeMenu()});
- const mobileHome=$("footer [data-mobile-view=home]");if(mobileHome)mobileHome.addEventListener("click",()=>setTimeout(showHome,0),true);
- $$("footer [data-mobile-view]").forEach(b=>{if(b.dataset.mobileView!=="home")b.addEventListener("click",()=>leaveHome(b.dataset.mobileView),true)});
+ $("[data-quick]",header).forEach(b=>b.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;clickView(b.dataset.quick)}));
+ nav.addEventListener("click",e=>{if(window.MOZZIPICK_MODERN_UI)return;const b=e.target.closest("button");if(!b)return;if(b.dataset.platformHome!==undefined){setTimeout(showHome,0)}else if(b.dataset.view){leaveHome(b.dataset.view)}closeMenu()});
+ const mobileHome=$("footer [data-mobile-view=home]");if(mobileHome)mobileHome.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;setTimeout(showHome,0)},true);
+ $("footer [data-mobile-view]").forEach(b=>{if(b.dataset.mobileView!=="home")b.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;leaveHome(b.dataset.mobileView)},true)});
 }
 function closeMenu(){document.body.classList.remove("mp-nav-open");$(".mp-menu-toggle")?.setAttribute("aria-expanded","false")}
 function clickView(view){const b=$('[data-view="'+view+'"]');if(b){b.click();leaveHome(view);closeMenu()}}
