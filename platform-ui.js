@@ -17,12 +17,12 @@ function setupHeader(){
  $$("[data-view]",nav).forEach(b=>b.innerHTML='<i>'+(icons[b.dataset.view]||"•")+'</i><span>'+labels[b.dataset.view]+'</span>');
  const mobileIcons={home:"🏠",time:"🏆",categories:"📊",viral:"🔥",instagram:"📸",favorites:"❤️",production:"🎬",quality:"✅"};
  $$("footer [data-mobile-view]").forEach(b=>{const v=b.dataset.mobileView;b.innerHTML='<i>'+mobileIcons[v]+'</i><span>'+labels[v].replace(" 판매","").replace(" 전자제품","")+'</span>'});
- $(".mp-brand",header).addEventListener("click",e=>{if(window.MOZZIPICK_MODERN_UI)return;showHome(e)});
+ $(".mp-brand",header).addEventListener("click",showHome);
  $(".mp-menu-toggle",header).addEventListener("click",()=>{const open=document.body.classList.toggle("mp-nav-open");$(".mp-menu-toggle",header).setAttribute("aria-expanded",String(open))});
- $("[data-quick]",header).forEach(b=>b.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;clickView(b.dataset.quick)}));
- nav.addEventListener("click",e=>{if(window.MOZZIPICK_MODERN_UI)return;const b=e.target.closest("button");if(!b)return;if(b.dataset.platformHome!==undefined){setTimeout(showHome,0)}else if(b.dataset.view){leaveHome(b.dataset.view)}closeMenu()});
- const mobileHome=$("footer [data-mobile-view=home]");if(mobileHome)mobileHome.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;setTimeout(showHome,0)},true);
- $("footer [data-mobile-view]").forEach(b=>{if(b.dataset.mobileView!=="home")b.addEventListener("click",()=>{if(window.MOZZIPICK_MODERN_UI)return;leaveHome(b.dataset.mobileView)},true)});
+ $$("[data-quick]",header).forEach(b=>b.addEventListener("click",()=>clickView(b.dataset.quick)));
+ nav.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.platformHome!==undefined){setTimeout(showHome,0)}else if(b.dataset.view){leaveHome(b.dataset.view)}closeMenu()});
+ const mobileHome=$("footer [data-mobile-view=home]");if(mobileHome)mobileHome.addEventListener("click",()=>setTimeout(showHome,0),true);
+ $$("footer [data-mobile-view]").forEach(b=>{if(b.dataset.mobileView!=="home")b.addEventListener("click",()=>leaveHome(b.dataset.mobileView),true)});
 }
 function closeMenu(){document.body.classList.remove("mp-nav-open");$(".mp-menu-toggle")?.setAttribute("aria-expanded","false")}
 function clickView(view){const b=$('[data-view="'+view+'"]');if(b){b.click();leaveHome(view);closeMenu()}}
@@ -44,7 +44,6 @@ function card(p){
 function section(title,items,view,subtitle=""){
  return '<section class="mp-home-section"><div class="mp-home-section-head"><div><h2>'+title+'</h2>'+(subtitle?'<p>'+subtitle+'</p>':'')+'</div><button type="button" data-section-view="'+view+'">전체보기 →</button></div><div class="mp-showcase-grid">'+(items.length?items.slice(0,4).map(card).join(""):'<div class="mp-home-empty">현재 조건에 맞는 실제 데이터가 없습니다.</div>')+'</div></section>';
 }
-function openProduct(id){const target=[...document.querySelectorAll("[data-detail]")].find(x=>x.dataset.detail===String(id));if(target){target.click();return}const nav=document.querySelector("[data-view=home]");if(nav)nav.click()}
 function buildHome(){
  if(!state.products.length)return;
  const all=[...state.products].sort((a,b)=>new Date(b.siteUpdatedAt||0)-new Date(a.siteUpdatedAt||0)||Number(a.rank||999)-Number(b.rank||999));
@@ -87,6 +86,6 @@ async function loadProducts(){
 function qualityGuard(){
  document.addEventListener("click",e=>{const b=e.target.closest?.('[data-view="quality"],[data-mobile-view="quality"]');if(!b)return;setTimeout(()=>{$$("#menuDataView .coupang-rank-panel,#menuDataView .coupang-select,#menuDataView [data-coupang-section]").forEach(x=>x.remove())},180)},true)
 }
-function init(){document.body.classList.remove("mp-nav-open");setupHeader();document.body.classList.remove("mp-nav-open");createHome();setupListShell();qualityGuard();loadProducts();showHome()}
+function init(){setupHeader();createHome();setupListShell();qualityGuard();loadProducts();showHome()}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(init,0));else setTimeout(init,0);
 })();
