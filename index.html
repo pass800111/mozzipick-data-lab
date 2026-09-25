@@ -595,6 +595,7 @@ document.addEventListener('DOMContentLoaded',()=>{const map={'앤커 Prime Power
 (function(){
  function sync(v){document.querySelectorAll('footer button[data-mobile-view]').forEach(x=>x.classList.toggle('on',x.dataset.mobileView===v))}
  document.addEventListener('click',function(e){
+   if(window.MOZZIPICK_MODERN_UI)return;
    const b=e.target.closest&&e.target.closest('footer button[data-mobile-view]');if(!b)return;
    e.preventDefault();
    const v=b.dataset.mobileView;
@@ -716,7 +717,7 @@ async function data(){return fetch('./data/products.json?v='+Date.now(),{cache:'
 function fireCards(body,list){const ev=new CustomEvent('mozzipick-render-unified',{detail:{body,list}});document.dispatchEvent(ev)}
 async function categories(panel){const d=await data(),all=d.products||[];panel.innerHTML='<div class="menu-view-head"><span>VIRAL GRADE</span><h2>등급</h2><p>등급별 상품을 홈과 동일한 카드로 확인합니다.</p></div><div class="grade-accordion">'+['A','B','C'].map(g=>'<details class="v29-acc" data-v29-grade="'+g+'"><summary><b>'+g+'등급</b><span>바이럴 후보</span></summary><div class="v29-acc-body"></div></details>').join('')+'</div>';panel.querySelectorAll('[data-v29-grade]').forEach(x=>x.addEventListener('toggle',()=>{if(!x.open)return;fireCards(x.querySelector('.v29-acc-body'),all.filter(p=>p.viralRadar===true&&p.grade===x.dataset.v29Grade).sort((a,b)=>new Date(b.siteUpdatedAt||0)-new Date(a.siteUpdatedAt||0)))},true))}
 async function coupang(panel){const d=await data(),all=(d.products||[]).filter(p=>p.coupangEligible===true&&p.rankingExcluded!==true),groups=[['판매 랭킹','sales'],['리뷰 많은 상품','reviews'],['인기 급상승','rising'],['릴스 제작 추천','reels']];panel.innerHTML='<div class="menu-view-head"><span>COUPANG RANKING</span><h2>쿠팡 판매랭킹</h2><p>랭킹별 상품을 홈과 동일한 카드로 확인합니다.</p></div><div class="grade-accordion">'+groups.map(x=>'<details class="v29-acc" data-v29-cp="'+x[1]+'"><summary><b>'+x[0]+'</b><span>쿠팡 상품</span></summary><div class="v29-acc-body"></div></details>').join('')+'</div>';panel.querySelectorAll('[data-v29-cp]').forEach(x=>x.addEventListener('toggle',()=>{if(!x.open)return;const k=x.dataset.v29Cp,list=k==='reviews'?all.filter(p=>num(p.reviews)>0).sort((a,b)=>num(b.reviews)-num(a.reviews)):all.filter(p=>p.rankingType===k).sort((a,b)=>new Date(b.siteUpdatedAt||0)-new Date(a.siteUpdatedAt||0));fireCards(x.querySelector('.v29-acc-body'),list)},true))}
-document.addEventListener('click',e=>{const nav=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!nav)return;const v=nav.dataset.view||nav.dataset.mobileView;if(!['time','categories'].includes(v))return;setTimeout(()=>{const p=document.getElementById('menuDataView');if(p)(v==='time'?coupang:categories)(p)},35)},true);
+document.addEventListener('click',e=>{if(window.MOZZIPICK_MODERN_UI)return;const nav=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!nav)return;const v=nav.dataset.view||nav.dataset.mobileView;if(!['time','categories'].includes(v))return;setTimeout(()=>{const p=document.getElementById('menuDataView');if(p)(v==='time'?coupang:categories)(p)},35)},true);
 })();
 </script><style id="pc-production-style">@media(max-width:760px){#mozzProductionPC{display:none!important}}#mozzProductionPC .pc-prod-item{display:block;flex:1;min-width:0;border:0;background:transparent;color:inherit;text-align:left;padding:9px 2px;cursor:pointer}.pc-side-row{display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.12)}.pc-side-row .fav-side-open{display:flex;align-items:center;gap:6px;flex:1;min-width:0;border:0;background:transparent;color:inherit;text-align:left;padding:9px 2px;cursor:pointer}.pc-side-row .fav-side-open b{font-size:11px;line-height:1.35}.pc-side-row .fav-side-remove,.pc-side-row .pc-prod-remove{flex:0 0 auto;border:1px solid rgba(255,255,255,.22);background:transparent;color:inherit;border-radius:7px;padding:5px 7px;font-size:9px;font-weight:900;cursor:pointer}#mozzProductionPC .pc-prod-item b{display:block;font-size:11px;line-height:1.4}#mozzProductionPC .pc-prod-item small{display:block;margin-top:3px;font-size:9px;opacity:.65}.pc-prod-pager{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.pc-prod-pager button{min-width:28px;height:28px;border:1px solid rgba(255,255,255,.22);border-radius:7px;background:transparent;color:inherit;font-weight:800}.pc-prod-pager button.on{background:#fff;color:#111827}</style><script id="pc-production-unmade">
 (()=>{let page=1;const K='mozzipick_reels_made_v1',Q='mozzipick_reels_queue_v1',esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -757,11 +758,11 @@ async function load(){if(!all.length)all=(await fetch('./data/products.json?v='+
 document.addEventListener('mozzipick-render-unified',e=>{const d=e.detail||{};if(d.body&&Array.isArray(d.list))pages(d.body,d.list,1,{})});
 function home5(){if(window.모찌픽_HOME5_REFRESH)window.모찌픽_HOME5_REFRESH()}
 async function menu(v){await load();const panel=document.getElementById('menuDataView');if(!panel)return;if(v==='favorites'){const f=read(F,'[]');panel.innerHTML='<div class="menu-view-head"><span>MY PICKS</span><h2>즐겨찾기</h2></div><div id="uBody"></div>';pages(panel.querySelector('#uBody'),all.filter(p=>f.includes(p.name)),1,{})}else if(v==='production'){const q=read(Q,'[]'),m=read(K,'{}');panel.innerHTML='<div class="menu-view-head"><span>REELS 상품ION</span><h2>제작관리</h2></div><div id="uBody"></div>';pages(panel.querySelector('#uBody'),all.filter(p=>q.includes(p.name)||m[p.name]),1,{removeProd:true})}else if(v==='viral'){panel.innerHTML='<div class="menu-view-head"><span>VIRAL RADAR</span><h2>바이럴 레이더</h2></div><div id="uBody"></div>';pages(panel.querySelector('#uBody'),all.filter(p=>p.viralRadar===true||p.rankingExcluded===true),1,{})}}
-document.addEventListener('click',e=>{const n=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!n)return;const v=n.dataset.view||n.dataset.mobileView;if(['favorites','production','viral'].includes(v))setTimeout(()=>menu(v),80)},true);
+document.addEventListener('click',e=>{if(window.MOZZIPICK_MODERN_UI)return;const n=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!n)return;const v=n.dataset.view||n.dataset.mobileView;if(['favorites','production','viral'].includes(v))setTimeout(()=>menu(v),80)},true);
 document.addEventListener('toggle',async e=>{const d=e.target;if(!d.open||!d.matches?.('[data-v29-grade],[data-v29-cp]'))return;await load();const body=d.querySelector('.v29-acc-body');if(d.dataset.v29Grade){pages(body,all.filter(p=>p.viralRadar===true&&p.grade===d.dataset.v29Grade),1,{})}else{const k=d.dataset.v29Cp,eligible=all.filter(p=>p.coupangEligible===true&&p.rankingExcluded!==true),list=k==='reviews'?eligible.filter(p=>Number(String(p.reviews||0).replace(/,/g,''))>0).sort((a,b)=>Number(String(b.reviews).replace(/,/g,''))-Number(String(a.reviews).replace(/,/g,''))):eligible.filter(p=>p.rankingType===k);pages(body,list,1,{})}},true);
 
 async function upgradeAccordions(){await load();const panel=document.getElementById('menuDataView');if(!panel)return;panel.querySelectorAll('[data-v29-grade][open],[data-v29-cp][open]').forEach(d=>{const body=d.querySelector('.v29-acc-body');if(!body)return;if(d.dataset.v29Grade)pages(body,all.filter(p=>p.viralRadar===true&&p.grade===d.dataset.v29Grade),1,{});else{const k=d.dataset.v29Cp,eligible=all.filter(p=>p.coupangEligible===true&&p.rankingExcluded!==true),list=k==='reviews'?eligible.filter(p=>Number(String(p.reviews||0).replace(/,/g,''))>0).sort((a,b)=>Number(String(b.reviews).replace(/,/g,''))-Number(String(a.reviews).replace(/,/g,''))):eligible.filter(p=>p.rankingType===k);pages(body,list,1,{})}})}
-document.addEventListener('click',e=>{const n=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!n)return;const v=n.dataset.view||n.dataset.mobileView;if(['time','categories'].includes(v))setTimeout(upgradeAccordions,140)},true);
+document.addEventListener('click',e=>{if(window.MOZZIPICK_MODERN_UI)return;const n=e.target.closest?.('.side nav button[data-view],footer button[data-mobile-view]');if(!n)return;const v=n.dataset.view||n.dataset.mobileView;if(['time','categories'].includes(v))setTimeout(upgradeAccordions,140)},true);
 window.addEventListener('mozzipick-favorite-change',()=>{const n=document.querySelector('.side nav button[data-view="favorites"].on');if(n)menu('favorites')});
 window.addEventListener('mozzipick-favorite-change',()=>{document.querySelectorAll('#menuDataView [data-u-fav]').forEach(b=>{const on=read(F,'[]').includes(b.dataset.uFav);b.textContent=on?'★ 즐겨찾기':'☆ 즐겨찾기'})});
 window.addEventListener('mozzipick-production-change',()=>{const q=read(Q,'[]'),m=read(K,'{}');document.querySelectorAll('#menuDataView [data-u-prod]').forEach(b=>{const on=q.includes(b.dataset.uProd)||!!m[b.dataset.uProd];b.textContent=on?'✓ 제작관리 담김':'▣ 제작관리 담기'})});
@@ -1178,7 +1179,7 @@ function render(){
  panel.querySelectorAll('[data-igpage]').forEach(b=>b.onclick=()=>{page=Number(b.dataset.igpage)||1;render();panel.scrollIntoView({behavior:'smooth',block:'start'})});
 }
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="instagram"],[data-mobile-view="instagram"]');if(!b)return;setTimeout(async()=>{await load();page=1;render()},100)},true);
+document.addEventListener('click',e=>{if(window.MOZZIPICK_MODERN_UI)return;const b=e.target.closest?.('[data-view="instagram"],[data-mobile-view="instagram"]');if(!b)return;setTimeout(async()=>{await load();page=1;render()},100)},true);
 })();
 </script>
 
@@ -1204,7 +1205,7 @@ document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="in
  const mobileHomeButton=document.querySelector('footer [data-mobile-view="home"]');
  const mobileHome=mobileHomeButton?.querySelector('span');
  if(mobileHome)mobileHome.textContent='메인 홈';
- if(mobileHomeButton)mobileHomeButton.addEventListener('click',()=>setTimeout(()=>{const panel=document.getElementById('menuDataView');if(panel)panel.hidden=true},0));
+ if(mobileHomeButton)mobileHomeButton.addEventListener('click',()=>{if(window.MOZZIPICK_MODERN_UI)return;setTimeout(()=>{const panel=document.getElementById('menuDataView');if(panel)panel.hidden=true},0)});
  function showQualityOnly(){
   const panel=document.getElementById('menuDataView');
   const quality=document.getElementById('dataQualityPanel');
@@ -1215,7 +1216,7 @@ document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view="in
   panel.innerHTML='<div class="menu-view-head"><span>DATA QUALITY</span><h2>검증 데이터 현황</h2><p>공개 출처로 확인된 값만 표시합니다.</p></div>'+(grid?grid.outerHTML:'')+(note?note.outerHTML:'');
  }
  document.querySelectorAll('[data-view="quality"],[data-mobile-view="quality"]').forEach(button=>{
-  button.addEventListener('click',()=>setTimeout(showQualityOnly,0));
+  button.addEventListener('click',()=>{if(window.MOZZIPICK_MODERN_UI)return;setTimeout(showQualityOnly,0)});
  });
 })();
 </script>
