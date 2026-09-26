@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - "data/instagram-electronics.json"
+      - "scripts/merge-instagram-thumbnails.mjs"
+      - "scripts/sync-apify-instagram-thumbnails.mjs"
+      - "scripts/test-instagram-thumbnail-sync.mjs"
+      - ".github/workflows/instagram-thumbnail-sync.yml"
   workflow_dispatch:
   schedule:
     - cron: "15 3 * * *"
