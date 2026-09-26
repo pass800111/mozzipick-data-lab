@@ -19,3 +19,11 @@
 - `.github/workflows/instagram-thumbnail-sync.yml`은 `data/instagram-electronics.json` 갱신 또는 수동 Workflow Dispatch 시 실행한다. 인증 설정이 없으면 안전하게 SKIP한다.
 - 원본 게시물 shortcode가 같은 경우에만 썸네일 URL을 병합한다. 새로 확인한 이미지 메타데이터만 저장하고 기존 데이터는 보존한다. 이 과정은 **사진의 재사용 권리/다운로드/이미지 유효성 자체를 검증하지 않는다**.
 - Apify Actor에서 썸네일 URL 필드가 없다면 빈 상태로 남는다. `sourceRecords`, `matchedImageRecords`, `added`, `missingCount` 로그로 누락 원인을 확인한다.
+
+## 국내 6개 원본 매칭 및 만료 대응 (2026-09-27)
+- 업로드한 Apify JSON의 원본 게시물 6개가 현재 `data/instagram-electronics.json`의 국내 6개와 모두 정확히 일치한다. 매칭 증빙은 `data/instagram-domestic-source-audit.json`에 보존했다.
+- 파일에 포함된 이미지 CDN 주소는 모두 2026-09-26에 만료됐다. 기존 주소를 사이트에 올리거나, 주소의 `oe`만 임의 변경해서는 안 된다.
+- `scripts/merge-instagram-thumbnails.mjs`는 만료된 링크를 거부하고 유효한 최신 원본 게시물의 이미지 주소만 병합한다. 각 이미지의 사용 권한, 접근 가능 여부는 별도로 검증한다.
+- `scripts/sync-apify-instagram-thumbnails.mjs`는 `APIFY_TASK_ID`가 있으면 마지막 성공 실행의 최신 데이터셋을 조회한다. 없으면 `APIFY_DATASET_ID`로 기존 데이터셋을 조회한다. **새로운 유료 Apify 스크레이핑 작업을 자동으로 시작하지 않는다.**
+- GitHub Settings → Secrets and variables → Actions에서 repository secret `APIFY_TOKEN` 및 repository variable `APIFY_TASK_ID` (또는 `APIFY_DATASET_ID`)를 설정하면 데이터 파일 업데이트와 일일 동기화 시 새 데이터의 URL을 병합한다. 토큰은 채팅에 붙여넣지 않는다.
+- 유효기간이 지난 이미지 URL은 사이트에서 숨기며 원본 게시물 상세보기·원본 링크는 계속 작동한다. CDN 재발급 후에도 만료 가능성이 있어 장기 영구 호스팅과 혼동하지 않는다.
