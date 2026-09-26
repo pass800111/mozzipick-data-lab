@@ -249,3 +249,17 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 }
 
 
+
+
+/* V3.4 detail mobile: compact header and two-row actions, no empty hero space */
+@media(max-width:760px){
+ #mrRouteView .mr-detail-page .mr-detail-top{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:10px!important;padding:10px 0 14px!important;min-height:0!important;height:auto!important}
+ #mrRouteView .mr-detail-page [data-detail-back]{align-self:flex-start!important;min-height:38px!important}
+ #mrRouteView .mr-detail-page .mr-detail-quick{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;width:100%!important;margin:0!important;overflow:visible!important;flex-wrap:unset!important}
+ #mrRouteView .mr-detail-page .mr-detail-quick button{width:100%!important;min-width:0!important;min-height:38px!important;height:auto!important;padding:7px 5px!important;font-size:11px!important;line-height:1.35!important;white-space:normal!important}
+ #mrRouteView .mr-detail-page .mr-detail-quick button[data-command="5"]{grid-column:1/-1!important}
+ #mrRouteView .mr-detail-page .mr-detail-main{margin-top:12px!important}
+ #mrRouteView .mr-detail-page .mr-copywords{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ #mrRouteView .mr-detail-page .mr-copywords button{width:100%!important;min-height:42px!important;padding:9px 12px!important;font-size:12px!important;text-align:left!important;overflow-wrap:anywhere!important;white-space:normal!important}
+ #mrRouteView .mr-detail-page .mr-copywords button b{float:right!important;margin-left:8px!important}
+}
