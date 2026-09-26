@@ -1,0 +1,42 @@
+name: Instagram thumbnail metadata sync
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/instagram-electronics.json"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: instagram-thumbnail-sync
+  cancel-in-progress: false
+jobs:
+  apify-reel-thumbnails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      APIFY_DATASET_ID: ${{ vars.APIFY_DATASET_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Exact original-post thumbnail metadata import
+        run: node scripts/sync-apify-instagram-thumbnails.mjs
+      - name: Validate matched inventory data
+        run: |
+          node -e 'const d=require("./data/instagram-electronics.json");let all=[...(d.domestic||[]),...(d.overseas||[])];if(new Set(all.map(x=>x.reel)).size!==all.length)process.exit(1);console.log("Reels:",all.length,"Thumbnails with URL:",all.filter(x=>x.thumbnail).length)'
+      - name: Publish verified-permalink mappings only
+        run: |
+          if ! git diff --quiet -- data/instagram-electronics.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/instagram-electronics.json
+            git commit -m "Update Instagram reel thumbnail metadata from authorized Apify dataset"
+            git push
+          else
+            echo "No newly matched thumbnail metadata."
+          fi
