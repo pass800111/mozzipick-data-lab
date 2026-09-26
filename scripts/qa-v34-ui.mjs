@@ -31,6 +31,11 @@ async function run(){
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Domestic gallery five reels");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile [data-prod]').count()===5,"Every reel has production control");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile [data-fav]').count()===5,"Every reel has favorite control");
+ await click(page,'#mrRouteView .mr-ig-tile .mr-ig-cover');
+ await page.locator('.mr-ig-preview-overlay .mr-ig-preview-panel iframe').waitFor();
+ check((await page.locator('.mr-ig-preview-panel iframe').getAttribute("src")).includes("/embed/captioned/"),"Clicking reel cover opens official Instagram embed");
+ await click(page,'.mr-ig-preview-panel [data-preview-close]');
+ check(await page.locator('.mr-ig-preview-overlay').count()===0,"Official preview closes cleanly");
  await page.locator('#mrIgSearch').fill("razer");
  await page.locator('#mrIgSearch').press("Enter");
  check(await page.locator('#mrRouteView .mr-ig-tile').count()>=1,"Instagram caption and account search");
