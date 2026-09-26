@@ -27,3 +27,11 @@
 - `scripts/sync-apify-instagram-thumbnails.mjs`는 `APIFY_TASK_ID`가 있으면 마지막 성공 실행의 최신 데이터셋을 조회한다. 없으면 `APIFY_DATASET_ID`로 기존 데이터셋을 조회한다. **새로운 유료 Apify 스크레이핑 작업을 자동으로 시작하지 않는다.**
 - GitHub Settings → Secrets and variables → Actions에서 repository secret `APIFY_TOKEN` 및 repository variable `APIFY_TASK_ID` (또는 `APIFY_DATASET_ID`)를 설정하면 데이터 파일 업데이트와 일일 동기화 시 새 데이터의 URL을 병합한다. 토큰은 채팅에 붙여넣지 않는다.
 - 유효기간이 지난 이미지 URL은 사이트에서 숨기며 원본 게시물 상세보기·원본 링크는 계속 작동한다. CDN 재발급 후에도 만료 가능성이 있어 장기 영구 호스팅과 혼동하지 않는다.
+
+
+## 완전 무료 표지 제작 및 원본 재생 (V3.4 r19)
+- 추가 비용이 드는 Apify Actor 재실행, 예약 실행, 새 유료 API 호출을 사용하지 않는다. 기존 `.github/workflows/instagram-thumbnail-sync.yml`은 오프라인 데이터·썸네일 매칭 검사만 수행한다.
+- 썸네일이 없는 카드의 표지/무료 미리보기 버튼을 누르면 해당 게시물 URL에서 파생한 **공식 Instagram 임베드**를 필요할 때만 불러온다. 외부 삽입이 차단되거나 로그인 요구 시 원본 릴스 링크로 이동한다. 자체 영상 파일을 호스팅하거나 임의로 재생을 보장하지 않는다.
+- 공개 게시물에서 캡처 사용 권한을 확인한 경우 사용자가 직접 확보한 원본 게시물 스크린샷을 9:16으로 잘라 제공할 수 있다. 유사 상품 사진, 다른 게시물의 화면, 무단으로 얻은 파일은 대신 사용하지 않는다.
+- `node scripts/register-instagram-capture.mjs DdJJLFShWgQ ./captures/DdJJLFShWgQ.png --use-approved`처럼 원본 shortcode와 이미지 파일을 함께 지정하면 `assets/instagram/<shortcode>.<ext>`에 저장하고 정확히 매칭되는 1개 상품의 썸네일 필드만 갱신한다. `--use-approved`는 제출자가 사이트 사용에 필요한 이미지 이용 승인을 확인했다는 의미다.
+- 아직 캡처하지 못한 항목은 기본 표지와 무료 원본 플레이어를 사용한다. 해당 항목을 완료 처리하거나 가상의 제품 사진으로 채우지 않는다.
