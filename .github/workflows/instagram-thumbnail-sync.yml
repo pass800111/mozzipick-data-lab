@@ -27,6 +27,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - name: Test expiry and original-post matching before sync
+        run: node scripts/test-instagram-thumbnail-sync.mjs
       - name: Exact original-post thumbnail metadata import
         run: node scripts/sync-apify-instagram-thumbnails.mjs
       - name: Validate matched inventory data
