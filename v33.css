@@ -285,3 +285,34 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  .v33-route-list button,.v33-production-row button,.v33-quality-row button,.mr-command-layout button{font-size:12px!important}
  .mr-pager button,.mr-pagination button{font-size:13px!important;min-height:34px!important}
 }
+
+
+/* Desktop typography correction v2: target the actual V3.3 6-10px selectors. */
+@media(min-width:761px){
+ .mp-brand-copy small,.mp-version-badge,.mp-slogan{font-size:12px!important}
+ .mp-header-search input,.mp-search-submit,#mrCommandButton,.mp-quick,.mp-header-nav nav button{font-size:14px!important}
+ .mp-header-main{grid-template-columns:270px minmax(360px,1fr) auto!important}
+ .mp-header-nav nav{gap:12px!important;overflow-x:auto!important}
+ .v33-home-command-copy>span,.v33-home-command-copy p,.v33-home-command>button{font-size:13px!important}
+ .v33-home-command-copy h1{font-size:27px!important}
+ .v33-command-bot b{font-size:11px!important}
+ .v33-ai-search h3,.v33-how h3,.v33-command-guide h3{font-size:15px!important;height:auto!important;min-height:29px!important}
+ .v33-ai-search b,.v33-how b,.v33-command-guide>div span{font-size:13px!important}
+ .v33-ai-search small,.v33-how small,.v33-command-guide>div small{font-size:12px!important}
+ .v33-quick>strong,.v33-quick button,.v33-command-guide>div b,.v33-command-guide>button{font-size:12px!important}
+ .v33-quick button{height:34px!important}.v33-command-guide>button{height:38px!important}
+ .v33-home-stats span,.v33-route-stats span{font-size:13px!important}
+ .v33-home-stats small,.v33-route-stats small{font-size:11px!important}
+ .v33-section-head h2{font-size:20px!important}
+ .v33-section-head p,.v33-section-head>button,.v33-section-head>span{font-size:12px!important}
+ .v33-section-head>button,.v33-section-head>span{height:32px!important}
+ .mr-flags em{font-size:11px!important;height:23px!important}
+ .mr-card-body{height:auto!important;min-height:240px!important;padding:12px!important}
+ .mr-card-name{font-size:16px!important;min-height:45px!important;max-height:45px!important;line-height:1.4!important}
+ .mr-card-desc{font-size:13px!important;min-height:38px!important;max-height:38px!important}
+ .mr-card-price{font-size:19px!important}
+ .mr-card-rating span,.mr-card-rating small{font-size:12px!important}
+ .mr-tags{min-height:25px!important}.mr-tags span{font-size:11px!important;padding:4px 7px!important}
+ .mr-card-actions button,.mr-card-actions a{font-size:12px!important;height:36px!important;min-height:36px!important}
+ .mr-detail-page small,.mr-command-page small,.v33-route-list small,.v33-production-row small,.v33-quality-row small{font-size:12px!important}
+}
