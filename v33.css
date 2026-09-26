@@ -721,3 +721,15 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 #mrCommandView button:focus-visible,#mrRouteView button:focus-visible,.mr-ig-cover:focus-visible{outline:2px solid #7955eb!important;outline-offset:2px!important}
 
 #mrCommandView .mr-command-data-note{margin:10px 2px 0!important;padding:9px 12px!important;border:1px solid #d9e5f4!important;border-radius:8px!important;background:#f7faff!important;color:#61758e!important;font-size:12px!important;line-height:1.5!important}
+
+/* V3.4 Saved-state reconciliation and filtered list explanation */
+#mrRouteView .mr-filter-notice{display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important;margin:10px 0!important;padding:11px 13px!important;border:1px solid #d7e5f7!important;border-radius:9px!important;background:#f4f8ff!important;color:#3b5272!important;font-size:13px!important;line-height:1.5!important}
+#mrRouteView .mr-filter-notice b{font-size:13px!important;color:#274571!important}
+#mrRouteView .mr-filter-notice button{margin-left:auto!important;min-height:36px!important;padding:7px 12px!important;border:1px solid #b8cced!important;border-radius:8px!important;background:#fff!important;color:#335789!important;font-size:12px!important;font-weight:800!important;cursor:pointer!important}
+#mrRouteView .mr-saved-warning{margin:12px 0!important;padding:14px!important;border:1px solid #f2d68a!important;border-radius:10px!important;background:#fffaf0!important;color:#5d4a25!important}
+#mrRouteView .mr-saved-warning>strong{font-size:14px!important;line-height:1.4!important}
+#mrRouteView .mr-saved-warning>p{margin:7px 0!important;font-size:12px!important;line-height:1.5!important}
+#mrRouteView .mr-saved-orphan{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;padding:9px 0!important;border-top:1px solid #f1dfb8!important}
+#mrRouteView .mr-saved-orphan span{font-size:13px!important;min-width:0!important;overflow-wrap:anywhere!important}
+#mrRouteView .mr-saved-orphan button{flex:0 0 auto!important;min-height:34px!important;padding:6px 10px!important;border:1px solid #d6a356!important;border-radius:7px!important;background:#fff!important;color:#77521b!important;font-size:12px!important;font-weight:800!important;cursor:pointer!important}
+@media(max-width:760px){#mrRouteView .mr-saved-orphan{flex-wrap:wrap!important}#mrRouteView .mr-filter-notice button{margin-left:0!important}}
