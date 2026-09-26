@@ -794,3 +794,17 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 #mrRouteView .mr-ig-searchbar button[disabled]{opacity:.45!important;cursor:default!important}
 #mrRouteView .mr-ig-searchbar small{display:block!important;flex-basis:100%!important;text-align:center!important;font-size:11px!important;color:#71829a!important}
 @media(max-width:760px){#mrRouteView .mr-ig-searchbar{gap:7px!important;padding:10px!important}#mrRouteView .mr-ig-searchbar label{width:100%!important}#mrRouteView .mr-ig-searchbar input{flex-basis:100%!important;height:40px!important}#mrRouteView .mr-ig-searchbar button{flex:1 1 0!important}}
+
+
+/* V3.4 free original Instagram preview modal r19 */
+.mr-ig-preview-overlay{position:fixed!important;inset:0!important;z-index:2147480000!important;box-sizing:border-box!important;padding:20px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(12,17,29,.85)!important;overflow:auto!important}
+.mr-ig-preview-panel{width:min(100%,480px)!important;max-height:calc(100dvh - 40px)!important;min-width:0!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;border:1px solid #293247!important;border-radius:12px!important;background:#fff!important;overflow:hidden!important;box-shadow:0 18px 75px rgba(0,0,0,.4)!important}
+.mr-ig-preview-panel>header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:11px 14px!important;flex:0 0 auto!important;border-bottom:1px solid #e8edf4!important}
+.mr-ig-preview-panel>header strong{font-size:14px!important;line-height:1.35!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.mr-ig-preview-panel [data-preview-close]{display:grid!important;place-items:center!important;flex:0 0 34px!important;width:34px!important;height:34px!important;padding:0!important;border:1px solid #d8e2f0!important;border-radius:8px!important;background:#fff!important;color:#25334b!important;font-size:17px!important;cursor:pointer!important}
+.mr-ig-preview-panel iframe{display:block!important;width:100%!important;height:min(68dvh,680px)!important;min-height:250px!important;max-height:none!important;border:0!important;background:#fafbfc!important}
+.mr-ig-preview-panel>footer{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important;padding:11px 14px!important;border-top:1px solid #e8edf4!important}
+.mr-ig-preview-panel>footer span{flex:1 1 180px!important;font-size:11px!important;line-height:1.5!important;color:#66758b!important}
+.mr-ig-preview-panel>footer a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:36px!important;padding:7px 12px!important;border-radius:8px!important;background:#6141c3!important;color:#fff!important;text-decoration:none!important;font-size:12px!important;font-weight:800!important}
+#mrRouteView .mr-ig-tile-actions [data-ig-preview]{background:#f0ecff!important;color:#5a3db4!important;border-color:#d9caff!important}
+@media(max-width:760px){.mr-ig-preview-overlay{padding:8px!important}.mr-ig-preview-panel{max-height:calc(100dvh - 16px)!important}.mr-ig-preview-panel iframe{height:min(69dvh,660px)!important;min-height:320px!important}.mr-ig-preview-panel>header strong{font-size:12px!important}.mr-ig-preview-panel>footer{gap:8px!important}}
