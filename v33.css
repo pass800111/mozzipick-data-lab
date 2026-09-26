@@ -247,3 +247,41 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  .mr-command-detail>header{grid-template-columns:1fr!important;padding:10px!important}.mr-command-quick{overflow-x:auto!important;scrollbar-width:none!important}.mr-command-quick button{flex:0 0 auto!important}.mr-command-layout{grid-template-columns:1fr!important}.mr-command-layout>aside:last-child{grid-column:auto!important}.mr-generated{min-height:200px!important}
  .mr-detail-summary dl{grid-template-columns:1fr 1fr!important}.mr-detail-quick{justify-content:flex-start!important;overflow-x:auto!important;flex-wrap:nowrap!important}
 }
+
+
+/* V3.4 mobile parity: preserve desktop visual identity, adapt only geometry and touch access. */
+@media(max-width:760px){
+ html,body{max-width:100%!important;overflow-x:hidden!important}
+ .main{width:100%!important;min-width:0!important;padding:10px 10px 86px!important}
+ #mrHomeDashboard,#mrRouteView,#mrCommandView{min-width:0!important;max-width:100%!important}
+ .mp-platform-header,.mp-header-main,.mp-header-search{max-width:100%!important;min-width:0!important}
+ .mp-header-main{width:100%!important;height:auto!important;min-height:58px!important;padding:8px 10px!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .mp-brand{min-width:0!important}.mp-brand-copy{min-width:0!important}
+ .mp-header-search{grid-template-columns:minmax(0,1fr) auto!important}
+ .mp-header-search input{min-width:0!important;width:100%!important}
+ .mp-header-nav{max-width:100%!important;overflow-x:auto!important;overscroll-behavior-x:contain!important}
+ .mp-header-nav nav{min-width:max-content!important}
+ #mrRouteView[data-route] .mr-card-grid,#mrRouteView[data-route="categories"] .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ #mrHomeDashboard .mr-card,#mrRouteView .mr-card{min-width:0!important;max-width:100%!important}
+ #mrHomeDashboard .mr-card-visual,#mrRouteView .mr-card-visual{width:100%!important}
+ #mrHomeDashboard .mr-card-visual img,#mrRouteView .mr-card-visual img{width:100%!important;object-fit:contain!important}
+ #mrHomeDashboard .mr-card-body,#mrRouteView .mr-card-body{min-width:0!important}
+ #mrHomeDashboard .mr-card-name,#mrRouteView .mr-card-name{font-size:11px!important;line-height:1.35!important;min-height:30px!important;max-height:34px!important}
+ #mrHomeDashboard .mr-card-desc,#mrRouteView .mr-card-desc{font-size:9px!important;line-height:1.4!important;min-height:24px!important;max-height:28px!important}
+ #mrHomeDashboard .mr-card-actions,#mrRouteView .mr-card-actions{display:flex!important;flex-wrap:wrap!important;gap:5px!important}
+ #mrHomeDashboard .mr-card-actions button,#mrHomeDashboard .mr-card-actions a,#mrRouteView .mr-card-actions button,#mrRouteView .mr-card-actions a{min-width:0!important;flex:1 1 45%!important;min-height:32px!important;height:auto!important;font-size:9px!important;white-space:normal!important}
+ #mrHomeDashboard .mr-card-heart,#mrRouteView .mr-card-heart{min-width:30px!important;min-height:30px!important}
+ .mr-detail-main,.mr-detail-grid{grid-template-columns:minmax(0,1fr)!important}
+ .mr-detail-media,.mr-detail-summary,.mr-detail-grid>section{min-width:0!important}
+ .mr-detail-quick{max-width:100%!important;overflow-x:auto!important}
+ .mr-detail-quick button,.mr-copywords button{min-height:32px!important;font-size:10px!important}
+ .mr-command-layout{grid-template-columns:minmax(0,1fr)!important}
+ .mr-command-search form{display:flex!important;min-width:0!important}
+ .mr-command-search input{min-width:0!important;flex:1 1 auto!important}
+ footer{max-width:100%!important}
+ footer button{min-height:42px!important}
+}
+@media(max-width:360px){
+ #mrRouteView[data-route] .mr-card-grid,body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:minmax(0,1fr)!important}
+}
