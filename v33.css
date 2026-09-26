@@ -756,3 +756,30 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
   #mrRouteView .v33-section-head>span{font-size:12px!important}
   #mrRouteView .v33-table-head{font-size:11px!important;line-height:1.4!important}
 }
+
+
+/* V3.4 Instagram gallery completion: interactive reels + cross-menu saved state */
+.mr-ig-media{position:relative!important;min-width:0!important;overflow:hidden!important;border-radius:10px 10px 0 0!important}
+.mr-ig-media .mr-ig-cover{border-radius:0!important}
+.mr-ig-favorite{position:absolute!important;z-index:5!important;top:10px!important;left:10px!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;border-radius:9px!important;border:1px solid rgba(255,255,255,.65)!important;background:rgba(21,26,39,.58)!important;color:white!important;font-size:24px!important;line-height:1!important;display:grid!important;place-items:center!important;cursor:pointer!important}
+.mr-ig-favorite.active{color:#ff5a72!important;background:rgba(255,255,255,.95)!important}
+.mr-ig-tile-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;align-items:stretch!important;margin-top:8px!important}
+.mr-ig-tile-actions>*{box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-width:0!important;min-height:35px!important;padding:6px 4px!important;border:1px solid #dce5f1!important;border-radius:7px!important;background:#fff!important;color:#3a557a!important;text-decoration:none!important;font-size:11px!important;line-height:1.4!important;font-weight:800!important;text-align:center!important;white-space:normal!important;cursor:pointer!important}
+.mr-ig-tile-actions .mr-ig-production{grid-column:1/-1!important;border-color:#ddd2fe!important;background:#f7f3ff!important;color:#6444c4!important}
+.mr-ig-tile-actions .mr-ig-production.active{border-color:#ffb2b2!important;background:#fff6f5!important;color:#bb4d3b!important}
+.mr-ig-views{pointer-events:none!important}
+.mr-ig-detail-info .mr-ig-caption{margin:12px 0!important;padding:14px!important;border:1px solid #e9edf4!important;border-radius:9px!important;background:#fafbfe!important;color:#33465e!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important;line-height:1.65!important}
+.mr-ig-save-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-top:14px!important}
+.mr-ig-save-actions button{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;min-height:42px!important;padding:9px 12px!important;border:1px solid #d8dfeb!important;border-radius:8px!important;background:#f8faff!important;color:#334d73!important;font-size:13px!important;font-weight:850!important;cursor:pointer!important}
+.mr-ig-save-actions button:nth-child(2){border-color:#dacbfd!important;background:#f5f1ff!important;color:#6543cb!important}
+.mr-ig-detail-links button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:42px!important;padding:9px 14px!important;border:1px solid #c4d7ef!important;border-radius:8px!important;background:#fff!important;color:#385a91!important;font-size:13px!important;font-weight:850!important;cursor:pointer!important}
+.mr-ig-embed>.mr-ig-embed-note{margin:0!important;padding:10px 12px!important;background:#fff!important;color:#68758b!important;font-size:12px!important;line-height:1.5!important}
+.mr-ig-fallback>small{display:block!important;overflow-wrap:anywhere!important;line-height:1.4!important}
+@media(max-width:760px){
+ .mr-ig-favorite{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important}
+ .mr-ig-tile-actions>*{min-height:36px!important;font-size:10px!important}
+ .mr-ig-save-actions{grid-template-columns:1fr!important}
+ .mr-ig-detail-toolbar span{font-size:11px!important}
+ .mr-ig-embed{min-height:0!important}
+ .mr-ig-embed iframe{height:560px!important;min-height:560px!important}
+}
