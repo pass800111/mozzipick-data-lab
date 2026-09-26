@@ -364,3 +364,26 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
   padding:12px!important
  }
 }
+
+
+/* V3.4 unified product imagery: white 1:1 stage, entire original visible. */
+:root{--mp-product-stage:#fff}
+.mr-card-visual,.mr-detail-media,.v33-row-product img{background:var(--mp-product-stage)!important}
+.mr-card-visual img,.mr-detail-media img,.v33-row-product img{object-fit:contain!important;object-position:center!important}
+@media(min-width:761px){
+ body.mr-dashboard-active #mrHomeDashboard .mr-card,
+ body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card){height:460px!important;min-height:460px!important;max-height:none!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
+ body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-visual{height:190px!important;min-height:190px!important;max-height:190px!important;flex:0 0 190px!important;display:grid!important;place-items:center!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-visual img,
+ body.mr-route-active #mrRouteView .mr-card-visual img{width:100%!important;height:100%!important;object-fit:contain!important}
+ #mrRouteView .mr-detail-media{display:grid!important;place-items:center!important;background:#fff!important;overflow:hidden!important;min-height:350px!important}
+ #mrRouteView .mr-detail-media img{display:block!important;width:100%!important;height:100%!important;max-height:480px!important;object-fit:contain!important}
+ .v33-production-row,.v33-quality-row{min-height:82px!important}
+ .v33-row-product img{width:64px!important;height:64px!important;object-fit:contain!important}
+ .mr-instagram-card{height:270px!important;min-height:270px!important;max-height:270px!important}
+ .mr-instagram-card .mr-card-body{height:100%!important;min-height:0!important;max-height:none!important;padding:14px!important}
+ .mr-card-name-static{font-size:14px!important;line-height:1.45!important}
+ .mr-instagram-metrics span{font-size:12px!important}.mr-instagram-metrics b{font-size:15px!important}
+ .mr-instagram-card .mr-card-actions a{font-size:12px!important;min-height:36px!important}
+}
