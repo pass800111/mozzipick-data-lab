@@ -316,3 +316,23 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  .mr-card-actions button,.mr-card-actions a{font-size:12px!important;height:36px!important;min-height:36px!important}
  .mr-detail-page small,.mr-command-page small,.v33-route-list small,.v33-production-row small,.v33-quality-row small{font-size:12px!important}
 }
+
+
+/* V3.4 PC typography + complete product photo framing; actual dashboard/route specificity. */
+@media(min-width:761px){
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
+ body.mr-route-active #mrRouteView .mr-card-body{height:auto!important;min-height:240px!important;max-height:none!important;padding:12px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-name,
+ body.mr-route-active #mrRouteView .mr-card-name{font-size:16px!important;min-height:45px!important;max-height:45px!important;line-height:1.4!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-desc,
+ body.mr-route-active #mrRouteView .mr-card-desc{font-size:13px!important;min-height:38px!important;max-height:38px!important;line-height:1.45!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-price,
+ body.mr-route-active #mrRouteView .mr-card-price{font-size:19px!important;line-height:1.2!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-actions button,
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-actions a,
+ body.mr-route-active #mrRouteView .mr-card-actions button,
+ body.mr-route-active #mrRouteView .mr-card-actions a{height:36px!important;min-height:36px!important;font-size:12px!important}
+}
+.mr-card-visual{background:#fff!important}
+.mr-card-visual img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important}
+.mr-detail-media img{max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}
