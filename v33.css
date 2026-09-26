@@ -808,3 +808,11 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 .mr-ig-preview-panel>footer a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:36px!important;padding:7px 12px!important;border-radius:8px!important;background:#6141c3!important;color:#fff!important;text-decoration:none!important;font-size:12px!important;font-weight:800!important}
 #mrRouteView .mr-ig-tile-actions [data-ig-preview]{background:#f0ecff!important;color:#5a3db4!important;border-color:#d9caff!important}
 @media(max-width:760px){.mr-ig-preview-overlay{padding:8px!important}.mr-ig-preview-panel{max-height:calc(100dvh - 16px)!important}.mr-ig-preview-panel iframe{height:min(69dvh,660px)!important;min-height:320px!important}.mr-ig-preview-panel>header strong{font-size:12px!important}.mr-ig-preview-panel>footer{gap:8px!important}}
+
+
+/* r19 tile actions: 2x2; preserve 9:16 visual and avoid a dangling third row */
+#mrRouteView .mr-ig-tile-actions .mr-ig-production,
+#mrCommandView .mr-ig-tile-actions .mr-ig-production{grid-column:auto!important}
+#mrRouteView .mr-ig-tile-actions,
+#mrCommandView .mr-ig-tile-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:minmax(36px,auto)!important}
+#mrCommandView .mr-ig-tile-actions [data-ig-preview]{background:#f0ecff!important;color:#5a3db4!important;border-color:#d9caff!important}
