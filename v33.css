@@ -166,34 +166,34 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!important;min-height:166px!important;max-height:none!important;overflow:hidden!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card,
  body.mr-route-active #mrRouteView .mr-card{
-  width:100%!important;height:154px!important;min-height:154px!important;max-height:154px!important;
-  display:grid!important;grid-template-columns:108px minmax(0,1fr)!important;grid-template-rows:154px!important;
+  width:100%!important;height:220px!important;min-height:220px!important;max-height:220px!important;
+  display:grid!important;grid-template-columns:125px minmax(0,1fr)!important;grid-template-rows:220px!important;
   grid-template-areas:none!important;padding:0!important;overflow:hidden!important
  }
  body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
  body.mr-route-active #mrRouteView .mr-card-visual{
-  width:108px!important;height:152px!important;min-width:108px!important;min-height:152px!important;max-width:108px!important;max-height:152px!important;
+  width:125px!important;height:218px!important;min-width:125px!important;min-height:218px!important;max-width:125px!important;max-height:218px!important;
   grid-column:1!important;grid-row:1!important;border-radius:0!important
  }
  body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
  body.mr-route-active #mrRouteView .mr-card-body{
-  grid-column:2!important;grid-row:1!important;width:auto!important;height:152px!important;min-height:152px!important;max-height:152px!important;
+  grid-column:2!important;grid-row:1!important;width:auto!important;height:218px!important;min-height:218px!important;max-height:218px!important;
   padding:7px!important;overflow:hidden!important
  }
  body.mr-dashboard-active #mrHomeDashboard .mr-card-heart,
- body.mr-route-active #mrRouteView .mr-card-heart{left:78px!important;right:auto!important;top:5px!important}
+ body.mr-route-active #mrRouteView .mr-card-heart{left:94px!important;right:auto!important;top:5px!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,
  body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:1fr!important;gap:6px!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card-name,
- body.mr-route-active #mrRouteView .mr-card-name{font-size:9px!important;min-height:29px!important;max-height:29px!important}
+ body.mr-route-active #mrRouteView .mr-card-name{font-size:12px!important;min-height:34px!important;max-height:38px!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card-desc,
- body.mr-route-active #mrRouteView .mr-card-desc{font-size:6.5px!important;min-height:19px!important;max-height:19px!important}
+ body.mr-route-active #mrRouteView .mr-card-desc{font-size:10px!important;min-height:28px!important;max-height:32px!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card-price,
  body.mr-route-active #mrRouteView .mr-card-price{font-size:12px!important}
  body.mr-dashboard-active #mrHomeDashboard .mr-card-actions button,
  body.mr-dashboard-active #mrHomeDashboard .mr-card-actions a,
  body.mr-route-active #mrRouteView .mr-card-actions button,
- body.mr-route-active #mrRouteView .mr-card-actions a{height:24px!important;min-height:24px!important;font-size:6px!important}
+ body.mr-route-active #mrRouteView .mr-card-actions a{height:34px!important;min-height:34px!important;font-size:10px!important}
 }
 
 
@@ -249,71 +249,3 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 }
 
 
-/* V3.4 mobile parity: preserve desktop visual identity, adapt only geometry and touch access. */
-@media(max-width:760px){
- html,body{max-width:100%!important;overflow-x:hidden!important}
- .main{width:100%!important;min-width:0!important;padding:10px 10px 86px!important}
- #mrHomeDashboard,#mrRouteView,#mrCommandView{min-width:0!important;max-width:100%!important}
- .mp-platform-header,.mp-header-main,.mp-header-search{max-width:100%!important;min-width:0!important}
- .mp-header-main{width:100%!important;height:auto!important;min-height:58px!important;padding:8px 10px!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
- .mp-brand{min-width:0!important}.mp-brand-copy{min-width:0!important}
- .mp-header-search{grid-template-columns:minmax(0,1fr) auto!important}
- .mp-header-search input{min-width:0!important;width:100%!important}
- .mp-header-nav{max-width:100%!important;overflow-x:auto!important;overscroll-behavior-x:contain!important}
- .mp-header-nav nav{min-width:max-content!important}
- #mrRouteView[data-route] .mr-card-grid,#mrRouteView[data-route="categories"] .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
- body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
- #mrHomeDashboard .mr-card,#mrRouteView .mr-card{min-width:0!important;max-width:100%!important}
- #mrHomeDashboard .mr-card-visual,#mrRouteView .mr-card-visual{width:100%!important}
- #mrHomeDashboard .mr-card-visual img,#mrRouteView .mr-card-visual img{width:100%!important;object-fit:contain!important}
- #mrHomeDashboard .mr-card-body,#mrRouteView .mr-card-body{min-width:0!important}
- #mrHomeDashboard .mr-card-name,#mrRouteView .mr-card-name{font-size:11px!important;line-height:1.35!important;min-height:30px!important;max-height:34px!important}
- #mrHomeDashboard .mr-card-desc,#mrRouteView .mr-card-desc{font-size:9px!important;line-height:1.4!important;min-height:24px!important;max-height:28px!important}
- #mrHomeDashboard .mr-card-actions,#mrRouteView .mr-card-actions{display:flex!important;flex-wrap:wrap!important;gap:5px!important}
- #mrHomeDashboard .mr-card-actions button,#mrHomeDashboard .mr-card-actions a,#mrRouteView .mr-card-actions button,#mrRouteView .mr-card-actions a{min-width:0!important;flex:1 1 45%!important;min-height:32px!important;height:auto!important;font-size:9px!important;white-space:normal!important}
- #mrHomeDashboard .mr-card-heart,#mrRouteView .mr-card-heart{min-width:30px!important;min-height:30px!important}
- .mr-detail-main,.mr-detail-grid{grid-template-columns:minmax(0,1fr)!important}
- .mr-detail-media,.mr-detail-summary,.mr-detail-grid>section{min-width:0!important}
- .mr-detail-quick{max-width:100%!important;overflow-x:auto!important}
- .mr-detail-quick button,.mr-copywords button{min-height:32px!important;font-size:10px!important}
- .mr-command-layout{grid-template-columns:minmax(0,1fr)!important}
- .mr-command-search form{display:flex!important;min-width:0!important}
- .mr-command-search input{min-width:0!important;flex:1 1 auto!important}
- footer{max-width:100%!important}
- footer button{min-height:42px!important}
-}
-@media(max-width:360px){
- #mrRouteView[data-route] .mr-card-grid,body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:minmax(0,1fr)!important}
-}
-
-
-/* V3.4 mobile hotfix: never squeeze a horizontal desktop card into a two-column mobile grid. */
-@media(max-width:760px){
- body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,
- body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid,
- #mrRouteView[data-route] .mr-card-grid,
- #mrRouteView[data-route="categories"] .mr-card-grid{grid-template-columns:minmax(0,1fr)!important}
- body.mr-dashboard-active #mrHomeDashboard .mr-card,
- body.mr-route-active #mrRouteView .mr-card,
- #mrHomeDashboard .mr-card,#mrRouteView .mr-card{
-  display:flex!important;flex-direction:column!important;grid-template-columns:none!important;
-  grid-template-rows:none!important;width:100%!important;height:auto!important;min-height:0!important;overflow:hidden!important
- }
- body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
- body.mr-route-active #mrRouteView .mr-card-visual,
- #mrHomeDashboard .mr-card-visual,#mrRouteView .mr-card-visual{
-  display:flex!important;width:100%!important;height:156px!important;min-height:156px!important;max-height:156px!important;flex:0 0 156px!important
- }
- body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
- body.mr-route-active #mrRouteView .mr-card-body,
- #mrHomeDashboard .mr-card-body,#mrRouteView .mr-card-body{
-  display:flex!important;flex-direction:column!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;padding:10px!important
- }
- body.mr-dashboard-active #mrHomeDashboard .mr-card-heart,
- body.mr-route-active #mrRouteView .mr-card-heart{left:auto!important;right:8px!important;top:8px!important}
- #mrHomeDashboard .mr-card-name,#mrRouteView .mr-card-name{font-size:13px!important;min-height:0!important;max-height:none!important}
- #mrHomeDashboard .mr-card-desc,#mrRouteView .mr-card-desc{font-size:11px!important;min-height:0!important;max-height:none!important}
- #mrHomeDashboard .mr-card-actions,#mrRouteView .mr-card-actions{width:100%!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important}
- #mrHomeDashboard .mr-card-actions button,#mrHomeDashboard .mr-card-actions a,
- #mrRouteView .mr-card-actions button,#mrRouteView .mr-card-actions a{flex:1 1 44%!important;font-size:11px!important;min-height:36px!important;line-height:1.2!important;writing-mode:horizontal-tb!important;overflow-wrap:normal!important}
-}
