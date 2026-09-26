@@ -5,6 +5,8 @@ on:
     paths:
       - "data/instagram-electronics.json"
   workflow_dispatch:
+  schedule:
+    - cron: "15 3 * * *"
 permissions:
   contents: write
 concurrency:
@@ -17,6 +19,7 @@ jobs:
     env:
       APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
       APIFY_DATASET_ID: ${{ vars.APIFY_DATASET_ID }}
+      APIFY_TASK_ID: ${{ vars.APIFY_TASK_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
