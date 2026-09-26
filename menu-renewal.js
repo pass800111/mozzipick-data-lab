@@ -35,7 +35,7 @@ function captureDetailReturn(){
    else if(activeRoute&&config[activeRoute])r=activeRoute;
  }
  if(mode==="dashboard")r="dashboard";
- return {mode,route:r,filter,page,y:window.scrollY};
+ return {mode,route:r,filter,page,y:window.scrollY,commandState:mode==="command"?(history.state?.mozzipick||"command:center"):"",commandQuery:mode==="command"?($("#mrCommandInput")?.value||""):""};
 }
 function returnFromDetail(){
  const back=detailReturn;
@@ -45,7 +45,7 @@ function returnFromDetail(){
    route=back.route;
    filter=back.filter;
    page=back.page;
-   if(back.mode==="command")commandCenter(true);
+   if(back.mode==="command"){if(/^command:[1-5]$/.test(back.commandState))commandPage(+back.commandState.slice(8),true);else{commandCenter(true);if(back.commandQuery){const input=$("#mrCommandInput"),form=$("#mrCommandForm");if(input&&form){input.value=back.commandQuery;form.requestSubmit()}}}}
    else if(back.mode==="dashboard"||route==="dashboard")renderHome();
    else renderRoute();
    restoreScroll(back.y);
