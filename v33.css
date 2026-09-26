@@ -118,3 +118,80 @@ body{margin:0!important;color:var(--m-ink)!important;font-family:Pretendard,-app
  footer button{min-width:0!important;height:52px!important;padding:3px 1px!important;border:0!important;background:transparent!important;color:#607089!important;font-size:7px!important}footer button i{display:block!important;font-size:14px!important;font-style:normal!important;margin-bottom:2px!important}footer button span{display:block!important;font-size:6px!important;white-space:nowrap!important}footer button.on{color:var(--m-orange)!important}
 }
 @media(max-width:380px){.v33-home-command-copy{width:72%!important}.v33-home-command-copy h1{font-size:18px!important}.v33-command-bot{width:72px!important;height:70px!important}.v33-command-bot i{font-size:30px!important}.mr-card{grid-template-columns:98px minmax(0,1fr)!important}.mr-card-visual{width:98px!important}.mr-card-heart{left:70px!important}.mp-header-nav nav button{padding:0 5px!important;font-size:7px!important}}
+
+
+/* ===== FINAL SPECIFICITY AUTHORITY =====
+   Neutralizes higher-specificity legacy V3.x rules without deleting data/function scripts. */
+body.mr-dashboard-active #mrHomeDashboard .mr-card,
+body.mr-route-active #mrRouteView .mr-card{
+ height:302px!important;min-height:302px!important;max-height:302px!important;
+ display:flex!important;flex-direction:column!important;grid-template-columns:none!important;grid-template-rows:none!important;
+ padding:0!important;margin:0!important
+}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
+body.mr-route-active #mrRouteView .mr-card-visual{
+ width:100%!important;height:120px!important;min-width:0!important;min-height:120px!important;max-width:none!important;max-height:120px!important;
+ margin:0!important;padding:0!important;position:relative!important
+}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-visual img,
+body.mr-route-active #mrRouteView .mr-card-visual img{width:100%!important;height:100%!important;object-fit:cover!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
+body.mr-route-active #mrRouteView .mr-card-body{
+ width:100%!important;height:182px!important;min-height:182px!important;max-height:182px!important;padding:8px!important;margin:0!important
+}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-name,
+body.mr-route-active #mrRouteView .mr-card-name{font-size:10px!important;min-height:31px!important;max-height:31px!important;line-height:1.45!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-desc,
+body.mr-route-active #mrRouteView .mr-card-desc{font-size:7px!important;min-height:22px!important;max-height:22px!important;line-height:1.45!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-price,
+body.mr-route-active #mrRouteView .mr-card-price{font-size:14px!important;margin:4px 0 0!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-actions,
+body.mr-route-active #mrRouteView .mr-card-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4px!important;margin-top:auto!important;padding:0!important;position:static!important;transform:none!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-actions button,
+body.mr-dashboard-active #mrHomeDashboard .mr-card-actions a,
+body.mr-route-active #mrRouteView .mr-card-actions button,
+body.mr-route-active #mrRouteView .mr-card-actions a{height:27px!important;min-height:27px!important;font-size:7px!important;padding:0 4px!important}
+body.mr-dashboard-active #mrHomeDashboard .mr-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}
+body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important}
+body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!important;min-height:160px!important;max-height:none!important}
+
+@media(max-width:1180px){
+ body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:900px) and (min-width:761px){
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,
+ body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!important;min-height:166px!important;max-height:none!important;overflow:hidden!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card,
+ body.mr-route-active #mrRouteView .mr-card{
+  width:100%!important;height:154px!important;min-height:154px!important;max-height:154px!important;
+  display:grid!important;grid-template-columns:108px minmax(0,1fr)!important;grid-template-rows:154px!important;
+  grid-template-areas:none!important;padding:0!important;overflow:hidden!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
+ body.mr-route-active #mrRouteView .mr-card-visual{
+  width:108px!important;height:152px!important;min-width:108px!important;min-height:152px!important;max-width:108px!important;max-height:152px!important;
+  grid-column:1!important;grid-row:1!important;border-radius:0!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
+ body.mr-route-active #mrRouteView .mr-card-body{
+  grid-column:2!important;grid-row:1!important;width:auto!important;height:152px!important;min-height:152px!important;max-height:152px!important;
+  padding:7px!important;overflow:hidden!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-heart,
+ body.mr-route-active #mrRouteView .mr-card-heart{left:78px!important;right:auto!important;top:5px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-grid,
+ body.mr-route-active #mrRouteView .v33-route-list .mr-card-grid{grid-template-columns:1fr!important;gap:6px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-name,
+ body.mr-route-active #mrRouteView .mr-card-name{font-size:9px!important;min-height:29px!important;max-height:29px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-desc,
+ body.mr-route-active #mrRouteView .mr-card-desc{font-size:6.5px!important;min-height:19px!important;max-height:19px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-price,
+ body.mr-route-active #mrRouteView .mr-card-price{font-size:12px!important}
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-actions button,
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-actions a,
+ body.mr-route-active #mrRouteView .mr-card-actions button,
+ body.mr-route-active #mrRouteView .mr-card-actions a{height:24px!important;min-height:24px!important;font-size:6px!important}
+}
