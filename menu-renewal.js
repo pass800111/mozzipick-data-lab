@@ -108,7 +108,7 @@ function renderRoute(){
  '<div class="v33-filter-shell"><div class="mr-filterbar">'+c[4].map(x=>'<button type="button" data-filter="'+x+'" class="'+(filter===x?'active':'')+'">'+x+'</button>').join("")+'<small>최신 등록 순 ▾</small></div></div>'+
  statsHtml+
  '<section class="v33-route-list"><div class="v33-section-head"><div><h2>'+listTitle+'</h2><p>실제 등록·수집 데이터 기준 · 확인되지 않은 값은 미확인으로 표시합니다.</p></div><span>'+a.length+'개</span></div>'+
- (a.length?(route==="production"?productionRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):route==="quality"?qualityRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):'<div class="mr-card-grid">'+a.slice((page-1)*PAGE,page*PAGE).map(route==="instagram"?instagramCard:card).join("")+'</div>'+pageNav(a.length)):'<div class="mr-empty">현재 조건에 맞는 실제 데이터가 없습니다.</div>')+
+ (route==="production"?productionRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):route==="quality"?qualityRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):a.length?'<div class="mr-card-grid">'+a.slice((page-1)*PAGE,page*PAGE).map(route==="instagram"?instagramCard:card).join("")+'</div>'+pageNav(a.length):'<div class="mr-empty">현재 조건에 맞는 실제 데이터가 없습니다.</div>')+
  '</section>';
  if(route==="production"){$("[data-state]",root).forEach(sel=>sel.onchange=()=>{const n=sel.dataset.state,st=read(S,"{}"),m=read(M,"{}"),q=read(Q,"[]");st[n]=sel.value;if(!q.includes(n))q.push(n);if(sel.value==="완료")m[n]=m[n]||new Date().toLocaleDateString("ko-KR");else delete m[n];write(S,st);write(M,m);write(Q,[...new Set(q)]);window.dispatchEvent(new CustomEvent("mozzipick-production-change"))})}
  bind(root);activate(route)
