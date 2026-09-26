@@ -411,3 +411,130 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  #mrRouteView .mr-detail-quick button{font-size:12px!important;min-height:36px!important}
  #mrRouteView .mr-copywords button{font-size:13px!important;min-height:38px!important}
 }
+
+
+/* === V3.4 PC UNIFIED PRODUCT + CONTROLS 20260927-r7 === */
+@media (min-width:761px) {
+  /* Every route's actual top controls (not guessed class names). */
+  .mp-header-nav nav button{font-size:14px!important}
+  #mrCommandButton{width:144px!important;min-width:144px!important;font-size:13px!important;white-space:nowrap!important}
+  .mp-header-search input{font-size:13px!important}
+  .mp-search-submit,.mp-quick{font-size:12px!important}
+  #mrRouteView .mr-filterbar button{font-size:13px!important;height:38px!important;min-height:38px!important;padding:0 14px!important}
+  #mrRouteView .mr-filterbar small{font-size:12px!important}
+  .v33-section-head h2{font-size:20px!important}
+  .v33-section-head p{font-size:12px!important;line-height:1.5!important}
+  .v33-section-head>button,.v33-section-head>span{font-size:12px!important;min-height:34px!important;height:34px!important;padding:0 11px!important}
+  .v33-quick button,.v33-command-guide>button,.v33-home-command>button{font-size:12px!important;min-height:36px!important;height:36px!important}
+  .v33-quick>strong,.v33-ai-search h3,.v33-how h3,.v33-command-guide h3{font-size:13px!important}
+  /* Command landing, examples, reports and generated output. */
+  #mrCommandView .mr-command-showcase-copy p,
+  #mrCommandView .mr-command-benefits{font-size:13px!important;line-height:1.5!important}
+  #mrCommandView #mrCommandForm input{height:44px!important;font-size:14px!important}
+  #mrCommandView #mrCommandForm button{height:44px!important;width:105px!important;font-size:13px!important}
+  #mrCommandView .mr-command-examples button{font-size:12px!important;min-height:31px!important;padding:6px 10px!important}
+  #mrCommandView .mr-command-grid button{min-height:90px!important;padding:10px!important}
+  #mrCommandView .mr-command-grid b{font-size:14px!important}
+  #mrCommandView .mr-command-grid small{font-size:12px!important;line-height:1.4!important}
+  #mrCommandView .mr-search-report,#mrCommandView .mr-command-detail{font-size:14px!important}
+  #mrCommandView .mr-report-summary b,#mrCommandView .mr-command-quick b{font-size:12px!important}
+  #mrCommandView .mr-command-quick small{font-size:11px!important}
+  #mrCommandView .mr-command-quick button{height:auto!important;min-height:48px!important}
+  /* Same full-picture white stage on all real product cards. */
+  body.mr-dashboard-active #mrHomeDashboard .mr-card,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card){
+    height:auto!important;min-height:482px!important;max-height:none!important;
+    display:flex!important;flex-direction:column!important;overflow:hidden!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-visual{
+    flex:0 0 210px!important;display:flex!important;justify-content:center!important;align-items:center!important;
+    width:100%!important;height:210px!important;min-height:210px!important;max-height:210px!important;
+    padding:12px!important;box-sizing:border-box!important;background:#fff!important;
+    overflow:hidden!important;border:0!important;border-bottom:1px solid #edf1f6!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-visual img,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-visual img{
+    display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+    object-fit:contain!important;object-position:center!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-body{
+    flex:1 1 auto!important;height:auto!important;min-height:258px!important;max-height:none!important;
+    padding:11px!important;display:flex!important;flex-direction:column!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-name,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-name{
+    font-size:15px!important;line-height:1.4!important;min-height:44px!important;max-height:44px!important;
+    -webkit-line-clamp:2!important;white-space:normal!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-desc,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-desc{
+    font-size:12px!important;line-height:1.45!important;min-height:34px!important;max-height:34px!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-price,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-price{font-size:18px!important}
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-rating span,
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-rating small,
+  body.mr-route-active #mrRouteView .mr-card-rating span,
+  body.mr-route-active #mrRouteView .mr-card-rating small{font-size:12px!important}
+  body.mr-dashboard-active #mrHomeDashboard .mr-tags span,
+  body.mr-route-active #mrRouteView .mr-tags span{font-size:11px!important}
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-actions,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-actions{
+    width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:6px!important;margin-top:auto!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-actions>*,
+  body.mr-route-active #mrRouteView .mr-card:not(.mr-instagram-card) .mr-card-actions>*{
+    height:35px!important;min-height:35px!important;max-height:none!important;padding:4px!important;
+    font-size:11px!important;line-height:1.3!important;white-space:normal!important;text-align:center!important;min-width:0!important
+  }
+  body.mr-dashboard-active #mrHomeDashboard .mr-card-actions.has-coupang [data-prod],
+  body.mr-route-active #mrRouteView .mr-card-actions.has-coupang [data-prod]{
+    grid-column:1/-1!important
+  }
+  /* Product detail: same white stage and readable operation buttons. */
+  #mrRouteView .mr-detail-page{max-width:1220px!important;font-size:15px!important}
+  #mrRouteView .mr-detail-top{align-items:flex-start!important;gap:10px!important}
+  #mrRouteView .mr-detail-top button,
+  #mrRouteView .mr-detail-quick button{font-size:13px!important;line-height:1.25!important;min-height:39px!important;height:auto!important;padding:8px 11px!important;white-space:nowrap!important}
+  #mrRouteView .mr-detail-quick{gap:7px!important}
+  #mrRouteView .mr-detail-main{grid-template-columns:minmax(0,43%) minmax(0,1fr)!important;gap:22px!important;align-items:start!important}
+  #mrRouteView .mr-detail-media{
+    box-sizing:border-box!important;height:430px!important;min-height:430px!important;max-height:430px!important;
+    padding:20px!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    background:#fff!important;overflow:hidden!important;border:1px solid #e1e9f2!important
+  }
+  #mrRouteView .mr-detail-media img{
+    display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+    object-fit:contain!important;object-position:center!important
+  }
+  #mrRouteView .mr-detail-summary h1{font-size:26px!important;line-height:1.35!important}
+  #mrRouteView .mr-detail-summary>p,#mrRouteView .mr-detail-grid p{font-size:15px!important;line-height:1.55!important}
+  #mrRouteView .mr-detail-summary dt{font-size:13px!important}
+  #mrRouteView .mr-detail-summary dd{font-size:15px!important}
+  #mrRouteView .mr-detail-grid h2{font-size:18px!important}
+  #mrRouteView .mr-copywords button,#mrRouteView .mr-detail-actions a{font-size:13px!important;min-height:36px!important}
+  /* Production and quality list: photograph, title and controls remain legible. */
+  .v33-production-row,.v33-quality-row{min-height:86px!important}
+  .v33-row-product{grid-template-columns:24px 66px minmax(0,1fr)!important}
+  .v33-row-product img{
+    box-sizing:border-box!important;width:64px!important;height:64px!important;padding:5px!important;
+    object-fit:contain!important;object-position:center!important;background:#fff!important
+  }
+  .v33-row-product strong{font-size:13px!important;line-height:1.35!important}
+  .v33-row-product small,.v33-production-row time,.v33-quality-row time{font-size:11px!important}
+  .v33-row-actions button,.v33-production-row select,.v33-quality-row select{font-size:12px!important;min-height:36px!important}
+  /* Instagram reel cards are text-based; remove the 460px product-card override. */
+  body.mr-route-active #mrRouteView .mr-instagram-card{
+    height:246px!important;min-height:246px!important;max-height:246px!important
+  }
+  body.mr-route-active #mrRouteView .mr-instagram-card .mr-card-body{
+    height:100%!important;min-height:0!important;max-height:none!important;padding:13px!important
+  }
+  #mrRouteView .mr-instagram-card .mr-card-name-static{font-size:14px!important;line-height:1.45!important}
+  #mrRouteView .mr-instagram-card .mr-instagram-metrics span{font-size:12px!important}
+  #mrRouteView .mr-instagram-card .mr-instagram-metrics b{font-size:15px!important}
+  #mrRouteView .mr-instagram-card .mr-card-actions>*{font-size:12px!important;min-height:35px!important}
+}
