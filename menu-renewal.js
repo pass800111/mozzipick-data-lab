@@ -51,7 +51,7 @@ function card(p){
  '<p class="mr-card-desc">'+esc(desc)+'</p><strong class="mr-card-price">'+esc(price(p))+'</strong>'+
  '<div class="mr-card-rating"><span>★ '+esc(rating)+'</span>'+(reviews?'<small>('+esc(reviews)+')</small>':'<small>공개지표 확인중</small>')+'</div>'+
  '<div class="mr-tags"><span>'+esc(p.category||p.username||"카테고리 미확인")+'</span><span>'+esc((p.siteUpdatedAt||p.timestamp||"").slice(0,10)||"등록일 확인 중")+'</span></div>'+
- '<div class="mr-card-actions"><button type="button" data-detail="'+esc(p.id||n)+'">상세보기</button>'+
+ '<div class="mr-card-actions'+(coupang?' has-coupang':'')+'"><button type="button" data-detail="'+esc(p.id||n)+'">상세보기</button>'+
  (coupang?'<a class="accent" href="'+esc(p.coupangUrl)+'" target="_blank" rel="noopener">🛒 쿠팡에서 보기</a>':'')+'<button type="button" class="'+(made?'done':'')+'" data-prod="'+esc(n)+'">'+(made?'✓ 제작완료':queued?'🎬 제작관리 해제':'🎬 제작관리')+'</button>'+
  '</div></div></article>'
 }function instagramProducts(){const k=filter==="해외상품"?"overseas":"domestic";return ig[k].map((x,i)=>({id:"ig-"+k+"-"+i,name:(k==="overseas"?(x.productKo||x.product):x.product),category:"인스타 전자제품",status:"수집 완료",spec:"좋아요 "+(x.likes??"미확인")+" · 댓글 "+(x.comments??"미확인")+(x.views!=null?" · 조회 "+x.views:""),siteUpdatedAt:x.timestamp,reel:x.reel,instagram:x.reel,officialUrl:x.account,username:x.username,likes:x.likes,comments:x.comments,__ig:true}))}
