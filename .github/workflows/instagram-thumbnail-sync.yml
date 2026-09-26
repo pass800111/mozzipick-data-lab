@@ -1,51 +1,33 @@
-name: Instagram thumbnail metadata sync
+name: Instagram free-mode data QA
 on:
   push:
     branches: [main]
     paths:
       - "data/instagram-electronics.json"
       - "scripts/merge-instagram-thumbnails.mjs"
-      - "scripts/sync-apify-instagram-thumbnails.mjs"
       - "scripts/test-instagram-thumbnail-sync.mjs"
       - ".github/workflows/instagram-thumbnail-sync.yml"
   workflow_dispatch:
-  schedule:
-    - cron: "15 3 * * *"
 permissions:
-  contents: write
-concurrency:
-  group: instagram-thumbnail-sync
-  cancel-in-progress: false
+  contents: read
 jobs:
-  apify-reel-thumbnails:
+  offline-validation:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
-    env:
-      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-      APIFY_DATASET_ID: ${{ vars.APIFY_DATASET_ID }}
-      APIFY_TASK_ID: ${{ vars.APIFY_TASK_ID }}
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Test expiry and original-post matching before sync
+      - name: Offline thumbnail metadata regression
         run: node scripts/test-instagram-thumbnail-sync.mjs
-      - name: Exact original-post thumbnail metadata import
-        run: node scripts/sync-apify-instagram-thumbnails.mjs
-      - name: Validate matched inventory data
+      - name: Check post identity without network or paid API
         run: |
-          node -e 'const d=require("./data/instagram-electronics.json");let all=[...(d.domestic||[]),...(d.overseas||[])];if(new Set(all.map(x=>x.reel)).size!==all.length)process.exit(1);console.log("Reels:",all.length,"Thumbnails with URL:",all.filter(x=>x.thumbnail).length)'
-      - name: Publish verified-permalink mappings only
-        run: |
-          if ! git diff --quiet -- data/instagram-electronics.json; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/instagram-electronics.json
-            git commit -m "Update Instagram reel thumbnail metadata from authorized Apify dataset"
-            git push
-          else
-            echo "No newly matched thumbnail metadata."
-          fi
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const d=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
+            const rows=[...(d.domestic||[]),...(d.overseas||[])];
+            const urls=rows.map(x=>(x.reel||"").match(/instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/)?.[1]||"");
+            if(urls.some(x=>!x)||new Set(urls).size!==rows.length)process.exit(1);
+            console.log("PASS: domestic",d.domestic.length,"overseas",d.overseas.length,"unique original post URLs",urls.length);
+          '
