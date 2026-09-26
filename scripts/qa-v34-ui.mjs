@@ -1,0 +1,80 @@
+import { chromium } from "playwright";
+const base = "http://127.0.0.1:8765/?v=v34-qa";
+const browser = await chromium.launch({ headless: true });
+const findings = [], errors = [];
+function check(value, message){findings.push({pass:!!value,message}); if(!value)throw Error("FAIL: "+message)}
+async function click(page, selector){await page.locator(selector).first().click({timeout:10000})}
+async function nav(page, route){await click(page, '.mp-header-nav nav [data-view="'+route+'"]');await page.locator('#mrRouteView[data-route="'+route+'"]').waitFor()}
+async function run(){
+ const page = await browser.newPage({viewport:{width:1440,height:900}});
+ page.on("pageerror", e => errors.push(e.message));
+ await page.goto(base, {waitUntil:"domcontentloaded"});
+ await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
+ check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage cards load");
+ const css = await page.locator('link[href*="v33.css"]').last().getAttribute("href");
+ check(css?.includes("detail-sort-instagram-r9"),"Latest CSS linked");
+ await nav(page,"categories");
+ check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort has three choices");
+ await page.locator('#mrRouteView [data-sort-order]').selectOption("최신순");
+ check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="최신순","Latest sort is interactive");
+ await page.locator('#mrRouteView [data-sort-order]').selectOption("등급순");
+ check(await page.locator('#mrRouteView .mr-card').count()===5,"Category pagination remains five products");
+ const clipped=await page.locator('#mrRouteView .mr-card').evaluateAll(cards=>cards.some(card=>{const a=card.querySelector('.mr-card-actions');return a&&a.getBoundingClientRect().bottom>card.getBoundingClientRect().bottom+2}));
+ check(!clipped,"Category cards do not clip footer buttons");
+ await click(page,'#mrRouteView .mr-card [data-detail]');
+ await page.locator('#mrRouteView .mr-detail-page').waitFor();
+ check(await page.locator('#mrRouteView [data-copyword]').count()===4,"Product detail contains four copyable Chinese search terms");
+ check(await page.locator('#mrRouteView [data-detail-back]').isVisible(),"Product detail has back button");
+ await page.screenshot({path:"qa-v34-detail.png",fullPage:true});
+ await click(page,'#mrRouteView [data-detail-back]');
+ check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Back navigation preserves menu sorting");
+ await nav(page,"instagram");
+ check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Domestic reels gallery is paginated at five");
+ await page.locator('#mrRouteView [data-filter="해외상품"]').click();
+ check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Overseas reels gallery is paginated at five");
+ await page.locator('#mrRouteView [data-sort-order]').selectOption("인기순");
+ check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="인기순","Instagram popularity sort works");
+ await page.screenshot({path:"qa-v34-instagram.png",fullPage:true});
+ await click(page,'#mrRouteView [data-ig-detail]');
+ await page.locator('#mrRouteView .mr-ig-detail').waitFor();
+ check((await page.locator('#mrRouteView .mr-ig-embed iframe').getAttribute("src")).includes("instagram.com/"),"Instagram detail embeds original URL");
+ check(await page.locator('#mrRouteView .mr-ig-detail-links a').count()>=1,"Instagram detail offers source links");
+ await click(page,'#mrRouteView [data-detail-back]');
+ check(await page.locator('#mrRouteView [data-filter="해외상품"]').getAttribute("class")==="active","Instagram back restores overseas filter");
+ await click(page,'#mrCommandButton');
+ await page.locator("#mrCommandInput").waitFor();
+ await page.locator("#mrCommandInput").fill("1-1");
+ await click(page,'#mrCommandForm button');
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===6,"1-1 domestic search returns six records");
+ await page.locator("#mrCommandInput").fill("1-2");
+ await click(page,'#mrCommandForm button');
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===20,"1-2 overseas search returns twenty records");
+ await click(page,'#mrCommandView .mr-command-grid [data-command="2"]');
+ await page.locator('#mrCommandView .mr-command-detail').waitFor();
+ await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택한 형식: 리뷰형"),"Script format radio updates visible output");
+ await page.screenshot({path:"qa-v34-command.png",fullPage:true});
+ await click(page,'.mp-brand');
+ await click(page,'#mrHomeDashboard .mr-card [data-prod]');
+ await nav(page,"production");
+ check(await page.locator('#mrRouteView .v33-production-row').count()>=1,"Production queue includes added test product");
+ const overlap=await page.locator('#mrRouteView .v33-row-product').first().evaluate(row=>{const photo=row.querySelector('img').getBoundingClientRect(),name=row.querySelector('span').getBoundingClientRect();return photo.right>name.left+1});
+ check(!overlap,"Production thumbnail does not overlap product title");
+ await page.locator('#mrRouteView [data-state]').first().selectOption("촬영중");
+ check(await page.locator('#mrRouteView [data-state]').first().inputValue()==="촬영중","Production status selector updates state");
+ await page.screenshot({path:"qa-v34-production.png",fullPage:true});
+ await click(page,'#mrRouteView .v33-production-row [data-prod]');
+ check(await page.locator('#mrRouteView .v33-production-row').count()===0,"QA production item cleaned up");
+ const mobile=await browser.newPage({viewport:{width:375,height:812},isMobile:true});
+ await mobile.goto(base,{waitUntil:"domcontentloaded"});
+ await mobile.locator("#mrHomeDashboard .mr-card").first().waitFor();
+ await click(mobile,'#mrHomeDashboard .mr-card [data-detail]');
+ check(await mobile.locator('#mrRouteView .mr-detail-page').isVisible(),"Mobile detail remains reachable");
+ const scrollWidth=await mobile.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
+ findings.push({pass:scrollWidth.scroll<=scrollWidth.width+3,message:"Mobile horizontal overflow check",detail:scrollWidth});
+ await page.close();await mobile.close();
+}
+try{await run();}catch(e){errors.push(e.stack||String(e));process.exitCode=1;}finally{
+ console.log(JSON.stringify({findings,errors},null,2));
+ await browser.close();
+}
