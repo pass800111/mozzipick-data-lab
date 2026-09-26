@@ -12,3 +12,10 @@
 6. 매번 신규 릴스 등록 시 메타데이터와 표지 필드를 동시에 확인한다. 사진 주소가 없으면 표시 영역에 원본 릴스 링크가 연결된 안내를 띄우고, 다른 영상/상품의 이미지를 대신 사용하지 않는다.
 
 주의: Instagram의 임베드 제한, 접근 제한, 공개 여부와 이미지 저작권은 실제 사용 전에 확인해야 한다. 사이트가 공개된다고 원본 이미지 재사용 권한이 자동 부여되는 것은 아니다.
+
+## GitHub Actions 자동 연결 (V3.4 r16)
+- 저장소 Settings → Secrets and variables → Actions → Repository secrets: `APIFY_TOKEN`을 추가한다. 채팅이나 소스 코드에 토큰을 입력하지 않는다.
+- Repository variables: `APIFY_DATASET_ID`에 기존 n8n/Apify Instagram Scraper 결과 데이터셋 ID를 넣는다. 존재하지 않는 ID를 임의로 추정하지 않는다.
+- `.github/workflows/instagram-thumbnail-sync.yml`은 `data/instagram-electronics.json` 갱신 또는 수동 Workflow Dispatch 시 실행한다. 인증 설정이 없으면 안전하게 SKIP한다.
+- 원본 게시물 shortcode가 같은 경우에만 썸네일 URL을 병합한다. 새로 확인한 이미지 메타데이터만 저장하고 기존 데이터는 보존한다. 이 과정은 **사진의 재사용 권리/다운로드/이미지 유효성 자체를 검증하지 않는다**.
+- Apify Actor에서 썸네일 URL 필드가 없다면 빈 상태로 남는다. `sourceRecords`, `matchedImageRecords`, `added`, `missingCount` 로그로 누락 원인을 확인한다.
