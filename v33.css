@@ -336,3 +336,31 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 .mr-card-visual{background:#fff!important}
 .mr-card-visual img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important}
 .mr-detail-media img{max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}
+
+
+/* V3.4 PC: real image frame height and full-product fit, not merely object-fit. */
+@media(min-width:761px){
+ body.mr-dashboard-active #mrHomeDashboard .mr-card,
+ body.mr-route-active #mrRouteView .mr-card{
+  height:460px!important;min-height:460px!important;max-height:none!important;
+  display:flex!important;flex-direction:column!important;overflow:hidden!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-visual,
+ body.mr-route-active #mrRouteView .mr-card-visual{
+  flex:0 0 190px!important;width:100%!important;height:190px!important;
+  min-height:190px!important;max-height:190px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  background:#fff!important;overflow:hidden!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-visual img,
+ body.mr-route-active #mrRouteView .mr-card-visual img{
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;object-fit:contain!important;
+  object-position:center center!important
+ }
+ body.mr-dashboard-active #mrHomeDashboard .mr-card-body,
+ body.mr-route-active #mrRouteView .mr-card-body{
+  flex:1 1 auto!important;height:auto!important;min-height:0!important;max-height:none!important;
+  padding:12px!important
+ }
+}
