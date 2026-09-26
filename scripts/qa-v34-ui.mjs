@@ -12,7 +12,7 @@ async function run(){
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage cards load");
  const css = await page.locator('link[href*="v33.css"]').last().getAttribute("href");
- check(css?.includes("detail-sort-instagram-r9"),"Latest CSS linked");
+ check(css?.includes("detail-sort-instagram-r11"),"Latest CSS linked");
  await nav(page,"categories");
  check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort has three choices");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("최신순");
