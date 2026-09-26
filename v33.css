@@ -783,3 +783,14 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
  .mr-ig-embed{min-height:0!important}
  .mr-ig-embed iframe{height:560px!important;min-height:560px!important}
 }
+
+
+/* V3.4 Instagram-specific query bar */
+#mrRouteView .mr-ig-searchbar{display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;flex-wrap:wrap!important;margin:12px 0!important;padding:16px!important;border:1px solid #e0e7f1!important;border-radius:12px!important;background:#fff!important}
+#mrRouteView .mr-ig-searchbar label{font-size:13px!important;font-weight:850!important;white-space:nowrap!important;color:#35496a!important}
+#mrRouteView .mr-ig-searchbar input{box-sizing:border-box!important;flex:1 1 330px!important;max-width:600px!important;min-width:0!important;height:42px!important;min-height:42px!important;padding:10px 16px!important;border:1px solid #d8e2ef!important;border-radius:26px!important;background:#f5f8fc!important;color:#2c3e59!important;font-size:14px!important;line-height:1.4!important}
+#mrRouteView .mr-ig-searchbar button{box-sizing:border-box!important;min-height:40px!important;padding:8px 15px!important;border:1px solid #ddcfef!important;border-radius:9px!important;background:#f8f5ff!important;color:#6244b8!important;font-size:13px!important;font-weight:850!important;cursor:pointer!important}
+#mrRouteView .mr-ig-searchbar [data-ig-search-run]{background:#714cec!important;color:#fff!important;border-color:#714cec!important}
+#mrRouteView .mr-ig-searchbar button[disabled]{opacity:.45!important;cursor:default!important}
+#mrRouteView .mr-ig-searchbar small{display:block!important;flex-basis:100%!important;text-align:center!important;font-size:11px!important;color:#71829a!important}
+@media(max-width:760px){#mrRouteView .mr-ig-searchbar{gap:7px!important;padding:10px!important}#mrRouteView .mr-ig-searchbar label{width:100%!important}#mrRouteView .mr-ig-searchbar input{flex-basis:100%!important;height:40px!important}#mrRouteView .mr-ig-searchbar button{flex:1 1 0!important}}
