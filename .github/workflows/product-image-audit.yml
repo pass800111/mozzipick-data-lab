@@ -1,0 +1,25 @@
+name: Product image audit
+on:
+  push:
+    paths:
+      - 'data/products.json'
+      - 'assets/products/**'
+      - 'scripts/audit-product-images.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  image-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit all product image mappings
+        run: python scripts/audit-product-images.py
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: product-image-audit
+          path: data/image-audit.json
