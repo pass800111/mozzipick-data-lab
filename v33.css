@@ -901,3 +901,23 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
   max-height:36px!important;
   overflow:hidden!important;
 }
+
+
+/* V3.5 detail-page command connection: scoped navigation, source product and reel controls */
+#mrCommandView .mr-command-return{display:flex!important;flex-wrap:wrap!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;margin:0 0 12px!important;padding:12px!important;border:1px solid #dacdff!important;border-radius:10px!important;background:#f8f5ff!important}
+#mrCommandView .mr-command-return button{min-height:40px!important;padding:8px 14px!important;border:1px solid #987aef!important;border-radius:8px!important;background:#fff!important;color:#5933bd!important;font-size:13px!important;font-weight:850!important;cursor:pointer!important}
+#mrCommandView .mr-command-return span{font-size:13px!important;color:#594b86!important;font-weight:750!important;overflow-wrap:anywhere!important}
+#mrCommandView .mr-command-selected{display:flex!important;flex-direction:column!important;gap:10px!important;margin:0!important;padding:10px!important;border:1px solid #e2e8f3!important;border-radius:10px!important;background:#fcfdff!important}
+#mrCommandView .mr-command-selected>img{display:block!important;align-self:center!important;max-width:100%!important;width:100%!important;height:155px!important;min-height:155px!important;object-fit:contain!important;background:#fff!important;border-radius:8px!important}
+#mrCommandView .mr-command-selected>div{display:flex!important;flex-direction:column!important;gap:6px!important;min-width:0!important}
+#mrCommandView .mr-command-selected strong{font-size:14px!important;line-height:1.4!important;color:#22334e!important;overflow-wrap:anywhere!important}
+#mrCommandView .mr-command-selected small{font-size:12px!important;color:#687994!important}
+#mrCommandView .mr-command-selected p{font-size:12px!important;line-height:1.5!important;color:#536782!important;margin:0!important}
+#mrCommandView .mr-command-selected a,#mrCommandView .mr-command-selected span{font-size:12px!important;line-height:1.5!important;color:#6346a7!important;overflow-wrap:anywhere!important}
+#mrCommandView .mr-generated a{color:#6040af!important;text-decoration:underline!important;overflow-wrap:anywhere!important}
+#mrRouteView .mr-ig-detail-commands{margin:14px 0!important;padding:13px!important;border:1px solid #e4dcff!important;border-radius:10px!important;background:#faf8ff!important}
+#mrRouteView .mr-ig-detail-commands h2{margin:0 0 11px!important;font-size:15px!important;color:#3d3568!important}
+#mrRouteView .mr-ig-detail-commands>div{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+#mrRouteView .mr-ig-detail-commands button{min-height:38px!important;padding:8px 5px!important;border:1px solid #daccff!important;border-radius:7px!important;background:#fff!important;color:#6745b4!important;font-size:12px!important;font-weight:800!important;white-space:normal!important;cursor:pointer!important}
+#mrRouteView .mr-ig-detail-commands button:last-child{grid-column:1/-1!important}
+@media(max-width:760px){#mrCommandView .mr-command-return{align-items:stretch!important}#mrCommandView .mr-command-return button{width:100%!important}#mrCommandView .mr-command-return span{font-size:12px!important}#mrCommandView .mr-command-selected>img{height:125px!important;min-height:125px!important}}
