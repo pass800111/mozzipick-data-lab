@@ -15,7 +15,7 @@ async function run(){
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage product cards load");
  const css=await page.locator('link[href*="v33.css"]').last().getAttribute("href");
- check(css?.includes("all26-posters-r20"),"Current V3.4 r20 styles are linked");
+ check(css?.includes("all26-posters-mobile-r21"),"Current Instagram poster mobile styling is linked");
  await nav(page,"categories");
  check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort options");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("등급순");
