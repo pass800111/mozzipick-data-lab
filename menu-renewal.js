@@ -162,6 +162,9 @@ function renderRoute(){
  ((route==="favorites"||(route==="production"&&filter==="전체"))?orphanSavedNotice(route,missingKeys):'')+
  (route==="production"?productionRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):route==="quality"?qualityRows(a.slice((page-1)*PAGE,page*PAGE))+pageNav(a.length):a.length?'<div class="mr-card-grid'+(route==="instagram"?' mr-instagram-gallery':'')+'">'+a.slice((page-1)*PAGE,page*PAGE).map(p=>p.__ig?instagramCard(p):card(p)).join("")+'</div>'+pageNav(a.length):'<div class="mr-empty">현재 조건에 맞는 실제 데이터가 없습니다.</div>')+
  '</section>';
+ // Legacy global mobile grid overrides have higher cascade precedence on this
+ // static site. Apply the Instagram-only inline mobile layout after rendering.
+ if(route==="instagram"&&window.matchMedia("(max-width:760px)").matches){const gallery=$(".mr-instagram-gallery",root);gallery?.style.setProperty("grid-template-columns","repeat(2,minmax(0,1fr))","important");}
  const resetFilter=$("[data-reset-filter]",root);if(resetFilter)resetFilter.onclick=()=>{filter="전체";page=1;renderRoute()};
  $$("[data-production-remove]",root).forEach(b=>b.onclick=()=>{const key=b.dataset.productionRemove,q=read(Q,"[]").filter(x=>x!==key),m=read(M,"{}"),st=read(S,"{}");delete m[key];delete st[key];write(Q,q);write(M,m);write(S,st);window.dispatchEvent(new CustomEvent("mozzipick-production-change"));const y=window.scrollY;renderRoute();restoreScroll(y)});
  $$("[data-orphan-remove]",root).forEach(b=>b.onclick=()=>{const key=b.dataset.orphanRemove,kind=b.dataset.orphanKind;if(kind==="favorites"){write(F,read(F,"[]").filter(x=>x!==key));window.dispatchEvent(new CustomEvent("mozzipick-favorite-change"))}else if(kind==="production"){write(Q,read(Q,"[]").filter(x=>x!==key));const m=read(M,"{}"),s=read(S,"{}");delete m[key];delete s[key];write(M,m);write(S,s);window.dispatchEvent(new CustomEvent("mozzipick-production-change"))}renderRoute()});
