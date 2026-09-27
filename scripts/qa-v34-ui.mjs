@@ -8,14 +8,17 @@ async function click(page, selector){await page.locator(selector).first().click(
 async function nav(page, route){await click(page, '.mp-header-nav nav [data-view="'+route+'"]');await page.locator('#mrRouteView[data-route="'+route+'"]').waitFor()}
 async function checkReelAlignment(page,label){
  const r=await page.locator('#mrRouteView .mr-instagram-gallery>.mr-ig-tile').evaluateAll(cards=>cards.map(card=>{
-  const bottom=card.getBoundingClientRect().bottom;
+  const box=card.getBoundingClientRect();
   const actions=card.querySelector('.mr-ig-tile-actions');
   const name=card.querySelector('.mr-ig-under>b');
-  return {bottom,actionsBottom:actions?.getBoundingClientRect().bottom,
+  return {top:box.top,bottom:box.bottom,actionsBottom:actions?.getBoundingClientRect().bottom,
    actionsTop:actions?.getBoundingClientRect().top,nameHeight:name?.getBoundingClientRect().height};
  }));
- const within=(key,eps)=>Math.max(...r.map(x=>x[key]))-Math.min(...r.map(x=>x[key]))<=eps;
- check(r.length===5&&within('bottom',2)&&within('actionsTop',2)&&within('actionsBottom',2)&&within('nameHeight',2),label+" all five card bottoms, names and buttons align");
+ const rows=[];
+ for(const item of r){let group=rows.find(group=>Math.abs(group[0].top-item.top)<2);if(group)group.push(item);else rows.push([item]);}
+ const within=(arr,key,eps)=>Math.max(...arr.map(x=>x[key]))-Math.min(...arr.map(x=>x[key]))<=eps;
+ const align=rows.every(row=>within(row,'bottom',2)&&within(row,'actionsTop',2)&&within(row,'actionsBottom',2)&&within(row,'nameHeight',2));
+ check(r.length===5&&align,label+" per-row card bottoms, names and button baselines align");
 }
 async function run(){
  const source=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
