@@ -345,32 +345,59 @@ function parseCommand(q){const t=q.trim(),fav=read(F,"[]"),queue=read(Q,"[]"),gr
 function commandCenter(fromPop){if(!fromPop)pushNav("command:center");detailCommandContext=null;showMode("mr-command-active");const root=$("#mrCommandView"),labels=["상품 발굴","영상 대본","인스타 설명글","캡컷 가이드","자동 DM"],subs=["사이트에 등록된 바이럴 후보 검색","확인 정보 기반 릴스 대본 초안","인스타그램 설명글 초안","캡컷 편집 가이드 초안","인포크링크 DM 문구 초안"],icons=["🔎","🎬","📸","✂️","✈️"];root.innerHTML='<section class="mr-command-page"><header class="mr-command-showcase"><div class="mr-command-showcase-copy"><span>MOZZIPICK COMMAND</span><h1>원하는 상품을 <em>더 빠르게,</em><br>명령 한 번으로!</h1><p>사이트 내부 실제 데이터로 무료 검색·분류하고<br>명령을 실행하세요.</p></div><div class="mr-command-showcase-art" aria-hidden="true"><b>🤖</b><i>✨</i></div><div class="mr-command-benefits"><em>✓ 실제 데이터 기반</em><em>✓ 빠른 실행</em><em>✓ 전환에 최적화</em><button type="button" data-command-focus>✨ 명령 입력하기 →</button></div></header><div class="mr-command-search"><form id="mrCommandForm"><input id="mrCommandInput" placeholder="예: 차량용 A급 3만원 이상"><button>명령 실행</button></form><div class="mr-command-examples">'+["1 통합 바이럴 검색","1-1 국내 인스타 검색","1-2 해외 인스타 검색","1-3 쿠팡 통합 랭킹","차량용 A급 3만원 이상","즐겨찾기 보여줘","검증 필요한 상품"].map(x=>'<button type="button" data-example="'+x+'">'+x+'</button>').join("")+'</div><p class="mr-command-data-note">저장된 사이트 데이터 기반 조회·문구 초안입니다. 외부 플랫폼 실시간 검색과 AI 영상 생성·발행은 별도 연결이 필요합니다.</p></div><div id="mrCommandResults" class="mr-command-results"></div><div class="mr-command-grid">'+[1,2,3,4,5].map((n,i)=>'<button type="button" data-command="'+n+'" class="c'+n+'"><span class="mr-command-grid-icon">'+icons[i]+'</span><span><b>'+n+'번 '+labels[i]+'</b><small>'+subs[i]+'</small></span><i>›</i></button>').join("")+'</div></section>';const commandInput=$("#mrCommandInput"),commandResults=$("#mrCommandResults"),commandForm=$("#mrCommandForm");const run=()=>{if(!commandInput||!commandResults)return;if(!navRestoring)pushNav("command:center",true);const raw=commandInput.value.trim(),m=raw.match(/^1(?:-(1|2|3))?(?:\s|$)/);if(m){runSearchCommand(m[1]?"1-"+m[1]:"1",commandResults);storeScreen();return}const a=parseCommand(raw);commandResults.innerHTML='<section class="mr-search-report"><header><span>MOZZIPICK SEARCH REPORT</span><h2>검색 결과 보고서</h2><p>입력 명령: '+esc(raw)+'</p></header><div class="mr-report-summary"><b>최종 결과 '+a.length+'개</b><b>중복 제외 적용</b><b>실제 등록 데이터 기준</b></div>'+(a.length?'<div class="mr-card-grid">'+a.slice(0,20).map(card).join("")+'</div>':'<div class="mr-empty">조건에 맞는 실제 데이터가 없습니다.</div>')+'</section>';bind(commandResults);storeScreen()};if(commandForm)commandForm.onsubmit=e=>{e.preventDefault();run()};const focusBtn=$('[data-command-focus]',root);if(focusBtn)focusBtn.onclick=()=>commandInput?.focus();$$('[data-example]',root).forEach(b=>b.onclick=()=>{if(!commandInput)return;commandInput.value=b.dataset.example;run()});bind(root);activate("");if(!fromPop){storeScreen();window.scrollTo(0,0)}}
 const commandNames=["상품 발굴","영상 대본 (릴스·쇼츠·틱톡)","인스타 설명글","캡컷 제작 가이드","자동 DM"];
 const searchCommandNames={"1":"통합 바이럴 상품 검색","1-1":"국내 인스타 전자제품 검색","1-2":"해외 인스타 전자제품 검색","1-3":"쿠팡 통합 랭킹 검색"};
-function searchReport(cmd){
- const now=new Date(),all=[...products];
- const dateOf=p=>new Date(p.hotAt||p.rankingObservedAt||p.coupangVerifiedAt||p.siteUpdatedAt||p.timestamp||0);
- const days=p=>{const d=dateOf(p);return isNaN(d)?9999:Math.max(0,Math.floor((now-d)/86400000))};
- const num=v=>+String(v??0).replace(/[^0-9.]/g,"")||0;
- const hotScore=p=>{const rank=num(p.rank||p.coupangRank),reviews=num(p.reviews),sales=num(p.salesCount||p.sales),rating=num(p.rating);return (rank?100000/Math.max(rank,1):0)+sales*5+reviews*2+rating*100};
- const dedupe=a=>{const seen=new Set();return a.filter(p=>{const k=(name(p)+"|"+(p.brand||"")+"|"+(p.model||"")).toLowerCase().replace(/\s+/g," ");if(seen.has(k))return false;seen.add(k);return true})};
- const sortHot=a=>[...a].sort((x,y)=>hotScore(y)-hotScore(x)||dateOf(y)-dateOf(x));
- let title=searchCommandNames[cmd]||"검색",groups=null,items=[];
- if(cmd==="1")items=sortHot(dedupe(all.filter(p=>p.viralRadar||["S","A","B"].includes(p.viralGrade||p.grade))));
- if(cmd==="1-1")items=sortHot(dedupe(instagramProducts("domestic")));
- if(cmd==="1-2")items=sortHot(dedupe(instagramProducts("overseas")));
- if(cmd==="1-3"){
-   const ranked=dedupe(all.filter(p=>!p.rankingExcluded&&(p.coupangEligible||(p.coupangUrl&&p.coupangUrl!=="미확인")||p.coupangRank||p.rank||p.salesCount||p.reviews)));
-   groups={S:sortHot(ranked.filter(p=>days(p)<=3)),A:sortHot(ranked.filter(p=>days(p)>3&&days(p)<=15)),B:sortHot(ranked.filter(p=>days(p)>15))};
-   items=[...groups.S,...groups.A,...groups.B]
+function searchReport(cmd,pages={}){
+ const now=Date.now(),all=[...products],limit=20;
+ const date=v=>{const n=Date.parse(v||"");return Number.isFinite(n)?n:0};
+ const num=v=>{const s=String(v??"").replace(/,/g,"");return /^\d+(?:\.\d+)?(?:개|건|명|점|위)?$/.test(s)?parseFloat(s):0};
+ const score=p=>{const rank=num(p.coupangRank),reviews=num(p.reviews),sales=num(p.salesCount||p.sales),rating=num(p.rating);return (rank?100000/rank:0)+sales*5+reviews*2+rating*100};
+ const dedupe=a=>{const seen=new Set();return a.filter(p=>{
+  const reel=p.__ig?instagramShortcode(p.reel):"",coupangId=String(p.coupangUrl||"").match(/coupang\.com\/vp\/products\/(\d+)/)?.[1]||"";
+  const key=reel?"reel:"+reel:coupangId?"coupang:"+coupangId:"name:"+keyNorm(name(p))+"|"+keyNorm(p.model||"");
+  if(seen.has(key))return false;seen.add(key);return true
+ })};
+ const sortHot=a=>[...a].sort((x,y)=>score(y)-score(x)||date(y.hotAt||y.rankingObservedAt||y.coupangVerifiedAt||y.siteUpdatedAt)-date(x.hotAt||x.rankingObservedAt||x.coupangVerifiedAt||x.siteUpdatedAt));
+ const sortReels=a=>[...a].sort((x,y)=>num(y.views)-num(x.views)||num(y.likes)-num(x.likes)||num(y.comments)-num(x.comments)||date(y.siteUpdatedAt)-date(x.siteUpdatedAt));
+ const eligible=p=>!p.rankingExcluded&&p.coupangEligible&&/^https:\/\/(?:www\.)?coupang\.com\/vp\/products\/\d+/i.test(String(p.coupangUrl||""));
+ const period=p=>{const t=date(p.hotAt||p.rankingObservedAt)||date(p.coupangVerifiedAt);if(!t||t>now)return "unknown";const days=(now-t)/86400000;return days<=3?"S":days<=15?"A":"B"};
+ let groups=null,items=[],note="";
+ if(cmd==="1"){items=sortHot(dedupe(all.filter(p=>p.viralRadar||["S","A","B"].includes(p.viralGrade||p.grade)))).slice(0,limit);note="저장된 바이럴 후보를 중복 제거한 결과입니다. Instagram·샤오홍슈·TikTok·Coupang 출처가 등록되지 않은 항목은 추가 교차검증이 필요합니다."}
+ if(cmd==="1-1"||cmd==="1-2"){
+  const isDomestic=cmd==="1-1",allReels=dedupe(instagramProducts(isDomestic?"domestic":"overseas"));
+  const recent=allReels.filter(p=>{const t=date(p.siteUpdatedAt);return t>0&&t<=now&&now-t<=14*86400000});
+  items=sortReels(recent).slice(0,limit);
+  note=(isDomestic?"국내":"해외")+" 릴스 게시일 기준 최근 14일 · 조회수→좋아요→댓글순 · 최대 20개. 기간 외·게시일 미확인 "+(allReels.length-recent.length)+"개 제외. 저장된 수집 데이터이며 현재 Instagram 실시간 검색은 아닙니다."
  }
- const cards=a=>a.length?'<div class="mr-card-grid'+(a[0]?.__ig?' mr-instagram-gallery':'')+'">'+a.slice(0,20).map(p=>p.__ig?instagramCard(p):card(p)).join("")+'</div>':'<div class="mr-empty">확인된 상품이 없습니다.</div>';
- const generated=new Date().toLocaleString("ko-KR");
- let html='<section class="mr-search-report"><header><span>MOZZIPICK SEARCH REPORT</span><h2>'+esc(cmd)+' · '+esc(title)+'</h2><p>검색 시각 '+esc(generated)+' · 중복 제거 후 실제 등록·수집 데이터 기준</p></header>';
+ if(cmd==="1-3"){
+  groups={S:[],A:[],B:[],unknown:[]};
+  for(const p of dedupe(all.filter(eligible)))groups[period(p)].push(p);
+  for(const k of ["S","A","B","unknown"])groups[k]=sortHot(groups[k]);
+  items=[...groups.S,...groups.A,...groups.B,...groups.unknown];
+  note="상품 등록일은 인기도 관측일로 사용하지 않습니다. 랭킹 관측일이 없을 경우 쿠팡 판매처 확인일로 시점을 임시 분류합니다. 판매처 확인만으로 인기·판매량·급상승을 입증하는 것은 아닙니다."
+ }
+ const cards=(data,group)=>{const total=data.length,current=Math.min(Math.max(+pages[group]||1,1),Math.max(1,Math.ceil(total/5))),view=data.slice((current-1)*5,current*5);
+  const pager=total>5?'<nav class="mr-pager mr-report-pager" aria-label="'+esc(group)+' 보고서 페이지">'+Array.from({length:Math.ceil(total/5)},(_,i)=>'<button type="button" data-report-group="'+esc(group)+'" data-report-page="'+(i+1)+'" class="'+(current===i+1?'active':'')+'" '+(current===i+1?'aria-current="page"':'')+'>'+(i+1)+'</button>').join("")+'</nav>':"";
+  return (view.length?'<div class="mr-card-grid'+(view[0]?.__ig?' mr-instagram-gallery':'')+'">'+view.map(p=>p.__ig?instagramCard(p):card(p)).join("")+'</div>':'<div class="mr-empty">조건에 맞는 수집 자료가 없습니다.</div>')+pager
+ };
+ let html='<section class="mr-search-report" data-report-code="'+esc(cmd)+'"><header><span>MOZZIPICK SEARCH REPORT</span><h2>'+esc(cmd)+' · '+esc(searchCommandNames[cmd]||"검색")+'</h2><p>조회 시각 '+esc(new Date().toLocaleString("ko-KR"))+' · 사이트 저장 데이터 기준 (외부 실시간 검색 아님)</p></header>';
  if(groups){
-   html+='<div class="mr-report-rule"><b>1-3 쿠팡 통합 랭킹 기준</b><span>S · 최근 3일 이내 인기·판매·리뷰 반응이 가장 뜨거운 상품</span><span>A · 3일 초과~15일 이내 가장 뜨거웠던 상품</span><span>B · 15일 초과 상품</span><small>동일 상품은 1회만 포함하며, 확인 가능한 랭킹·판매·리뷰 지표를 우선해 정렬합니다. 기준 날짜는 랭킹 관측일·쿠팡 검증일·등록일 순으로 사용합니다.</small></div><div class="mr-report-summary"><b>전체 '+items.length+'개</b><b>S등급 '+groups.S.length+'개</b><b>A등급 '+groups.A.length+'개</b><b>B등급 '+groups.B.length+'개</b></div><h3>S등급 · 최근 3일</h3>'+cards(groups.S)+'<h3>A등급 · 3일 초과~15일</h3>'+cards(groups.A)+'<h3>B등급 · 15일 초과</h3>'+cards(groups.B)
- } else html+='<div class="mr-report-summary"><b>최종 결과 '+items.length+'개</b><b>중복 제거 적용</b><b>보고서 생성 완료</b></div>'+cards(items);
+  html+='<div class="mr-report-rule"><b>1-3 쿠팡 통합 보고서</b><span>S · 최근 3일 이내</span><span>A · 3일 초과~15일</span><span>B · 15일 초과</span><small>'+esc(note)+'</small></div>'+
+   '<div class="mr-report-summary"><b>전체 '+items.length+'개</b><b>S '+groups.S.length+'개</b><b>A '+groups.A.length+'개</b><b>B '+groups.B.length+'개</b></div>'+
+   '<h3>S등급 · 최근 3일</h3>'+cards(groups.S,"S")+'<h3>A등급 · 3일 초과~15일</h3>'+cards(groups.A,"A")+'<h3>B등급 · 15일 초과</h3>'+cards(groups.B,"B")+
+   (groups.unknown.length?'<h3>시점 미확인 · 추가 검증 '+groups.unknown.length+'개</h3>'+cards(groups.unknown,"unknown"):"")
+ }else html+='<div class="mr-report-summary"><b>최종 '+items.length+'개</b><b>중복 제거 적용</b><b>5개/페이지</b></div><p class="mr-command-data-note">'+esc(note)+'</p>'+cards(items,"all");
  return html+'</section>'
 }
-function runSearchCommand(cmd,root){if(!root)return;root.dataset.reportCommand=cmd;root.innerHTML=searchReport(cmd);bind(root)}
+function runSearchCommand(cmd,root,pages={}){
+ if(!root||!Object.prototype.hasOwnProperty.call(searchCommandNames,cmd))return;
+ root.dataset.reportCommand=cmd;root.dataset.reportPages=JSON.stringify(pages);
+ root.innerHTML=searchReport(cmd,pages);bind(root);
+ $$("[data-report-page]",root).forEach(button=>button.onclick=()=>{
+  const key=button.dataset.reportGroup,n=+button.dataset.reportPage,prev=JSON.parse(root.dataset.reportPages||"{}");
+  if(prev[key]===n)return;
+  pushNav(history.state?.mozzipick||"command:center",true);
+  prev[key]=n;runSearchCommand(cmd,root,prev);storeScreen();
+ });
+}
 
 function commandPage(n,fromPop){if(!fromPop)pushNav("command:"+n);showMode("mr-command-active");const p=selected||products[0],root=$("#mrCommandView"),nm=p?name(p):"상품을 선택해 주세요";root.innerHTML='<section class="mr-command-detail">'+(detailCommandContext?'<div class="mr-command-return"><button type="button" data-return-product>← 원래 상품 상세로 돌아가기</button><span>명령 대상: '+esc(nm)+'</span></div>':'')+'<header><div><span>MOZZIPICK COMMAND · '+n+'번</span><h1>'+commandNames[n-1]+'</h1><p>'+esc(nm)+' 기준 작업 화면</p></div><nav class="mr-command-quick" aria-label="명령어 바로가기">'+[1,2,3,4,5].map(x=>'<button type="button" data-command="'+x+'" class="'+(x===n?'active':'')+'"><b>'+x+'번</b><small>'+commandNames[x-1]+'</small></button>').join("")+'</nav></header>'+(n===1?'<div class="mr-search-command-strip"><button type="button" data-search-command="1">1 통합 바이럴</button><button type="button" data-search-command="1-1">1-1 국내 인스타</button><button type="button" data-search-command="1-2">1-2 해외 인스타</button><button type="button" data-search-command="1-3">1-3 쿠팡 통합 랭킹</button></div><div class="mr-inline-search-report" data-inline-search-report></div>':'')+'<div class="mr-command-layout"><aside><div class="mr-command-product-head"><h2>선택 상품</h2><button type="button" data-change-product>상품 변경</button></div>'+(p?commandSelection(p):'<div class="mr-empty">상품 미선택</div>')+'<div class="mr-command-picker" data-product-picker hidden><input type="search" data-product-search placeholder="상품명 · 카테고리 검색"><div class="mr-command-picker-list"></div><div class="mr-command-picker-pager" data-product-picker-pager></div></div></aside><main><h2>생성 결과</h2><div class="mr-generated">'+commandOutput(n,p)+'</div><button type="button" data-copy-command>결과 복사하기</button></main><aside><h2>옵션 설정</h2>'+commandOptions(n)+'</aside></div></section>';bind(root);const detailBack=$('[data-return-product]',root);if(detailBack)detailBack.onclick=returnToDetailCommandSource;if(n===1){const reportBox=$('[data-inline-search-report]',root);$$('[data-search-command]',root).forEach(b=>b.onclick=()=>{pushNav("command:"+n,true);runSearchCommand(b.dataset.searchCommand,reportBox);storeScreen()})}const changeBtn=$('[data-change-product]',root),picker=$('[data-product-picker]',root),search=$('[data-product-search]',root),pickerList=$('.mr-command-picker-list',root),pager=$('[data-product-picker-pager]',root);let pickerPage=1;const PICKER_PAGE=5;function chooseProduct(id){const np=find(id);if(!np)return;pushNav("command:"+n,true);selected=np;commandPage(n,true);storeScreen()}function drawPicker(q="",pg=1){const term=(q||"").trim().toLowerCase(),all=allSavedProducts().filter(x=>!term||(name(x)+' '+(x.category||'')+' '+(x.username||'')).toLowerCase().includes(term)),pages=Math.max(1,Math.ceil(all.length/PICKER_PAGE));pickerPage=Math.min(Math.max(1,pg),pages);const items=all.slice((pickerPage-1)*PICKER_PAGE,pickerPage*PICKER_PAGE);pickerList.innerHTML=items.length?items.map(x=>'<button type="button" data-pick-product="'+esc(x.id||name(x))+'"><b>'+esc(name(x))+'</b><small>'+esc(x.category||"카테고리 미확인")+'</small></button>').join(""):'<p class="mr-empty">검색 결과가 없습니다.</p>';pager.innerHTML=pages>1?'<button type="button" data-picker-prev '+(pickerPage===1?'disabled':'')+'>‹</button><span>'+pickerPage+' / '+pages+'</span><button type="button" data-picker-next '+(pickerPage===pages?'disabled':'')+'>›</button>':'';$$('[data-pick-product]',pickerList).forEach(b=>b.onclick=()=>chooseProduct(b.dataset.pickProduct));const prev=$('[data-picker-prev]',pager),next=$('[data-picker-next]',pager);if(prev)prev.onclick=()=>drawPicker(search.value,pickerPage-1);if(next)next.onclick=()=>drawPicker(search.value,pickerPage+1)}if(changeBtn)changeBtn.onclick=()=>{picker.hidden=!picker.hidden;if(!picker.hidden){drawPicker("",1);search?.focus()}};if(search)search.oninput=()=>drawPicker(search.value,1);const copyBtn=$('[data-copy-command]',root),generated=$('.mr-generated',root);if(copyBtn)copyBtn.onclick=async()=>{if(!generated)return;const text=generated.innerText;let copied=false;
  if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);copied=true}catch(e){}}
