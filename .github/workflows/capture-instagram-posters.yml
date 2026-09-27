@@ -1,0 +1,66 @@
+name: Capture original Instagram reel posters
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/capture-instagram-posters.mjs"
+      - ".github/workflows/capture-instagram-posters.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mozzipick-original-instagram-posters
+  cancel-in-progress: false
+jobs:
+  exact-original-poster-capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install browser and image validation dependencies
+        run: |
+          npm install --no-save playwright@1.55.1 sharp@0.34.3
+          npx playwright install --with-deps chromium
+      - name: Capture official original post media into 360x640 JPEGs
+        run: node scripts/capture-instagram-posters.mjs
+      - name: Confirm exact shortcodes and dimensions
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+          import sharp from 'sharp';
+          const d=JSON.parse(fs.readFileSync('data/instagram-electronics.json','utf8'));
+          for(const p of [...(d.domestic||[]),...(d.overseas||[])]){
+            if(!p.thumbnail?.startsWith('assets/instagram/'))continue;
+            const shortcode=p.reel?.match(/\/(?:p|reel)\/([A-Za-z0-9_-]+)/)?.[1];
+            if(p.thumbnail!=='assets/instagram/'+shortcode+'.jpg')throw Error('Mismatched reel: '+shortcode);
+            const m=await sharp(p.thumbnail).metadata();
+            if(m.width!==360||m.height!==640)throw Error('Wrong dimensions: '+p.thumbnail);
+            console.log('VERIFIED',shortcode,m.width+'x'+m.height);
+          }
+          EOF
+      - name: Upload progress and failed URL report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-instagram-poster-capture
+          path: |
+            instagram-poster-capture-report.json
+            assets/instagram/*.jpg
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Publish only successfully matched real source posters
+        run: |
+          if ! git diff --quiet -- data/instagram-electronics.json || [ -n "$(git ls-files --others --exclude-standard assets/instagram)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/instagram-electronics.json assets/instagram/*.jpg
+            git commit -m "Register verified original Instagram reel thumbnails at 360x640"
+            git push
+          else
+            echo "No unverified placeholders substituted; no new original posters available."
+          fi
