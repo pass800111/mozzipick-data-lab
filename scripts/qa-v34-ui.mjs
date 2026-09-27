@@ -40,9 +40,15 @@ async function run(){
  await page.locator('#mrRouteView .mr-detail-page').waitFor();
  check(await page.locator('#mrRouteView [data-copyword]').count()===4,"Product detail four search keywords");
  const productBefore=await page.locator('#mrRouteView .mr-detail-summary h1').innerText();
+ check(await page.evaluate(()=>/^detail:/.test(history.state?.mozzipick||"")),"Opening product detail adds dedicated browser history entry");
  await click(page,'#mrRouteView .mr-detail-quick [data-command="2"]');
  await page.locator('#mrCommandView .mr-command-return [data-return-product]').waitFor();
  check((await page.locator('#mrCommandView .mr-command-selected strong').innerText())===productBefore,"Detail command uses exact selected product");
+ await page.evaluate(()=>history.back());
+ await page.locator('#mrRouteView .mr-detail-page').waitFor();
+ check(await page.evaluate(()=>/^detail:/.test(history.state?.mozzipick||"")),"Browser back from command restores detail history entry");
+ check((await page.locator('#mrRouteView .mr-detail-summary h1').innerText())===productBefore,"Browser back restores exact original product detail");
+ await click(page,'#mrRouteView .mr-detail-quick [data-command="2"]');
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("나도"),"Detail script includes complete comment CTA");
  await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택 형식: 리뷰형"),"Detail script option produces selected review draft");
@@ -54,8 +60,15 @@ async function run(){
  await click(page,'#mrCommandView [data-return-product]');
  await page.locator('#mrRouteView .mr-detail-page').waitFor();
  check((await page.locator('#mrRouteView .mr-detail-summary h1').innerText())===productBefore,"Return from command restores original detail");
-
+ check(await page.evaluate(()=>/^detail:/.test(history.state?.mozzipick||"")),"Command return lands on detail history entry");
+ await page.evaluate(()=>history.back());
+ await page.locator('#mrRouteView [data-sort-order]').waitFor();
+ check(await page.evaluate(()=>history.state?.mozzipick==="route:categories"),"Browser back from detail restores original category URL state");
+ check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Browser back restores category sort");
+ await click(page,'#mrRouteView .mr-card [data-detail]');
  await click(page,'#mrRouteView [data-detail-back]');
+ await page.locator('#mrRouteView [data-sort-order]').waitFor();
+ check(await page.evaluate(()=>history.state?.mozzipick==="route:categories"),"On-page detail back restores original history entry");
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Detail back restores sort");
  await nav(page,"instagram");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Domestic gallery five reels");
@@ -86,6 +99,10 @@ async function run(){
  await click(page,'#mrRouteView .mr-ig-detail-commands [data-command="3"]');
  await page.locator('#mrCommandView [data-return-product]').waitFor();
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes(reelBefore),"Reel detail command uses exact original reel product");
+ await page.evaluate(()=>history.back());
+ await page.locator('#mrRouteView .mr-ig-detail').waitFor();
+ check((await page.locator('#mrRouteView .mr-ig-detail-info h1').innerText())===reelBefore,"Browser back restores Instagram detail rather than skipping to reel list");
+ await click(page,'#mrRouteView .mr-ig-detail-commands [data-command="3"]');
  await click(page,'#mrCommandView [data-return-product]');
  await page.locator('#mrRouteView .mr-ig-detail').waitFor();
  check((await page.locator('#mrRouteView .mr-ig-detail-info h1').innerText())===reelBefore,"Return from reel command restores same Instagram detail");
@@ -156,6 +173,14 @@ async function run(){
  check(dims.children.length===2&&dims.children[0]<dims.width*.7,"Mobile gallery uses two columns");
  await click(mobile,'#mrRouteView .mr-ig-tile [data-ig-detail]');
  check(await mobile.locator('#mrRouteView .mr-ig-detail').isVisible(),"Mobile reel detail opens");
+ await click(mobile,'#mrRouteView .mr-ig-detail-commands [data-command="2"]');
+ await mobile.locator('#mrCommandView [data-return-product]').waitFor();
+ await mobile.evaluate(()=>history.back());
+ await mobile.locator('#mrRouteView .mr-ig-detail').waitFor();
+ check(await mobile.evaluate(()=>/^detail:/.test(history.state?.mozzipick||"")),"Mobile device back returns to original reel detail");
+ await mobile.evaluate(()=>history.back());
+ await mobile.locator('#mrRouteView .mr-instagram-gallery').waitFor();
+ check(await mobile.evaluate(()=>history.state?.mozzipick==="route:instagram"),"Mobile device back returns to original Instagram list");
  await page.close();await mobile.close();
 }
 try{await run();}catch(e){errors.push(e.stack||String(e));process.exitCode=1;}finally{
