@@ -48,6 +48,11 @@ async function run(){
  await page.locator('#mrRouteView .mr-detail-page').waitFor();
  check(await page.evaluate(()=>/^detail:/.test(history.state?.mozzipick||"")),"Browser back from command restores detail history entry");
  check((await page.locator('#mrRouteView .mr-detail-summary h1').innerText())===productBefore,"Browser back restores exact original product detail");
+ await page.evaluate(()=>history.forward());
+ await page.locator('#mrCommandView [data-return-product]').waitFor();
+ check((await page.locator('#mrCommandView .mr-command-selected strong').innerText())===productBefore,"Browser forward restores command bound to the same product");
+ await click(page,'#mrCommandView [data-return-product]');
+ await page.locator('#mrRouteView .mr-detail-page').waitFor();
  await click(page,'#mrRouteView .mr-detail-quick [data-command="2"]');
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("나도"),"Detail script includes complete comment CTA");
  await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
@@ -65,6 +70,11 @@ async function run(){
  await page.locator('#mrRouteView [data-sort-order]').waitFor();
  check(await page.evaluate(()=>history.state?.mozzipick==="route:categories"),"Browser back from detail restores original category URL state");
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Browser back restores category sort");
+ await page.evaluate(()=>history.forward());
+ await page.locator('#mrRouteView .mr-detail-page').waitFor();
+ check((await page.locator('#mrRouteView .mr-detail-summary h1').innerText())===productBefore,"Browser forward restores the original detail");
+ await page.evaluate(()=>history.back());
+ await page.locator('#mrRouteView [data-sort-order]').waitFor();
  await click(page,'#mrRouteView .mr-card [data-detail]');
  await click(page,'#mrRouteView [data-detail-back]');
  await page.locator('#mrRouteView [data-sort-order]').waitFor();
