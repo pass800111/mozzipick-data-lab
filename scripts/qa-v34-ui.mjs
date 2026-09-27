@@ -15,7 +15,7 @@ async function run(){
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage product cards load");
  const css=await page.locator('link[href*="v33.css"]').last().getAttribute("href");
- check(css?.includes("instagram-final"),"Latest Instagram styling loaded");
+ check(css?.includes("all26-posters-r20"),"Current V3.4 r20 styles are linked");
  await nav(page,"categories");
  check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort options");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("등급순");
@@ -29,6 +29,8 @@ async function run(){
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Detail back restores sort");
  await nav(page,"instagram");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Domestic gallery five reels");
+ await page.waitForFunction(()=>{const imgs=[...document.querySelectorAll("#mrRouteView .mr-ig-tile img")];return imgs.length===5&&imgs.every(x=>x.complete&&x.naturalWidth>0)},null,{timeout:18000});
+ check(true,"All five visible domestic source poster files actually load");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile [data-prod]').count()===5,"Every reel has production control");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile [data-fav]').count()===5,"Every reel has favorite control");
  await click(page,'#mrRouteView .mr-ig-tile .mr-ig-cover');
@@ -72,6 +74,8 @@ async function run(){
  await nav(page,"instagram");
  await click(page,'#mrRouteView [data-filter="해외상품"]');
  check(await page.locator('#mrRouteView .mr-ig-tile').count()===5,"Overseas first page has five");
+ await page.waitForFunction(()=>{const imgs=[...document.querySelectorAll("#mrRouteView .mr-ig-tile img")];return imgs.length===5&&imgs.every(x=>x.complete&&x.naturalWidth>0)},null,{timeout:18000});
+ check(true,"All five visible overseas original posters actually load");
  check(await page.locator('#mrRouteView .mr-pager button').count()===4,"Overseas gallery has four pages");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("좋아요순");
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="좋아요순","Instagram likes sort");
