@@ -46,37 +46,35 @@ function restoreDetailCommandSource(){
 }
 function returnToDetailCommandSource(){
  if(!detailCommandContext)return;
- if(/^command:[1-5]$/.test(history.state?.mozzipick||""))history.back();
- else restoreDetailCommandSource()
+ const origin=detailCommandContext.originIndex,current=history.state?.mpIndex;
+ if(Number.isInteger(origin)&&Number.isInteger(current)&&current>origin){history.go(origin-current);return}
+ restoreDetailCommandSource();
+ storeScreen();
 }
 function openDetailCommand(n){
  if(!selected||!Number.isInteger(n)||n<1||n>5)return;
  if(!detailCommandContext)detailCommandContext={
   id:String(selected.id||name(selected)),route,filter,page,
-  detailReturn:detailReturn?{...detailReturn}:null,y:window.scrollY
+  detailReturn:detailReturn?{...detailReturn}:null,y:window.scrollY,
+  originIndex:history.state?.mpIndex
  };
  commandPage(n)
 }
 function returnFromDetail(fromPop=false){
- // A detail is its own history entry. Let the browser pop it before restoring the list.
- if(!fromPop&&detailReturn&&/^detail:/.test(history.state?.mozzipick||"")){history.back();return}
- const back=detailReturn;
- selected=null;
- detailReturn=null;
+ if(!fromPop&&/^detail:/.test(history.state?.mozzipick||"")&&history.state?.mpIndex>0){history.back();return}
+ const back=detailReturn;selected=null;detailReturn=null;detailCommandContext=null;
  if(back){
-   route=back.route;
-   filter=back.filter;
-   page=back.page;
-   if(back.mode==="command"){selected=find(back.commandProductId)||(detailCommandContext?find(detailCommandContext.id):null);if(/^command:[1-5]$/.test(back.commandState))commandPage(+back.commandState.slice(8),true);else{commandCenter(true);if(back.commandQuery){const input=$("#mrCommandInput"),form=$("#mrCommandForm");if(input&&form){input.value=back.commandQuery;form.requestSubmit()}}}}
-   else if(back.mode==="dashboard"||route==="dashboard")renderHome();
-   else renderRoute();
-   restoreScroll(back.y);
-   return;
+  route=back.route;filter=back.filter;page=back.page;
+  if(back.mode==="command"){
+   selected=find(back.commandProductId);
+   if(/^command:[1-5]$/.test(back.commandState))commandPage(+back.commandState.slice(8),true);
+   else {commandCenter(true);const input=$("#mrCommandInput"),form=$("#mrCommandForm");if(input&&form&&back.commandQuery){input.value=back.commandQuery;form.requestSubmit()}}
+  }else if(back.mode==="dashboard"||route==="dashboard")renderHome(true);
+  else renderRoute();
+  restoreScroll(back.y);storeScreen();return;
  }
- const active=$(".mp-header-nav nav button.on[data-view]")||$("footer [data-mobile-view].on");
- const v=active?.dataset?.view||active?.dataset?.mobileView;
- if(v&&config[v]){route=v;filter=config[v][4][0];page=1;renderRoute();return}
- renderHome();
+ if(config[route])renderRoute();else renderHome(true);
+ storeScreen();
 }
 async function load(){const [a,b]=await Promise.all([fetch("data/products.json?u="+Date.now(),{cache:"no-store"}).then(r=>r.json()),fetch("data/instagram-electronics.json?u="+Date.now(),{cache:"no-store"}).then(r=>r.json()).catch(()=>({}))]);products=Array.isArray(a)?a:(a.products||[]);ig={domestic:Array.isArray(b.domestic)?b.domestic:[],overseas:Array.isArray(b.overseas)?b.overseas:[]}}
 function setup(){[...document.body.childNodes].filter(n=>n.nodeType===3&&n.textContent.trim()==="\\n").forEach(n=>n.remove());const main=$(".main");if(!main)return;for(const [id,cl] of [["mrHomeDashboard","mr-home-dashboard"],["mrRouteView","mr-route-view"],["mrCommandView","mr-command-view"]])if(!$("#"+id)){const x=document.createElement("section");x.id=id;x.className=cl;main.prepend(x)}const search=$(".mp-header-search,.global-search");if(search&&!$("#mrCommandButton")){const b=document.createElement("button");b.id="mrCommandButton";b.type="button";b.className="mr-command-button";b.textContent="✨ 모찌픽 명령";search.appendChild(b);b.onclick=()=>commandCenter()}}
@@ -226,21 +224,117 @@ function section(title,sub,a,target){
  $$('[data-search-command]',root).forEach(b=>b.onclick=()=>{commandCenter();setTimeout(()=>{const inp=$("#mrCommandInput");if(inp){inp.value=b.dataset.searchCommand;$("#mrCommandForm")?.requestSubmit()}},0)});
  $$('[data-command-open]',root).forEach(b=>b.onclick=()=>commandCenter());
  activate("dashboard")
-}function pushNav(state){const cur=history.state&&history.state.mozzipick;if(cur===state)return;history.pushState({mozzipick:state},"","#mp="+encodeURIComponent(state))}
-function pushDetailNav(id){
- const state="detail:"+encodeURIComponent(String(id));
- if(history.state?.mozzipick!==state)history.pushState({mozzipick:state},"",location.href);
+} 
+// V3.5 r27: a screen entry contains its complete view, not only the menu name.
+// This is shared by desktop browser controls, Android back, navigation buttons and the picker.
+let navRestoring=false;
+function screenKind(){
+ if($(".mr-ig-preview-overlay"))return "preview";
+ if(document.body.classList.contains("mr-command-active"))return $("#mrCommandView .mr-command-detail")?"command":"command:center";
+ if(document.body.classList.contains("mr-dashboard-active"))return "dashboard";
+ if($("#mrRouteView .mr-detail-page,#mrRouteView .mr-ig-detail")&&document.body.classList.contains("mr-route-active"))return "detail";
+ return "route";
 }
-function seedHistory(){let initial="home";try{const h=location.hash.startsWith("#mp=")?decodeURIComponent(location.hash.slice(4)):"home";if(h==="home"||h==="command:center"||/^command:[1-5]$/.test(h)||(h.startsWith("route:")&&config[h.slice(6)]))initial=h}catch(e){}history.replaceState({mozzipick:"home-base"},"",location.href.replace(/#mp=.*$/,""));history.pushState({mozzipick:initial},"","#mp="+encodeURIComponent(initial));return initial}
-function go(v,fromPop){detailCommandContext=null;route=v;filter=config[v][4][0];page=1;if(!fromPop)pushNav("route:"+v);renderRoute();window.scrollTo({top:0,behavior:"auto"})}
+function captureScreen(){
+ const mode=screenKind(),picker=$("[data-product-picker]"),report=$("[data-inline-search-report]");
+ return {mode,route,filter,page,sort:{...sortState},igQuery,
+  selectedId:selected?String(selected.id||name(selected)):"",
+  detailReturn:detailReturn?{...detailReturn}:null,
+  detailCommandContext:mode==="detail"?null:detailCommandContext?{...detailCommandContext}:null,
+  scrollY:window.scrollY,
+  commandQuery:$("#mrCommandInput")?.value||"",
+  commandReport:!!$("#mrCommandResults .mr-search-report"),
+  inlineCommand:report?.dataset?.reportCommand||"",
+  commandNumber:+($("#mrCommandView .mr-command-detail header span")?.textContent.match(/([1-5])번/)||[])[1]||0,
+  scriptFormat:$('[name="mr-script-format"]:checked')?.value||"",
+  pickerOpen:!!picker&&!picker.hidden,pickerQuery:$("[data-product-search]")?.value||"",
+  previewId:$(".mr-ig-preview-overlay")?.dataset.previewId||""};
+}
+function storeScreen(){
+ if(navRestoring)return;
+ const state=history.state;
+ if(!state||typeof state.mozzipick!=="string")return;
+ history.replaceState({...state,mpView:captureScreen()},"",location.href);
+}
+function pushNav(state,force=false){
+ if(navRestoring)return;
+ storeScreen();
+ const current=history.state||{};
+ if(!force&&current.mozzipick===state)return;
+ const index=(Number.isInteger(current.mpIndex)?current.mpIndex:0)+1;
+ history.pushState({mozzipick:state,mpIndex:index},"","#mp="+encodeURIComponent(state));
+}
+function pushDetailNav(id){pushNav("detail:"+encodeURIComponent(String(id)),true)}
+function seedHistory(){
+ let initial="home";
+ try{
+  const h=location.hash.startsWith("#mp=")?decodeURIComponent(location.hash.slice(4)):"home";
+  if(h==="home"||h==="command:center"||/^command:[1-5]$/.test(h)||/^detail:/.test(h)||(h.startsWith("route:")&&config[h.slice(6)]))initial=h;
+ }catch(e){}
+ history.replaceState({mozzipick:initial,mpIndex:0},"","#mp="+encodeURIComponent(initial));
+ return initial;
+}
+function restoreScreen(entry){
+ navRestoring=true;
+ try{
+  const state=entry||{},ui=state.mpView,token=state.mozzipick||"home";
+  document.querySelector(".mr-ig-preview-overlay")?.dispatchEvent(new CustomEvent("mozzipick-preview-force-close"));
+  if(ui){
+   if(ui.sort)Object.assign(sortState,ui.sort);
+   route=ui.route||"dashboard";filter=ui.filter||"전체";page=Math.max(1,+ui.page||1);igQuery=ui.igQuery||"";
+   selected=ui.selectedId?find(ui.selectedId):null;
+   detailReturn=ui.detailReturn?{...ui.detailReturn}:null;
+   detailCommandContext=ui.detailCommandContext?{...ui.detailCommandContext}:null;
+   if(ui.mode==="dashboard")renderHome(true);
+   else if(ui.mode==="route")renderRoute();
+   else if(ui.mode==="detail"&&selected){selected.__ig?renderInstagramDetail(selected,true):renderDetail(selected,true)}
+   else if(ui.mode==="command:center"){
+    commandCenter(true);
+    const input=$("#mrCommandInput"),form=$("#mrCommandForm");
+    if(input)input.value=ui.commandQuery||"";
+    if(ui.commandReport&&form)form.requestSubmit();
+   }else if(ui.mode==="command"){
+    const n=ui.commandNumber||(+((token.match(/^command:([1-5])$/)||[])[1]))||1;
+    commandPage(n,true);
+    if(ui.scriptFormat){const fmt=$$('[name="mr-script-format"]').find(el=>el.value===ui.scriptFormat);if(fmt){fmt.checked=true;fmt.dispatchEvent(new Event("change",{bubbles:true}))}}
+    if(ui.inlineCommand)runSearchCommand(ui.inlineCommand,$("[data-inline-search-report]"));
+    if(ui.pickerOpen){$("[data-change-product]")?.click();const input=$("[data-product-search]");if(input&&ui.pickerQuery){input.value=ui.pickerQuery;input.dispatchEvent(new Event("input",{bubbles:true}))}}
+   }else if(ui.mode==="preview"){
+    if(ui.route==="dashboard")renderHome(true);else renderRoute();
+    if(ui.previewId)openInstagramFreePreview(ui.previewId,null,true);
+   }else if(ui.route&&config[ui.route])renderRoute();
+   else renderHome(true);
+   restoreScroll(ui.scrollY);
+   return;
+  }
+  // An old bookmark / pre-r27 entry has no snapshot: honor its explicit route.
+  detailCommandContext=null;detailReturn=null;selected=null;
+  if(token==="home"||token==="home-base")renderHome(true);
+  else if(token.startsWith("route:")&&config[token.slice(6)]){route=token.slice(6);filter=config[route][4][0];page=1;renderRoute()}
+  else if(token==="command:center")commandCenter(true);
+  else if(/^command:[1-5]$/.test(token))commandPage(+token.slice(8),true);
+  else if(token.startsWith("detail:")){
+   let id="";try{id=decodeURIComponent(token.slice(7))}catch(e){}
+   const p=find(id);if(p){selected=p;route=p.__ig?"instagram":route==="dashboard"?"home":route;p.__ig?renderInstagramDetail(p,true):renderDetail(p,true)}
+   else if(config[route])renderRoute();else renderHome(true);
+  }else if(config[route])renderRoute();else renderHome(true);
+ }finally{navRestoring=false}
+}
+function go(v,fromPop){
+ if(!config[v])return;
+ if(!fromPop)pushNav("route:"+v,true);
+ detailCommandContext=null;detailReturn=null;selected=null;
+ route=v;filter=config[v][4][0];page=1;if(v==="instagram")igQuery="";
+ renderRoute();if(!fromPop){storeScreen();window.scrollTo({top:0,behavior:"auto"})}
+}
 function toggleFav(n,stayDetail){const y=window.scrollY;let a=read(F,"[]");a=a.includes(n)?a.filter(x=>x!==n):[...a,n];write(F,[...new Set(a)]);window.dispatchEvent(new CustomEvent("mozzipick-favorite-change"));if(stayDetail&&selected){selected.__ig?renderInstagramDetail(selected,true):renderDetail(selected,true);restoreScroll(y);return}route==="dashboard"?renderHome():renderRoute();restoreScroll(y)}
 function toggleProd(n,stayDetail){const y=window.scrollY;let q=read(Q,"[]"),m=read(M,"{}"),s=read(S,"{}");if(m[n]){delete m[n];s[n]="기획중";if(!q.includes(n))q.push(n)}else if(q.includes(n)){q=q.filter(x=>x!==n);delete s[n]}else{q.push(n);s[n]="기획중"}write(Q,[...new Set(q)]);write(M,m);write(S,s);window.dispatchEvent(new CustomEvent("mozzipick-production-change"));if(stayDetail&&selected){selected.__ig?renderInstagramDetail(selected,true):renderDetail(selected,true);restoreScroll(y);return}route==="dashboard"?renderHome():renderRoute();restoreScroll(y)}
 function find(id){return products.find(x=>x.id===id||x.name===id)||instagramProducts("domestic").find(x=>x.id===id||x.name===id)||instagramProducts("overseas").find(x=>x.id===id||x.name===id)}
 function renderDetail(p,preserveScroll){selected=p;showMode("mr-route-active");const root=$("#mrRouteView"),n=name(p),fav=read(F,"[]").includes(n),made=!!read(M,"{}")[n],queued=read(Q,"[]").includes(n)||made,grade=p.viralGrade||p.grade||"미확인",kw=Array.isArray(p.xiaohongshuKeywords)?p.xiaohongshuKeywords:[p.xiaohongshuKeyword,p.chineseName,p.xiaohongshuSearch].filter(Boolean);root.innerHTML='<section class="mr-detail-page"><div class="mr-detail-top"><button type="button" data-detail-back>← 목록으로</button><div class="mr-detail-quick"><button data-fav="'+esc(n)+'">'+(fav?'♥ 즐겨찾기 해제':'♡ 즐겨찾기')+'</button><button data-prod="'+esc(n)+'">'+(made?'↩ 제작중으로':queued?'🎬 제작관리 해제':'🎬 제작관리 담기')+'</button><button class="mr-detail-command" data-command="1">1번 상품 발굴</button><button class="mr-detail-command" data-command="2">2번 영상 대본</button><button class="mr-detail-command" data-command="3">3번 설명글</button><button class="mr-detail-command" data-command="4">4번 캡컷</button><button class="mr-detail-command" data-command="5">5번 DM</button></div></div><div class="mr-detail-main"><div class="mr-detail-media"><img src="'+esc(image(p))+'" alt="'+esc(n)+'" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'assets/products/image-fallback.svg\'}"></div><div class="mr-detail-summary"><div class="mr-detail-badges"><span>'+esc(grade)+'등급</span>'+(p.viralRadar?'<span class="hot">급상승</span>':'')+'</div><h1>'+esc(n)+'</h1><p>'+esc(p.spec||p.description||p.viralEvidence||"확인된 상품 정보를 정리 중입니다.")+'</p><strong>'+esc(price(p))+'</strong><dl><div><dt>카테고리</dt><dd>'+esc(p.category||"미확인")+'</dd></div><div><dt>등록일</dt><dd>'+esc((p.siteUpdatedAt||"").slice(0,10)||"미확인")+'</dd></div><div><dt>쿠팡 상태</dt><dd>'+esc(status(p))+'</dd></div><div><dt>바이럴 등급</dt><dd>'+esc(grade)+'</dd></div></dl></div></div><div class="mr-detail-grid"><section><h2>샤오홍슈 검색어</h2><div class="mr-copywords">'+(kw.length?kw.map(x=>'<button type="button" data-copyword="'+esc(x)+'">'+esc(x)+' <b>복사</b></button>').join(""):'<p>확인된 검색어가 없습니다.</p>')+'</div></section><section><h2>판매 · 검증 정보</h2><p>판매처: '+esc(p.coupangStatus||"미확인")+'</p><p>리뷰: '+esc(p.reviews||"공개 데이터 없음")+'</p><p>판매량: '+esc(p.salesCount||p.sales||"공개 데이터 없음")+'</p></section><section class="wide"><h2>바이럴 근거 · 제품 정보</h2><p>'+esc(p.viralEvidence||p.spec||p.description||"확인된 근거를 수집 중입니다.")+'</p></section></div><div class="mr-detail-actions">'+(p.coupangUrl&&p.coupangUrl!=="미확인"?'<a href="'+esc(p.coupangUrl)+'" target="_blank" rel="noopener">쿠팡에서 보기</a>':'')+(p.instagram&&p.instagram!=="미확인"?'<a href="'+esc(p.instagram)+'" target="_blank" rel="noopener">인스타그램</a>':'')+(p.xiaohongshu&&p.xiaohongshu!=="미확인"?'<a href="'+esc(p.xiaohongshu)+'" target="_blank" rel="noopener">샤오홍슈</a>':'')+(p.douyin&&p.douyin!=="미확인"?'<a href="'+esc(p.douyin)+'" target="_blank" rel="noopener">더우인</a>':'')+(p.tiktok&&p.tiktok!=="미확인"?'<a href="'+esc(p.tiktok)+'" target="_blank" rel="noopener">틱톡</a>':'')+'</div></section>';bind(root);const backBtn=$("[data-detail-back]",root);if(backBtn)backBtn.onclick=e=>{e.preventDefault();e.stopPropagation();returnFromDetail()};$$("[data-copyword]",root).forEach(b=>b.onclick=async()=>{const word=b.dataset.copyword;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(word)}else{const t=document.createElement("textarea");t.value=word;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();if(!document.execCommand("copy"))throw Error("copy unavailable");t.remove()}const original=b.innerHTML;b.textContent="✓ 복사 완료";setTimeout(()=>{if(b.isConnected)b.innerHTML=original},1400)}catch(e){window.prompt("검색어를 길게 눌러 복사하세요",word)}});if(!preserveScroll)window.scrollTo({top:0,behavior:"auto"})}
-function openDetail(id){const p=find(id);if(!p)return;detailReturn=captureDetailReturn();pushDetailNav(p.id||name(p));if(p.__ig)renderInstagramDetail(p);else renderDetail(p)}
+function openDetail(id){const p=find(id);if(!p)return;const back=captureDetailReturn();pushDetailNav(p.id||name(p));detailReturn=back;detailCommandContext=null;if(p.__ig)renderInstagramDetail(p);else renderDetail(p);storeScreen()}
 function detailActions(p){const modal=$("#productDetailModal>div");if(!modal||$(".mr-detail-actions",modal))return;const n=name(p),isFav=read(F,"[]").includes(n),made=!!read(M,"{}")[n],queued=read(Q,"[]").includes(n)||made,box=document.createElement("div");box.className="mr-detail-actions";box.innerHTML='<button data-fav="'+esc(n)+'">'+(isFav?'♥ 즐겨찾기 해제':'♡ 즐겨찾기')+'</button><button data-prod="'+esc(n)+'">'+(made?'↩ 제작중으로':queued?'🎬 제작관리 해제':'🎬 제작관리 담기')+'</button>'+(p.coupangUrl&&p.coupangUrl!=="미확인"?'<a href="'+esc(p.coupangUrl)+'" target="_blank" rel="noopener">쿠팡에서 보기</a>':'')+'<button data-command="2">2번 영상 대본</button><button data-command="3">3번 설명글</button><button data-command="4">4번 캡컷</button><button data-command="5">5번 DM</button>';modal.prepend(box);bind(box);const fb=$("[data-fav]",box),pb=$("[data-prod]",box);fb.onclick=e=>{e.stopPropagation();toggleFav(n);fb.textContent=read(F,"[]").includes(n)?'♥ 즐겨찾기 해제':'♡ 즐겨찾기'};pb.onclick=e=>{e.stopPropagation();toggleProd(n);const md=!!read(M,"{}")[n],qd=read(Q,"[]").includes(n)||md;pb.textContent=md?'↩ 제작중으로':qd?'🎬 제작관리 해제':'🎬 제작관리 담기'}}
 function parseCommand(q){const t=q.trim(),fav=read(F,"[]"),queue=read(Q,"[]"),grade=(t.match(/([ABCD])급/i)||[])[1]?.toUpperCase(),min=(t.match(/(\d+)\s*만원\s*이상/)||[])[1],category=t.includes("차량용")?"차량":t.includes("무선충전")?"무선":null;let a=[...products];if(t.includes("즐겨찾기"))a=a.filter(p=>fav.includes(p.name));if(t.includes("미제작"))a=a.filter(p=>queue.includes(p.name)&&!read(M,"{}")[p.name]);if(grade)a=a.filter(p=>(p.viralGrade||p.grade)===grade);if(min)a=a.filter(p=>+String(p.coupangPrice||p.price||0).replace(/[^0-9]/g,"")>=+min*10000);if(category)a=a.filter(p=>(p.name+p.category+p.spec).includes(category));if(t.includes("샤오홍슈"))a=a.filter(p=>p.xiaohongshu&&p.xiaohongshu!=="미확인");if(t.includes("더우인"))a=a.filter(p=>p.douyin&&p.douyin!=="미확인");if(t.includes("TikTok")||t.includes("틱톡"))a=a.filter(p=>p.tiktok&&p.tiktok!=="미확인");if(t.includes("쿠팡"))a=a.filter(p=>p.coupangEligible);if(t.includes("검증"))a=a.filter(p=>p.coupangStatus!=="확인");if(t.includes("오늘"))a=a.filter(p=>new Date(p.siteUpdatedAt||0).toDateString()===new Date().toDateString());return a}
-function commandCenter(fromPop){detailCommandContext=null;if(!fromPop)pushNav("command:center");showMode("mr-command-active");const root=$("#mrCommandView"),labels=["상품 발굴","영상 대본","인스타 설명글","캡컷 가이드","자동 DM"],subs=["사이트에 등록된 바이럴 후보 검색","확인 정보 기반 릴스 대본 초안","인스타그램 설명글 초안","캡컷 편집 가이드 초안","인포크링크 DM 문구 초안"],icons=["🔎","🎬","📸","✂️","✈️"];root.innerHTML='<section class="mr-command-page"><header class="mr-command-showcase"><div class="mr-command-showcase-copy"><span>MOZZIPICK COMMAND</span><h1>원하는 상품을 <em>더 빠르게,</em><br>명령 한 번으로!</h1><p>사이트 내부 실제 데이터로 무료 검색·분류하고<br>명령을 실행하세요.</p></div><div class="mr-command-showcase-art" aria-hidden="true"><b>🤖</b><i>✨</i></div><div class="mr-command-benefits"><em>✓ 실제 데이터 기반</em><em>✓ 빠른 실행</em><em>✓ 전환에 최적화</em><button type="button" data-command-focus>✨ 명령 입력하기 →</button></div></header><div class="mr-command-search"><form id="mrCommandForm"><input id="mrCommandInput" placeholder="예: 차량용 A급 3만원 이상"><button>명령 실행</button></form><div class="mr-command-examples">'+["1 통합 바이럴 검색","1-1 국내 인스타 검색","1-2 해외 인스타 검색","1-3 쿠팡 통합 랭킹","차량용 A급 3만원 이상","즐겨찾기 보여줘","검증 필요한 상품"].map(x=>'<button type="button" data-example="'+x+'">'+x+'</button>').join("")+'</div><p class="mr-command-data-note">저장된 사이트 데이터 기반 조회·문구 초안입니다. 외부 플랫폼 실시간 검색과 AI 영상 생성·발행은 별도 연결이 필요합니다.</p></div><div id="mrCommandResults" class="mr-command-results"></div><div class="mr-command-grid">'+[1,2,3,4,5].map((n,i)=>'<button type="button" data-command="'+n+'" class="c'+n+'"><span class="mr-command-grid-icon">'+icons[i]+'</span><span><b>'+n+'번 '+labels[i]+'</b><small>'+subs[i]+'</small></span><i>›</i></button>').join("")+'</div></section>';const commandInput=$("#mrCommandInput"),commandResults=$("#mrCommandResults"),commandForm=$("#mrCommandForm");const run=()=>{if(!commandInput||!commandResults)return;const raw=commandInput.value.trim(),m=raw.match(/^1(?:-(1|2|3))?(?:\s|$)/);if(m){runSearchCommand(m[1]?"1-"+m[1]:"1",commandResults);return}const a=parseCommand(raw);commandResults.innerHTML='<section class="mr-search-report"><header><span>MOZZIPICK SEARCH REPORT</span><h2>검색 결과 보고서</h2><p>입력 명령: '+esc(raw)+'</p></header><div class="mr-report-summary"><b>최종 결과 '+a.length+'개</b><b>중복 제외 적용</b><b>실제 등록 데이터 기준</b></div>'+(a.length?'<div class="mr-card-grid">'+a.slice(0,20).map(card).join("")+'</div>':'<div class="mr-empty">조건에 맞는 실제 데이터가 없습니다.</div>')+'</section>';bind(commandResults)};if(commandForm)commandForm.onsubmit=e=>{e.preventDefault();run()};const focusBtn=$('[data-command-focus]',root);if(focusBtn)focusBtn.onclick=()=>commandInput?.focus();$$('[data-example]',root).forEach(b=>b.onclick=()=>{if(!commandInput)return;commandInput.value=b.dataset.example;run()});bind(root);activate("");window.scrollTo(0,0)}
+function commandCenter(fromPop){if(!fromPop)pushNav("command:center");detailCommandContext=null;showMode("mr-command-active");const root=$("#mrCommandView"),labels=["상품 발굴","영상 대본","인스타 설명글","캡컷 가이드","자동 DM"],subs=["사이트에 등록된 바이럴 후보 검색","확인 정보 기반 릴스 대본 초안","인스타그램 설명글 초안","캡컷 편집 가이드 초안","인포크링크 DM 문구 초안"],icons=["🔎","🎬","📸","✂️","✈️"];root.innerHTML='<section class="mr-command-page"><header class="mr-command-showcase"><div class="mr-command-showcase-copy"><span>MOZZIPICK COMMAND</span><h1>원하는 상품을 <em>더 빠르게,</em><br>명령 한 번으로!</h1><p>사이트 내부 실제 데이터로 무료 검색·분류하고<br>명령을 실행하세요.</p></div><div class="mr-command-showcase-art" aria-hidden="true"><b>🤖</b><i>✨</i></div><div class="mr-command-benefits"><em>✓ 실제 데이터 기반</em><em>✓ 빠른 실행</em><em>✓ 전환에 최적화</em><button type="button" data-command-focus>✨ 명령 입력하기 →</button></div></header><div class="mr-command-search"><form id="mrCommandForm"><input id="mrCommandInput" placeholder="예: 차량용 A급 3만원 이상"><button>명령 실행</button></form><div class="mr-command-examples">'+["1 통합 바이럴 검색","1-1 국내 인스타 검색","1-2 해외 인스타 검색","1-3 쿠팡 통합 랭킹","차량용 A급 3만원 이상","즐겨찾기 보여줘","검증 필요한 상품"].map(x=>'<button type="button" data-example="'+x+'">'+x+'</button>').join("")+'</div><p class="mr-command-data-note">저장된 사이트 데이터 기반 조회·문구 초안입니다. 외부 플랫폼 실시간 검색과 AI 영상 생성·발행은 별도 연결이 필요합니다.</p></div><div id="mrCommandResults" class="mr-command-results"></div><div class="mr-command-grid">'+[1,2,3,4,5].map((n,i)=>'<button type="button" data-command="'+n+'" class="c'+n+'"><span class="mr-command-grid-icon">'+icons[i]+'</span><span><b>'+n+'번 '+labels[i]+'</b><small>'+subs[i]+'</small></span><i>›</i></button>').join("")+'</div></section>';const commandInput=$("#mrCommandInput"),commandResults=$("#mrCommandResults"),commandForm=$("#mrCommandForm");const run=()=>{if(!commandInput||!commandResults)return;const raw=commandInput.value.trim(),m=raw.match(/^1(?:-(1|2|3))?(?:\s|$)/);if(m){runSearchCommand(m[1]?"1-"+m[1]:"1",commandResults);return}const a=parseCommand(raw);commandResults.innerHTML='<section class="mr-search-report"><header><span>MOZZIPICK SEARCH REPORT</span><h2>검색 결과 보고서</h2><p>입력 명령: '+esc(raw)+'</p></header><div class="mr-report-summary"><b>최종 결과 '+a.length+'개</b><b>중복 제외 적용</b><b>실제 등록 데이터 기준</b></div>'+(a.length?'<div class="mr-card-grid">'+a.slice(0,20).map(card).join("")+'</div>':'<div class="mr-empty">조건에 맞는 실제 데이터가 없습니다.</div>')+'</section>';bind(commandResults)};if(commandForm)commandForm.onsubmit=e=>{e.preventDefault();run()};const focusBtn=$('[data-command-focus]',root);if(focusBtn)focusBtn.onclick=()=>commandInput?.focus();$$('[data-example]',root).forEach(b=>b.onclick=()=>{if(!commandInput)return;commandInput.value=b.dataset.example;run()});bind(root);activate("");if(!fromPop){storeScreen();window.scrollTo(0,0)}}
 const commandNames=["상품 발굴","영상 대본 (릴스·쇼츠·틱톡)","인스타 설명글","캡컷 제작 가이드","자동 DM"];
 const searchCommandNames={"1":"통합 바이럴 상품 검색","1-1":"국내 인스타 전자제품 검색","1-2":"해외 인스타 전자제품 검색","1-3":"쿠팡 통합 랭킹 검색"};
 function searchReport(cmd){
@@ -270,12 +364,12 @@ function searchReport(cmd){
 }
 function runSearchCommand(cmd,root){if(!root)return;root.innerHTML=searchReport(cmd);bind(root)}
 
-function commandPage(n,fromPop){if(!fromPop){if(detailCommandContext&&/^command:[1-5]$/.test(history.state?.mozzipick||""))history.replaceState({mozzipick:"command:"+n},"","#mp="+encodeURIComponent("command:"+n));else pushNav("command:"+n)}showMode("mr-command-active");const p=selected||products[0],root=$("#mrCommandView"),nm=p?name(p):"상품을 선택해 주세요";root.innerHTML='<section class="mr-command-detail">'+(detailCommandContext?'<div class="mr-command-return"><button type="button" data-return-product>← 원래 상품 상세로 돌아가기</button><span>명령 대상: '+esc(nm)+'</span></div>':'')+'<header><div><span>MOZZIPICK COMMAND · '+n+'번</span><h1>'+commandNames[n-1]+'</h1><p>'+esc(nm)+' 기준 작업 화면</p></div><nav class="mr-command-quick" aria-label="명령어 바로가기">'+[1,2,3,4,5].map(x=>'<button type="button" data-command="'+x+'" class="'+(x===n?'active':'')+'"><b>'+x+'번</b><small>'+commandNames[x-1]+'</small></button>').join("")+'</nav></header>'+(n===1?'<div class="mr-search-command-strip"><button type="button" data-search-command="1">1 통합 바이럴</button><button type="button" data-search-command="1-1">1-1 국내 인스타</button><button type="button" data-search-command="1-2">1-2 해외 인스타</button><button type="button" data-search-command="1-3">1-3 쿠팡 통합 랭킹</button></div><div class="mr-inline-search-report" data-inline-search-report></div>':'')+'<div class="mr-command-layout"><aside><div class="mr-command-product-head"><h2>선택 상품</h2><button type="button" data-change-product>상품 변경</button></div>'+(p?commandSelection(p):'<div class="mr-empty">상품 미선택</div>')+'<div class="mr-command-picker" data-product-picker hidden><input type="search" data-product-search placeholder="상품명 · 카테고리 검색"><div class="mr-command-picker-list"></div><div class="mr-command-picker-pager" data-product-picker-pager></div></div></aside><main><h2>생성 결과</h2><div class="mr-generated">'+commandOutput(n,p)+'</div><button type="button" data-copy-command>결과 복사하기</button></main><aside><h2>옵션 설정</h2>'+commandOptions(n)+'</aside></div></section>';bind(root);const detailBack=$('[data-return-product]',root);if(detailBack)detailBack.onclick=returnToDetailCommandSource;if(n===1){const reportBox=$('[data-inline-search-report]',root);$$('[data-search-command]',root).forEach(b=>b.onclick=()=>runSearchCommand(b.dataset.searchCommand,reportBox))}const changeBtn=$('[data-change-product]',root),picker=$('[data-product-picker]',root),search=$('[data-product-search]',root),pickerList=$('.mr-command-picker-list',root),pager=$('[data-product-picker-pager]',root);let pickerPage=1;const PICKER_PAGE=5;function chooseProduct(id){const np=find(id);if(!np)return;selected=np;commandPage(n,true)}function drawPicker(q="",pg=1){const term=(q||"").trim().toLowerCase(),all=allSavedProducts().filter(x=>!term||(name(x)+' '+(x.category||'')+' '+(x.username||'')).toLowerCase().includes(term)),pages=Math.max(1,Math.ceil(all.length/PICKER_PAGE));pickerPage=Math.min(Math.max(1,pg),pages);const items=all.slice((pickerPage-1)*PICKER_PAGE,pickerPage*PICKER_PAGE);pickerList.innerHTML=items.length?items.map(x=>'<button type="button" data-pick-product="'+esc(x.id||name(x))+'"><b>'+esc(name(x))+'</b><small>'+esc(x.category||"카테고리 미확인")+'</small></button>').join(""):'<p class="mr-empty">검색 결과가 없습니다.</p>';pager.innerHTML=pages>1?'<button type="button" data-picker-prev '+(pickerPage===1?'disabled':'')+'>‹</button><span>'+pickerPage+' / '+pages+'</span><button type="button" data-picker-next '+(pickerPage===pages?'disabled':'')+'>›</button>':'';$$('[data-pick-product]',pickerList).forEach(b=>b.onclick=()=>chooseProduct(b.dataset.pickProduct));const prev=$('[data-picker-prev]',pager),next=$('[data-picker-next]',pager);if(prev)prev.onclick=()=>drawPicker(search.value,pickerPage-1);if(next)next.onclick=()=>drawPicker(search.value,pickerPage+1)}if(changeBtn)changeBtn.onclick=()=>{picker.hidden=!picker.hidden;if(!picker.hidden){drawPicker("",1);search?.focus()}};if(search)search.oninput=()=>drawPicker(search.value,1);const copyBtn=$('[data-copy-command]',root),generated=$('.mr-generated',root);if(copyBtn)copyBtn.onclick=async()=>{if(!generated)return;const text=generated.innerText;let copied=false;
+function commandPage(n,fromPop){if(!fromPop)pushNav("command:"+n);showMode("mr-command-active");const p=selected||products[0],root=$("#mrCommandView"),nm=p?name(p):"상품을 선택해 주세요";root.innerHTML='<section class="mr-command-detail">'+(detailCommandContext?'<div class="mr-command-return"><button type="button" data-return-product>← 원래 상품 상세로 돌아가기</button><span>명령 대상: '+esc(nm)+'</span></div>':'')+'<header><div><span>MOZZIPICK COMMAND · '+n+'번</span><h1>'+commandNames[n-1]+'</h1><p>'+esc(nm)+' 기준 작업 화면</p></div><nav class="mr-command-quick" aria-label="명령어 바로가기">'+[1,2,3,4,5].map(x=>'<button type="button" data-command="'+x+'" class="'+(x===n?'active':'')+'"><b>'+x+'번</b><small>'+commandNames[x-1]+'</small></button>').join("")+'</nav></header>'+(n===1?'<div class="mr-search-command-strip"><button type="button" data-search-command="1">1 통합 바이럴</button><button type="button" data-search-command="1-1">1-1 국내 인스타</button><button type="button" data-search-command="1-2">1-2 해외 인스타</button><button type="button" data-search-command="1-3">1-3 쿠팡 통합 랭킹</button></div><div class="mr-inline-search-report" data-inline-search-report></div>':'')+'<div class="mr-command-layout"><aside><div class="mr-command-product-head"><h2>선택 상품</h2><button type="button" data-change-product>상품 변경</button></div>'+(p?commandSelection(p):'<div class="mr-empty">상품 미선택</div>')+'<div class="mr-command-picker" data-product-picker hidden><input type="search" data-product-search placeholder="상품명 · 카테고리 검색"><div class="mr-command-picker-list"></div><div class="mr-command-picker-pager" data-product-picker-pager></div></div></aside><main><h2>생성 결과</h2><div class="mr-generated">'+commandOutput(n,p)+'</div><button type="button" data-copy-command>결과 복사하기</button></main><aside><h2>옵션 설정</h2>'+commandOptions(n)+'</aside></div></section>';bind(root);const detailBack=$('[data-return-product]',root);if(detailBack)detailBack.onclick=returnToDetailCommandSource;if(n===1){const reportBox=$('[data-inline-search-report]',root);$$('[data-search-command]',root).forEach(b=>b.onclick=()=>runSearchCommand(b.dataset.searchCommand,reportBox))}const changeBtn=$('[data-change-product]',root),picker=$('[data-product-picker]',root),search=$('[data-product-search]',root),pickerList=$('.mr-command-picker-list',root),pager=$('[data-product-picker-pager]',root);let pickerPage=1;const PICKER_PAGE=5;function chooseProduct(id){const np=find(id);if(!np)return;pushNav("command:"+n,true);selected=np;commandPage(n,true);storeScreen()}function drawPicker(q="",pg=1){const term=(q||"").trim().toLowerCase(),all=allSavedProducts().filter(x=>!term||(name(x)+' '+(x.category||'')+' '+(x.username||'')).toLowerCase().includes(term)),pages=Math.max(1,Math.ceil(all.length/PICKER_PAGE));pickerPage=Math.min(Math.max(1,pg),pages);const items=all.slice((pickerPage-1)*PICKER_PAGE,pickerPage*PICKER_PAGE);pickerList.innerHTML=items.length?items.map(x=>'<button type="button" data-pick-product="'+esc(x.id||name(x))+'"><b>'+esc(name(x))+'</b><small>'+esc(x.category||"카테고리 미확인")+'</small></button>').join(""):'<p class="mr-empty">검색 결과가 없습니다.</p>';pager.innerHTML=pages>1?'<button type="button" data-picker-prev '+(pickerPage===1?'disabled':'')+'>‹</button><span>'+pickerPage+' / '+pages+'</span><button type="button" data-picker-next '+(pickerPage===pages?'disabled':'')+'>›</button>':'';$$('[data-pick-product]',pickerList).forEach(b=>b.onclick=()=>chooseProduct(b.dataset.pickProduct));const prev=$('[data-picker-prev]',pager),next=$('[data-picker-next]',pager);if(prev)prev.onclick=()=>drawPicker(search.value,pickerPage-1);if(next)next.onclick=()=>drawPicker(search.value,pickerPage+1)}if(changeBtn)changeBtn.onclick=()=>{picker.hidden=!picker.hidden;if(!picker.hidden){drawPicker("",1);search?.focus()}};if(search)search.oninput=()=>drawPicker(search.value,1);const copyBtn=$('[data-copy-command]',root),generated=$('.mr-generated',root);if(copyBtn)copyBtn.onclick=async()=>{if(!generated)return;const text=generated.innerText;let copied=false;
  if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);copied=true}catch(e){}}
  if(!copied){const box=document.createElement("textarea");box.value=text;box.style.position="fixed";box.style.opacity="0";document.body.appendChild(box);box.select();try{copied=!!document.execCommand("copy")}catch(e){}finally{box.remove()}}
  if(copied){copyBtn.dataset.copyStatus="success";const before="결과 복사하기";copyBtn.textContent="✓ 복사 완료";setTimeout(()=>{if(copyBtn.isConnected){copyBtn.textContent=before;delete copyBtn.dataset.copyStatus}},1800)}
  else{copyBtn.dataset.copyStatus="manual";copyBtn.textContent="복사 권한 확인 필요";window.prompt("아래 내용을 선택해 복사하세요",text)}
-};$$('[name="mr-script-format"]',root).forEach(input=>input.onchange=()=>{if(input.checked&&generated){generated.innerHTML='<h3>선택한 형식: '+esc(input.value)+'</h3>'+commandOutput(n,p,input.value);}});activate("");window.scrollTo(0,0)}
+};$('[name="mr-script-format"]',root).forEach(input=>input.onchange=()=>{if(input.checked&&generated){generated.innerHTML='<h3>선택한 형식: '+esc(input.value)+'</h3>'+commandOutput(n,p,input.value);storeScreen()}});activate("");if(!fromPop){storeScreen();window.scrollTo(0,0)}}
 
 function commandSelection(p){
  const n=name(p),src=image(p),ig=p.__ig,url=p.__ig?p.reel:(p.coupangUrl&&p.coupangUrl!=="미확인"?p.coupangUrl:"");
@@ -314,34 +408,20 @@ function commandOutput(n,p,format="기본형"){
  if(n===4)return '<h3>CapCut 편집 규격</h3><p>9:16 세로형 · 1080×1920 · 25~30초 · H.264</p><h3>0~3초 · 가장 강한 훅</h3><p>'+nm+'의 실제 제품 컷 · 상단 짧은 후크, 굵은 자막</p><h3>3~10초 · 불편·문제</h3><p>원본 영상에 확인되는 장면만 선택</p><h3>10~22초 · 핵심 기능·리뷰</h3><p>'+confirmed+'</p><h3>22~30초 · 정리와 CTA</h3><p>'+cta+'</p><h3>편집 점검</h3><p>안전영역 안에 자막 배치, 주요 단어 컬러 진행, 컷마다 제품 형태 일관성 확인. 사람 등장 컷이 불필요하면 제외하고 중국어 원본 자막은 가리거나 제거합니다.</p>';
  return '<h3>인포크링크 DM 복사용 문구</h3><p>안녕하세요~ 모찌픽입니다! 💛</p><p>문의하신 <strong>'+nm+'</strong> 제품 정보를 보내드려요 💌</p><p>━━━━━━━━━━━━━</p><p>✅ 제품명: '+nm+'</p><p>✅ 확인된 특징: '+confirmed+'</p><p>👇👇 제품 확인하기 👇👇<br>'+shortLink+'</p><p>더 자세한 정보와 실제 리뷰는 판매 페이지에서 직접 확인해 주세요.</p><p>※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.</p>'+(hasCoupang?"":"<p>⚠ 정확한 쿠팡 상품 링크가 등록되지 않아 DM 발송 전 링크 검증이 필요합니다.</p>")+'<p>※ 이 화면은 복사용 초안이며 DM 자동 발송을 실행하지 않습니다.</p>'
 }
-function events(){window.addEventListener("popstate",e=>{
- const target=e.state&&e.state.mozzipick;
- // Command -> originating detail: restore the same product and the saved return path.
- if(detailCommandContext&&/^detail:/.test(target||"")){restoreDetailCommandSource();return}
- if(detailCommandContext&&!(target||"").startsWith("command:")){restoreDetailCommandSource();return}
- // Browser forward, including after opening a detail from a command search result.
- if(/^detail:/.test(target||"")){
-  let id="";try{id=decodeURIComponent(target.slice(7))}catch(e){}
-  const p=id&&find(id);
-  if(p){
-   if(!detailReturn||!selected||String(selected.id||name(selected))!==id)detailReturn=captureDetailReturn();
-   if(p.__ig)renderInstagramDetail(p,true);else renderDetail(p,true);
-   return
+function events(){
+ window.addEventListener("popstate",e=>restoreScreen(e.state));
+ document.addEventListener("click",e=>{
+  const home=e.target.closest?.(".mp-brand,.main-home-btn");
+  if(home){
+   e.preventDefault();e.stopImmediatePropagation();
+   pushNav("home");detailReturn=null;detailCommandContext=null;selected=null;renderHome();
+   storeScreen();window.scrollTo({top:0,behavior:"auto"});return
   }
- }
- // Distinguish back to the recorded source from forward to another visited view.
- const onDetail=!!(selected&&detailReturn&&document.body.classList.contains("mr-route-active")&&$("#mrRouteView .mr-detail-page,#mrRouteView .mr-ig-detail"));
- if(onDetail){
-  const source=detailReturn.mode==="command"?detailReturn.commandState:detailReturn.mode==="dashboard"?"home":"route:"+detailReturn.route;
-  if(target===source||target==="home-base"){returnFromDetail(true);return}
-  if(/^command:[1-5]$/.test(target||"")){
-   detailCommandContext={id:String(selected.id||name(selected)),route,filter,page,detailReturn:{...detailReturn},y:window.scrollY};
-   commandPage(+target.slice(8),true);return
-  }
-  if(target==="command:center"){detailReturn=null;commandCenter(true);return}
-  selected=null;detailReturn=null;
- }
- const s=target;if(!s||s==="home-base"){history.pushState({mozzipick:"home"},"","#mp=home");renderHome(true);return}if(s==="home"){renderHome(true);return}if(s.startsWith("route:")){const v=s.slice(6);if(config[v])go(v,true);else renderHome();return}if(s==="command:center"){commandCenter(true);return}if(s.startsWith("command:")){commandPage(+s.slice(8),true);return}renderHome()});document.addEventListener("click",e=>{const h=e.target.closest?.(".mp-brand,.main-home-btn");if(h){e.preventDefault();e.stopImmediatePropagation();if((history.state&&history.state.mozzipick)!=="home")pushNav("home");renderHome();window.scrollTo({top:0,behavior:"auto"});return}const b=e.target.closest?.(".mp-header-nav [data-view],footer [data-mobile-view]");if(!b)return;const v=b.dataset.view||b.dataset.mobileView;if(!config[v])return;e.preventDefault();e.stopImmediatePropagation();go(v)},true)}
-async function init(){setup();events();await load();const initial=seedHistory();if(initial.startsWith("route:"))go(initial.slice(6),true);else if(initial==="command:center")commandCenter(true);else if(initial.startsWith("command:"))commandPage(+initial.slice(8),true);else renderHome()}
+  const b=e.target.closest?.(".mp-header-nav [data-view],footer [data-mobile-view]");
+  if(!b)return;const v=b.dataset.view||b.dataset.mobileView;if(!config[v])return;
+  e.preventDefault();e.stopImmediatePropagation();go(v);
+ },true)
+}
+async function init(){setup();events();await load();const initial=seedHistory();if(initial.startsWith("route:"))go(initial.slice(6),true);else if(initial==="command:center")commandCenter(true);else if(initial.startsWith("command:"))commandPage(+initial.slice(8),true);else if(initial.startsWith("detail:"))restoreScreen(history.state);else renderHome(true);storeScreen()}
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
 })();
