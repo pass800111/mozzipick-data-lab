@@ -133,6 +133,13 @@ async function run(){
  check(await page.locator('#mrCommandResults .mr-ig-tile').count()===source.overseas.length,"Overseas command output matches source");
  await click(page,'#mrCommandView .mr-command-grid [data-command="2"]');
  await page.locator('#mrCommandView .mr-command-detail').waitFor();
+ await click(page,'#mrCommandView [data-change-product]');
+ check(await page.locator('#mrCommandView [data-product-recent],#mrCommandView .mr-command-recent').count()===0,"Recent viewed products block removed");
+ check(await page.locator('#mrCommandView [data-product-search]').isVisible(),"Product search remains available");
+ await page.locator('#mrCommandView [data-product-search]').fill("현미경");
+ check(await page.locator('#mrCommandView [data-pick-product]').count()>0,"Product picker search still returns results");
+ await click(page,'#mrCommandView [data-pick-product]');
+ check((await page.locator('#mrCommandView .mr-command-selected strong').innerText()).includes("현미경"),"Product selection still updates command target");
  await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택 형식: 리뷰형"),"Script format controls update output");
  await click(page,'#mrCommandView [data-copy-command]');
