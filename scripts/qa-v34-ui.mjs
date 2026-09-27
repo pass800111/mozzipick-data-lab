@@ -98,7 +98,7 @@ async function run(){
  await mobile.goto(base+"#mp=route%3Ainstagram",{waitUntil:"domcontentloaded"});
  await mobile.locator('#mrRouteView .mr-ig-tile').first().waitFor();
  check(await mobile.locator('#mrRouteView .mr-ig-tile').count()===5,"Mobile Instagram loads 5 reels");
- const dims=await mobile.locator('#mrRouteView .mr-instagram-gallery').evaluate(el=>({width:el.getBoundingClientRect().width,children:[...el.children].slice(0,2).map(x=>x.getBoundingClientRect().width)}));
+ const dims=await mobile.locator('#mrRouteView .mr-instagram-gallery').evaluate(el=>({width:el.getBoundingClientRect().width,display:getComputedStyle(el).display,template:getComputedStyle(el).gridTemplateColumns,columns:[...el.children].slice(0,2).map(x=>({width:x.getBoundingClientRect().width,display:getComputedStyle(x).display,column:getComputedStyle(x).gridColumn,gridArea:getComputedStyle(x).gridArea,cssWidth:getComputedStyle(x).width})),children:[...el.children].slice(0,2).map(x=>x.getBoundingClientRect().width)}));
  console.log("MOBILE GALLERY DIMENSIONS",JSON.stringify({dims,viewport:await mobile.evaluate(()=>({innerWidth,clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,media760:matchMedia("(max-width:760px)").matches}))}));await mobile.screenshot({path:"qa-v34-mobile-gallery.png",fullPage:true});
  check(dims.children.length===2&&dims.children[0]<dims.width*.7,"Mobile gallery uses two columns");
  await click(mobile,'#mrRouteView .mr-ig-tile [data-ig-detail]');
