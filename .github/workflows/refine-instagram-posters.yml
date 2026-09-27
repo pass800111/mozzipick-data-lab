@@ -1,0 +1,65 @@
+name: Refine original Instagram 9x16 poster frames
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/refine-instagram-poster-frames.mjs"
+      - ".github/workflows/refine-instagram-posters.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mozzipick-original-instagram-frame-refinement
+  cancel-in-progress: false
+jobs:
+  source-only-crop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install --no-save sharp@0.34.3
+      - name: Remove padding but retain original poster pixels and original approved image
+        run: node scripts/refine-instagram-poster-frames.mjs
+      - name: Assert all 26 cover mappings, geometry, and first approved image integrity
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+          import sharp from 'sharp';
+          import {execFileSync} from 'node:child_process';
+          const d=JSON.parse(fs.readFileSync('data/instagram-electronics.json','utf8'));
+          const all=[...(d.domestic||[]),...(d.overseas||[])];
+          if(all.length!==26||all.some(p=>!p.thumbnail))throw Error('Expected 26 mapped source posters');
+          const sha=execFileSync('git',['hash-object','assets/instagram/DdbwAIlJgdo.jpg'],{encoding:'utf8'}).trim();
+          if(sha!=='4523bedc6c4af6e1576387f6426c152b4a896093')throw Error('Approved original first poster was modified');
+          for(const p of all){
+            const code=p.reel.match(/\/(?:p|reel)\/([^/]+)/)?.[1];
+            if(p.thumbnail!=='assets/instagram/'+code+'.jpg')throw Error('Wrong source mapping: '+code);
+            const m=await sharp(p.thumbnail).metadata();
+            if(m.width!==360||m.height!==640)throw Error('Bad geometry: '+code);
+          }
+          console.log('All 26 source-matched posters valid, first approved poster byte-identical.');
+          EOF
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-poster-frame-refinement
+          path: |
+            instagram-poster-frame-report.json
+            assets/instagram/*.jpg
+          retention-days: 7
+      - name: Publish verified source-only frame improvements
+        run: |
+          if ! git diff --quiet -- assets/instagram data/instagram-electronics.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/instagram/*.jpg data/instagram-electronics.json
+            git commit -m "Refine actual Instagram reel poster frames with source-only crops"
+            git push
+          else
+            echo "No frame changes."
+          fi
