@@ -267,6 +267,15 @@ async function run(){
  await h.evaluate(()=>history.back());
  await h.locator('#mrCommandResults .mr-ig-tile').first().waitFor();
  check(await h.locator('#mrCommandInput').inputValue()==="1-1","Back from search-result detail restores the exact command search report");
+ // Every top navigation route must return to the exact previous menu, including empty saved lists.
+ for(const v of ["time","viral","favorites","production","quality","instagram"]){
+  await nav(h,v);
+  const savedSort=await h.locator('#mrRouteView [data-sort-order]').inputValue();
+  await nav(h,"categories");
+  await h.evaluate(()=>history.back());
+  await h.waitForFunction(expected=>history.state?.mozzipick==="route:"+expected,v);
+  check(await h.locator('#mrRouteView').getAttribute("data-route")===v&&await h.locator('#mrRouteView [data-sort-order]').inputValue()===savedSort,"Global previous-screen return retains "+v+" menu and sorting");
+ }
  await h.close();
  check(errors.length===0,"No uncaught browser runtime errors across desktop and mobile");
 
