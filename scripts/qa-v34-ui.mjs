@@ -136,7 +136,8 @@ async function run(){
  await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택 형식: 리뷰형"),"Script format controls update output");
  await click(page,'#mrCommandView [data-copy-command]');
- check((await page.locator('#mrCommandView [data-copy-command]').innerText()).includes("복사 완료"),"Command generated text is copyable");
+ await page.locator('#mrCommandView [data-copy-command][data-copy-status="success"]').waitFor({timeout:6000});
+ check(true,"Command generated text is copyable");
 
  const mobile=await browser.newPage({viewport:{width:375,height:812},isMobile:true});
  await mobile.goto(base+"#mp=route%3Ainstagram",{waitUntil:"domcontentloaded"});
