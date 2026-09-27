@@ -329,8 +329,18 @@ function events(){window.addEventListener("popstate",e=>{
    return
   }
  }
- // Only intercept a back action while a real detail is on screen, not after nav.
- if(selected&&detailReturn&&document.body.classList.contains("mr-route-active")&&$("#mrRouteView .mr-detail-page,#mrRouteView .mr-ig-detail")){returnFromDetail(true);return}
+ // Distinguish back to the recorded source from forward to another visited view.
+ const onDetail=!!(selected&&detailReturn&&document.body.classList.contains("mr-route-active")&&$("#mrRouteView .mr-detail-page,#mrRouteView .mr-ig-detail"));
+ if(onDetail){
+  const source=detailReturn.mode==="command"?detailReturn.commandState:detailReturn.mode==="dashboard"?"home":"route:"+detailReturn.route;
+  if(target===source||target==="home-base"){returnFromDetail(true);return}
+  if(/^command:[1-5]$/.test(target||"")){
+   detailCommandContext={id:String(selected.id||name(selected)),route,filter,page,detailReturn:{...detailReturn},y:window.scrollY};
+   commandPage(+target.slice(8),true);return
+  }
+  if(target==="command:center"){detailReturn=null;commandCenter(true);return}
+  selected=null;detailReturn=null;
+ }
  const s=target;if(!s||s==="home-base"){history.pushState({mozzipick:"home"},"","#mp=home");renderHome(true);return}if(s==="home"){renderHome(true);return}if(s.startsWith("route:")){const v=s.slice(6);if(config[v])go(v,true);else renderHome();return}if(s==="command:center"){commandCenter(true);return}if(s.startsWith("command:")){commandPage(+s.slice(8),true);return}renderHome()});document.addEventListener("click",e=>{const h=e.target.closest?.(".mp-brand,.main-home-btn");if(h){e.preventDefault();e.stopImmediatePropagation();if((history.state&&history.state.mozzipick)!=="home")pushNav("home");renderHome();window.scrollTo({top:0,behavior:"auto"});return}const b=e.target.closest?.(".mp-header-nav [data-view],footer [data-mobile-view]");if(!b)return;const v=b.dataset.view||b.dataset.mobileView;if(!config[v])return;e.preventDefault();e.stopImmediatePropagation();go(v)},true)}
 async function init(){setup();events();await load();const initial=seedHistory();if(initial.startsWith("route:"))go(initial.slice(6),true);else if(initial==="command:center")commandCenter(true);else if(initial.startsWith("command:"))commandPage(+initial.slice(8),true);else renderHome()}
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
