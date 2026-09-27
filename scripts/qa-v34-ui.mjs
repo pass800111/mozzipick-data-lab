@@ -22,7 +22,7 @@ async function checkReelAlignment(page,label){
 }
 async function run(){
  const source=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
- const context=await browser.newContext({viewport:{width:1440,height:900}});
+ const context=await browser.newContext({viewport:{width:1440,height:900},permissions:["clipboard-read","clipboard-write"]});
  const page=await context.newPage();
  page.on("pageerror", e => errors.push(e.message));
  await page.goto(base, {waitUntil:"domcontentloaded"});
@@ -39,6 +39,22 @@ async function run(){
  await click(page,'#mrRouteView .mr-card [data-detail]');
  await page.locator('#mrRouteView .mr-detail-page').waitFor();
  check(await page.locator('#mrRouteView [data-copyword]').count()===4,"Product detail four search keywords");
+ const productBefore=await page.locator('#mrRouteView .mr-detail-summary h1').innerText();
+ await click(page,'#mrRouteView .mr-detail-quick [data-command="2"]');
+ await page.locator('#mrCommandView .mr-command-return [data-return-product]').waitFor();
+ check((await page.locator('#mrCommandView .mr-command-selected strong').innerText())===productBefore,"Detail command uses exact selected product");
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("나도"),"Detail script includes complete comment CTA");
+ await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택 형식: 리뷰형"),"Detail script option produces selected review draft");
+ for(const n of [1,3,4,5]){
+  await click(page,'#mrCommandView .mr-command-quick [data-command="'+n+'"]');
+  check((await page.locator('#mrCommandView .mr-generated').innerText()).includes(productBefore),"Detail command "+n+" retains selected product");
+ }
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("링크 미확인")||await page.locator('#mrCommandView .mr-generated').innerText().then(x=>x.includes("coupang.com")),"Detail DM does not invent product link");
+ await click(page,'#mrCommandView [data-return-product]');
+ await page.locator('#mrRouteView .mr-detail-page').waitFor();
+ check((await page.locator('#mrRouteView .mr-detail-summary h1').innerText())===productBefore,"Return from command restores original detail");
+
  await click(page,'#mrRouteView [data-detail-back]');
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Detail back restores sort");
  await nav(page,"instagram");
@@ -65,6 +81,15 @@ async function run(){
  const src=await page.locator('#mrRouteView .mr-ig-embed iframe').getAttribute("src");
  check(!!src&&src.includes("instagram.com/"),"Detail uses official original post embed");
  check(await page.locator('#mrRouteView .mr-ig-detail-links a').count()===2,"Detail offers reel and account links");
+ const reelBefore=await page.locator('#mrRouteView .mr-ig-detail-info h1').innerText();
+ check(await page.locator('#mrRouteView .mr-ig-detail-commands [data-command]').count()===5,"Instagram detail exposes all five commands");
+ await click(page,'#mrRouteView .mr-ig-detail-commands [data-command="3"]');
+ await page.locator('#mrCommandView [data-return-product]').waitFor();
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes(reelBefore),"Reel detail command uses exact original reel product");
+ await click(page,'#mrCommandView [data-return-product]');
+ await page.locator('#mrRouteView .mr-ig-detail').waitFor();
+ check((await page.locator('#mrRouteView .mr-ig-detail-info h1').innerText())===reelBefore,"Return from reel command restores same Instagram detail");
+
  await click(page,'#mrRouteView .mr-ig-save-actions [data-fav]');
  check((await page.locator('#mrRouteView .mr-ig-save-actions [data-fav]').innerText()).includes("해제"),"Reel saved from detail");
  await click(page,'#mrRouteView .mr-ig-save-actions [data-prod]');
@@ -109,7 +134,10 @@ async function run(){
  await click(page,'#mrCommandView .mr-command-grid [data-command="2"]');
  await page.locator('#mrCommandView .mr-command-detail').waitFor();
  await page.locator('#mrCommandView input[name="mr-script-format"][value="리뷰형"]').check();
- check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택한 형식: 리뷰형"),"Script format controls update output");
+ check((await page.locator('#mrCommandView .mr-generated').innerText()).includes("선택 형식: 리뷰형"),"Script format controls update output");
+ await click(page,'#mrCommandView [data-copy-command]');
+ check((await page.locator('#mrCommandView [data-copy-command]').innerText()).includes("복사 완료"),"Command generated text is copyable");
+
  const mobile=await browser.newPage({viewport:{width:375,height:812},isMobile:true});
  await mobile.goto(base+"#mp=route%3Ainstagram",{waitUntil:"domcontentloaded"});
  await mobile.locator('#mrRouteView .mr-ig-tile').first().waitFor();
