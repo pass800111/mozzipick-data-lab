@@ -268,6 +268,7 @@ async function run(){
  await h.locator('#mrCommandResults .mr-ig-tile').first().waitFor();
  check(await h.locator('#mrCommandInput').inputValue()==="1-1","Back from search-result detail restores the exact command search report");
  await h.close();
+ check(errors.length===0,"No uncaught browser runtime errors across desktop and mobile");
 
  await page.close();await mobile.close();
 }
