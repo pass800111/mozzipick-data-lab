@@ -839,3 +839,65 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
     width:100%!important;
   }
 }
+
+
+/* V3.4 r22: align Instagram reel-card captions and button rows only */
+#mrRouteView .mr-instagram-gallery,
+#mrCommandView .mr-instagram-gallery{
+  align-items:stretch!important;
+}
+#mrRouteView .mr-instagram-gallery>.mr-ig-tile,
+#mrCommandView .mr-instagram-gallery>.mr-ig-tile{
+  display:flex!important;
+  flex-direction:column!important;
+  height:100%!important;
+  box-sizing:border-box!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-media,
+#mrCommandView .mr-instagram-gallery .mr-ig-media{
+  flex:0 0 auto!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-under,
+#mrCommandView .mr-instagram-gallery .mr-ig-under{
+  display:flex!important;
+  flex-direction:column!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+  gap:5px!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-under>b,
+#mrCommandView .mr-instagram-gallery .mr-ig-under>b{
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  min-height:39px!important;
+  max-height:39px!important;
+  line-height:19.5px!important;
+  overflow:hidden!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-under>small,
+#mrCommandView .mr-instagram-gallery .mr-ig-under>small{
+  display:block!important;
+  flex:0 0 16px!important;
+  min-height:16px!important;
+  max-height:16px!important;
+  line-height:16px!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+  text-overflow:ellipsis!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-tile-actions,
+#mrCommandView .mr-instagram-gallery .mr-ig-tile-actions{
+  margin-top:auto!important;
+  padding-top:5px!important;
+  align-content:end!important;
+  grid-template-rows:repeat(2,36px)!important;
+  grid-auto-rows:36px!important;
+}
+#mrRouteView .mr-instagram-gallery .mr-ig-tile-actions>*,
+#mrCommandView .mr-instagram-gallery .mr-ig-tile-actions>*{
+  height:36px!important;
+  min-height:36px!important;
+  max-height:36px!important;
+  overflow:hidden!important;
+}
