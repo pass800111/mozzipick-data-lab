@@ -29,7 +29,7 @@ async function run(){
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage product cards load");
  const css=await page.locator('link[href*="v33.css"]').last().getAttribute("href");
- check(css?.includes("instagram-card-align-r22"),"Latest aligned Instagram card stylesheet linked");
+ check(css?.includes("v35-detail-command-r23"),"V3.5 product-detail command stylesheet linked");
  await nav(page,"categories");
  check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort options");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("등급순");
