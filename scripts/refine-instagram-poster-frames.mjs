@@ -5,6 +5,7 @@
  */
 import fs from "node:fs";
 import sharp from "sharp";
+import {execFileSync} from "node:child_process";
 const data=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
 const originals=[...(data.domestic||[]),...(data.overseas||[])];
 const log=[];
@@ -14,21 +15,32 @@ for(const p of originals){
  const file=p.thumbnail;
  if(!code||file!=="assets/instagram/"+code+".jpg"||!fs.existsSync(file)){log.push({code,status:"skip",reason:"not a verified local source"});continue}
  if(code==="DdbwAIlJgdo"){log.push({code,status:"approved-reference-unchanged"});continue}
- const original=fs.readFileSync(file),before=await metadata(original);
+ const original=execFileSync("git",["show","origin/snapshot/v34-26-original-posters-before-frame-refine-20260927:"+file],{maxBuffer:10*1024*1024}),before=await metadata(original);
  if(before.width!==360||before.height!==640){log.push({code,status:"skip",reason:"unexpected source geometry"});continue}
  try{
    const media1=await sharp(original).trim({background:"#172238",threshold:18}).toBuffer();
    const meta1=await metadata(media1);
    if(meta1.width<150||meta1.height<200){log.push({code,status:"skip",reason:"trim removed too much source"});continue}
    let content=media1,meta=meta1;
-   const raw=await sharp(media1).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-   const corner=[raw.data[0],raw.data[1],raw.data[2]];
-   // Instagram sometimes frames its 9:16 image with solid black sidebars.
-   if(corner.every(n=>n<24)&&meta1.width>190&&meta1.height>240){
-     const inner=await sharp(media1).trim({background:"#000000",threshold:18}).toBuffer().catch(()=>null);
-     if(inner){const innerMeta=await metadata(inner);const fraction=innerMeta.width/meta1.width;
-       if(innerMeta.width>=140&&innerMeta.height>=240&&fraction>=.35&&fraction<=.92){content=inner;meta=innerMeta}
+   // Detect embedded-video black sidebars by sampling each border column in
+   // eight central rows. This accepts asymmetric sidebars without cutting content.
+   const raw=await sharp(media1).removeAlpha().raw().toBuffer({resolveWithObject:true});
+   const {data:pixels,info:{width:w,height:h,channels:ch}}=raw;
+   const ys=[.15,.25,.35,.45,.55,.65,.75,.85].map(t=>Math.min(h-1,Math.floor(h*t)));
+   function bar(x){
+     let hits=0;
+     for(const y of ys){const z=(y*w+x)*ch;
+       if(Math.max(pixels[z],pixels[z+1],pixels[z+2])<30)hits++;
      }
+     return hits>=6;
+   }
+   let left=0,right=0;
+   while(left<Math.floor(w*.45)&&bar(left))left++;
+   while(right<Math.floor(w*.45)&&bar(w-1-right))right++;
+   if(left>=8&&right>=8&&w-left-right>=135){
+     const clean=await sharp(media1).extract({left,top:0,width:w-left-right,height:h}).toBuffer();
+     const cleanMeta=await metadata(clean);
+     if(cleanMeta.width>=135&&cleanMeta.height>=220){content=clean;meta=cleanMeta}
    }
    const ratio=meta.height/meta.width;
    let output;
