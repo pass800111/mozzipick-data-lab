@@ -816,3 +816,26 @@ body.mr-dashboard-active #mrHomeDashboard .v33-home-command{height:auto!importan
 #mrRouteView .mr-ig-tile-actions,
 #mrCommandView .mr-ig-tile-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:minmax(36px,auto)!important}
 #mrCommandView .mr-ig-tile-actions [data-ig-preview]{background:#f0ecff!important;color:#5a3db4!important;border-color:#d9caff!important}
+
+
+/* V3.4 r20: make Instagram reel gallery two equal mobile columns, after legacy grid overrides */
+@media(max-width:760px){
+  #mrRouteView[data-route="instagram"] .mr-card-grid.mr-instagram-gallery,
+  #mrCommandView .mr-card-grid.mr-instagram-gallery{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-flow:row!important;
+    gap:8px!important;
+    align-items:start!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  #mrRouteView[data-route="instagram"] .mr-instagram-gallery>.mr-ig-tile,
+  #mrCommandView .mr-instagram-gallery>.mr-ig-tile{
+    grid-column:auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    width:100%!important;
+  }
+}
