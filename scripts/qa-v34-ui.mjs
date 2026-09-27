@@ -6,6 +6,17 @@ const findings = [], errors = [];
 function check(value, message){findings.push({pass:!!value,message}); if(!value)throw Error("FAIL: "+message)}
 async function click(page, selector){await page.locator(selector).first().click({timeout:10000})}
 async function nav(page, route){await click(page, '.mp-header-nav nav [data-view="'+route+'"]');await page.locator('#mrRouteView[data-route="'+route+'"]').waitFor()}
+async function checkReelAlignment(page,label){
+ const r=await page.locator('#mrRouteView .mr-instagram-gallery>.mr-ig-tile').evaluateAll(cards=>cards.map(card=>{
+  const bottom=card.getBoundingClientRect().bottom;
+  const actions=card.querySelector('.mr-ig-tile-actions');
+  const name=card.querySelector('.mr-ig-under>b');
+  return {bottom,actionsBottom:actions?.getBoundingClientRect().bottom,
+   actionsTop:actions?.getBoundingClientRect().top,nameHeight:name?.getBoundingClientRect().height};
+ }));
+ const within=(key,eps)=>Math.max(...r.map(x=>x[key]))-Math.min(...r.map(x=>x[key]))<=eps;
+ check(r.length===5&&within('bottom',2)&&within('actionsTop',2)&&within('actionsBottom',2)&&within('nameHeight',2),label+" all five card bottoms, names and buttons align");
+}
 async function run(){
  const source=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
  const context=await browser.newContext({viewport:{width:1440,height:900}});
@@ -15,7 +26,7 @@ async function run(){
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage product cards load");
  const css=await page.locator('link[href*="v33.css"]').last().getAttribute("href");
- check(css?.includes("all26-posters-mobile-r21"),"Current Instagram poster mobile styling is linked");
+ check(css?.includes("instagram-card-align-r22"),"Latest aligned Instagram card stylesheet linked");
  await nav(page,"categories");
  check(await page.locator('#mrRouteView [data-sort-order] option').count()===3,"Category sort options");
  await page.locator('#mrRouteView [data-sort-order]').selectOption("등급순");
@@ -29,6 +40,7 @@ async function run(){
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="등급순","Detail back restores sort");
  await nav(page,"instagram");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile').count()===5,"Domestic gallery five reels");
+ await checkReelAlignment(page,"Domestic");
  await page.waitForFunction(()=>{const imgs=[...document.querySelectorAll("#mrRouteView .mr-ig-tile img")];return imgs.length===5&&imgs.every(x=>x.complete&&x.naturalWidth>0)},null,{timeout:18000});
  check(true,"All five visible domestic source poster files actually load");
  check(await page.locator('#mrRouteView .mr-instagram-gallery .mr-ig-tile [data-prod]').count()===5,"Every reel has production control");
@@ -81,6 +93,7 @@ async function run(){
  check(await page.locator('#mrRouteView [data-sort-order]').inputValue()==="좋아요순","Instagram likes sort");
  await click(page,'#mrRouteView .mr-pager [data-page="4"]');
  check(await page.locator('#mrRouteView .mr-ig-tile').count()===5,"Overseas fourth page five reels");
+ await checkReelAlignment(page,"Overseas fourth page");
  await page.screenshot({path:"qa-v34-instagram-grid.png",fullPage:true});
  await click(page,'#mrCommandButton');
  await page.locator("#mrCommandInput").waitFor();
@@ -98,6 +111,7 @@ async function run(){
  await mobile.goto(base+"#mp=route%3Ainstagram",{waitUntil:"domcontentloaded"});
  await mobile.locator('#mrRouteView .mr-ig-tile').first().waitFor();
  check(await mobile.locator('#mrRouteView .mr-ig-tile').count()===5,"Mobile Instagram loads 5 reels");
+ await checkReelAlignment(mobile,"Mobile domestic");
  const dims=await mobile.locator('#mrRouteView .mr-instagram-gallery').evaluate(el=>({width:el.getBoundingClientRect().width,display:getComputedStyle(el).display,template:getComputedStyle(el).gridTemplateColumns,columns:[...el.children].slice(0,2).map(x=>({width:x.getBoundingClientRect().width,display:getComputedStyle(x).display,column:getComputedStyle(x).gridColumn,gridArea:getComputedStyle(x).gridArea,cssWidth:getComputedStyle(x).width})),children:[...el.children].slice(0,2).map(x=>x.getBoundingClientRect().width)}));
  console.log("MOBILE GALLERY DIMENSIONS",JSON.stringify({dims,viewport:await mobile.evaluate(()=>({innerWidth,clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,media760:matchMedia("(max-width:760px)").matches}))}));await mobile.screenshot({path:"qa-v34-mobile-gallery.png",fullPage:true});
  check(dims.children.length===2&&dims.children[0]<dims.width*.7,"Mobile gallery uses two columns");
