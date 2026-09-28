@@ -1,6 +1,6 @@
 {
   "schema": "mozzipick.chat-reports.v1",
-  "updatedAt": "2026-09-28T04:35:20.269Z",
+  "updatedAt": "2026-09-28T10:29:46.908Z",
   "reports": {
     "1": [],
     "1-1": [
@@ -57,7 +57,11 @@
                 "label": "판매처 후보",
                 "url": "https://smartstore.naver.com/cuktech/products/13740475771"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/Ddn0U22J_RM.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for Ddn0U22J_RM",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-09-28T10:29:26.352Z"
           },
           {
             "id": "ig:DdTRURkJKyp",
@@ -103,7 +107,11 @@
                 "label": "동일 모델 쿠팡 검색 결과",
                 "url": "https://www.coupang.com/vp/products/8803661494"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdTRURkJKyp.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdTRURkJKyp",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-09-28T10:29:31.252Z"
           },
           {
             "id": "ig:DdjEQzgyVSP",
@@ -149,7 +157,11 @@
                 "label": "미니덕트 공식 카테고리",
                 "url": "https://miniduct.co.kr/category/%EC%8C%8D%EC%8C%8D%EB%B0%94/88/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdjEQzgyVSP.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdjEQzgyVSP",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-09-28T10:29:36.098Z"
           },
           {
             "id": "ig:DdrIGJBNvNC",
@@ -191,7 +203,11 @@
                 "label": "원본 계정",
                 "url": "https://www.instagram.com/salimggon/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdrIGJBNvNC.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdrIGJBNvNC",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-09-28T10:29:40.930Z"
           },
           {
             "id": "ig:Ddn5Sf7vXzJ",
@@ -233,7 +249,11 @@
                 "label": "브랜드 계정",
                 "url": "https://www.instagram.com/damyu.object/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/Ddn5Sf7vXzJ.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for Ddn5Sf7vXzJ",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-09-28T10:29:45.670Z"
           }
         ]
       }
