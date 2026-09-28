@@ -30,3 +30,6 @@
 .mr-chat-review small{font-size:11px;opacity:.78}
 .mr-chat-item[data-review-state="confirmed"]{border-color:rgba(51,189,129,.62)}
 @media(max-width:700px){.mr-chat-review-summary{padding:10px;gap:6px}.mr-chat-review-filters{margin-left:0;width:100%}.mr-chat-review-filters button{flex:1}.mr-chat-review button{min-height:37px}}
+
+/* r32: approved items are labelled as the user's personal review, not externally verified factual data. */
+.mr-ig-tile .mr-ig-chat-approved,.mr-ig-detail .mr-ig-chat-approved{display:block;color:#35bb84;font-size:12px;font-weight:800;line-height:1.5;margin:6px 0}
