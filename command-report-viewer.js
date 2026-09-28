@@ -33,6 +33,16 @@ function card(p,i,r){
  const checked=kind==="verified-on-sale"&&url(s.url)&&s.checkedAt;
  const status=kind==="verified-on-sale"&&!checked?"판매 근거 미확인":(saleLabels[kind]||saleLabels.unknown);
  const category=p.category||"카테고리 미확인",nm=p.productName||"상품명 미확인";
+ const reel=url(p.reelUrl||p.sourceUrl||p.postUrl);
+ const code=String(reel).match(/^https:\/\/(?:www\.)?instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)\/?/i)?.[1]||"";
+ const cover=(code&&p.thumbnail==="assets/instagram/"+code+".jpg")?p.thumbnail:"";
+ const media=reel?
+  '<a class="mr-chat-media" href="'+esc(reel)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(nm)+' 원본 릴스 열기">'+
+  (cover?'<img src="'+esc(cover)+'?v=20260928-r34" alt="'+esc(nm)+' 실제 원본 릴스 썸네일" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">'+
+  '<span class="mr-chat-media-fallback" hidden><b>REELS</b><small>원본 이미지 표시 제한<br>릴스에서 확인 ↗</small></span>':
+  '<span class="mr-chat-media-fallback"><b>REELS</b><small>원본 썸네일 확보 중<br>릴스에서 확인 ↗</small></span>')+
+  '<span class="mr-chat-media-play" aria-hidden="true">▶</span></a>':
+  '<div class="mr-chat-media mr-chat-media-unavailable"><span class="mr-chat-media-fallback"><b>REELS</b><small>원본 링크 미확인</small></span></div>';
  const cells=[
   ["조회수",fmt(m.views)],["좋아요",fmt(m.likes)],["댓글",fmt(m.comments)],["공유",fmt(m.shares)]
  ].map(([k,v])=>'<span><b>'+k+'</b><strong>'+v+'</strong></span>').join("");
@@ -43,8 +53,11 @@ function card(p,i,r){
   '<button type="button" data-chat-review-index="'+i+'" aria-pressed="'+(reviewedAt?"true":"false")+'" aria-label="'+esc(nm)+' 내 확인 상태 '+(reviewedAt?"취소":"체크")+'">'+(reviewedAt?"✓ 확인 완료 · 체크 취소":"□ 내가 확인했어요")+'</button>'+
   (reviewedAt?'<small>내 확인 시각: '+esc(date(reviewedAt))+'</small>':"")+'</div>'+
   '<div class="mr-chat-item-top"><span class="mr-chat-rank">#'+(i+1)+'</span><span>'+esc(category)+'</span><span>'+esc(p.sourcePlatform||"원본 출처 미확인")+'</span></div>'+
-  '<h3>'+esc(nm)+'</h3>'+(p.model?'<p><b>모델</b> '+esc(p.model)+'</p>':"")+
+  '<div class="mr-chat-media-row">'+media+'<div class="mr-chat-media-copy"><h3>'+esc(nm)+'</h3>'+
+  (p.model?'<p><b>모델</b> '+esc(p.model)+'</p>':"")+
   (p.caption?'<p><b>영상 내용</b> '+esc(p.caption)+'</p>':"")+
+  (cover?'<small class="mr-chat-media-source">✓ 원본 릴스에서 확보한 실제 썸네일</small>':'<small class="mr-chat-media-source unverified">이미지 미확보 · 다른 상품 사진은 사용하지 않습니다.</small>')+
+  '</div></div>'+
   '<div class="mr-chat-metrics">'+cells+'</div>'+
   '<div class="mr-chat-facts">'+
   '<p><b>판매 여부</b> <strong>'+esc(status)+'</strong>'+(s.platform?' · '+esc(s.platform):"")+
