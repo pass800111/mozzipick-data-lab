@@ -153,48 +153,64 @@ async function run(){
  await click(page,'#mrCommandButton');
  await page.locator("#mrCommandInput").waitFor();
  const recentCount=a=>{const now=Date.now(),days=14*86400000;return a.filter(p=>{const t=Date.parse(p.timestamp||"");return Number.isFinite(t)&&t<=now&&now-t<=days}).length};
+ let paidRequests=0;page.on("request",req=>{if(/(?:apify\.com|\.n8n\.cloud)/i.test(new URL(req.url()).hostname))paidRequests++});
  await page.locator("#mrCommandInput").fill("1-1번");
  await click(page,'#mrCommandForm button');
- check(await page.locator('#mrCommandResults .mr-live-connect').isVisible(),"1-1 launches new n8n discovery connection instead of reading cached reels");
- check(await page.locator('#mrCommandResults .mr-ig-tile').count()===0,"Disconnected live command cannot falsely present old reels as new findings");
- check(await page.locator('#mrCommandResults [data-live-start]').count()===0,"Live search button unavailable without configured production webhook");
+ await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
+ check((await page.locator('#mrCommandResults .mr-chat-empty').innerText()).includes("아직 등록된 조사 보고서가 없습니다"),"Empty chat research report never invents new products");
+ check(await page.locator('#mrCommandResults [data-live-start],#mrCommandResults [data-live-key],#mrCommandResults [data-live-connect]').count()===0,"No paid n8n/Apify execution or credential forms remain");
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===0,"Previously saved reels are never passed off as new chat research");
  await click(page,'#mrCommandView [data-saved-search-command="1-1"]');
- check(await page.locator('#mrCommandResults .mr-ig-tile').count()===Math.min(5,recentCount(source.domestic)),"Domestic cached report remains separately accessible");
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===Math.min(5,recentCount(source.domestic)),"Prior domestic collection remains separately accessible");
  await click(page,'#mrCommandView [data-saved-search-command="1-2"]');
- check(await page.locator('#mrCommandResults .mr-ig-tile').count()===Math.min(5,recentCount(source.overseas)),"Overseas saved report retains five-per-page behavior");
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===Math.min(5,recentCount(source.overseas)),"Prior overseas collection remains separately accessible");
  await click(page,'#mrCommandResults [data-report-group="all"][data-report-page="2"]');
- check(await page.locator('#mrCommandResults .mr-ig-tile').count()===5,"Saved report page 2 remains usable");
+ check(await page.locator('#mrCommandResults .mr-ig-tile').count()===5,"Legacy report shows five items per page");
  await page.evaluate(()=>history.back());
  await page.waitForFunction(()=>history.state?.mpView?.commandReportCode==="1-2"&&history.state?.mpView?.commandReportPages?.all!==2);
- check((await page.locator('#mrCommandResults [data-report-page="1"]').getAttribute("class")).includes("active"),"Back returns to saved report page 1");
+ check((await page.locator('#mrCommandResults [data-report-page="1"]').getAttribute("class")).includes("active"),"Browser back restores separate existing-data report");
  await click(page,'#mrCommandView [data-saved-search-command="1-3"]');
- check((await page.locator('#mrCommandResults .mr-report-rule').innerText()).includes("상품 등록일은 인기도 관측일로 사용하지 않습니다"),"Separate existing Coupang report does not invent observation dates");
- await click(page,'#mrCommandView [data-saved-search-command="1"]');
- check(await page.locator('#mrCommandResults .mr-card').count()<=5,"Saved integrated report uses five-card pages");
+ check((await page.locator('#mrCommandResults .mr-report-rule').innerText()).includes("상품 등록일은 인기도 관측일로 사용하지 않습니다"),"Legacy Coupang report keeps evidence disclaimer");
+ const qaItems=Array.from({length:7},(_,i)=>({
+   productName:i===0?"QA 확인 판매 상품":i===1?"<script>fake injection</script>":"QA 상품 "+i,
+   model:"TEST-01",category:"전자제품",sourcePlatform:"Instagram",reelUrl:"https://www.instagram.com/reel/TEST"+i+"/",accountUrl:"https://www.instagram.com/testaccount/",
+   caption:"테스트 릴스 내용",publishedAt:"2026-09-27T00:00:00Z",metricsObservedAt:"2026-09-28T00:00:00Z",
+   metrics:i===0?{views:13500,likes:101,comments:12,shares:null}:{views:null,likes:null,comments:null},
+   sale:i===0?{status:"verified-on-sale",url:"https://www.coupang.com/vp/products/123",checkedAt:"2026-09-28T01:00:00Z",platform:"쿠팡"}:{status:"unknown"},
+   recommendation:"모찌픽 QA 테스트",cautions:"실물 모델 미확인",sources:[{label:"원본",url:"https://www.instagram.com/reel/TEST"+i+"/"}]
+ }));
+ const qaReport={schema:"mozzipick.chat-reports.v1",updatedAt:"2026-09-28T02:00:00Z",reports:{
+   "1":[],"1-1":[{id:"qa-new",command:"1-1",title:"QA 새 조사",createdAt:"2026-09-28T02:00:00Z",summary:"테스트 전용 자료",period:"14일",items:qaItems,notes:"실제 상품 아님"},
+    {id:"qa-old",command:"1-1",title:"QA 과거 조사",createdAt:"2026-09-27T02:00:00Z",items:[]}],"1-2":[],"1-3":[]}};
+ await page.route("**/data/command-reports.json*",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(qaReport)}));
+ await page.locator("#mrCommandInput").fill("1-1");
+ await click(page,'#mrCommandForm button');
+ await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Chat research report shows first five candidates");
+ check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("판매 중 · 판매처 확인"),"Verified sale status is evidence-based");
+ check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("13,500"),"Verified view count rendered with locale formatting");
+ check((await page.locator('#mrCommandResults .mr-chat-item').nth(1).innerText()).includes("미확인"),"Missing engagement is labeled unverified");
+ check(await page.locator('#mrCommandResults .mr-chat-item script').count()===0,"Scraped user content is HTML escaped");
+ check(await page.locator('#mrCommandResults .mr-chat-archives option').count()===2,"Past chat research reports remain accessible in archive");
+ await click(page,'#mrCommandResults [data-chat-page="2"]');
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===2,"Second page contains remaining two research candidates");
+ await page.evaluate(()=>history.back());
+ await page.waitForFunction(()=>history.state?.mpView?.commandResearch?.page===1);
+ await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Browser back returns to report page one");
+ await page.locator("#mrCommandInput").fill("1-2");
+ await click(page,'#mrCommandForm button');
+ await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
+ check((await page.locator('#mrCommandResults .mr-chat-empty').innerText()).includes("아직 등록된"),"Overseas command has its own honest empty report");
  await page.locator("#mrCommandInput").fill("1-3번");
  await click(page,'#mrCommandForm button');
- check(await page.locator('#mrCommandResults .mr-live-connect').isVisible()&&await page.locator('#mrCommandResults .mr-card').count()===0,"1-3 performs new discovery, not silent cached result");
+ await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
+ check((await page.locator('#mrCommandResults .mr-chat-report header').innerText()).includes("쿠팡"),"Coupang command maps to its separate report");
  await page.locator("#mrCommandInput").fill("1번");
  await click(page,'#mrCommandForm button');
- check(await page.locator('#mrCommandResults .mr-live-connect').isVisible(),"1번 integrated discovery requires real external workflow");
- await page.locator('#mrCommandResults [data-live-url]').fill("https://attacker.example/webhook/no");
- await page.locator('#mrCommandResults [data-live-key]').fill("playwright-only-password");
- await click(page,'#mrCommandResults [data-live-connect]');
- check((await page.locator('#mrCommandResults .mr-live-message.error').innerText()).includes("해당 n8n 작업공간"),"Webhook URL is restricted to the actual configured n8n production host");
- await page.locator('#mrCommandResults [data-live-url]').fill("https://pass800111.app.n8n.cloud/webhook/test-r29");
- await page.locator('#mrCommandResults [data-live-key]').fill("playwright-only-password");
- await click(page,'#mrCommandResults [data-live-connect]');
- check(await page.locator('#mrCommandResults [data-live-start]').isVisible(),"Connection fields permit a real request after explicit setup");
- let mockPayload=null;
- await page.route("https://pass800111.app.n8n.cloud/webhook/test-r29",async route=>{
-  mockPayload=JSON.parse(route.request().postData());
-  await route.fulfill({status:200,contentType:"application/json",headers:{"Access-Control-Allow-Origin":"*"},body:JSON.stringify({ok:true,status:"completed",requestId:mockPayload.requestId,items:[{name:"MOZZIPICK QA 신규 발견 상품",sourceUrl:"https://www.instagram.com/reel/Testing123/"}],registeredCount:0})});
- });
- await click(page,'#mrCommandResults [data-live-start]');
- await page.locator('#mrCommandResults .mr-live-item').waitFor();
- check(mockPayload?.command==="1"&&mockPayload?.schema==="mozzipick.discovery.v1","Live button sends actual selected command and versioned request payload");
- check((await page.locator('#mrCommandResults .mr-live-item').innerText()).includes("MOZZIPICK QA 신규 발견 상품"),"Live report only displays verified external response, not saved data");
- check(!JSON.stringify(await page.evaluate(()=>history.state)).includes("playwright-only-password"),"Access code is never written to browser history snapshots");
+ await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
+ check((await page.locator('#mrCommandResults .mr-chat-report header').innerText()).includes("통합"),"Integrated command maps to its separate report");
+ check(paidRequests===0,"All command 1 viewer interactions issue zero Apify or n8n requests");
  await click(page,'#mrCommandView .mr-command-grid [data-command="2"]');
  await page.locator('#mrCommandView .mr-command-detail').waitFor();
  await click(page,'#mrCommandView [data-change-product]');
