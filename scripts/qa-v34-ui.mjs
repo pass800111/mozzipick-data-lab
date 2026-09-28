@@ -26,7 +26,7 @@ async function run(){
  const originalItems=liveReports.reports?.["1-1"]?.[0]?.items||[];
  const covered=originalItems.filter(p=>!!p.thumbnail);
  check(covered.every(p=>{
-  const code=String(p.reelUrl||"").match(/instagram\\.com\\/(?:reel|p)\\/([A-Za-z0-9_-]+)/)?.[1];
+  const code=String(p.reelUrl||"").match(/instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)/)?.[1];
   const path="assets/instagram/"+code+".jpg";
   if(!code||p.thumbnail!==path||!fs.existsSync(path))return false;
   const b=fs.readFileSync(path);
