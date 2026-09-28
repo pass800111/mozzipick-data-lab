@@ -12,3 +12,21 @@
 .mr-chat-pages{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:15px 0}.mr-chat-pages button,.mr-chat-footer button{cursor:pointer;border:1px solid rgba(118,151,188,.65);background:transparent;border-radius:9px;color:inherit;padding:8px 13px;font-size:13px;font-weight:700}.mr-chat-pages button[aria-current=page]{background:#1e65ae;color:white}.mr-chat-notes{font-size:13px;line-height:1.6;margin:14px 0}
 .mr-chat-footer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}.mr-chat-footer small{font-size:12px;opacity:.8;line-height:1.5}
 @media(max-width:700px){.mr-chat-report{padding:12px;margin:10px 0}.mr-chat-report header h2{font-size:20px}.mr-chat-item{padding:11px}.mr-chat-item h3{font-size:16px}.mr-chat-item .mr-chat-metrics{gap:4px}.mr-chat-metrics strong{font-size:12px}.mr-chat-archives select{width:100%}}
+
+/* r31: user-only checklist, visually distinct from published source verification */
+.mr-chat-review-summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 14px;padding:12px 14px;border-radius:12px;background:rgba(69,125,182,.1);border:1px solid rgba(120,157,191,.4)}
+.mr-chat-review-summary>b{font-size:15px}.mr-chat-review-summary>span{font-size:13px;font-weight:750;padding:5px 9px;border-radius:8px;border:1px solid rgba(118,153,190,.38)}
+.mr-chat-review-summary>small{flex-basis:100%;font-size:12px;line-height:1.6;opacity:.82}
+.mr-chat-review-filters{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}
+.mr-chat-review-filters button{cursor:pointer;border:1px solid rgba(120,155,194,.55);border-radius:8px;background:transparent;color:inherit;padding:7px 12px;font-weight:700;font-size:12px}
+.mr-chat-review-filters button[aria-pressed="true"]{background:#246cb2;border-color:#246cb2;color:white}
+.mr-chat-review{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.mr-chat-review-badge{display:inline-flex;align-items:center;font-size:12px;font-weight:800;border-radius:8px;padding:6px 9px;white-space:nowrap}
+.mr-chat-review-badge.confirmed{background:rgba(26,155,99,.16);color:#36bd82;border:1px solid rgba(51,189,129,.48)}
+.mr-chat-review-badge.unconfirmed{background:rgba(220,154,34,.13);color:#cfa047;border:1px solid rgba(211,157,65,.48)}
+.mr-chat-review button{cursor:pointer;padding:7px 11px;border-radius:8px;border:1px solid rgba(115,159,191,.58);font-size:12px;font-weight:800;color:inherit;background:transparent}
+.mr-chat-review button[aria-pressed="true"]{border-color:rgba(51,189,129,.7);background:rgba(51,189,129,.1)}
+.mr-chat-review button:focus-visible,.mr-chat-review-filters button:focus-visible{outline:3px solid #6dbaff;outline-offset:2px}
+.mr-chat-review small{font-size:11px;opacity:.78}
+.mr-chat-item[data-review-state="confirmed"]{border-color:rgba(51,189,129,.62)}
+@media(max-width:700px){.mr-chat-review-summary{padding:10px;gap:6px}.mr-chat-review-filters{margin-left:0;width:100%}.mr-chat-review-filters button{flex:1}.mr-chat-review button{min-height:37px}}
