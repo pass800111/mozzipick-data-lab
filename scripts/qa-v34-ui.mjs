@@ -25,6 +25,9 @@ async function run(){
  const context=await browser.newContext({viewport:{width:1440,height:900},permissions:["clipboard-read","clipboard-write"]});
  const page=await context.newPage();
  page.on("pageerror", e => errors.push(e.message));
+ // Keep initial empty-state QA separate from published real research data.
+ const emptyResearch={schema:"mozzipick.chat-reports.v1",reports:{"1":[],"1-1":[],"1-2":[],"1-3":[]}};
+ await page.route("**/data/command-reports.json*",r=>r.fulfill({status:200,contentType:"application/json",body:JSON.stringify(emptyResearch)}));
  await page.goto(base, {waitUntil:"domcontentloaded"});
  await page.locator("#mrHomeDashboard .mr-card").first().waitFor({timeout:20000});
  check(await page.locator("#mrHomeDashboard .mr-card").count()>=4,"Homepage product cards load");
