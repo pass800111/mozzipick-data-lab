@@ -244,6 +244,17 @@ async function run(){
  await mobile.evaluate(()=>history.back());
  await mobile.locator('#mrRouteView .mr-instagram-gallery').waitFor();
  check(await mobile.evaluate(()=>history.state?.mozzipick==="route:instagram"),"Mobile device back returns to original Instagram list");
+ await mobile.route("**/data/command-reports.json*",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(qaReport)}));
+ await mobile.goto(base+"#mp=command%3Acenter",{waitUntil:"domcontentloaded"});
+ await mobile.locator("#mrCommandInput").waitFor();
+ await mobile.locator("#mrCommandInput").fill("1-1");
+ await click(mobile,"#mrCommandForm button");
+ await mobile.locator("#mrCommandResults .mr-chat-item").first().waitFor();
+ check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===5,"Mobile chat research report displays five candidates");
+ const reportFits=await mobile.locator("#mrCommandResults .mr-chat-report").evaluate(el=>el.getBoundingClientRect().right<=window.innerWidth+2&&el.getBoundingClientRect().left>=-2);
+ check(reportFits,"Mobile chat report fits the 375px screen without horizontal clipping");
+ await click(mobile,'#mrCommandResults [data-chat-page="2"]');
+ check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===2,"Mobile chat report pagination retains remaining candidates");
 
  // r27 full-navigation regression: every back/forward must restore the preceding
  // real UI state, never a synthetic homepage entry or a reset filter/page.
