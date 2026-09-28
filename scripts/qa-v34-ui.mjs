@@ -190,6 +190,18 @@ async function run(){
  await click(page,'#mrCommandForm button');
  await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
  check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Chat research report shows first five candidates");
+ const contrast=await page.locator('#mrCommandResults .mr-chat-report').evaluate(el=>{
+  const style=s=>getComputedStyle(el.querySelector(s));
+  const rgb=c=>{const m=String(c).match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);return m?[+m[1],+m[2],+m[3]]:null};
+  const l=c=>{const x=c.map(v=>{const n=v/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4});return .2126*x[0]+.7152*x[1]+.0722*x[2]};
+  const ratio=(fg,bg)=>{const x=l(rgb(fg)),y=l(rgb(bg));return Math.round(((Math.max(x,y)+.05)/(Math.min(x,y)+.05))*100)/100};
+  const card=getComputedStyle(el),title=style('.mr-chat-item h3'),item=style('.mr-chat-item'),note=style('header p'),badge=style('.mr-chat-review-badge.unconfirmed'),selected=style('.mr-chat-review-filters [aria-pressed="true"]');
+  return {reportBg:card.backgroundColor,title:ratio(title.color,item.backgroundColor),header:ratio(note.color,card.backgroundColor),unconfirmed:ratio(badge.color,badge.backgroundColor),selected:ratio(selected.color,selected.backgroundColor)};
+ });
+ check(contrast.reportBg==="rgb(255, 255, 255)","Research report uses explicit white canvas instead of dark fallback");
+ check(contrast.title>=7&&contrast.header>=7,"Report titles and explanation pass enhanced 7:1 contrast");
+ check(contrast.unconfirmed>=4.5&&contrast.selected>=4.5,"Review status and selected filter meet minimum 4.5:1 contrast");
+ await page.locator("#mrCommandResults .mr-chat-report").screenshot({path:"qa-v34-report-r33-desktop.png"});
  check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("판매 중 · 판매처 확인"),"Verified sale status is evidence-based");
  check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("13,500"),"Verified view count rendered with locale formatting");
  check((await page.locator('#mrCommandResults .mr-chat-item').nth(1).innerText()).includes("미확인"),"Missing engagement is labeled unverified");
@@ -277,6 +289,7 @@ async function run(){
  await click(mobile,"#mrCommandForm button");
  await mobile.locator("#mrCommandResults .mr-chat-item").first().waitFor();
  check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===5,"Mobile chat research report displays five candidates");
+ await mobile.locator("#mrCommandResults .mr-chat-report").screenshot({path:"qa-v34-report-r33-mobile.png"});
  const reportFits=await mobile.locator("#mrCommandResults .mr-chat-report").evaluate(el=>el.getBoundingClientRect().right<=window.innerWidth+2&&el.getBoundingClientRect().left>=-2);
  check(reportFits,"Mobile chat report fits the 375px screen without horizontal clipping");
  await click(mobile,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
