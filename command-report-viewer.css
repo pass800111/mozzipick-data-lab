@@ -141,3 +141,31 @@
  #mrCommandView .mr-chat-metrics strong{font-size:14px!important}
  #mrCommandView .mr-chat-review-filters button{min-height:38px!important}
 }
+
+/* r34: verified original Reel poster only, no stock/product substitute. */
+#mrCommandView .mr-chat-media-row{display:grid;grid-template-columns:136px minmax(0,1fr);gap:16px;align-items:start;margin:12px 0!important}
+#mrCommandView .mr-chat-media-copy{min-width:0;overflow-wrap:anywhere}
+#mrCommandView .mr-chat-media-copy h3{margin:0 0 8px!important}
+#mrCommandView .mr-chat-media{
+ position:relative;display:flex;align-items:center;justify-content:center;width:136px;max-width:100%;
+ aspect-ratio:9/16;overflow:hidden;border-radius:12px;border:1.5px solid #b4cbe1;
+ background:linear-gradient(150deg,#e8f3ff,#d8e7f8);text-decoration:none!important;color:#24476d!important
+}
+#mrCommandView .mr-chat-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;inset:0}
+#mrCommandView .mr-chat-media img[hidden]{display:none!important}
+#mrCommandView .mr-chat-media-fallback{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:13px;padding:9px;text-align:center;color:#315b82!important}
+#mrCommandView .mr-chat-media-fallback[hidden]{display:none!important}
+#mrCommandView .mr-chat-media-fallback b{font-size:19px;letter-spacing:.1em;color:#1b548b}
+#mrCommandView .mr-chat-media-fallback small{font-size:12px!important;line-height:1.5;color:#345c80!important}
+#mrCommandView .mr-chat-media-play{position:absolute;right:9px;bottom:9px;width:28px;height:28px;display:grid;place-items:center;font-size:11px;background:rgba(12,31,57,.76);color:#fff;border-radius:50%}
+#mrCommandView .mr-chat-media-source{display:block;margin:12px 0 3px;font-size:12px!important;font-weight:800;color:#145d45!important}
+#mrCommandView .mr-chat-media-source.unverified{color:#7e581a!important}
+#mrCommandView .mr-chat-media:focus-visible{outline:3px solid #225daa!important;outline-offset:3px!important}
+@media(max-width:700px){
+ #mrCommandView .mr-chat-media-row{grid-template-columns:112px minmax(0,1fr);gap:11px;margin:10px 0!important}
+ #mrCommandView .mr-chat-media{width:112px;border-radius:9px}
+ #mrCommandView .mr-chat-media-copy h3{font-size:16px!important}
+ #mrCommandView .mr-chat-media-copy p{font-size:12px!important}
+ #mrCommandView .mr-chat-media-fallback b{font-size:16px}
+ #mrCommandView .mr-chat-media-fallback small{font-size:11px!important}
+}
