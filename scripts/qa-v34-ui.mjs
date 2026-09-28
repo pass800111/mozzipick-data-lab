@@ -400,7 +400,7 @@ async function run(){
  await click(approvalPage,'#mrRouteView .mr-ig-tile [data-ig-detail]');
  await approvalPage.locator("#mrRouteView .mr-ig-detail").waitFor();
  check((await approvalPage.locator("#mrRouteView .mr-ig-detail-info h1").innerText())==="QA 확인 판매 상품","Moved item has exact original detail");
- check((await approvalPage.locator("#mrRouteView .mr-ig-detail .mr-ig-chat-approved").innerText()).includes("같은 브라우저"),"Detail discloses local browser-only status");
+ check((await approvalPage.locator("#mrRouteView .mr-ig-detail .mr-ig-source").innerText()).includes("같은 브라우저"),"Detail discloses local browser-only status");
  await click(approvalPage,"#mrCommandButton");
  await approvalPage.locator("#mrCommandInput").fill("1-1");
  await click(approvalPage,"#mrCommandForm button");
