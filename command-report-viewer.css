@@ -33,3 +33,111 @@
 
 /* r32: approved items are labelled as the user's personal review, not externally verified factual data. */
 .mr-ig-tile .mr-ig-chat-approved,.mr-ig-detail .mr-ig-chat-approved{display:block;color:#35bb84;font-size:12px;font-weight:800;line-height:1.5;margin:6px 0}
+
+/* r33 high-contrast LIGHT report. Site master v33 uses pale background and dark text;
+   previous dark fallback panel + inherited dark ink made the report nearly unreadable.
+   Scope every override to chat report and its separate approved label only. */
+#mrCommandView .mr-chat-report{
+  --report-bg:#ffffff;--report-ink:#132b49;--report-sub:#3d5675;
+  --report-blue:#1957a1;--report-line:#c5d5e8;
+  background:var(--report-bg)!important;color:var(--report-ink)!important;
+  border:2px solid var(--report-line)!important;
+  box-shadow:0 6px 20px rgba(24,62,114,.10)!important;
+  font-size:14px!important;line-height:1.6!important;
+}
+#mrCommandView .mr-chat-report header{color:var(--report-ink)!important}
+#mrCommandView .mr-chat-report header span{color:#205796!important;font-size:13px!important}
+#mrCommandView .mr-chat-report header h2{color:#102b4d!important;font-size:clamp(21px,3vw,26px)!important;line-height:1.35!important}
+#mrCommandView .mr-chat-report header p{color:#334c6c!important;font-size:14px!important;opacity:1!important}
+#mrCommandView .mr-chat-summary{
+  background:#eaf3ff!important;border:1px solid #b8d1ef!important;color:#122f51!important
+}
+#mrCommandView .mr-chat-summary strong{color:#12365e!important;font-size:18px!important}
+#mrCommandView .mr-chat-summary p{color:#254463!important;font-size:14px!important}
+#mrCommandView .mr-chat-summary small{color:#3b5471!important;opacity:1!important;font-size:13px!important}
+#mrCommandView .mr-chat-review-summary{
+  background:#edf7ff!important;border:1px solid #b7d3ee!important;color:#153958!important
+}
+#mrCommandView .mr-chat-review-summary>b{color:#133856!important}
+#mrCommandView .mr-chat-review-summary>span{
+  background:#fff!important;border:1px solid #b2c9df!important;color:#203d5d!important
+}
+#mrCommandView .mr-chat-review-summary>small{
+  color:#405a75!important;opacity:1!important;font-size:13px!important
+}
+#mrCommandView .mr-chat-review-filters button,
+#mrCommandView .mr-chat-pages button,
+#mrCommandView .mr-chat-footer button{
+  background:#ffffff!important;color:#1a477a!important;
+  border:1.5px solid #85a9d4!important;font-size:13px!important;font-weight:850!important
+}
+#mrCommandView .mr-chat-review-filters button[aria-pressed="true"],
+#mrCommandView .mr-chat-pages button[aria-current="page"]{
+  background:#1957a1!important;color:#ffffff!important;border-color:#1957a1!important
+}
+#mrCommandView .mr-chat-item{
+  background:#f8fbff!important;border:1.5px solid #c5d5e8!important;color:#172e4d!important;
+  box-shadow:0 1px 5px rgba(28,70,122,.045)!important
+}
+#mrCommandView .mr-chat-item[data-review-state="confirmed"]{
+  background:#f2fbf6!important;border-color:#5ba784!important
+}
+#mrCommandView .mr-chat-item h3{color:#122c4d!important;font-size:18px!important;line-height:1.45!important}
+#mrCommandView .mr-chat-item-top{color:#3d5874!important;opacity:1!important;font-size:13px!important}
+#mrCommandView .mr-chat-rank{color:#1c5795!important}
+#mrCommandView .mr-chat-item p,
+#mrCommandView .mr-chat-facts p{color:#294563!important;font-size:14px!important}
+#mrCommandView .mr-chat-item p b{color:#19395d!important}
+#mrCommandView .mr-chat-item p strong{color:#103f70!important}
+#mrCommandView .mr-chat-metrics span{
+  background:#fff!important;border:1px solid #bfd1e6!important;color:#1e3c5d!important
+}
+#mrCommandView .mr-chat-metrics b{color:#3e5977!important;opacity:1!important;font-size:12px!important}
+#mrCommandView .mr-chat-metrics strong{color:#102e52!important;font-size:16px!important}
+#mrCommandView .mr-chat-reason{
+  background:#eaf4ff!important;border-left:4px solid #2165af!important;color:#1c3b5d!important
+}
+#mrCommandView .mr-chat-links a,
+#mrCommandView .mr-chat-facts a{
+  color:#14559b!important;font-size:13px!important;font-weight:850!important;
+  text-decoration:underline!important;text-underline-offset:2px!important
+}
+#mrCommandView .mr-chat-review-badge.confirmed{
+  color:#125b3e!important;background:#e1f6e9!important;border-color:#6aab85!important
+}
+#mrCommandView .mr-chat-review-badge.unconfirmed{
+  color:#764800!important;background:#fff2d6!important;border-color:#c9a456!important
+}
+#mrCommandView .mr-chat-review button{
+  background:#fff!important;color:#1d4774!important;border:1.5px solid #8eafce!important;
+  font-size:13px!important;min-height:38px!important
+}
+#mrCommandView .mr-chat-review button[aria-pressed="true"]{
+  background:#dbf3e5!important;color:#125439!important;border-color:#64a783!important
+}
+#mrCommandView .mr-chat-review small,
+#mrCommandView .mr-chat-notes,
+#mrCommandView .mr-chat-footer small{color:#405873!important;opacity:1!important;font-size:13px!important}
+#mrCommandView .mr-chat-state,
+#mrCommandView .mr-chat-empty{
+  background:#f3f8ff!important;color:#1c3b60!important;
+  border:1.5px dashed #9cbadd!important;font-size:14px!important
+}
+#mrCommandView .mr-chat-empty strong{color:#12385e!important}
+#mrCommandView .mr-chat-archives{color:#163a62!important}
+#mrCommandView .mr-chat-archives select{
+  background:#fff!important;color:#193656!important;border:1.5px solid #8aabc9!important
+}
+#mrCommandView .mr-chat-report button:focus-visible,
+#mrCommandView .mr-chat-report select:focus-visible,
+#mrCommandView .mr-chat-report a:focus-visible{
+  outline:3px solid #225daa!important;outline-offset:3px!important
+}
+#mrRouteView .mr-ig-chat-approved{color:#126844!important;font-size:13px!important}
+@media(max-width:700px){
+ #mrCommandView .mr-chat-report{padding:14px!important}
+ #mrCommandView .mr-chat-item{padding:12px!important}
+ #mrCommandView .mr-chat-item h3{font-size:17px!important}
+ #mrCommandView .mr-chat-metrics strong{font-size:14px!important}
+ #mrCommandView .mr-chat-review-filters button{min-height:38px!important}
+}
