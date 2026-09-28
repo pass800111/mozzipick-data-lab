@@ -1,3 +1,9 @@
+# 사용 중지 (r30 / 2026-09-28)
+
+이 문서는 V3.5 r29 실험 단계에 대한 역사적 기록입니다. 현행 사이트는 Webhook·Apify·n8n을 호출하지 않고, 채팅 조사 결과를 `data/command-reports.json`에서 무료 열람합니다. **이 지침을 따라 기존 n8n 복제 워크플로를 Publish하지 마세요.** 현행 문서: [chat-command-reports.md](chat-command-reports.md).
+
+---
+
 # MOZZIPICK 1번 실시간 발굴: n8n Production Webhook 연결 규약 (r29)
 
 상태: GitHub Pages 사이트의 실시간 발굴 호출/검증 UI는 준비되었으나 실제 n8n Production Webhook 주소와 실행 워크플로는 확인 및 연결되지 않았습니다. 이 문서는 동작 계약이며 활성화 완료 증빙이 아닙니다.
