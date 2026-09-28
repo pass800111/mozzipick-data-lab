@@ -69,7 +69,9 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/instagram-electronics.json data/command-reports.json assets/instagram/*.jpg
             git commit -m "Register verified original Instagram reel thumbnails at 360x640"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           else
             echo "No unverified placeholders substituted; no new original posters available."
           fi
