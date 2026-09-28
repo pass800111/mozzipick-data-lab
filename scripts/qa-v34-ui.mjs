@@ -192,7 +192,7 @@ async function run(){
  check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Chat research report shows first five candidates");
  const contrast=await page.locator('#mrCommandResults .mr-chat-report').evaluate(el=>{
   const style=s=>getComputedStyle(el.querySelector(s));
-  const rgb=c=>{const m=String(c).match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);return m?[+m[1],+m[2],+m[3]]:null};
+  const rgb=c=>{const m=String(c).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);return m?[+m[1],+m[2],+m[3]]:null};
   const l=c=>{const x=c.map(v=>{const n=v/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4});return .2126*x[0]+.7152*x[1]+.0722*x[2]};
   const ratio=(fg,bg)=>{const x=l(rgb(fg)),y=l(rgb(bg));return Math.round(((Math.max(x,y)+.05)/(Math.min(x,y)+.05))*100)/100};
   const card=getComputedStyle(el),title=style('.mr-chat-item h3'),item=style('.mr-chat-item'),note=style('header p'),badge=style('.mr-chat-review-badge.unconfirmed'),selected=style('.mr-chat-review-filters [aria-pressed="true"]');
