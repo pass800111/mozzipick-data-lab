@@ -22,6 +22,17 @@ async function checkReelAlignment(page,label){
 }
 async function run(){
  const source=JSON.parse(fs.readFileSync("data/instagram-electronics.json","utf8"));
+ const liveReports=JSON.parse(fs.readFileSync("data/command-reports.json","utf8"));
+ const originalItems=liveReports.reports?.["1-1"]?.[0]?.items||[];
+ const covered=originalItems.filter(p=>!!p.thumbnail);
+ check(covered.every(p=>{
+  const code=String(p.reelUrl||"").match(/instagram\\.com\\/(?:reel|p)\\/([A-Za-z0-9_-]+)/)?.[1];
+  const path="assets/instagram/"+code+".jpg";
+  if(!code||p.thumbnail!==path||!fs.existsSync(path))return false;
+  const b=fs.readFileSync(path);
+  return b.length>9000&&b[0]===255&&b[1]===216&&b[2]===255;
+ }),"Every published report thumbnail is an actual local JPEG matched to exact original Reel shortcode");
+ if(covered.length)check(covered.length===originalItems.length,"All first-batch original reel thumbnails captured without stock-image substitutions");
  const context=await browser.newContext({viewport:{width:1440,height:900},permissions:["clipboard-read","clipboard-write"]});
  const page=await context.newPage();
  page.on("pageerror", e => errors.push(e.message));
@@ -190,6 +201,9 @@ async function run(){
  await click(page,'#mrCommandForm button');
  await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
  check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Chat research report shows first five candidates");
+ check(await page.locator('#mrCommandResults .mr-chat-media').count()===5,"All five report cards include a dedicated original Reel thumbnail panel");
+ check(await page.locator('#mrCommandResults .mr-chat-media-fallback').count()===5,"Unverified source image shows honest original-link fallback, no invented product thumbnail");
+ check(await page.locator('#mrCommandResults .mr-chat-media img').count()===0,"No unrelated product artwork substituted for candidates lacking verified original posters");
  const contrast=await page.locator('#mrCommandResults .mr-chat-report').evaluate(el=>{
   const style=s=>getComputedStyle(el.querySelector(s));
   const rgb=c=>{const m=String(c).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);return m?[+m[1],+m[2],+m[3]]:null};
