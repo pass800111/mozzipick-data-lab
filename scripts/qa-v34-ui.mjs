@@ -422,7 +422,7 @@ async function run(){
  await approvalPage.locator("#mrIgSearch").fill("");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Original domestic reels remain untouched");
- // Overseas-only approval must transfer to overseas, never domestic.
+ // r35 regression: overseas-only approval must transfer to overseas, never domestic.
  await click(approvalPage,"#mrCommandButton");
  await approvalPage.locator("#mrCommandInput").fill("1-2");
  await click(approvalPage,"#mrCommandForm button");
