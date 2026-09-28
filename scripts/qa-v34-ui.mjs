@@ -245,7 +245,7 @@ async function run(){
  await mobile.locator('#mrRouteView .mr-instagram-gallery').waitFor();
  check(await mobile.evaluate(()=>history.state?.mozzipick==="route:instagram"),"Mobile device back returns to original Instagram list");
  await mobile.route("**/data/command-reports.json*",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(qaReport)}));
- await mobile.goto(base+"#mp=command%3Acenter",{waitUntil:"domcontentloaded"});
+ await mobile.goto(base+"&qaMobileChatReport=1#mp=command%3Acenter",{waitUntil:"domcontentloaded"});
  await mobile.locator("#mrCommandInput").waitFor();
  await mobile.locator("#mrCommandInput").fill("1-1");
  await click(mobile,"#mrCommandForm button");
