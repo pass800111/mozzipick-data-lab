@@ -1,0 +1,10 @@
+{
+  "schema": "mozzipick.chat-reports.v1",
+  "updatedAt": null,
+  "reports": {
+    "1": [],
+    "1-1": [],
+    "1-2": [],
+    "1-3": []
+  }
+}
