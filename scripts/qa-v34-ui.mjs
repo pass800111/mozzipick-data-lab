@@ -435,6 +435,9 @@ async function run(){
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===0,"Overseas approved item never leaks into domestic Instagram");
  await click(approvalPage,'#mrRouteView [data-filter="해외상품"]');
+ // Changing domestic/overseas intentionally resets the search query; reapply for scope verification.
+ await approvalPage.locator("#mrIgSearch").fill("QA 해외 전용 상품");
+ await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===1,"Only approved overseas product appears in overseas gallery");
  check((await approvalPage.locator("#mrRouteView .mr-ig-tile").innerText()).includes("QA 해외 전용 상품"),"Overseas gallery keeps correct source product identity");
  check((await approvalPage.locator("#mrRouteView .mr-ig-chat-approved").innerText()).includes("내 확인"),"Overseas transferred item is labeled as personally approved");
