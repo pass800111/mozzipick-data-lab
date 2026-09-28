@@ -195,7 +195,7 @@ async function run(){
  }));
  const qaReport={schema:"mozzipick.chat-reports.v1",updatedAt:"2026-09-28T02:00:00Z",reports:{
    "1":[],"1-1":[{id:"qa-new",command:"1-1",title:"QA 새 조사",createdAt:"2026-09-28T02:00:00Z",summary:"테스트 전용 자료",period:"14일",items:qaItems,notes:"실제 상품 아님"},
-    {id:"qa-old",command:"1-1",title:"QA 과거 조사",createdAt:"2026-09-27T02:00:00Z",items:[]}],"1-2":[],"1-3":[]}};
+    {id:"qa-old",command:"1-1",title:"QA 과거 조사",createdAt:"2026-09-27T02:00:00Z",items:[]}],"1-2":[{id:"qa-overseas",command:"1-2",title:"QA 해외 조사",createdAt:"2026-09-28T02:00:00Z",items:[{...qaItems[0],productName:"QA 해외 전용 상품",reelUrl:"https://www.instagram.com/reel/OVERSEA01/",accountUrl:"https://www.instagram.com/overseastest/",id:"qa-overseas-product"}]}],"1-3":[]}};
  await page.route("**/data/command-reports.json*",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(qaReport)}));
  await page.locator("#mrCommandInput").fill("1-1");
  await click(page,'#mrCommandForm button');
@@ -209,12 +209,12 @@ async function run(){
   const rgb=c=>{const m=String(c).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);return m?[+m[1],+m[2],+m[3]]:null};
   const l=c=>{const x=c.map(v=>{const n=v/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4});return .2126*x[0]+.7152*x[1]+.0722*x[2]};
   const ratio=(fg,bg)=>{const x=l(rgb(fg)),y=l(rgb(bg));return Math.round(((Math.max(x,y)+.05)/(Math.min(x,y)+.05))*100)/100};
-  const card=getComputedStyle(el),title=style('.mr-chat-item h3'),item=style('.mr-chat-item'),note=style('header p'),badge=style('.mr-chat-review-badge.unconfirmed'),selected=style('.mr-chat-review-filters [aria-pressed="true"]');
+  const card=getComputedStyle(el),title=style('.mr-chat-item h3'),item=style('.mr-chat-item'),note=style('header p'),badge=style('.mr-chat-review-badge.unconfirmed'),selected=style('.mr-chat-review button[aria-pressed="false"]');
   return {reportBg:card.backgroundColor,title:ratio(title.color,item.backgroundColor),header:ratio(note.color,card.backgroundColor),unconfirmed:ratio(badge.color,badge.backgroundColor),selected:ratio(selected.color,selected.backgroundColor)};
  });
  check(contrast.reportBg==="rgb(255, 255, 255)","Research report uses explicit white canvas instead of dark fallback");
  check(contrast.title>=7&&contrast.header>=7,"Report titles and explanation pass enhanced 7:1 contrast");
- check(contrast.unconfirmed>=4.5&&contrast.selected>=4.5,"Review status and selected filter meet minimum 4.5:1 contrast");
+ check(contrast.unconfirmed>=4.5&&contrast.selected>=4.5,"Review status and transfer button meet minimum 4.5:1 contrast");
  await page.locator("#mrCommandResults .mr-chat-report").screenshot({path:"qa-v34-report-r33-desktop.png"});
  check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("판매 중 · 판매처 확인"),"Verified sale status is evidence-based");
  check((await page.locator('#mrCommandResults .mr-chat-item').first().innerText()).includes("13,500"),"Verified view count rendered with locale formatting");
@@ -224,36 +224,26 @@ async function run(){
  check(await page.locator('#mrCommandResults .mr-chat-review-badge.unconfirmed').count()===5,"Research items begin with personal unchecked status");
  check((await page.locator('#mrCommandResults .mr-chat-review-summary').innerText()).includes("미확인 7개"),"Unreviewed total counts all seven, not just page one");
  await click(page,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
- check(await page.locator('#mrCommandResults .mr-chat-item:first-child .mr-chat-review-badge.confirmed').count()===1,"Confirmation visibly changes personal badge");
- check((await page.locator('#mrCommandResults .mr-chat-review-summary').innerText()).includes("확인 1개"),"Confirmation updates overall reviewed count");
- check((await page.locator('#mrCommandResults .mr-chat-item:first-child').innerText()).includes("판매 중 · 판매처 확인"),"Review status does not alter independent sale claims");
- check(await page.evaluate(()=>Boolean(JSON.parse(localStorage.getItem("mozzipick.chat-review.v1")||"{}")["url:https://www.instagram.com/reel/TEST0"]?.checkedAt)),"Confirmation persists by stable reel URL and time in localStorage");
- await click(page,'#mrCommandResults [data-chat-review-filter="confirmed"]');
- check(await page.locator('#mrCommandResults .mr-chat-item').count()===1,"Confirmed-only filter shows reviewed candidates");
- await click(page,'#mrCommandResults [data-chat-review-filter="unconfirmed"]');
- check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Unconfirmed-only filter paginates remaining six candidates");
- check(await page.locator('#mrCommandResults [data-chat-page="2"]').count()===1,"Unconfirmed filter has page two");
- await page.evaluate(()=>history.back());
- await page.waitForFunction(()=>history.state?.mpView?.commandResearch?.reviewFilter==="confirmed");
- check(await page.locator('#mrCommandResults .mr-chat-item').count()===1,"Back restores prior review filter");
- await click(page,'#mrCommandResults [data-chat-review-filter="all"]');
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Domestic 1-1 approved candidate instantly leaves report waiting list");
+ check(!(await page.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 확인 판매 상품"),"Checked domestic item no longer appears in pending report");
+ check((await page.locator('#mrCommandResults .mr-chat-review-summary').innerText()).includes("확인 1개"),"Transferred domestic count increments");
+ check(await page.evaluate(()=>Boolean(JSON.parse(localStorage.getItem("mozzipick.chat-review.v1")||"{}")["url:https://www.instagram.com/reel/TEST0"]?.checkedAt)),"Domestic transfer records exact original Reel key");
+ check(await page.locator('#mrCommandResults [data-chat-review-filter="confirmed"]').count()===0,"Domestic report does not offer approved-items view");
  await click(page,'#mrCommandResults [data-chat-reload]');
- await page.locator('#mrCommandResults .mr-chat-item:first-child .mr-chat-review-badge.confirmed').waitFor();
- check(true,"Confirmed status persists across report refetch");
+ check(!(await page.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 확인 판매 상품"),"Approved domestic item stays absent after reload");
  await click(page,'#mrCommandResults [data-chat-page="2"]');
- check(await page.locator('#mrCommandResults .mr-chat-item').count()===2,"Second page contains remaining two research candidates");
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===1,"Domestic remaining six candidates paginate five-per-page");
  await page.evaluate(()=>history.back());
  await page.waitForFunction(()=>history.state?.mpView?.commandResearch?.page===1);
  await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
- check(await page.locator('#mrCommandResults .mr-chat-item').count()===5,"Browser back returns to report page one");
- check(await page.locator('#mrCommandResults .mr-chat-item:first-child .mr-chat-review-badge.confirmed').count()===1,"Back preserves personal confirmation");
- await click(page,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
- check(await page.locator('#mrCommandResults .mr-chat-item:first-child .mr-chat-review-badge.unconfirmed').count()===1,"Second click revokes confirmation");
- check((await page.locator('#mrCommandResults .mr-chat-review-summary').innerText()).includes("미확인 7개"),"Revocation updates summary totals");
+ check(!(await page.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 확인 판매 상품"),"Browser history cannot resurrect transferred product");
  await page.locator("#mrCommandInput").fill("1-2");
  await click(page,'#mrCommandForm button');
- await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
- check((await page.locator('#mrCommandResults .mr-chat-empty').innerText()).includes("아직 등록된"),"Overseas command has its own honest empty report");
+ await page.locator('#mrCommandResults .mr-chat-item').first().waitFor();
+ check((await page.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 해외 전용 상품"),"Overseas 1-2 displays its own unreviewed report");
+ await click(page,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
+ check(await page.locator('#mrCommandResults .mr-chat-item').count()===0,"Checked 1-2 overseas candidate immediately leaves report");
+ check((await page.locator('#mrCommandResults .mr-chat-state').innerText()).includes("해외 메뉴"),"Empty overseas report points to corresponding overseas gallery");
  await page.locator("#mrCommandInput").fill("1-3번");
  await click(page,'#mrCommandForm button');
  await page.locator('#mrCommandResults .mr-chat-empty').waitFor();
@@ -307,12 +297,9 @@ async function run(){
  const reportFits=await mobile.locator("#mrCommandResults .mr-chat-report").evaluate(el=>el.getBoundingClientRect().right<=window.innerWidth+2&&el.getBoundingClientRect().left>=-2);
  check(reportFits,"Mobile chat report fits the 375px screen without horizontal clipping");
  await click(mobile,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
- check(await mobile.locator('#mrCommandResults .mr-chat-review-badge.confirmed').count()===1,"Mobile checkbox activates");
- await click(mobile,'#mrCommandResults [data-chat-review-filter="confirmed"]');
- check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===1,"Mobile confirmed-only filter");
- await click(mobile,'#mrCommandResults [data-chat-review-filter="all"]');
+ check(!(await mobile.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 확인 판매 상품"),"Mobile confirmation removes the reviewed item instantly");
  await click(mobile,'#mrCommandResults [data-chat-page="2"]');
- check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===2,"Mobile chat report pagination retains remaining candidates");
+ check(await mobile.locator("#mrCommandResults .mr-chat-item").count()===1,"Mobile pending report paginates remaining candidates");
 
  // r27 full-navigation regression: every back/forward must restore the preceding
  // real UI state, never a synthetic homepage entry or a reset filter/page.
@@ -417,31 +404,25 @@ async function run(){
  await click(approvalPage,"#mrCommandForm button");
  await approvalPage.locator("#mrCommandResults .mr-chat-item").first().waitFor();
  await click(approvalPage,"#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]");
- check(await approvalPage.locator("#mrCommandResults .mr-chat-review-badge.confirmed").count()===1,"Only one manually checked domestic candidate");
+ check(await approvalPage.locator("#mrCommandResults .mr-chat-item").count()===5&&!(await approvalPage.locator("#mrCommandResults .mr-chat-items").innerText()).includes("QA 확인 판매 상품"),"Checked domestic candidate immediately disappears from pending report");
  await nav(approvalPage,"instagram");
  await approvalPage.locator("#mrIgSearch").fill("QA 확인 판매 상품");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===1,"Checked candidate moves to domestic Instagram");
- check((await approvalPage.locator("#mrRouteView .mr-ig-chat-approved").innerText()).includes("1-1 보고서"),"Moved item distinctly marked personal approval");
+ check((await approvalPage.locator("#mrRouteView .mr-ig-chat-approved").innerText()).includes("채팅 보고서"),"Moved item distinctly marked personal approval");
  check((await approvalPage.locator("#mrRouteView .mr-ig-under").innerText()).includes("좋아요 101"),"Moved item keeps reported metrics");
  await click(approvalPage,'#mrRouteView .mr-ig-tile [data-ig-detail]');
  await approvalPage.locator("#mrRouteView .mr-ig-detail").waitFor();
  check((await approvalPage.locator("#mrRouteView .mr-ig-detail-info h1").innerText())==="QA 확인 판매 상품","Moved item has exact original detail");
  check((await approvalPage.locator("#mrRouteView .mr-ig-detail .mr-ig-source").innerText()).includes("같은 브라우저"),"Detail discloses local browser-only status");
- await click(approvalPage,"#mrCommandButton");
- await approvalPage.locator("#mrCommandInput").fill("1-1");
- await click(approvalPage,"#mrCommandForm button");
- await approvalPage.locator("#mrCommandResults .mr-chat-item").first().waitFor();
- await click(approvalPage,"#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]");
- check(await approvalPage.locator("#mrCommandResults .mr-chat-review-badge.unconfirmed").count()===5,"Second click revokes approval without erasing report");
  await nav(approvalPage,"instagram");
  await approvalPage.locator("#mrIgSearch").fill("QA 확인 판매 상품");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
- check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===0,"Revoked candidate automatically removed from approved import");
+ check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===1,"Moved domestic item remains available without duplicate");
  await approvalPage.locator("#mrIgSearch").fill("");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Original domestic reels remain untouched");
- check(approvalPaidRequests===0,"Import and rollback call neither n8n nor Apify");
+ check(approvalPaidRequests===0,"Approval transfer calls neither n8n nor Apify");
  await approvalContext.close();
  // r34 live, non-mocked source artwork validation: exact report and approved domestic card.
  if(covered.length===originalItems.length&&covered.length>0){
