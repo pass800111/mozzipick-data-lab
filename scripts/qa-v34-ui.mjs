@@ -422,6 +422,25 @@ async function run(){
  await approvalPage.locator("#mrIgSearch").fill("");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Original domestic reels remain untouched");
+ // Overseas-only approval must transfer to overseas, never domestic.
+ await click(approvalPage,"#mrCommandButton");
+ await approvalPage.locator("#mrCommandInput").fill("1-2");
+ await click(approvalPage,"#mrCommandForm button");
+ await approvalPage.locator("#mrCommandResults .mr-chat-item").first().waitFor();
+ check((await approvalPage.locator("#mrCommandResults .mr-chat-items").innerText()).includes("QA 해외 전용 상품"),"Overseas report is independent from domestic approved results");
+ await click(approvalPage,"#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]");
+ check(await approvalPage.locator("#mrCommandResults .mr-chat-item").count()===0,"Approved overseas item vanishes immediately from 1-2 report");
+ await nav(approvalPage,"instagram");
+ await approvalPage.locator("#mrIgSearch").fill("QA 해외 전용 상품");
+ await click(approvalPage,"#mrRouteView [data-ig-search-run]");
+ check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===0,"Overseas approved item never leaks into domestic Instagram");
+ await click(approvalPage,'#mrRouteView [data-filter="해외상품"]');
+ check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===1,"Only approved overseas product appears in overseas gallery");
+ check((await approvalPage.locator("#mrRouteView .mr-ig-tile").innerText()).includes("QA 해외 전용 상품"),"Overseas gallery keeps correct source product identity");
+ check((await approvalPage.locator("#mrRouteView .mr-ig-chat-approved").innerText()).includes("내 확인"),"Overseas transferred item is labeled as personally approved");
+ await approvalPage.locator("#mrIgSearch").fill("");
+ await click(approvalPage,"#mrRouteView [data-ig-search-run]");
+ check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Existing overseas collection remains intact after one approved addition and 5-per-page");
  check(approvalPaidRequests===0,"Approval transfer calls neither n8n nor Apify");
  await approvalContext.close();
  // r34 live, non-mocked source artwork validation: exact report and approved domestic card.
