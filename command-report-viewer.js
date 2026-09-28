@@ -75,7 +75,7 @@ function card(p,i,r){
 function render(){
  if(!root||!ui)return;
  root.dataset.mozziChatReport="1";delete root.dataset.mozziLive;
- let html='<section class="mr-chat-report"><header><span>MOZZIPICK · CHAT RESEARCH REPORT</span><h2>'+esc(ui.command)+' · '+esc(titles[ui.command])+'</h2><p>이 채팅에서 조사한 결과만 표시합니다. 국내 1-1 상품은 내가 확인한 항목만 같은 브라우저의 인스타 국내 메뉴에 추가됩니다. 외부 수집기를 실행하지 않습니다.</p></header>';
+ let html='<section class="mr-chat-report"><header><span>MOZZIPICK · CHAT RESEARCH REPORT</span><h2>'+esc(ui.command)+' · '+esc(titles[ui.command])+'</h2><p>이 채팅에서 조사한 결과만 표시합니다. 국내 1-1·해외 1-2 상품은 확인 버튼을 누르면 보고서의 대기 목록에서 즉시 사라지고 각각 해당 인스타 메뉴에 추가됩니다. 외부 수집기를 실행하지 않습니다.</p></header>';
  if(ui.status==="loading")html+='<p class="mr-chat-state" role="status">저장된 조사 보고서를 읽는 중입니다.</p>';
  else if(ui.status==="error")html+='<p class="mr-chat-state" role="alert">'+esc(ui.error||"보고서를 읽지 못했습니다.")+'</p>';
  else{
@@ -85,17 +85,19 @@ function render(){
    const a=Array.isArray(r.items)?r.items:[],perPage=5,pages=Math.max(1,Math.ceil(a.length/perPage)),page=Math.min(Math.max(1,ui.page),pages);
    ui.page=page;
    const confirmed=a.filter((p,i)=>reviewed(r,p,i)).length,unchecked=a.length-confirmed;
-   const chosen=ui.reviewFilter||"all";
-   const shown=a.map((p,i)=>({p,i})).filter(({p,i})=>chosen==="confirmed"?reviewed(r,p,i):chosen==="unconfirmed"?!reviewed(r,p,i):true);
+   const transfers=ui.command==="1-1"||ui.command==="1-2";
+   const chosen=transfers?"unconfirmed":ui.reviewFilter||"all";
+   const shown=a.map((p,i)=>({p,i})).filter(({p,i})=>transfers?!reviewed(r,p,i):chosen==="confirmed"?reviewed(r,p,i):chosen==="unconfirmed"?!reviewed(r,p,i):true);
    const filteredPages=Math.max(1,Math.ceil(shown.length/perPage));ui.page=Math.min(ui.page,filteredPages);
    html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개 · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
-   html+='<div class="mr-chat-review-summary"><b>내 확인 현황</b><span>✓ 확인 '+confirmed+'개</span><span>○ 미확인 '+unchecked+'개</span><div class="mr-chat-review-filters" aria-label="내 확인 상태별 보기">'+
-    [["all","전체"],["confirmed","확인"],["unconfirmed","미확인"]].map(([v,label])=>'<button type="button" data-chat-review-filter="'+v+'" aria-pressed="'+(chosen===v?"true":"false")+'">'+label+'</button>').join("")+
-    '</div><small>체크는 직접 살펴봤다는 개인 기록입니다. 1-1 국내 보고서의 확인 항목만 인스타 국내 메뉴에 추가되고, 체크를 취소하면 추가 목록에서 빠집니다. 기존 등록 상품은 유지됩니다. 사실 검증과는 별도이며 이 브라우저에만 저장됩니다.</small></div>';
+   html+='<div class="mr-chat-review-summary"><b>'+(transfers?"이동 대기 현황":"내 확인 현황")+'</b><span>✓ 확인 '+confirmed+'개</span><span>○ 미확인 '+unchecked+'개</span>'+
+    (transfers?'<strong class="mr-chat-transfer-note">확인 완료한 상품은 보고서에서 제외되며 '+(ui.command==="1-1"?"국내":"해외")+' 인스타 메뉴에서 볼 수 있습니다.</strong>':
+    '<div class="mr-chat-review-filters" aria-label="내 확인 상태별 보기">'+[["all","전체"],["confirmed","확인"],["unconfirmed","미확인"]].map(([v,label])=>'<button type="button" data-chat-review-filter="'+v+'" aria-pressed="'+(chosen===v?"true":"false")+'">'+label+'</button>').join("")+'</div>')+
+    '<small>내 확인 체크는 공개 지표나 판매 사실 검증과 별개이며, 이 브라우저에만 저장됩니다. 기존 인스타 상품은 유지됩니다.</small></div>';
    if(reports.length>1)html+='<label class="mr-chat-archives">이전 보고서 선택 <select data-chat-archive>'+reports.map((v,i)=>'<option value="'+i+'" '+(i===ui.reportIndex?"selected":"")+'>'+esc(v.title||titles[ui.command])+' · '+esc(date(v.createdAt))+'</option>').join("")+'</select></label>';
    html+='<div class="mr-chat-items">'+shown.slice((ui.page-1)*perPage,ui.page*perPage).map(({p,i})=>card(p,i,r)).join("")+'</div>';
    if(!a.length)html+='<p class="mr-chat-state">이번 조사에서 기준을 충족하는 상품이 없습니다.</p>';
-   else if(!shown.length)html+='<p class="mr-chat-state">선택한 확인 상태에 해당하는 상품이 없습니다.</p>';
+   else if(!shown.length)html+='<p class="mr-chat-state">'+(transfers?"미확인 상품이 모두 이동되었습니다. 확인한 상품은 인스타 "+(ui.command==="1-1"?"국내":"해외")+" 메뉴에서 확인하세요.":"선택한 확인 상태에 해당하는 상품이 없습니다.")+'</p>';
    if(filteredPages>1)html+='<nav class="mr-chat-pages" aria-label="보고서 페이지">'+Array.from({length:filteredPages},(_,i)=>'<button type="button" data-chat-page="'+(i+1)+'" '+(i+1===ui.page?'aria-current="page"':'')+'>'+(i+1)+'</button>').join("")+'</nav>';
    if(ui.reviewError)html+='<p class="mr-chat-state" role="alert">'+esc(ui.reviewError)+'</p>';
    if(r.notes)html+='<p class="mr-chat-notes"><b>조사·검증 메모</b> '+esc(r.notes)+'</p>';
@@ -136,7 +138,7 @@ function open(command,el,cb,previous){
  if(!allowed.has(command)||!el)return;
  root=el;callbacks=cb||{};
  reviews=readReviews();
- ui={command,page:Math.max(1,+previous?.page||1),reportIndex:Math.max(0,+previous?.reportIndex||0),reviewFilter:["all","confirmed","unconfirmed"].includes(previous?.reviewFilter)?previous.reviewFilter:"all",status:"loading",reports:[],reviewError:""};
+ ui={command,page:Math.max(1,+previous?.page||1),reportIndex:Math.max(0,+previous?.reportIndex||0),reviewFilter:command==="1-1"||command==="1-2"?"unconfirmed":["all","confirmed","unconfirmed"].includes(previous?.reviewFilter)?previous.reviewFilter:"all",status:"loading",reports:[],reviewError:""};
  render();load();
 }
 window.addEventListener("storage",e=>{if(e.key!==REVIEW_KEY)return;reviews=readReviews();if(root?.isConnected&&ui?.status==="ready"){render();save()}});
