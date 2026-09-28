@@ -443,6 +443,32 @@ async function run(){
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Original domestic reels remain untouched");
  check(approvalPaidRequests===0,"Import and rollback call neither n8n nor Apify");
  await approvalContext.close();
+ // r34 live, non-mocked source artwork validation: exact report and approved domestic card.
+ if(covered.length===originalItems.length&&covered.length>0){
+  const posterCtx=await browser.newContext({viewport:{width:1440,height:900}});
+  const posterPage=await posterCtx.newPage();
+  posterPage.on("pageerror",e=>errors.push("Original thumbnail browser: "+e.message));
+  await posterPage.goto(base+"&originalPosterQA=1",{waitUntil:"domcontentloaded"});
+  await posterPage.locator("#mrHomeDashboard .mr-card").first().waitFor();
+  await click(posterPage,"#mrCommandButton");
+  await posterPage.locator("#mrCommandInput").fill("1-1");
+  await click(posterPage,"#mrCommandForm button");
+  await posterPage.locator("#mrCommandResults .mr-chat-media img").first().waitFor();
+  await posterPage.waitForFunction(n=>[...document.querySelectorAll("#mrCommandResults .mr-chat-media img")].length===n&&[...document.querySelectorAll("#mrCommandResults .mr-chat-media img")].every(i=>i.complete),covered.length);
+  const originalMedia=await posterPage.locator("#mrCommandResults .mr-chat-media img").evaluateAll(images=>images.map(img=>({src:img.getAttribute("src"),w:img.naturalWidth,h:img.naturalHeight})));
+  check(originalMedia.length===covered.length&&originalMedia.every(v=>v.w===360&&v.h===640),"Every researched candidate shows its loaded 360x640 original poster, not a missing thumbnail");
+  check(originalMedia.every((v,i)=>v.src.startsWith(originalItems[i].thumbnail+"?")),"Report thumbnail source matches exact listed Reel shortcode in original report order");
+  await posterPage.locator("#mrCommandResults .mr-chat-item").first().screenshot({path:"qa-v34-original-reel-report-r34.png"});
+  await click(posterPage,"#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]");
+  await nav(posterPage,"instagram");
+  await posterPage.locator("#mrIgSearch").fill(originalItems[0].productName);
+  await click(posterPage,"#mrRouteView [data-ig-search-run]");
+  check(await posterPage.locator("#mrRouteView .mr-ig-tile").count()===1,"Exactly one checked domestic Reel imported to Instagram gallery");
+  const importedCover=await posterPage.locator("#mrRouteView .mr-ig-tile .mr-ig-cover img").evaluate(img=>({w:img.naturalWidth,h:img.naturalHeight,src:img.getAttribute("src")}));
+  check(importedCover.w===360&&importedCover.h===640&&importedCover.src.startsWith(originalItems[0].thumbnail+"?"),"Approved Instagram gallery visibly loads the same exact original poster as report");
+  await posterPage.locator("#mrRouteView .mr-ig-tile").screenshot({path:"qa-v34-original-reel-approved-r34.png"});
+  await posterCtx.close();
+ }
  await h.close();
  check(errors.length===0,"No uncaught browser runtime errors across desktop and mobile");
 
