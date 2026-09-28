@@ -42,6 +42,15 @@ jobs:
             if(m.width!==360||m.height!==640)throw Error('Wrong dimensions: '+p.thumbnail);
             console.log('VERIFIED',shortcode,m.width+'x'+m.height);
           }
+          const chat=JSON.parse(fs.readFileSync('data/command-reports.json','utf8'));
+          for(const report of chat.reports?.['1-1']||[])for(const p of report.items||[]){
+            if(!p.thumbnail)continue;
+            const shortcode=p.reelUrl?.match(/\/(?:p|reel)\/([A-Za-z0-9_-]+)/)?.[1];
+            if(!shortcode||p.thumbnail!=='assets/instagram/'+shortcode+'.jpg')throw Error('Chat poster does not match source reel: '+shortcode);
+            const m=await sharp(p.thumbnail).metadata();
+            if(m.width!==360||m.height!==640)throw Error('Chat poster dimensions invalid: '+shortcode);
+            console.log('CHAT VERIFIED',shortcode,m.width+'x'+m.height);
+          }
           EOF
       - name: Upload progress and failed URL report
         if: always()
@@ -55,10 +64,10 @@ jobs:
           retention-days: 7
       - name: Publish only successfully matched real source posters
         run: |
-          if ! git diff --quiet -- data/instagram-electronics.json || [ -n "$(git ls-files --others --exclude-standard assets/instagram)" ]; then
+          if ! git diff --quiet -- data/instagram-electronics.json data/command-reports.json || [ -n "$(git ls-files --others --exclude-standard assets/instagram)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/instagram-electronics.json assets/instagram/*.jpg
+            git add data/instagram-electronics.json data/command-reports.json assets/instagram/*.jpg
             git commit -m "Register verified original Instagram reel thumbnails at 360x640"
             git push
           else
