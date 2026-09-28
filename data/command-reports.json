@@ -1,9 +1,243 @@
 {
   "schema": "mozzipick.chat-reports.v1",
-  "updatedAt": null,
+  "updatedAt": "2026-09-28T04:35:20.269Z",
   "reports": {
     "1": [],
-    "1-1": [],
+    "1-1": [
+      {
+        "id": "domestic-instagram-2026-09-28-research-01",
+        "command": "1-1",
+        "title": "국내 인스타 전자제품·PC/모바일 주변기기 신규 발굴 01",
+        "createdAt": "2026-09-28T04:35:20.269Z",
+        "period": "2026-09-14~2026-09-28 (최근 14일 기준)",
+        "summary": "직접 열람 가능한 한국 계정의 최근 영상 5건, 원본 게시물과 판매처를 조사. CUKTECH 6 Ultra 중복 릴스는 좋아요가 더 높은 영상 1건만 대표로 수록. 조회수·공유가 공개 확인되지 않은 항목은 null. 1건은 비전자 키보드 액세서리 실험 후보로 표시.",
+        "notes": "'내 확인' 버튼은 사용자가 직접 검토했는지의 브라우저별 메모이며, 독립 출처 검증과는 별도. 판매 검증은 동일 상품 페이지 확인 여부에 따라 구분. Instagram 로그인 제한·동적 수치 차이로 공개 수치는 확인 시각의 스냅샷이며 갱신되지 않을 수 있음. 기존 products.json 및 Instagram 카드는 변경하지 않았고, 신상품 자동 등록/수집 비용 발생 없음.",
+        "items": [
+          {
+            "id": "ig:Ddn0U22J_RM",
+            "productName": "CUKTECH 6 Ultra 65W 스마트 디스플레이 GaN 충전기",
+            "model": "CUKTECH 6 Ultra 65W",
+            "category": "충전기 · PC/모바일 주변기기",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/Ddn0U22J_RM/",
+            "accountUrl": "https://www.instagram.com/june_jeon_love/",
+            "caption": "충전 중 포트별 상태를 디스플레이와 이모지로 보여주는 65W 3포트 충전기. 광고 표시 있음.",
+            "publishedAt": "2026-09-23T07:54:24.000Z",
+            "metricsObservedAt": "2026-09-28T04:35:20.269Z",
+            "metrics": {
+              "views": null,
+              "likes": 3161,
+              "comments": 13,
+              "shares": null
+            },
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿡테크 네이버 스마트스토어(원 게시물이 안내하는 동일 제품 링크)",
+              "url": "https://smartstore.naver.com/cuktech/products/13740475771",
+              "checkedAt": null,
+              "price": null
+            },
+            "sponsored": true,
+            "recommendation": "한 컷에서 충전 수치와 이모지가 함께 보이는 시각적 훅. 단독·동시 충전 리뷰로 불편→해결 영상 구성에 적합.",
+            "cautions": "판매 URL이 원문에 있으나 직접 열람은 429 제한으로 재고·현재가 확인 불가. 65W는 총 최대 출력이며 동시 충전 시 포트별 배분과 제품 실물 스펙을 검증해야 함. 공개 조회수·공유 수는 미확인.",
+            "crossChecks": [
+              "같은 모델을 다룬 다른 국내 리뷰 릴스 tap.mygear(9/22, 좋아요 24·댓글 3)에서 2C+1A/디스플레이 특징 교차 확인",
+              "iffu의 별도 광고 릴스도 같은 모델 소개(9/14 게시 표기; 17 좋아요·댓글 0)"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스·반응",
+                "url": "https://www.instagram.com/reel/Ddn0U22J_RM/"
+              },
+              {
+                "label": "동일 모델 별도 국내 리뷰",
+                "url": "https://www.instagram.com/reel/Ddlj-TozEJe/"
+              },
+              {
+                "label": "판매처 후보",
+                "url": "https://smartstore.naver.com/cuktech/products/13740475771"
+              }
+            ]
+          },
+          {
+            "id": "ig:DdTRURkJKyp",
+            "productName": "신지모루 Qi2 3in1 M-트리 터보 무선충전 거치대",
+            "model": "M-트리 터보",
+            "category": "데스크 충전 · 모바일 주변기기",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdTRURkJKyp/",
+            "accountUrl": "https://www.instagram.com/raye.comma/",
+            "caption": "폰·애플워치·에어팟을 트리 형태로 거치하여 동시 충전하는 제품. 댓글 '충전기'에 DM으로 제품 링크를 전달하는 광고형 콘텐츠.",
+            "publishedAt": "2026-09-15T08:54:47.000Z",
+            "metricsObservedAt": "2026-09-28T04:35:20.269Z",
+            "metrics": {
+              "views": null,
+              "likes": 48,
+              "comments": 48,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "신지모루 공식몰",
+              "url": "https://sinjimall.com/product/%EC%8B%A0%EC%A7%80%EB%AA%A8%EB%A3%A8-qi2-3in1-m-%ED%8A%B8%EB%A6%AC%ED%84%B0%EB%B3%B4-%EB%A7%A5%EC%84%B8%EC%9D%B4%ED%94%84-%EC%B4%88%EA%B3%A0%EC%86%8D-%EB%AC%B4%EC%84%A0%EC%B6%A9%EC%A0%84-%EA%B1%B0%EC%B9%98%EB%8C%80/1923/",
+              "checkedAt": "2026-09-28T04:35:20.269Z",
+              "price": "42,900원 (공식몰 페이지 확인 시 표시가, 옵션·할인 변동 가능)"
+            },
+            "sponsored": true,
+            "recommendation": "48개 공개 댓글 중 링크 요청이 보이는 댓글→DM 퍼널 참고 사례. 책상 선 3개를 한 곳으로 정리하는 문제 해결형 25초 영상에 적합.",
+            "cautions": "원본에서 스마트폰 최대 15W·합산 22.5W로 소개. 조합별 출력·Qi2 호환 기종 확인 필요. 사이트 공식몰 표기 가격은 변동 가능; 조회수·공유수는 미확인.",
+            "crossChecks": [
+              "원본 계정의 댓글에 '충전기' 링크 요청 사례 확인",
+              "신지모루 공식몰 동일 M-트리 터보 제품·22.5W 설명·판매가 열람 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스·댓글",
+                "url": "https://www.instagram.com/reel/DdTRURkJKyp/"
+              },
+              {
+                "label": "신지모루 공식 판매처",
+                "url": "https://sinjimall.com/product/%EC%8B%A0%EC%A7%80%EB%AA%A8%EB%A3%A8-qi2-3in1-m-%ED%8A%B8%EB%A6%AC%ED%84%B0%EB%B3%B4-%EB%A7%A5%EC%84%B8%EC%9D%B4%ED%94%84-%EC%B4%88%EA%B3%A0%EC%86%8D-%EB%AC%B4%EC%84%A0%EC%B6%A9%EC%A0%84-%EA%B1%B0%EC%B9%98%EB%8C%80/1923/"
+              },
+              {
+                "label": "동일 모델 쿠팡 검색 결과",
+                "url": "https://www.coupang.com/vp/products/8803661494"
+              }
+            ]
+          },
+          {
+            "id": "ig:DdjEQzgyVSP",
+            "productName": "미니덕트×해태 쌍쌍바 듀얼 손난로 보조배터리",
+            "model": "쌍쌍바 5,000mAh×2 / 총 10,000mAh",
+            "category": "모바일 보조배터리 · 소형 전자기기",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdjEQzgyVSP/",
+            "accountUrl": "https://www.instagram.com/another__summer/",
+            "caption": "쌍쌍바처럼 2개로 분리되는 손난로+보조배터리. 각각 5,000mAh, 3단계 온도조절, 케이블을 이용한 휴대 충전 등을 게시물에서 소개.",
+            "publishedAt": "2026-09-21T11:45:09.000Z",
+            "metricsObservedAt": "2026-09-28T04:35:20.269Z",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "미니덕트 공식몰",
+              "url": "https://miniduct.co.kr/product/%EB%AF%B8%EB%8B%88%EB%8D%95%ED%8A%B8-%EC%8C%8D%EC%8C%8D%EB%B0%94-%EB%93%80%EC%96%BC-%EC%B6%A9%EC%A0%84%EC%8B%9D-%EC%86%90%EB%82%9C%EB%A1%9C-%EB%B3%B4%EC%A1%B0%EB%B0%B0%ED%84%B0%EB%A6%AC-10000mah/111/",
+              "checkedAt": "2026-09-28T04:35:20.269Z",
+              "price": "59,600원 (공식몰 검색 표시가, 구매 시 재확인)"
+            },
+            "sponsored": true,
+            "recommendation": "쌍쌍바를 부러뜨리는 듯한 시각적 훅과 '휴대 충전+손난로' 이중 기능으로 DM 공유 유도에 적합.",
+            "cautions": "공개 메타데이터가 좋아요·댓글 정확한 수치를 제공하지 않아 전부 미확인. 최신 재고·가격은 주문 화면 재확인. 별도 실물 온도·안전 성능 측정 없음.",
+            "crossChecks": [
+              "미니덕트 공식몰 동일 명칭 10,000mAh 상품 상세 확인",
+              "원 게시물에 제품 제공/광고 표시 및 공식 브랜드 프로필·카카오 선물하기 안내"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/DdjEQzgyVSP/"
+              },
+              {
+                "label": "미니덕트 공식 상품",
+                "url": "https://miniduct.co.kr/product/%EB%AF%B8%EB%8B%88%EB%8D%95%ED%8A%B8-%EC%8C%8D%EC%8C%8D%EB%B0%94-%EB%93%80%EC%96%BC-%EC%B6%A9%EC%A0%84%EC%8B%9D-%EC%86%90%EB%82%9C%EB%A1%9C-%EB%B3%B4%EC%A1%B0%EB%B0%B0%ED%84%B0%EB%A6%AC-10000mah/111/"
+              },
+              {
+                "label": "미니덕트 공식 카테고리",
+                "url": "https://miniduct.co.kr/category/%EC%8C%8D%EC%8C%8D%EB%B0%94/88/"
+              }
+            ]
+          },
+          {
+            "id": "ig:DdrIGJBNvNC",
+            "productName": "모니터 하단 부착형 마그네틱 무선 충전 거치대 (모델 미확인)",
+            "model": "미확인 · 판매 링크의 '135번' 상품 대조 필요",
+            "category": "모바일 충전 거치대 · 데스크 주변기기",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdrIGJBNvNC/",
+            "accountUrl": "https://www.instagram.com/salimggon/",
+            "caption": "모니터 아래에 부착해 스마트폰을 거치하면서 충전, 책상 위 케이블과 사용 공간을 정리하는 제품. 계정은 댓글 '내놔' 자동 DM 및 프로필 135번 검색을 유도.",
+            "publishedAt": "2026-09-24T14:51:20.000Z",
+            "metricsObservedAt": "2026-09-28T04:35:20.269Z",
+            "metrics": {
+              "views": null,
+              "likes": 1,
+              "comments": 1,
+              "shares": null
+            },
+            "sale": {
+              "status": "unknown",
+              "platform": null,
+              "url": null,
+              "checkedAt": null,
+              "price": null
+            },
+            "sponsored": null,
+            "recommendation": "모찌픽의 댓글→DM 운영 구조와 동일한 후크/CTA 참고. 모니터 하단 공간을 활용하는 사용 장면에 적합.",
+            "cautions": "게시 계정 반응이 현재 낮고, 정확한 제조사/모델명·설치 방식·실측 출력·실제 판매처를 확인하지 못함. 인스타 소개 문구에 135번 안내만 존재. 판매 확정/대량 확산 상품으로 표시하면 안 됨.",
+            "crossChecks": [
+              "원본 페이지에서 '내놔' 댓글 DM 및 프로필 링크 135번 검색 문구 확인",
+              "독립 판매처·제조사 미검증"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/DdrIGJBNvNC/"
+              },
+              {
+                "label": "원본 계정",
+                "url": "https://www.instagram.com/salimggon/"
+              }
+            ]
+          },
+          {
+            "id": "ig:Ddn5Sf7vXzJ",
+            "productName": "담유오브젝트 우베·밀키소다 클리커 (위스퍼 스위치)",
+            "model": "우베/밀키소다 색상 · 위스퍼축 (정식 모델명 미확인)",
+            "category": "PC 키보드 스위치 기반 ASMR 액세서리 · 비전자 소품",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/Ddn5Sf7vXzJ/",
+            "accountUrl": "https://www.instagram.com/zlxltjddowk/",
+            "caption": "기계식 키보드의 스위치를 이용한 소형 클릭커. 저소음 위스퍼축의 키감·소리를 ASMR로 소개하는 제품 제공 콘텐츠.",
+            "publishedAt": "2026-09-23T08:36:41.000Z",
+            "metricsObservedAt": "2026-09-28T04:35:20.269Z",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": 6,
+              "shares": null
+            },
+            "sale": {
+              "status": "unknown",
+              "platform": "담유오브젝트 계정 태그만 확인",
+              "url": null,
+              "checkedAt": null,
+              "price": null
+            },
+            "sponsored": true,
+            "recommendation": "손만 등장하는 ASMR·저소음 촉각 소품 숏폼으로 실험 가능. 키보드 덕후의 선물·데스크 소품 소재.",
+            "cautions": "전기 구동 제품이 아닌 기계식 스위치 기반 장난감·오브제라 모찌픽 전자제품 중심 운영과 적합성은 낮음. 인스타 게시물에 판매 링크/가격을 직접 확인하지 못함. 좋아요·조회수 미확인.",
+            "crossChecks": [
+              "@damyu.object 태그 및 #제품제공 #협찬 표시 확인",
+              "정확한 판매 페이지는 아직 검증하지 못함"
+            ],
+            "sources": [
+              {
+                "label": "원본 영상 게시물",
+                "url": "https://www.instagram.com/p/Ddn5Sf7vXzJ/"
+              },
+              {
+                "label": "브랜드 계정",
+                "url": "https://www.instagram.com/damyu.object/"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "1-2": [],
     "1-3": []
   }
