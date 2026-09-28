@@ -62,7 +62,7 @@ function card(p,i,r){
 function render(){
  if(!root||!ui)return;
  root.dataset.mozziChatReport="1";delete root.dataset.mozziLive;
- let html='<section class="mr-chat-report"><header><span>MOZZIPICK · CHAT RESEARCH REPORT</span><h2>'+esc(ui.command)+' · '+esc(titles[ui.command])+'</h2><p>이 채팅에서 조사한 결과만 표시합니다. 사이트 조회 시 외부 수집기를 실행하거나 상품을 자동 등록하지 않습니다.</p></header>';
+ let html='<section class="mr-chat-report"><header><span>MOZZIPICK · CHAT RESEARCH REPORT</span><h2>'+esc(ui.command)+' · '+esc(titles[ui.command])+'</h2><p>이 채팅에서 조사한 결과만 표시합니다. 국내 1-1 상품은 내가 확인한 항목만 같은 브라우저의 인스타 국내 메뉴에 추가됩니다. 외부 수집기를 실행하지 않습니다.</p></header>';
  if(ui.status==="loading")html+='<p class="mr-chat-state" role="status">저장된 조사 보고서를 읽는 중입니다.</p>';
  else if(ui.status==="error")html+='<p class="mr-chat-state" role="alert">'+esc(ui.error||"보고서를 읽지 못했습니다.")+'</p>';
  else{
@@ -78,7 +78,7 @@ function render(){
    html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개 · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
    html+='<div class="mr-chat-review-summary"><b>내 확인 현황</b><span>✓ 확인 '+confirmed+'개</span><span>○ 미확인 '+unchecked+'개</span><div class="mr-chat-review-filters" aria-label="내 확인 상태별 보기">'+
     [["all","전체"],["confirmed","확인"],["unconfirmed","미확인"]].map(([v,label])=>'<button type="button" data-chat-review-filter="'+v+'" aria-pressed="'+(chosen===v?"true":"false")+'">'+label+'</button>').join("")+
-    '</div><small>체크는 직접 살펴봤다는 개인 기록입니다. 판매 여부나 공개 수치의 사실 검증을 자동으로 확정하지 않습니다. 이 브라우저에 저장되며 다른 기기와 자동 동기화되지 않습니다.</small></div>';
+    '</div><small>체크는 직접 살펴봤다는 개인 기록입니다. 1-1 국내 보고서의 확인 항목만 인스타 국내 메뉴에 추가되고, 체크를 취소하면 추가 목록에서 빠집니다. 기존 등록 상품은 유지됩니다. 사실 검증과는 별도이며 이 브라우저에만 저장됩니다.</small></div>';
    if(reports.length>1)html+='<label class="mr-chat-archives">이전 보고서 선택 <select data-chat-archive>'+reports.map((v,i)=>'<option value="'+i+'" '+(i===ui.reportIndex?"selected":"")+'>'+esc(v.title||titles[ui.command])+' · '+esc(date(v.createdAt))+'</option>').join("")+'</select></label>';
    html+='<div class="mr-chat-items">'+shown.slice((ui.page-1)*perPage,ui.page*perPage).map(({p,i})=>card(p,i,r)).join("")+'</div>';
    if(!a.length)html+='<p class="mr-chat-state">이번 조사에서 기준을 충족하는 상품이 없습니다.</p>';
@@ -96,7 +96,7 @@ function render(){
  root.querySelectorAll("[data-chat-review-index]").forEach(b=>b.onclick=()=>{
   const r=ui.reports?.[ui.reportIndex],i=Number(b.dataset.chatReviewIndex),p=r?.items?.[i];if(!p)return;
   const key=itemKey(r,p,i),next={...reviews};if(reviewed(r,p,i))delete next[key];else next[key]={checkedAt:new Date().toISOString()};
-  try{localStorage.setItem(REVIEW_KEY,JSON.stringify(next));reviews=next;ui.reviewError="";render();save()}
+  try{localStorage.setItem(REVIEW_KEY,JSON.stringify(next));reviews=next;ui.reviewError="";render();save();window.dispatchEvent(new CustomEvent("mozzipick-chat-review-change",{detail:{command:ui.command}}))}
   catch(e){ui.reviewError="이 브라우저에 확인 상태를 저장하지 못했습니다. 저장 공간 또는 브라우저 설정을 확인해 주세요.";render()}
  });
  root.querySelectorAll("[data-chat-page]").forEach(b=>b.onclick=()=>{const n=+b.dataset.chatPage;if(n===ui.page)return;push();ui.page=n;render();save();root.querySelector(".mr-chat-report")?.scrollIntoView({block:"start",behavior:"auto"})});
