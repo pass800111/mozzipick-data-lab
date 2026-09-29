@@ -169,3 +169,11 @@
  #mrCommandView .mr-chat-media-fallback b{font-size:16px}
  #mrCommandView .mr-chat-media-fallback small{font-size:11px!important}
 }
+
+/* r36 S/A/B dated Coupang report identity. No unrelated product imagery. */
+#mrCommandView .mr-chat-coupang{background:linear-gradient(145deg,#edf4ff,#d9e8fc)!important}
+#mrCommandView .mr-chat-coupang .mr-chat-media-fallback b{font-size:14px!important;letter-spacing:.04em;color:#154d85!important}
+#mrCommandView .mr-chat-group{border-radius:7px;border:1px solid;padding:2px 9px;font-weight:900;font-size:12px}
+#mrCommandView .mr-chat-group-S{background:#fcefd6;color:#775019;border-color:#c6a366}
+#mrCommandView .mr-chat-group-A{background:#e5f5eb;color:#205c3b;border-color:#73ae86}
+#mrCommandView .mr-chat-group-B{background:#e7f0fd;color:#1b538f;border-color:#89aad1}
