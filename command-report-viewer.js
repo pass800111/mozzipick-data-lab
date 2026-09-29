@@ -33,43 +33,42 @@ function card(p,i,r){
  const checked=kind==="verified-on-sale"&&url(s.url)&&s.checkedAt;
  const status=kind==="verified-on-sale"&&!checked?"판매 근거 미확인":(saleLabels[kind]||saleLabels.unknown);
  const category=p.category||"카테고리 미확인",nm=p.productName||"상품명 미확인";
+ const coupang=r.command==="1-3";
  const reel=url(p.reelUrl||p.sourceUrl||p.postUrl);
  const code=String(reel).match(/^https:\/\/(?:www\.)?instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)\/?/i)?.[1]||"";
  const cover=(code&&p.thumbnail==="assets/instagram/"+code+".jpg")?p.thumbnail:"";
- const media=reel?
+ const media=coupang?'<a class="mr-chat-media mr-chat-coupang" href="'+esc(url(p.sourceUrl||s.url)||"https://shortsshopping.com/data/")+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(nm)+' 실제 랭킹 기록 열기"><span class="mr-chat-media-fallback"><b>COUPANG</b><small>순위 기록 확인 ↗<br>상품 사진 미확인</small></span></a>':reel?
   '<a class="mr-chat-media" href="'+esc(reel)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(nm)+' 원본 릴스 열기">'+
   (cover?'<img src="'+esc(cover)+'?v=20260928-r34" alt="'+esc(nm)+' 실제 원본 릴스 썸네일" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">'+
   '<span class="mr-chat-media-fallback" hidden><b>REELS</b><small>원본 이미지 표시 제한<br>릴스에서 확인 ↗</small></span>':
   '<span class="mr-chat-media-fallback"><b>REELS</b><small>원본 썸네일 확보 중<br>릴스에서 확인 ↗</small></span>')+
   '<span class="mr-chat-media-play" aria-hidden="true">▶</span></a>':
   '<div class="mr-chat-media mr-chat-media-unavailable"><span class="mr-chat-media-fallback"><b>REELS</b><small>원본 링크 미확인</small></span></div>';
- const cells=[
-  ["조회수",fmt(m.views)],["좋아요",fmt(m.likes)],["댓글",fmt(m.comments)],["공유",fmt(m.shares)]
- ].map(([k,v])=>'<span><b>'+k+'</b><strong>'+v+'</strong></span>').join("");
+ const cells=(coupang?[["등급",esc(p.rankGroup||"미분류")],["기록 순위",p.observedRank?fmt(p.observedRank)+"위":"미확인"],["판매량",fmt(m.sales)],["리뷰 수",fmt(m.reviews)]]:[["조회수",fmt(m.views)],["좋아요",fmt(m.likes)],["댓글",fmt(m.comments)],["공유",fmt(m.shares)]]).map(([k,v])=>'<span><b>'+k+'</b><strong>'+v+'</strong></span>').join("");
  const refs=(Array.isArray(p.sources)?p.sources:[]).slice(0,6).map(x=>link(x.url,x.label||x.platform||"검증 출처")).filter(Boolean).join("");
  const cross=Array.isArray(p.crossChecks)?p.crossChecks.filter(Boolean).map(x=>esc(x)).join(" · "):esc(p.crossChecks||"");
  return '<article class="mr-chat-item" data-review-state="'+(reviewedAt?"confirmed":"unconfirmed")+'">'+
   '<div class="mr-chat-review"><span class="mr-chat-review-badge '+(reviewedAt?"confirmed":"unconfirmed")+'">'+(reviewedAt?"✓ 확인":"○ 미확인")+'</span>'+
   '<button type="button" data-chat-review-index="'+i+'" aria-pressed="'+(reviewedAt?"true":"false")+'" aria-label="'+esc(nm)+' 내 확인 상태 '+(reviewedAt?"취소":"체크")+'">'+(reviewedAt?"✓ 확인 완료 · 체크 취소":"□ 내가 확인했어요")+'</button>'+
   (reviewedAt?'<small>내 확인 시각: '+esc(date(reviewedAt))+'</small>':"")+'</div>'+
-  '<div class="mr-chat-item-top"><span class="mr-chat-rank">#'+(i+1)+'</span><span>'+esc(category)+'</span><span>'+esc(p.sourcePlatform||"원본 출처 미확인")+'</span></div>'+
+  '<div class="mr-chat-item-top"><span class="mr-chat-rank">#'+(i+1)+'</span>'+(coupang?'<span class="mr-chat-group mr-chat-group-'+esc(p.rankGroup||"unknown")+'">'+esc(p.rankGroup||"미분류")+'</span>':"")+'<span>'+esc(category)+'</span><span>'+esc(p.sourcePlatform||"원본 출처 미확인")+'</span></div>'+
   '<div class="mr-chat-media-row">'+media+'<div class="mr-chat-media-copy"><h3>'+esc(nm)+'</h3>'+
   (p.model?'<p><b>모델</b> '+esc(p.model)+'</p>':"")+
-  (p.caption?'<p><b>영상 내용</b> '+esc(p.caption)+'</p>':"")+
-  (cover?'<small class="mr-chat-media-source">✓ 원본 릴스에서 확보한 실제 썸네일</small>':'<small class="mr-chat-media-source unverified">이미지 미확보 · 다른 상품 사진은 사용하지 않습니다.</small>')+
+  (p.caption?'<p><b>'+(coupang?"관측 요약":"영상 내용")+'</b> '+esc(p.caption)+'</p>':"")+
+  (coupang?'<small class="mr-chat-media-source unverified">쿠팡 상품 사진은 아직 확보되지 않았습니다. 기록 출처에서 확인하세요.</small>':cover?'<small class="mr-chat-media-source">✓ 원본 릴스에서 확보한 실제 썸네일</small>':'<small class="mr-chat-media-source unverified">이미지 미확보 · 다른 상품 사진은 사용하지 않습니다.</small>')+
   '</div></div>'+
   '<div class="mr-chat-metrics">'+cells+'</div>'+
   '<div class="mr-chat-facts">'+
   '<p><b>판매 여부</b> <strong>'+esc(status)+'</strong>'+(s.platform?' · '+esc(s.platform):"")+
    (s.price?' · '+esc(s.price):"")+'</p>'+
   (checked?'<p>'+link(s.url,"확인된 판매처")+' · 확인: '+esc(date(s.checkedAt))+'</p>':(s.url?'<p>'+link(s.url,"판매처 후보 (미검증)")+'</p>':""))+
-  '<p><b>릴스 게시일</b> '+esc(date(p.publishedAt))+'　<b>반응 확인일</b> '+esc(date(p.metricsObservedAt))+'</p>'+
+  (coupang?'<p><b>첫 관측일</b> '+esc(p.firstObservedAt||"미확인")+'　<b>순위 자료 갱신</b> '+esc(date(p.rankObservationAt))+'</p><p><b>순위 구분</b> '+esc(p.rankList||"미확인")+'</p>':'<p><b>릴스 게시일</b> '+esc(date(p.publishedAt))+'　<b>반응 확인일</b> '+esc(date(p.metricsObservedAt))+'</p>')+
   (p.sponsored!==undefined&&p.sponsored!==null?'<p><b>광고/협찬</b> '+esc(p.sponsored===true?"광고·협찬 표시 확인":p.sponsored===false?"표시 미발견 (비광고 확정 아님)":p.sponsored)+'</p>':"")+
   '</div>'+
   (p.recommendation?'<p class="mr-chat-reason"><b>모찌픽 추천 포인트</b> '+esc(p.recommendation)+'</p>':"")+
   (p.cautions?'<p><b>주의·추가 검증</b> '+esc(p.cautions)+'</p>':"")+
   (cross?'<p><b>교차 확인</b> '+cross+'</p>':"")+
-  '<div class="mr-chat-links">'+link(p.reelUrl||p.sourceUrl||p.postUrl,"원본 게시물")+link(p.accountUrl,"게시 계정")+refs+'</div>'+
+  '<div class="mr-chat-links">'+link(p.reelUrl||p.sourceUrl||p.postUrl,coupang?"순위 기록":"원본 게시물")+(coupang?"":link(p.accountUrl,"게시 계정"))+refs+'</div>'+
   '</article>'
 }
 function render(){
@@ -89,7 +88,7 @@ function render(){
    const chosen=transfers?"unconfirmed":ui.reviewFilter||"all";
    const shown=a.map((p,i)=>({p,i})).filter(({p,i})=>transfers?!reviewed(r,p,i):chosen==="confirmed"?reviewed(r,p,i):chosen==="unconfirmed"?!reviewed(r,p,i):true);
    const filteredPages=Math.max(1,Math.ceil(shown.length/perPage));ui.page=Math.min(ui.page,filteredPages);
-   html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개 · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
+   html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개'+(ui.command==="1-3"&&r.groupCounts?" · S "+(+r.groupCounts.S||0)+" / A "+(+r.groupCounts.A||0)+" / B "+(+r.groupCounts.B||0):"")+" · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
    html+='<div class="mr-chat-review-summary"><b>'+(transfers?"이동 대기 현황":"내 확인 현황")+'</b><span>✓ 확인 '+confirmed+'개</span><span>○ 미확인 '+unchecked+'개</span>'+
     (transfers?'<strong class="mr-chat-transfer-note">확인 완료한 상품은 보고서에서 제외되며 '+(ui.command==="1-1"?"국내":"해외")+' 인스타 메뉴에서 볼 수 있습니다.</strong>':
     '<div class="mr-chat-review-filters" aria-label="내 확인 상태별 보기">'+[["all","전체"],["confirmed","확인"],["unconfirmed","미확인"]].map(([v,label])=>'<button type="button" data-chat-review-filter="'+v+'" aria-pressed="'+(chosen===v?"true":"false")+'">'+label+'</button>').join("")+'</div>')+
