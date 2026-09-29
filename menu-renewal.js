@@ -258,7 +258,7 @@ function qualityRows(a){
 }
 function renderRoute(){
  showMode("mr-route-active");
- const c=config[route],source=route==="instagram"?instagramProducts():list(),visible=route==="instagram"&&igQuery?source.filter(p=>(name(p)+" "+p.caption+" "+p.username).toLowerCase().includes(igQuery.toLowerCase())):source,a=sortItems(visible,sortState[route]||"최신순"),n=Math.max(1,Math.ceil(a.length/PAGE));
+ const c=config[route],source=route==="instagram"?instagramProducts():list(),visible=route==="instagram"&&igQuery?source.filter(p=>(name(p)+" "+p.caption+" "+p.username).toLowerCase().includes(igQuery.toLowerCase())):source,sorted=sortItems(visible,sortState[route]||"최신순"),a=["time","viral"].includes(route)?sorted.sort((x,y)=>Number(!!y.__chatApproved)-Number(!!x.__chatApproved)):sorted,n=Math.max(1,Math.ceil(a.length/PAGE));
  page=Math.min(page,n);
  const root=$("#mrRouteView");root.dataset.route=route;
  const all=[...products],fav=read(F,"[]"),queue=read(Q,"[]"),made=read(M,"{}"),states=read(S,"{}");
