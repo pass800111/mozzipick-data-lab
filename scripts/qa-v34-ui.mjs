@@ -489,7 +489,7 @@ async function run(){
  await click(approvalPage,'#mrRouteView .mr-card-name:has-text("QA 신규 쿠팡 S 상품")');
  check((await approvalPage.locator('#mrRouteView .mr-detail-page').innerText()).includes("보고서 조사 출처"),"Imported Coupang detail retains evidence URL");
  await approvalPage.reload({waitUntil:"domcontentloaded"});
- await approvalPage.locator('#mrRouteView[data-route="time"]').waitFor();
+ await approvalPage.locator("#mrCommandButton").waitFor({state:"attached"});
  await nav(approvalPage,"viral");
  check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 통합 바이럴 신규 상품"}).count()===1,"1 transferred candidate survives reload");
  await nav(approvalPage,"time");
