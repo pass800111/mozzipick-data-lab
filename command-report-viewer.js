@@ -88,7 +88,7 @@ function render(){
    const chosen=transfers?"unconfirmed":ui.reviewFilter||"all";
    const shown=a.map((p,i)=>({p,i})).filter(({p,i})=>transfers?!reviewed(r,p,i):chosen==="confirmed"?reviewed(r,p,i):chosen==="unconfirmed"?!reviewed(r,p,i):true);
    const filteredPages=Math.max(1,Math.ceil(shown.length/perPage));ui.page=Math.min(ui.page,filteredPages);
-   html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개'+(ui.command==="1-3"&&r.groupCounts?" · S "+(+r.groupCounts.S||0)+" / A "+(+r.groupCounts.A||0)+" / B "+(+r.groupCounts.B||0):"")+" · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
+   html+='<div class="mr-chat-summary"><strong>'+esc(r.title||titles[ui.command])+'</strong><p>'+esc(r.summary||"검증된 자료에 한해 표시")+'</p><small>조사 시각: '+esc(date(r.createdAt))+' · 기간: '+esc(r.period||"보고서 참조")+' · 결과: '+a.length+'개'+(ui.command==="1-3"&&r.groupCounts?" · S "+(+r.groupCounts.S||0)+" / A "+(+r.groupCounts.A||0)+" / B "+(+r.groupCounts.B||0):"")+' · 내 확인과 공개 근거 검증은 별도입니다.</small></div>';
    html+='<div class="mr-chat-review-summary"><b>'+(transfers?"이동 대기 현황":"내 확인 현황")+'</b><span>✓ 확인 '+confirmed+'개</span><span>○ 미확인 '+unchecked+'개</span>'+
     (transfers?'<strong class="mr-chat-transfer-note">확인 완료한 상품은 보고서에서 제외되며 '+(ui.command==="1-1"?"국내":"해외")+' 인스타 메뉴에서 볼 수 있습니다.</strong>':
     '<div class="mr-chat-review-filters" aria-label="내 확인 상태별 보기">'+[["all","전체"],["confirmed","확인"],["unconfirmed","미확인"]].map(([v,label])=>'<button type="button" data-chat-review-filter="'+v+'" aria-pressed="'+(chosen===v?"true":"false")+'">'+label+'</button>').join("")+'</div>')+
