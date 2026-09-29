@@ -131,6 +131,7 @@ async function load(){
   ui.reports=[...reports].sort((a,b)=>Date.parse(b.createdAt||0)-Date.parse(a.createdAt||0));
   ui.reportIndex=Math.max(0,Math.min(ui.reportIndex,ui.reports.length-1));
   ui.status="ready";
+  window.dispatchEvent(new CustomEvent("mozzipick-chat-reports-loaded",{detail:{data}}));
  }catch(e){if(id!==seq||!ui||ui.command!==command)return;ui.status="error";ui.error=e?.message||String(e)}
  render();save();
 }
