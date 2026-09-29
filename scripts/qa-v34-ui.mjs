@@ -391,7 +391,19 @@ async function run(){
  approvalPage.on("pageerror",e=>errors.push("Approved import: "+e.message));
  let approvalPaidRequests=0;
  approvalPage.on("request",req=>{if(/(?:apify\.com|\.n8n\.cloud)/i.test(new URL(req.url()).hostname))approvalPaidRequests++});
- await approvalPage.route("**/data/command-reports.json*",r=>r.fulfill({status:200,contentType:"application/json",body:JSON.stringify(qaReport)}));
+ const transferFixture={...qaReport,reports:{...qaReport.reports,
+  "1":[{id:"qa-viral-report",command:"1",title:"QA 통합 바이럴",createdAt:"2026-09-29T04:00:00Z",items:[{
+   id:"qa-viral-01",productName:"QA 통합 바이럴 신규 상품",category:"전자제품",sourceUrl:"https://example.com/viral-source",rankGroup:"B",
+   sale:{status:"unknown"},recommendation:"콘텐츠 검토용",metrics:{views:null,likes:null,comments:null}}]}],
+  "1-3":[{id:"qa-coupang-report",command:"1-3",title:"QA 쿠팡",createdAt:"2026-09-29T04:00:00Z",groupCounts:{S:1,A:0,B:0},items:[{
+   id:"qa-coupang-01",productName:"QA 신규 쿠팡 S 상품",category:"가전디지털",rankGroup:"S",firstObservedAt:"2026-09-29",observedRank:3,
+   rankList:"골드박스 시험 기록",rankObservationAt:"2026-09-29T02:01:00Z",sourceUrl:"https://example.com/coupang-evidence",
+   sale:{status:"search-result-only",url:"https://www.coupang.com/vp/products/987654321",price:"19,900원 (관측값)"},metrics:{sales:null,reviews:null}}]}]}};
+ let approvalFetches=0;
+ // Initial menu fetch is stale. The viewer must synchronize its fresh reports to destination menus.
+ await approvalPage.route("**/data/command-reports.json*",r=>{
+  approvalFetches++;r.fulfill({status:200,contentType:"application/json",body:JSON.stringify(approvalFetches===1?emptyResearch:transferFixture)});
+ });
  await approvalPage.goto(base+"&approvedQA=1",{waitUntil:"domcontentloaded"});
  await approvalPage.locator("#mrHomeDashboard .mr-card").first().waitFor();
  await nav(approvalPage,"instagram");
@@ -444,7 +456,46 @@ async function run(){
  await approvalPage.locator("#mrIgSearch").fill("");
  await click(approvalPage,"#mrRouteView [data-ig-search-run]");
  check(await approvalPage.locator("#mrRouteView .mr-ig-tile").count()===5,"Existing overseas collection remains intact after one approved addition and 5-per-page");
- check(approvalPaidRequests===0,"Approval transfer calls neither n8n nor Apify");
+ // Four command destinations: report disappearance, destination isolation, refresh persistence.
+ await nav(approvalPage,"viral");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 통합 바이럴 신규 상품"}).count()===0,"Unconfirmed 1 candidate absent from Viral Radar");
+ await click(approvalPage,"#mrCommandButton");
+ await approvalPage.locator("#mrCommandInput").fill("1");
+ await click(approvalPage,"#mrCommandForm button");
+ await approvalPage.locator('#mrCommandResults .mr-chat-item').first().waitFor();
+ check((await approvalPage.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 통합 바이럴 신규 상품"),"Fresh 1 report arrives when menu initially loaded stale data");
+ await click(approvalPage,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
+ check(await approvalPage.locator('#mrCommandResults .mr-chat-item').count()===0,"Checking 1 instantly removes report item");
+ check((await approvalPage.locator('#mrCommandResults .mr-chat-state').innerText()).includes("바이럴 레이더"),"1 empty state names proper destination");
+ await nav(approvalPage,"viral");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 통합 바이럴 신규 상품"}).count()===1,"Confirmed 1 moves into Viral Radar");
+ check(await approvalPage.locator('#mrRouteView .mr-chat-moved-badge').count()>=1,"Approved viral candidate clearly labeled");
+ await click(approvalPage,"#mrCommandButton");
+ await approvalPage.locator("#mrCommandInput").fill("1-3");
+ await click(approvalPage,"#mrCommandForm button");
+ await approvalPage.locator('#mrCommandResults .mr-chat-item').first().waitFor();
+ check((await approvalPage.locator('#mrCommandResults .mr-chat-items').innerText()).includes("QA 신규 쿠팡 S 상품"),"1-3 report has independent pending item");
+ await click(approvalPage,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
+ check(await approvalPage.locator('#mrCommandResults .mr-chat-item').count()===0,"Checking 1-3 instantly removes report item");
+ check((await approvalPage.locator('#mrCommandResults .mr-chat-state').innerText()).includes("쿠팡 통합랭킹"),"1-3 empty state names proper destination");
+ await nav(approvalPage,"time");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 신규 쿠팡 S 상품"}).count()===1,"Confirmed 1-3 moves into Coupang ranking");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 통합 바이럴 신규 상품"}).count()===0,"Viral-only item never leaks into Coupang ranking");
+ await click(approvalPage,'#mrRouteView [data-filter="S등급 · 최근 3일"]');
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 신규 쿠팡 S 상품"}).count()===1,"Imported S item remains under S filter");
+ await click(approvalPage,'#mrRouteView [data-filter="B등급 · 15일 초과"]');
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 신규 쿠팡 S 상품"}).count()===0,"S item does not leak into B filter");
+ await nav(approvalPage,"time");
+ await click(approvalPage,'#mrRouteView .mr-card-name:has-text("QA 신규 쿠팡 S 상품")');
+ check((await approvalPage.locator('#mrRouteView .mr-detail-page').innerText()).includes("보고서 조사 출처"),"Imported Coupang detail retains evidence URL");
+ await approvalPage.reload({waitUntil:"domcontentloaded"});
+ await approvalPage.locator('#mrHomeDashboard .mr-card').first().waitFor();
+ await nav(approvalPage,"viral");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 통합 바이럴 신규 상품"}).count()===1,"1 transferred candidate survives reload");
+ await nav(approvalPage,"time");
+ check(await approvalPage.locator('#mrRouteView .mr-card-name').filter({hasText:"QA 신규 쿠팡 S 상품"}).count()===1,"1-3 transferred candidate survives reload");
+ check(approvalFetches>=5,"Fresh report synchronization and reload requests occurred");
+ check(approvalPaidRequests===0,"All four approval transfers call neither n8n nor Apify");
  await approvalContext.close();
  // r34 live, non-mocked source artwork validation: exact report and approved domestic card.
  if(covered.length===originalItems.length&&covered.length>0){
