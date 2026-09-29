@@ -470,6 +470,16 @@ async function run(){
   const importedCover=await posterPage.locator("#mrRouteView .mr-ig-tile .mr-ig-cover img").evaluate(img=>({w:img.naturalWidth,h:img.naturalHeight,src:img.getAttribute("src")}));
   check(importedCover.w===360&&importedCover.h===640&&importedCover.src.startsWith(originalItems[0].thumbnail+"?"),"Approved Instagram gallery visibly loads the same exact original poster as report");
   await posterPage.locator("#mrRouteView .mr-ig-tile").screenshot({path:"qa-v34-original-reel-approved-r34.png"});
+  await click(posterPage,"#mrCommandButton");
+  await posterPage.locator("#mrCommandInput").fill("1-3");
+  await click(posterPage,"#mrCommandForm button");
+  await posterPage.locator("#mrCommandResults .mr-chat-group-S").first().waitFor();
+  check(await posterPage.locator("#mrCommandResults .mr-chat-item").count()===5,"Real Coupang S/A/B report renders five sourced records");
+  check(await posterPage.locator("#mrCommandResults .mr-chat-group-S").count()===2&&await posterPage.locator("#mrCommandResults .mr-chat-group-B").count()===3,"S two, A zero, B three accurately labeled on report");
+  check((await posterPage.locator("#mrCommandResults .mr-chat-summary").innerText()).includes("A 0"),"A group is explicitly empty rather than fabricated");
+  check(await posterPage.locator("#mrCommandResults .mr-chat-coupang").count()===5&&await posterPage.locator("#mrCommandResults .mr-chat-media img").count()===0,"Coupang cards cannot substitute unverified product artwork or Instagram Reel covers");
+  check((await posterPage.locator("#mrCommandResults .mr-chat-item").first().innerText()).includes("첫 관측일")&&(await posterPage.locator("#mrCommandResults .mr-chat-item").first().innerText()).includes("판매량"),"Coupang report shows rank dates and unverified sales instead of misleading Reel engagement");
+  await posterPage.locator("#mrCommandResults .mr-chat-item").first().screenshot({path:"qa-v34-coupang-sab-report-r36.png"});
   await posterCtx.close();
  }
  await h.close();
