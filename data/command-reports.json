@@ -1,6 +1,6 @@
 {
   "schema": "mozzipick.chat-reports.v1",
-  "updatedAt": "2026-09-28T10:29:46.908Z",
+  "updatedAt": "2026-09-29T06:51:15.322Z",
   "reports": {
     "1": [],
     "1-1": [
@@ -259,6 +259,273 @@
       }
     ],
     "1-2": [],
-    "1-3": []
+    "1-3": [
+      {
+        "id": "coupang-integrated-2026-09-29-01",
+        "command": "1-3",
+        "title": "쿠팡 통합 S/A/B 관측 보고서 · 9월 29일",
+        "createdAt": "2026-09-29T06:51:15.322Z",
+        "period": "S 9/27~9/29 · A 9/14~9/26 · B 9/13 이전 최초 관측 기준 (관측 시작일 대리지표)",
+        "summary": "S(9/29 골드박스 신규 관측) 2개, A(9/14~26 공개 순위 이력과 인기 관측 모두 증빙) 0개, B(15일 초과 장기 관측) 3개. 쿠팡 실제 판매량·리뷰 증가율을 확인한 공식 성적표가 아니며, 구간 구분은 랭킹 데이터의 최초 관측일을 사용한 탐색용 대리분류.",
+        "notes": "관측 출처 shortsshopping.com (쿠팡 파트너스 공개 일간베스트/골드박스 자료의 독립 제3자 기록), 2026-09-29 11:01 KST 갱신. 가격은 기록 당시 값. 쿠팡 직접 접속은 bot_blocked로 판매·가격·누적 판매수·실시간 리뷰를 검증하지 못함. A 조건을 만족하는 개별 품목의 신뢰할 수 있는 날짜별 공개 증거를 이번 검색에서는 확보하지 못해 0개로 남김. 기존 products.json과 1-1/1-2 데이터 변경 없음. 1-3 확인 체크는 보고서 개인 메모로만 사용되며 인스타 메뉴로 보내지 않음.",
+        "groupCounts": {
+          "S": 2,
+          "A": 0,
+          "B": 3
+        },
+        "items": [
+          {
+            "id": "coupang:9633585405",
+            "productName": "Lydsto 자동 분수 스마트 창문 로봇청소기 (케이스 증정)",
+            "model": "",
+            "category": "스마트 청소가전 · 창문 로봇",
+            "sourcePlatform": "Coupang daily-best / Goldbox third-party observation",
+            "sourceUrl": "https://shortsshopping.com/data/product-9633585405/",
+            "rankGroup": "S",
+            "firstObservedAt": "2026-09-29",
+            "rankObservationAt": "2026-09-29T02:01:00Z",
+            "observedRank": 3,
+            "rankList": "골드박스 · 9/29 기록상 최고 3위",
+            "caption": "9월 29일 골드박스 신규 관측, 기록상 3위. 판매량·리뷰 상승률은 별도 미공개.",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null,
+              "reviews": null,
+              "sales": null
+            },
+            "publishedAt": null,
+            "metricsObservedAt": "2026-09-29T02:01:00Z",
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿠팡 상품 페이지는 직접 접근 차단 · 제3자 기록에서 상품 링크 확인",
+              "url": "https://www.coupang.com/vp/products/9633585405",
+              "checkedAt": null,
+              "price": "161,290원 (제3자 마지막 관측 가격, 현재 구매가 미확인)"
+            },
+            "sponsored": null,
+            "recommendation": "실제 창문 한 면의 청소 전/후 비교 및 물 분사 장면으로 시연형 쇼츠 구성 가능.",
+            "cautions": "골드박스 3위는 전체 쿠팡 판매순위가 아님. 9/29 신규 관측은 상품 신규 출시를 뜻하지 않음. 창문 부착 안전성과 구조별 호환 확인 필요.",
+            "rankEvidence": "관측된 진입/최고 순위의 날짜만 기록함. 실제 판매량 및 리뷰 증가량은 공개 확인하지 못함.",
+            "crossChecks": [
+              "9/29 11:01(KST) 기준 제3자 공개 쿠팡 파트너스 일간베스트·골드박스 기록",
+              "제품 최초 관측일은 판매 출시일·바이럴 시작일과 다를 수 있음",
+              "직접 쿠팡 상세는 봇 접근 제한: 판매 재고, 누적 판매량, 리뷰수 미확인"
+            ],
+            "sources": [
+              {
+                "label": "쿠팡 공개 랭킹 이력 기록",
+                "url": "https://shortsshopping.com/data/product-9633585405/"
+              },
+              {
+                "label": "쿠팡 상품 바로가기 (구매 가능 여부 미확인)",
+                "url": "https://www.coupang.com/vp/products/9633585405"
+              }
+            ]
+          },
+          {
+            "id": "coupang:9126652588",
+            "productName": "쿠쿠 무회전 플랫타입 스팀청소 다이얼식 전자레인지 25L",
+            "model": "",
+            "category": "주방 가전 · 전자레인지",
+            "sourcePlatform": "Coupang daily-best / Goldbox third-party observation",
+            "sourceUrl": "https://shortsshopping.com/data/product-9126652588/",
+            "rankGroup": "S",
+            "firstObservedAt": "2026-09-29",
+            "rankObservationAt": "2026-09-29T02:01:00Z",
+            "observedRank": 11,
+            "rankList": "골드박스 · 9/29 기록상 최고 11위",
+            "caption": "9월 29일 골드박스 신규 관측, 기록상 11위. 실제 리뷰·판매수 미확인.",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null,
+              "reviews": null,
+              "sales": null
+            },
+            "publishedAt": null,
+            "metricsObservedAt": "2026-09-29T02:01:00Z",
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿠팡 상품 페이지는 직접 접근 차단 · 제3자 기록에서 상품 링크 확인",
+              "url": "https://www.coupang.com/vp/products/9126652588",
+              "checkedAt": null,
+              "price": "124,600원 (제3자 마지막 관측 가격, 현재 구매가 미확인)"
+            },
+            "sponsored": null,
+            "recommendation": "회전판 없는 넓은 내부 공간과 스팀 청소의 사용 전후를 비교하는 제품 기능 소개 후보.",
+            "cautions": "골드박스 순위를 누적 판매순위로 표현 금지. 조작/청소 기능은 실제 모델 사용설명서 또는 상세페이지 재검증 필요.",
+            "rankEvidence": "관측된 진입/최고 순위의 날짜만 기록함. 실제 판매량 및 리뷰 증가량은 공개 확인하지 못함.",
+            "crossChecks": [
+              "9/29 11:01(KST) 기준 제3자 공개 쿠팡 파트너스 일간베스트·골드박스 기록",
+              "제품 최초 관측일은 판매 출시일·바이럴 시작일과 다를 수 있음",
+              "직접 쿠팡 상세는 봇 접근 제한: 판매 재고, 누적 판매량, 리뷰수 미확인"
+            ],
+            "sources": [
+              {
+                "label": "쿠팡 공개 랭킹 이력 기록",
+                "url": "https://shortsshopping.com/data/product-9126652588/"
+              },
+              {
+                "label": "쿠팡 상품 바로가기 (구매 가능 여부 미확인)",
+                "url": "https://www.coupang.com/vp/products/9126652588"
+              }
+            ]
+          },
+          {
+            "id": "coupang:9344838202",
+            "productName": "신지모루 C to C PD 고속충전 케이블 60W",
+            "model": "",
+            "category": "충전·전원용품 · USB-C 케이블",
+            "sourcePlatform": "Coupang daily-best / Goldbox third-party observation",
+            "sourceUrl": "https://shortsshopping.com/data/product-9344838202/",
+            "rankGroup": "B",
+            "firstObservedAt": "2026-06-14",
+            "rankObservationAt": "2026-09-29T02:01:00Z",
+            "observedRank": 1,
+            "rankList": "가전디지털 충전·전원용품 일간베스트 · 9/29 표기 1위",
+            "caption": "최초 기록 6월 14일, 9월 29일 일간베스트 1위 표기, 기록상 최저 6,100원(8/6).",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null,
+              "reviews": null,
+              "sales": null
+            },
+            "publishedAt": null,
+            "metricsObservedAt": "2026-09-29T02:01:00Z",
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿠팡 상품 페이지는 직접 접근 차단 · 제3자 기록에서 상품 링크 확인",
+              "url": "https://www.coupang.com/vp/products/9344838202",
+              "checkedAt": null,
+              "price": "6,900원 (제3자 마지막 관측 가격, 현재 구매가 미확인)"
+            },
+            "sponsored": null,
+            "recommendation": "노트북·휴대폰 충전 케이블의 용도 차이를 실제 충전기와 함께 비교하는 간단 리뷰 후보.",
+            "cautions": "60W 정격은 호환되는 PD 충전기·기기가 필요함. 9월 29일 1위 기록은 누적 판매량이나 최근 15일 인기 시작을 뜻하지 않음.",
+            "rankEvidence": "관측된 진입/최고 순위의 날짜만 기록함. 실제 판매량 및 리뷰 증가량은 공개 확인하지 못함.",
+            "crossChecks": [
+              "9/29 11:01(KST) 기준 제3자 공개 쿠팡 파트너스 일간베스트·골드박스 기록",
+              "제품 최초 관측일은 판매 출시일·바이럴 시작일과 다를 수 있음",
+              "직접 쿠팡 상세는 봇 접근 제한: 판매 재고, 누적 판매량, 리뷰수 미확인"
+            ],
+            "sources": [
+              {
+                "label": "쿠팡 공개 랭킹 이력 기록",
+                "url": "https://shortsshopping.com/data/product-9344838202/"
+              },
+              {
+                "label": "쿠팡 상품 바로가기 (구매 가능 여부 미확인)",
+                "url": "https://www.coupang.com/vp/products/9344838202"
+              }
+            ]
+          },
+          {
+            "id": "coupang:8939019740",
+            "productName": "아이리버 25W 2포트 고속충전기 + C to C 케이블 세트",
+            "model": "",
+            "category": "충전기 · 2포트",
+            "sourcePlatform": "Coupang daily-best / Goldbox third-party observation",
+            "sourceUrl": "https://shortsshopping.com/data/product-8939019740/",
+            "rankGroup": "B",
+            "firstObservedAt": "2026-06-14",
+            "rankObservationAt": "2026-09-26T02:01:00Z",
+            "observedRank": 1,
+            "rankList": "충전·전원용품 일간베스트 · 기록상 최고 1위는 6/20",
+            "caption": "6월 14일 최초 기록, 6월 20일 기록상 최고 1위, 마지막 관측값 8,800원. 9월 29일 현재 순위는 직접 미확인.",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null,
+              "reviews": null,
+              "sales": null
+            },
+            "publishedAt": null,
+            "metricsObservedAt": "2026-09-26T02:01:00Z",
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿠팡 상품 페이지는 직접 접근 차단 · 제3자 기록에서 상품 링크 확인",
+              "url": "https://www.coupang.com/vp/products/8939019740",
+              "checkedAt": null,
+              "price": "8,800원 (제3자 마지막 관측 가격, 현재 구매가 미확인)"
+            },
+            "sponsored": null,
+            "recommendation": "충전기와 케이블이 한 세트인 실용 구성으로 교체·휴대 사용 장면 제작 후보.",
+            "cautions": "'1위'는 6월 20일 이력이지 현재 1위라고 단정할 수 없음. PD 25W의 포트별 출력 분배 확인 필요.",
+            "rankEvidence": "관측된 진입/최고 순위의 날짜만 기록함. 실제 판매량 및 리뷰 증가량은 공개 확인하지 못함.",
+            "crossChecks": [
+              "9/29 11:01(KST) 기준 제3자 공개 쿠팡 파트너스 일간베스트·골드박스 기록",
+              "제품 최초 관측일은 판매 출시일·바이럴 시작일과 다를 수 있음",
+              "직접 쿠팡 상세는 봇 접근 제한: 판매 재고, 누적 판매량, 리뷰수 미확인"
+            ],
+            "sources": [
+              {
+                "label": "쿠팡 공개 랭킹 이력 기록",
+                "url": "https://shortsshopping.com/data/product-8939019740/"
+              },
+              {
+                "label": "쿠팡 상품 바로가기 (구매 가능 여부 미확인)",
+                "url": "https://www.coupang.com/vp/products/8939019740"
+              }
+            ]
+          },
+          {
+            "id": "coupang:9325819252",
+            "productName": "디지털케미 LG 그램 15·16인치 노트북 키스킨 (25·26년형 대상)",
+            "model": "",
+            "category": "PC 주변기기 · 키보드 보호",
+            "sourcePlatform": "Coupang daily-best / Goldbox third-party observation",
+            "sourceUrl": "https://shortsshopping.com/data/product-9325819252/",
+            "rankGroup": "B",
+            "firstObservedAt": "2026-08-14",
+            "rankObservationAt": "2026-09-29T02:01:00Z",
+            "observedRank": 1,
+            "rankList": "PC·네트워크 일간베스트 · 기록상 최고 1위는 8/14",
+            "caption": "8월 14일 최초 기록·기록상 최고 1위, 9월 29일 마지막 관측 가격 7,900원.",
+            "metrics": {
+              "views": null,
+              "likes": null,
+              "comments": null,
+              "shares": null,
+              "reviews": null,
+              "sales": null
+            },
+            "publishedAt": null,
+            "metricsObservedAt": "2026-09-29T02:01:00Z",
+            "sale": {
+              "status": "search-result-only",
+              "platform": "쿠팡 상품 페이지는 직접 접근 차단 · 제3자 기록에서 상품 링크 확인",
+              "url": "https://www.coupang.com/vp/products/9325819252",
+              "checkedAt": null,
+              "price": "7,900원 (제3자 마지막 관측 가격, 현재 구매가 미확인)"
+            },
+            "sponsored": null,
+            "recommendation": "손만 등장하는 설치 전후 및 타이핑 화면으로 변화를 짧게 보여주는 주변기기 후보.",
+            "cautions": "호환 그램 모델과 키보드 배열은 구매 전 확인해야 함. 최고 순위 기록은 8월 14일이며 현 시점 1위라는 뜻이 아님.",
+            "rankEvidence": "관측된 진입/최고 순위의 날짜만 기록함. 실제 판매량 및 리뷰 증가량은 공개 확인하지 못함.",
+            "crossChecks": [
+              "9/29 11:01(KST) 기준 제3자 공개 쿠팡 파트너스 일간베스트·골드박스 기록",
+              "제품 최초 관측일은 판매 출시일·바이럴 시작일과 다를 수 있음",
+              "직접 쿠팡 상세는 봇 접근 제한: 판매 재고, 누적 판매량, 리뷰수 미확인"
+            ],
+            "sources": [
+              {
+                "label": "쿠팡 공개 랭킹 이력 기록",
+                "url": "https://shortsshopping.com/data/product-9325819252/"
+              },
+              {
+                "label": "쿠팡 상품 바로가기 (구매 가능 여부 미확인)",
+                "url": "https://www.coupang.com/vp/products/9325819252"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
