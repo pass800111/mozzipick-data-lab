@@ -177,3 +177,7 @@
 #mrCommandView .mr-chat-group-S{background:#fcefd6;color:#775019;border-color:#c6a366}
 #mrCommandView .mr-chat-group-A{background:#e5f5eb;color:#205c3b;border-color:#73ae86}
 #mrCommandView .mr-chat-group-B{background:#e7f0fd;color:#1b538f;border-color:#89aad1}
+
+/* r37 personally checked research in its destination, not an independent fact-verification claim */
+#mrRouteView .mr-chat-moved-badge{display:block;margin:5px 0 9px;padding:5px 9px;border:1px solid #87c6a9;border-radius:8px;background:#e8f8ef;color:#155b3e;font-size:13px;font-weight:800;line-height:1.5}
+#mrRouteView .mr-card-actions a[href*="shortsshopping"],#mrRouteView .mr-card-actions a[href*="example.com"]{color:#14559b}
