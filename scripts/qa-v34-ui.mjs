@@ -531,6 +531,10 @@ async function run(){
   check(await posterPage.locator("#mrCommandResults .mr-chat-coupang").count()===5&&await posterPage.locator("#mrCommandResults .mr-chat-media img").count()===0,"Coupang cards cannot substitute unverified product artwork or Instagram Reel covers");
   check((await posterPage.locator("#mrCommandResults .mr-chat-item").first().innerText()).includes("첫 관측일")&&(await posterPage.locator("#mrCommandResults .mr-chat-item").first().innerText()).includes("판매량"),"Coupang report shows rank dates and unverified sales instead of misleading Reel engagement");
   await posterPage.locator("#mrCommandResults .mr-chat-item").first().screenshot({path:"qa-v34-coupang-sab-report-r36.png"});
+  await click(posterPage,'#mrCommandResults .mr-chat-item:first-child [data-chat-review-index]');
+  check(await posterPage.locator("#mrCommandResults .mr-chat-item").count()===4,"Actual 1-3 approved item instantly leaves pending report");
+  await nav(posterPage,"time");
+  check(await posterPage.locator('#mrRouteView .mr-card-name').filter({hasText:"Lydsto 자동 분수 스마트 창문 로봇청소기"}).count()===1,"Actual S Coupang source record appears on first ranking page after confirmation");
   await posterCtx.close();
  }
  await h.close();
