@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/capture-instagram-posters.mjs"
       - ".github/workflows/capture-instagram-posters.yml"
+      - "data/command-reports.json"
   workflow_dispatch:
 permissions:
   contents: write
