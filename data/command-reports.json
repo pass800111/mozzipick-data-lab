@@ -1,6 +1,6 @@
 {
   "schema": "mozzipick.chat-reports.v1",
-  "updatedAt": "2026-10-01T04:12:18.199Z",
+  "updatedAt": "2026-10-01T04:13:31.342Z",
   "reports": {
     "1": [],
     "1-1": [
@@ -53,7 +53,11 @@
                 "label": "Samsung 공식 상품",
                 "url": "https://www.samsung.com/sec/mobile-accessories/rainbow-anpanman-mirror-magnet-case-for-galaxy-z-fold-8/GP-FPF971HIEAK/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdsbiS4zbXe.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdsbiS4zbXe",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-10-01T04:13:09.848Z"
           },
           {
             "id": "ig:Dd3Rh_EBSWr",
@@ -95,7 +99,11 @@
                 "label": "ASUS 공식 판매 페이지",
                 "url": "https://kr.store.asus.com/asus-zenbook-s-14-ux5406aa-su212w-laptop.html"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/Dd3Rh_EBSWr.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for Dd3Rh_EBSWr",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-10-01T04:13:14.882Z"
           },
           {
             "id": "ig:DdgiVlvD5Mt",
@@ -137,7 +145,11 @@
                 "label": "Seeed Studio 공식 상품",
                 "url": "https://www.seeedstudio.com/SenseCAP-Watcher-W1-A-p-5979.html"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdgiVlvD5Mt.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdgiVlvD5Mt",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-10-01T04:13:19.953Z"
           },
           {
             "id": "ig:Ddxm2LiTADg",
@@ -179,7 +191,11 @@
                 "label": "Samsung 공식 상품",
                 "url": "https://www.samsung.com/sec/smartphones/galaxy-z-fold8-f971/SM-F971NLVPKOO/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/Ddxm2LiTADg.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for Ddxm2LiTADg",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-10-01T04:13:24.972Z"
           },
           {
             "id": "ig:DdYmr3VzznS",
@@ -225,7 +241,11 @@
                 "label": "Apple 공식 발표",
                 "url": "https://www.apple.com/kr/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/"
               }
-            ]
+            ],
+            "thumbnail": "assets/instagram/DdYmr3VzznS.jpg",
+            "thumbnailSource": "Screenshot of official original Instagram embed for DdYmr3VzznS",
+            "thumbnailStatus": "Official post and account cross-checked, original media screenshot captured 360x640; image reuse rights not independently verified",
+            "thumbnailCapturedAt": "2026-10-01T04:13:30.097Z"
           }
         ]
       },
