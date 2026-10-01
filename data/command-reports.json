@@ -1,9 +1,234 @@
 {
   "schema": "mozzipick.chat-reports.v1",
-  "updatedAt": "2026-10-01T03:35:51.768Z",
+  "updatedAt": "2026-10-01T04:12:18.199Z",
   "reports": {
     "1": [],
     "1-1": [
+      {
+        "id": "domestic-instagram-2026-10-01-research-02",
+        "command": "1-1",
+        "title": "국내 인스타 전자제품·테크 릴스 신규 발굴 02",
+        "createdAt": "2026-10-01T04:12:18.199Z",
+        "period": "2026-09-17~2026-10-01 (최근 14일)",
+        "summary": "최근 14일 내 국내 계정에서 확인 가능한 전자제품·테크 릴스 중 기존 1-1 보고서와 중복되지 않는 5건. 공개 좋아요/댓글은 확인 시점 스냅샷만 기록했고 조회수·공유는 공개 확인 불가 시 null 처리. 정확한 동일 모델 공식 판매 페이지를 별도 확인한 경우에만 판매처 확인으로 표시.",
+        "notes": "1-1 확인 체크 시 이 보고서 카드에서 즉시 제외되고 같은 브라우저의 인스타 전자제품 → 국내상품으로 이동한다. 체크는 개인 검토 상태이며 판매/성능 사실 검증과 별개. Instagram 동적 수치는 이후 바뀔 수 있다. 유료 n8n·Apify 미사용.",
+        "items": [
+          {
+            "id": "ig:DdsbiS4zbXe",
+            "productName": "갤럭시 Z 폴드8 미러 마그넷 케이스 (무지개 호빵맨)",
+            "model": "GP-FPF971HIEAK",
+            "category": "스마트폰 액세서리 · 마그넷 케이스",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdsbiS4zbXe/",
+            "accountUrl": "https://www.instagram.com/sia___photo/",
+            "caption": "갤럭시 Z 폴드8용 호빵맨 미러 마그넷 케이스를 실제 야외 촬영과 함께 소개. 저장·공유를 직접 유도하고 삼성 홈페이지 액세서리 경로를 안내.",
+            "publishedAt": "2026-09-25T03:27:41.000Z",
+            "metricsObservedAt": "2026-10-01T04:12:18.199Z",
+            "metrics": {
+              "views": null,
+              "likes": 90,
+              "comments": 41,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "Samsung 대한민국 공식몰",
+              "url": "https://www.samsung.com/sec/mobile-accessories/rainbow-anpanman-mirror-magnet-case-for-galaxy-z-fold-8/GP-FPF971HIEAK/",
+              "checkedAt": "2026-10-01T04:12:18.199Z",
+              "price": null
+            },
+            "sponsored": true,
+            "recommendation": "이번 후보 중 공개 댓글 반응이 가장 높다. 귀여운 IP 디자인·거울 반사·마그넷이라는 시각 요소가 짧은 릴스 훅과 저장·공유 CTA에 잘 맞는다.",
+            "cautions": "정확한 현재 판매가와 재고는 결제 화면에서 재확인 필요. 삼성 공식 페이지에는 자석 포함 및 보호필름과의 간섭 가능성 안내가 있으므로 호환성 표현에 주의.",
+            "crossChecks": [
+              "Instagram 원본에서 #제품지원, 삼성 홈페이지 갤럭시 액세서리 안내 확인",
+              "Samsung 공식 동일 모델 GP-FPF971HIEAK 상세 페이지 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/DdsbiS4zbXe/"
+              },
+              {
+                "label": "Samsung 공식 상품",
+                "url": "https://www.samsung.com/sec/mobile-accessories/rainbow-anpanman-mirror-magnet-case-for-galaxy-z-fold-8/GP-FPF971HIEAK/"
+              }
+            ]
+          },
+          {
+            "id": "ig:Dd3Rh_EBSWr",
+            "productName": "ASUS Zenbook S 14",
+            "model": "UX5406AA-SU212W",
+            "category": "노트북 · AI PC",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/Dd3Rh_EBSWr/",
+            "accountUrl": "https://www.instagram.com/poohlike7/",
+            "caption": "카페 이동·실사용 흐름으로 약 1.2kg, 14인치 3K OLED 노트북을 보여주는 협찬 릴스.",
+            "publishedAt": "2026-09-29T07:57:03.000Z",
+            "metricsObservedAt": "2026-10-01T04:12:18.199Z",
+            "metrics": {
+              "views": null,
+              "likes": 38,
+              "comments": 0,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "ASUS 한국 공식 스토어",
+              "url": "https://kr.store.asus.com/asus-zenbook-s-14-ux5406aa-su212w-laptop.html",
+              "checkedAt": "2026-10-01T04:12:18.199Z",
+              "price": null
+            },
+            "sponsored": true,
+            "recommendation": "가방→이동→카페 작업으로 제품 장점이 자연스럽게 드러나는 실사용형 구성. 모찌픽 테크 리뷰의 '언제·어디서·어떻게' 흐름 참고 후보.",
+            "cautions": "협찬 콘텐츠. 공식 스토어에서 동일 모델과 1.2kg·3K OLED·32GB/1TB 등 핵심 사양을 재확인했지만 현재 결제 가격은 보고서에 확정하지 않음.",
+            "crossChecks": [
+              "Instagram 원본에 #협찬 및 정확한 모델명 UX5406AA-SU212W 표기",
+              "ASUS 한국 공식 스토어 동일 모델 상세 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/Dd3Rh_EBSWr/"
+              },
+              {
+                "label": "ASUS 공식 판매 페이지",
+                "url": "https://kr.store.asus.com/asus-zenbook-s-14-ux5406aa-su212w-laptop.html"
+              }
+            ]
+          },
+          {
+            "id": "ig:DdgiVlvD5Mt",
+            "productName": "Seeed Studio SenseCAP Watcher",
+            "model": "SenseCAP Watcher W1-A/W1 계열",
+            "category": "AI 기기 · 스마트 디스플레이",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdgiVlvD5Mt/",
+            "accountUrl": "https://www.instagram.com/kodokthings/",
+            "caption": "카메라·마이크·스피커 기반 대화형 AI 기기를 '구독료 0원' 후크로 소개하고 제품 정보는 프로필 링크로 유도.",
+            "publishedAt": "2026-09-20T12:00:05.000Z",
+            "metricsObservedAt": "2026-10-01T04:12:18.199Z",
+            "metrics": {
+              "views": null,
+              "likes": 35,
+              "comments": 0,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "Seeed Studio 공식 스토어",
+              "url": "https://www.seeedstudio.com/SenseCAP-Watcher-W1-A-p-5979.html",
+              "checkedAt": "2026-10-01T04:12:18.199Z",
+              "price": null
+            },
+            "sponsored": null,
+            "recommendation": "일반 스마트폰 액세서리와 다른 신박한 실물 AI 기기라 첫 3초 호기심 유발력이 높다. 기능 시연 중심 숏폼 후보.",
+            "cautions": "릴스의 '구독료 0원' 표현은 사용 기능·클라우드 서비스 조건에 따라 달라질 수 있으므로 제작 전 공식 서비스 조건 재확인 필요. 한국 배송·A/S 조건도 별도 확인.",
+            "crossChecks": [
+              "Instagram 원본에서 SenseCAP Watcher 제품명 확인",
+              "Seeed Studio 공식 W1-A 상품 페이지 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/DdgiVlvD5Mt/"
+              },
+              {
+                "label": "Seeed Studio 공식 상품",
+                "url": "https://www.seeedstudio.com/SenseCAP-Watcher-W1-A-p-5979.html"
+              }
+            ]
+          },
+          {
+            "id": "ig:Ddxm2LiTADg",
+            "productName": "Samsung Galaxy Z Fold8",
+            "model": "Galaxy Z Fold8",
+            "category": "스마트폰 · 폴더블",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/Ddxm2LiTADg/",
+            "accountUrl": "https://www.instagram.com/rw34802/",
+            "caption": "닌텐도 DS처럼 보이는 별의 커비 배경화면 연출로 Z Fold8의 접힘/펼침 형태를 강조한 사용자 제작 릴스.",
+            "publishedAt": "2026-09-27T03:24:00.000Z",
+            "metricsObservedAt": "2026-10-01T04:12:18.199Z",
+            "metrics": {
+              "views": null,
+              "likes": 17,
+              "comments": 4,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "Samsung 대한민국 공식몰",
+              "url": "https://www.samsung.com/sec/smartphones/galaxy-z-fold8-f971/SM-F971NLVPKOO/",
+              "checkedAt": "2026-10-01T04:12:18.199Z",
+              "price": null
+            },
+            "sponsored": null,
+            "recommendation": "제품 자체보다 '닌텐도 DS인 줄 알았죠?'라는 착시형 오프닝이 강점. 폴더블 특성을 활용한 첫 1초 훅 참고 후보.",
+            "cautions": "배경화면·캐릭터 IP 연출은 재사용 권리 확인이 필요. 삼성 공식 페이지에서 Z Fold8 제품 자체는 확인했으나 릴스의 치수 표기는 제작 전 공식 스펙과 다시 대조 권장.",
+            "crossChecks": [
+              "Instagram 원본에서 Galaxy Z Fold8 및 삼성 계정 태그 확인",
+              "Samsung 공식 Z Fold8 자급제 페이지 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/Ddxm2LiTADg/"
+              },
+              {
+                "label": "Samsung 공식 상품",
+                "url": "https://www.samsung.com/sec/smartphones/galaxy-z-fold8-f971/SM-F971NLVPKOO/"
+              }
+            ]
+          },
+          {
+            "id": "ig:DdYmr3VzznS",
+            "productName": "Apple Watch Ultra 4",
+            "model": "Apple Watch Ultra 4",
+            "category": "웨어러블 · 스마트워치",
+            "sourcePlatform": "Instagram",
+            "reelUrl": "https://www.instagram.com/reel/DdYmr3VzznS/",
+            "accountUrl": "https://www.instagram.com/tech_time79/",
+            "caption": "댓글에 '워치'를 남기면 특가 정보를 DM으로 보내는 직접반응형 광고 릴스. 배터리·심박·컨디션 관리 개선을 핵심 메시지로 구성.",
+            "publishedAt": "2026-09-17T10:06:14.000Z",
+            "metricsObservedAt": "2026-10-01T04:12:18.199Z",
+            "metrics": {
+              "views": null,
+              "likes": 9,
+              "comments": 7,
+              "shares": null
+            },
+            "sale": {
+              "status": "verified-on-sale",
+              "platform": "Apple Korea 공식 스토어",
+              "url": "https://www.apple.com/kr/shop/buy-watch/apple-watch-ultra",
+              "checkedAt": "2026-10-01T04:12:18.199Z",
+              "price": "1,249,000원부터 (Apple 2026-09-09 보도자료 기준; 구성별 현재가는 구매 화면 재확인)"
+            },
+            "sponsored": true,
+            "recommendation": "좋아요 대비 댓글 비율이 높고 '댓글→DM→제품 정보' 퍼널이 모찌픽 운영 방식과 직접적으로 맞닿아 있어 CTA 구조 참고 가치가 높다.",
+            "cautions": "릴스에서 제시한 세부 심박 측정 빈도·배터리 수치 등은 광고 문구이므로 그대로 재사용하지 말고 Apple 공식 사양으로 재검증 필요.",
+            "crossChecks": [
+              "Instagram 원본에서 [광고], 댓글 '워치' DM CTA 확인",
+              "Apple Korea 공식 Ultra 4 구매 페이지 및 2026-09-09 공식 발표 존재 확인"
+            ],
+            "sources": [
+              {
+                "label": "원본 릴스",
+                "url": "https://www.instagram.com/reel/DdYmr3VzznS/"
+              },
+              {
+                "label": "Apple 공식 구매 페이지",
+                "url": "https://www.apple.com/kr/shop/buy-watch/apple-watch-ultra"
+              },
+              {
+                "label": "Apple 공식 발표",
+                "url": "https://www.apple.com/kr/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/"
+              }
+            ]
+          }
+        ]
+      },
       {
         "id": "domestic-instagram-2026-09-28-research-01",
         "command": "1-1",
