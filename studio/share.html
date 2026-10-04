@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0f172a" />
+<title>AI 영상 제작소 · 프로젝트 공유/백업</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--accent:#7c9cff;--ok:#37c991;--warn:#ffcc66;--danger:#ff6b7a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:760px;margin:auto;padding:16px}.top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;margin-bottom:14px}.top h1{font-size:23px;margin:0}.top p{margin:5px 0 0;color:var(--muted);font-size:13px}.btn{border:0;border-radius:12px;padding:11px 14px;background:var(--accent);color:#081020;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.ghost{background:#202b49;color:#e5ecff;border:1px solid #334163}.btn.warn{background:#3b3116;color:#ffe7a3;border:1px solid #695826}.btn.danger{background:#3a1e29;color:#ffd0d7;border:1px solid #633143}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}.card h2{font-size:16px;margin:0 0 8px}.help{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 12px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.status{padding:11px;border-radius:12px;background:#0f172a;border:1px solid #33415f;font-size:12px;line-height:1.6;color:#dce5ff}.ok{color:var(--ok)}.warnText{color:var(--warn)}.project{padding:10px 0;border-bottom:1px solid #26324e}.project:last-child{border-bottom:0}.project b{display:block;font-size:14px}.project span{display:block;color:var(--muted);font-size:11px;margin-top:4px}.drop{border:1px dashed #455575;border-radius:14px;padding:18px;text-align:center;background:#0d1528}.drop input{max-width:100%}.code{width:100%;min-height:150px;background:#0d1528;color:#e8efff;border:1px solid #33415f;border-radius:12px;padding:10px;resize:vertical;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}.small{font-size:11px;color:var(--muted);margin-top:8px}.nav{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none!important}
+@media(max-width:620px){.wrap{padding:10px}.actions{grid-template-columns:1fr}.top{flex-direction:column}.nav{width:100%}.nav .btn{flex:1}.top h1{font-size:21px}}
+</style>
+</head>
+<body><div class="wrap">
+<header class="top"><div><h1>📲 프로젝트 공유 / 백업</h1><p>PC와 핸드폰 사이에서 KEY WORLD 프로젝트 전체 데이터를 옮깁니다.</p></div><div class="nav"><a class="btn ghost" href="./">작업실</a><a class="btn ghost" href="./roadmap.html">로드맵</a></div></header>
+
+<section class="card"><h2>현재 이 기기에 저장된 데이터</h2><div id="currentStatus" class="status"></div><div id="projectList"></div></section>
+
+<section class="card"><h2>1. PC에서 내보내기 / 핸드폰으로 보내기</h2><p class="help">체크리스트, 제작 로드맵, 스토리보드, 메모 등 이 브라우저에 저장된 AI 영상 제작소 데이터를 하나의 JSON 백업 파일로 만듭니다.</p><div class="actions"><button id="shareBtn" class="btn">📤 바로 공유</button><button id="downloadBtn" class="btn ghost">💾 백업 파일 저장</button><button id="copyBtn" class="btn ghost">📋 백업 코드 복사</button><button id="showBtn" class="btn ghost">👁 백업 코드 보기</button></div><textarea id="backupCode" class="code hidden" readonly></textarea><div class="small">핸드폰의 공유 기능이 지원되면 카카오톡·Quick Share·메일·Drive 등 설치된 공유 대상으로 보낼 수 있습니다. 지원되지 않으면 백업 파일 저장을 사용하세요.</div></section>
+
+<section class="card"><h2>2. 핸드폰 / 다른 PC에서 불러오기</h2><p class="help">받은 <b>.json</b> 백업 파일을 선택하세요. 기존 데이터가 있는 경우 안전을 위해 먼저 확인을 받습니다.</p><div class="drop"><input id="fileInput" type="file" accept="application/json,.json" /></div><div style="height:9px"></div><button id="importFileBtn" class="btn" style="width:100%">📥 선택한 백업 불러오기</button></section>
+
+<section class="card"><h2>3. 파일 대신 코드로 불러오기</h2><p class="help">파일 전달이 불편하면 PC에서 `백업 코드 복사` 후 메시지나 메모앱으로 보내고, 핸드폰에서 아래 칸에 붙여넣으면 됩니다.</p><textarea id="pasteCode" class="code" placeholder="여기에 백업 JSON 코드를 붙여넣으세요"></textarea><button id="importCodeBtn" class="btn" style="width:100%;margin-top:9px">📥 붙여넣은 코드 불러오기</button></section>
+
+<section class="card"><h2>사용 순서</h2><div class="status">① PC에서 이 페이지 열기 → <b>바로 공유</b> 또는 <b>백업 파일 저장</b><br>② 핸드폰에서 같은 사이트의 이 페이지 열기<br>③ 받은 JSON 파일을 <b>불러오기</b><br>④ 이후 <b>작업실 / 제작 로드맵</b>을 열면 같은 프로젝트 내용이 표시됩니다.</div></section>
+</div>
+<script>
+const KEY='ai-video-studio-v01';
+const $=s=>document.querySelector(s);
+function readDb(){try{return JSON.parse(localStorage.getItem(KEY)||'{"projects":[],"active":null}')}catch{return {projects:[],active:null}}}
+function validDb(v){return v&&typeof v==='object'&&Array.isArray(v.projects)&&('active' in v)}
+function safeName(s){return (s||'AI-Video-Studio').replace(/[\\/:*?"<>|]+/g,'_').slice(0,60)}
+function makeBackup(){const data=readDb();return {format:'AI_VIDEO_STUDIO_BACKUP',version:1,exportedAt:new Date().toISOString(),data}}
+function backupText(){return JSON.stringify(makeBackup(),null,2)}
+function parseBackup(txt){const obj=JSON.parse(txt);if(obj&&obj.format==='AI_VIDEO_STUDIO_BACKUP'&&validDb(obj.data))return obj.data;if(validDb(obj))return obj;throw new Error('올바른 AI 영상 제작소 백업 형식이 아닙니다.')}
+function render(){const db=readDb();const st=$('#currentStatus');if(!db.projects.length){st.innerHTML='<span class="warnText">저장된 프로젝트가 없습니다.</span>';$('#projectList').innerHTML='';return}st.innerHTML=`<span class="ok">✓ ${db.projects.length}개 프로젝트 저장됨</span><br>활성 프로젝트: ${escapeHtml(db.projects.find(p=>p.id===db.active)?.name||db.projects[0]?.name||'-')}`;$('#projectList').innerHTML=db.projects.map(p=>`<div class="project"><b>${escapeHtml(p.name||'제목 없음')}</b><span>${escapeHtml(p.status||'기획')} · ${p.updated?new Date(p.updated).toLocaleString('ko-KR'):'수정일 없음'}</span></div>`).join('')}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function download(){const db=readDb();const active=db.projects.find(p=>p.id===db.active)||db.projects[0];const blob=new Blob([backupText()],{type:'application/json;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${safeName(active?.name||'AI-Video-Studio')}-backup-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+async function share(){const db=readDb();const active=db.projects.find(p=>p.id===db.active)||db.projects[0];const file=new File([backupText()],`${safeName(active?.name||'AI-Video-Studio')}-backup.json`,{type:'application/json'});try{if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){await navigator.share({title:'AI 영상 제작소 프로젝트 백업',text:'KEY WORLD 프로젝트 백업 파일',files:[file]});return}download();alert('이 기기에서는 파일 직접 공유가 지원되지 않아 백업 파일로 저장했습니다.')}catch(e){if(e?.name!=='AbortError')alert('공유를 열지 못했습니다. 백업 파일 저장을 이용해주세요.')}
+}
+async function copy(){const t=backupText();$('#backupCode').value=t;try{await navigator.clipboard.writeText(t);alert('백업 코드가 복사되었습니다. 핸드폰으로 메시지/메모앱 등을 통해 보내세요.')}catch{$('#backupCode').classList.remove('hidden');$('#backupCode').select();alert('자동 복사가 안 되어 백업 코드를 표시했습니다. 직접 복사해주세요.')}}
+function doImport(data){const existing=readDb();const msg=existing.projects.length?`현재 이 기기에 ${existing.projects.length}개 프로젝트가 있습니다.\n백업 데이터로 교체할까요?\n\n확인을 누르면 기존 로컬 데이터가 백업 데이터로 교체됩니다.`:'백업 데이터를 이 기기에 불러올까요?';if(!confirm(msg))return;localStorage.setItem(KEY,JSON.stringify(data));render();alert('불러오기 완료! 작업실이나 제작 로드맵을 열면 동일한 프로젝트가 표시됩니다.')}
+$('#downloadBtn').onclick=download;$('#shareBtn').onclick=share;$('#copyBtn').onclick=copy;$('#showBtn').onclick=()=>{$('#backupCode').value=backupText();$('#backupCode').classList.toggle('hidden')};
+$('#importFileBtn').onclick=async()=>{const f=$('#fileInput').files?.[0];if(!f){alert('먼저 JSON 백업 파일을 선택해주세요.');return}try{doImport(parseBackup(await f.text()))}catch(e){alert('불러오기 실패: '+e.message)}};
+$('#importCodeBtn').onclick=()=>{const t=$('#pasteCode').value.trim();if(!t){alert('백업 코드를 붙여넣어주세요.');return}try{doImport(parseBackup(t))}catch(e){alert('불러오기 실패: '+e.message)}};
+render();
+</script></body></html>
