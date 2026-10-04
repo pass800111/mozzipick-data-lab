@@ -6,33 +6,35 @@
 <title>KEY WORLD 단계별 체크리스트</title>
 <style>
 :root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--accent:#7c9cff;--ok:#37c991;--warn:#ffcc66}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:900px;margin:auto;padding:20px}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}.done{border-color:var(--ok)}.next{border-color:var(--warn)}h1{font-size:24px;margin:0 0 6px}p{color:var(--muted);font-size:13px}.stage{font-size:12px;margin-bottom:10px}.done .stage{color:#7be0b5}.next .stage{color:#ffe3a1}.summary{white-space:pre-wrap;background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:#dce5ff}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#071022;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex}.ghost{background:#202b49;color:#dce5ff;border:1px solid #334163}.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}.saved{color:var(--ok);font-size:13px}.old{opacity:.76}details summary{cursor:pointer;font-weight:800;color:#dce5ff}.pill{display:inline-block;border:1px solid #3a496c;border-radius:999px;padding:5px 8px;margin:3px;font-size:11px;color:#dce5ff;background:#151f36}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:900px;margin:auto;padding:20px}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}.done{border-color:var(--ok)}.current{border-color:var(--warn)}h1{font-size:24px;margin:0 0 6px}p{color:var(--muted);font-size:13px}.stage{font-size:12px;margin-bottom:10px}.done .stage{color:#7be0b5}.current .stage{color:#ffe3a1}.summary{white-space:pre-wrap;background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:#dce5ff}.group{padding:14px 0;border-top:1px solid #2b3757}.group:first-child{border-top:0}.group h3{margin:0 0 8px;font-size:15px}.opt{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid transparent;border-radius:10px;background:#11192d;margin:8px 0}.opt:has(input:checked){border-color:var(--ok);background:#12271f}.opt input{width:19px;height:19px;accent-color:var(--ok)}textarea{width:100%;margin-top:8px;min-height:70px;background:#0e1629;color:var(--text);border:1px solid #33415f;border-radius:12px;padding:12px;font:inherit;resize:vertical}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#071022;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex}.ghost{background:#202b49;color:#dce5ff;border:1px solid #334163}.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}.saved{color:var(--ok);font-size:13px}.old{opacity:.78}details summary{cursor:pointer;font-weight:800;color:#dce5ff}.out{white-space:pre-wrap;background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:14px;min-height:90px;font-size:13px;line-height:1.6}
 </style>
 </head>
 <body><div class="wrap">
-<h1>KEY WORLD 단계별 체크리스트</h1><p>결정이 확정되면 에이스가 자동으로 완료 처리하고 다음 단계로 넘깁니다.</p>
-<div class="card done"><div class="stage">✓ 6단계 완료 · 맵 · 동선 · 연속성 설계</div><div id="stage6" class="summary"></div></div>
-<div class="card next"><div class="stage">● 다음 단계 · 7. 5분 스토리 구조</div><b>다음 작업은 전체 5분 이야기 구조 확정입니다.</b><p>오프닝 → 일상 → 첫 충격 → 경보 → 대피 → 구조 → 열차 탈출 → 안전 키월드 → 2차 재난 → 현실세계/MK108 공개 순서로 설계합니다.</p></div>
-<details class="card old"><summary>이전 단계 선택 기록 펼치기</summary><div id="oldSummary" style="margin-top:12px"></div></details>
-<div class="bar"><span class="saved" id="state">✓ 6단계 확정 저장됨</span><a class="btn ghost" href="./roadmap.html">제작 로드맵</a><a class="btn ghost" href="./">작업실</a></div>
+<h1>KEY WORLD 단계별 체크리스트</h1><p>결정이 확정되면 에이스가 완료 처리하고 다음 단계로 넘깁니다.</p>
+<details class="card done"><summary>✓ 6단계 완료 · 맵 · 동선 · 연속성 설계</summary><div id="stage6" class="summary" style="margin-top:12px"></div></details>
+<div class="card current"><div class="stage">● 현재 단계 · 7. 5분 스토리 구조</div><p>이미 확정된 세계관·캐릭터·맵은 바꾸지 않고, 영화 흐름과 감정선만 결정합니다.</p><div id="storyGroups"></div></div>
+<div class="card"><h3>7단계 기타 / 내 생각</h3><textarea id="storyFree" placeholder="꼭 넣고 싶은 장면, 대사, 반전, 코미디 등을 적어주세요"></textarea></div>
+<div class="bar"><span class="saved" id="state">✓ 자동 저장</span><button class="btn ghost" id="saveBtn">저장</button><button class="btn" id="copyBtn">7단계 선택 내용 복사</button><a class="btn ghost" href="./roadmap.html">제작 로드맵</a></div>
+<div id="out" class="out">7단계를 선택한 뒤 '7단계 선택 내용 복사'를 누르세요.</div>
 </div>
 <script>
 const KEY='ai-video-studio-v01';
-const CONFIRMED={
- mapCore:['돔 정중앙'],
- mapRescueBase:['중앙 코어 바로 옆'],
- mapStation:['돔 가장자리 출구 직결역'],
- mapResidential:['중앙에서 외곽으로 퍼지는 방사형 도시','여러 층으로 나뉜 테라스형 도시'],
- mapEvacRoute:['주거구역 → 여러 소형역 → 중앙 환승 → 안전키','주거구역 → 중앙역 → 안전키 게이트'],
- mapEmergency:['보조통로 없이 열차만 사용'],
- mapGate:['게이트 진입 후 초고속 튜브로 다른 키월드까지 이동'],
- mapDisaster:['중앙 코어 주변','돔 상층/천장 구조']
-};
-const LABELS={mapCore:'중앙 코어 위치',mapRescueBase:'구조대 기지 위치',mapStation:'고속열차역 위치',mapResidential:'주민 생활구역 배치',mapEvacRoute:'기본 대피 동선',mapEmergency:'비상 보조통로',mapGate:'안전키 연결 게이트',mapDisaster:'재난 때 먼저 위험해지는 구역'};
-const NOTE=`• 중앙 코어: 돔 정중앙\n• 구조대 기지: 중앙 코어 바로 옆\n• 고속열차역: 돔 가장자리 출구 직결역\n• 생활구역: 방사형 + 다층 테라스형 도시\n• 대피: 소형역 분산 집결 또는 중앙역 직행의 2중 대피 체계\n• 보조통로 없음, 열차 중심\n• 게이트 진입 후 초고속 튜브로 다른 키월드 이동\n• 최초 위험구역: 중앙 코어 주변 + 돔 상층/천장\n• 핵심 재난 비주얼: 중앙 코어 천장이 붕괴되며 아래로 내려앉음`;
+const STAGE6=`• 중앙 코어: 돔 정중앙\n• 구조대 기지: 중앙 코어 바로 옆\n• 고속열차역: 돔 가장자리 출구 직결역\n• 생활구역: 방사형 + 다층 테라스형 도시\n• 대피: 소형역 분산 집결 또는 중앙역 직행의 2중 대피 체계\n• 보조통로 없음, 열차 중심\n• 게이트 진입 후 초고속 튜브로 다른 키월드 이동\n• 최초 위험구역: 중앙 코어 주변 + 돔 상층/천장\n• 핵심 재난 비주얼: 중앙 코어 천장이 붕괴되며 아래로 내려앉음`;
+const STORY=[
+['storyOpen','오프닝의 중심',['Q 키월드의 평화로운 아침과 주민 일상부터 시작','구조대 5명의 일상 코미디부터 시작','중앙 코어의 웅장한 모습으로 시작 후 주민 일상으로 이동']],
+['storyAlert','첫 경보 연출',['주민들이 익숙하게 반응하는 가벼운 정기 경보처럼 시작','처음엔 작은 진동과 코어 이상만 보여주고 뒤늦게 경보','코미디 중 갑자기 경보가 끼어들어 분위기 급전환']],
+['storyRescue','구조대 핵심 사건',['열차 출발 직전 남겨진 아이/가족을 구조하러 되돌아감','코어 주변에 고립된 기술자를 구조하러 되돌아감','사고뭉치 힘캐의 실수로 누군가가 고립되어 구조작전 발생']],
+['storyClimax','클라이맥스 핵심',['중앙 코어 천장이 대붕괴하며 구조대가 마지막 열차에 간신히 탑승','열차가 출발하는 순간 돔 천장과 중앙 코어가 연쇄 붕괴','붕괴 직전 구조대가 선로를 뛰어 열차에 올라타는 액션']],
+['storySafe','안전 키월드 도착 후 분위기',['모두 안도하고 짧은 코미디로 긴장 완화','주민들이 서로 확인하며 조용히 안도한 뒤 코미디','구조대 신입이 이제 끝났다고 말하는 순간 다시 이상징후']],
+['storySecond','2차 재난 코미디',['모찌가 실수로 안전키를 눌러 즉시 또 경보','구조대가 안전하다고 확신한 직후 안전키가 눌려 전원 얼어붙음','안전키가 눌리기 직전 주민 한 명만 이상함을 눈치채고 늦게 외침']],
+['storyReveal','현실세계/MK108 공개 방식',['카메라가 세계 밖으로 빠져나가 모찌의 손과 MK108을 한 번에 공개','2차 재난 직후 컷 전환 → 모찌가 게임 중인 모습 → 손 → MK108 순서로 공개','키월드의 충격음과 실제 키 타건음을 매치컷해 현실세계로 전환']],
+['storyEnding','마지막 엔딩 톤',['모찌는 아무것도 모른 채 게임 계속, 키월드에서는 또 경보가 울리는 유머 엔딩','MK108 제품 히어로샷 후 키월드 구조대의 지친 리액션으로 종료','제품 공개 후 다른 키월드에도 경보가 번지며 2편 암시']]
+];
 let db=JSON.parse(localStorage.getItem(KEY)||'{"projects":[],"active":null}');
 function current(){return db.projects.find(p=>p.id===db.active)||db.projects[0]||null}
-function apply(){const p=current();if(!p)return null;if(!p.keyworldExtra)p.keyworldExtra={};Object.entries(CONFIRMED).forEach(([id,selected])=>{p.keyworldExtra[id]={selected:[...selected],thought:id==='mapDisaster'?'중앙 코어 천정이 붕괴돼면서 내려 앉는다':''}});p.keyworldExtra.mapFree='';if(!p.roadmap)p.roadmap={};if(!p.roadmap.map)p.roadmap.map={done:false,note:''};p.roadmap.map.done=true;p.roadmap.map.note=NOTE;p.mapConfirmedVersion=1;p.updated=Date.now();localStorage.setItem(KEY,JSON.stringify(db));return p}
-function render(){const p=apply();if(!p){document.getElementById('stage6').textContent='먼저 작업실에서 프로젝트를 만들어주세요.';return}document.getElementById('stage6').textContent=NOTE;const prior=[];if(p.keyworldExtra){['rescueSize','worldCompare','firstStage','rescueRoles','escapeVehicle','safeZone'].forEach(id=>{const d=p.keyworldExtra[id];if(d&&Array.isArray(d.selected)&&d.selected.length)prior.push(`<div style="margin-bottom:8px"><b>${id}</b><br>${d.selected.map(v=>`<span class="pill">${v}</span>`).join('')}</div>`)});}document.getElementById('oldSummary').innerHTML=prior.length?prior.join(''):'이전 선택 기록은 로드맵의 각 단계에서 확인할 수 있습니다.'}
-render();
+function ensure(){const p=current();if(!p)return null;if(!p.keyworldExtra)p.keyworldExtra={};STORY.forEach(([id])=>{if(!p.keyworldExtra[id])p.keyworldExtra[id]={selected:[],thought:''}});if(!p.keyworldExtra.storyFree)p.keyworldExtra.storyFree='';if(!p.roadmap)p.roadmap={};if(!p.roadmap.map)p.roadmap.map={done:false,note:''};p.roadmap.map.done=true;p.roadmap.map.note=STAGE6;return p}
+function save(){const p=ensure();if(!p)return;localStorage.setItem(KEY,JSON.stringify(db));document.getElementById('state').textContent='✓ 저장됨 '+new Date().toLocaleTimeString('ko-KR')}
+function render(){const p=ensure();if(!p){document.getElementById('storyGroups').innerHTML='먼저 작업실에서 프로젝트를 만들어주세요.';return}document.getElementById('stage6').textContent=STAGE6;document.getElementById('storyGroups').innerHTML=STORY.map(([id,title,opts],i)=>`<div class="group"><h3>${i+1}. ${title}</h3>${opts.map(o=>`<label class="opt"><input type="checkbox" data-id="${id}" data-v="${o}" ${p.keyworldExtra[id].selected.includes(o)?'checked':''}><span>${o}</span></label>`).join('')}<textarea data-thought="${id}" placeholder="기타 / 내 생각">${p.keyworldExtra[id].thought||''}</textarea></div>`).join('');document.getElementById('storyFree').value=p.keyworldExtra.storyFree||'';document.querySelectorAll('input[type=checkbox]').forEach(el=>el.onchange=e=>{const id=e.target.dataset.id,v=e.target.dataset.v,arr=p.keyworldExtra[id].selected;if(e.target.checked&&!arr.includes(v))arr.push(v);if(!e.target.checked)p.keyworldExtra[id].selected=arr.filter(x=>x!==v);save()});document.querySelectorAll('[data-thought]').forEach(el=>el.oninput=e=>{p.keyworldExtra[e.target.dataset.thought].thought=e.target.value;save()});document.getElementById('storyFree').oninput=e=>{p.keyworldExtra.storyFree=e.target.value;save()};save()}
+function text(){const p=ensure();if(!p)return '';let s='[KEY WORLD] 7단계 5분 스토리 구조 체크리스트\n\n';STORY.forEach(([id,title])=>{s+=title+'\n';(p.keyworldExtra[id].selected||[]).forEach(v=>s+='- '+v+'\n');if(p.keyworldExtra[id].thought)s+='기타/내 생각: '+p.keyworldExtra[id].thought+'\n';s+='\n'});if(p.keyworldExtra.storyFree)s+='7단계 기타 / 내 생각\n'+p.keyworldExtra.storyFree+'\n';return s}
+document.getElementById('saveBtn').onclick=save;document.getElementById('copyBtn').onclick=async()=>{const t=text();document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('state').textContent='✓ 복사됨'}catch{document.getElementById('state').textContent='아래 내용을 직접 복사하세요'}};render();
 </script></body></html>
