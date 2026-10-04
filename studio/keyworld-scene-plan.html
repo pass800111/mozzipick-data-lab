@@ -1,17 +1,46 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KEY WORLD Flow 씬 플랜 01-15</title><style>:root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--ok:#37c991;--accent:#7c9cff}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:1050px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.nav{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:9px 12px;border:1px solid #334163;border-radius:11px;background:#202b49;color:#dce5ff;text-decoration:none;font-weight:800}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.scene{display:grid;grid-template-columns:70px 80px 80px 1fr;gap:10px;align-items:start}.n{font-weight:900;color:#ffe3a1}.meta{font-size:12px;color:#b8c3dc}.desc{font-size:13px;line-height:1.58}.desc b{color:#fff}.qa{margin-top:8px;color:var(--ok);font-size:12px}.summary{background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:12px;font-size:13px;line-height:1.6}h1{margin:0;font-size:24px}p{color:var(--muted);font-size:13px}.status{color:var(--ok);font-size:12px}@media(max-width:760px){.scene{grid-template-columns:60px 1fr}.meta{grid-column:2}.desc{grid-column:1/3}}</style></head><body><div class="wrap"><div class="top"><div><h1>🎬 KEY WORLD · Google Flow 씬 플랜 01–15</h1><p>1씬=1클립, 최대 10초. 레퍼런스는 1장 우선, 꼭 필요한 경우만 2컷.</p></div><div class="nav"><a class="btn" href="./master-lock.html">MASTER LOCK</a><a class="btn" href="./roadmap.html">로드맵</a><a class="btn" href="./keyworld-checklist.html">체크리스트</a></div></div><div class="summary"><b>오프닝 최신 LOCK</b><br>대장 방 내부 → 정적 → 우→좌 카메라 이동 → 알람 → 황급한 출근 준비 → 집 문을 열고 나감 → 카메라가 빠지며 도시 돔 전체 공개 → 출근길/본부에서 구조대 5명 자연 등장</div><div id="list"></div><div class="status" id="status">✓ 씬 플랜 저장 준비</div></div><script>const KEY='ai-video-studio-v01';const SCENES=[
-['01',6,1,'침실 정적','대장 침실의 조용한 아침. 대장은 프레임 한쪽에서 깊이 잠들어 있음. 카메라는 우측에서 좌측으로 아주 천천히 이동.','대장이 잠든 동일 자세를 유지한 채 알람 장치가 프레임에 들어오는 지점에서 종료.'],
-['02',4,1,'알람 기상','갑자기 알람이 울리고 대장이 화들짝 깨어남. 과장된 행동은 짧고 자연스럽게.','대장이 시간을 확인하고 눈이 커지는 순간으로 종료.'],
-['03',5,1,'지각 인지','대장이 시간을 재확인하고 급하게 침대에서 내려옴. 이불이나 작은 소품에 발이 걸릴 듯하다가 겨우 균형을 잡는 가벼운 코미디.','문 쪽을 바라보며 출근 준비를 시작하는 자세.'],
-['04',7,2,'허둥지둥 준비','시작: 대장이 장비를 찾는 모습. 종료: 기본 구조대 장비를 갖추고 문 쪽으로 뛰어가는 모습. 한 클립 안에서 준비 동작만 수행.','손에 필요한 장비를 들고 문 앞에 도착.'],
-['05',4,1,'현관 탈출','대장이 집 문을 급히 열고 밖으로 뛰어나감. 카메라는 뒤에서 따라감.','문 밖 테라스/보행로에 나온 대장의 뒷모습.'],
-['06',8,2,'도시 공개','시작: 문 밖의 대장. 카메라가 빠르게 뒤/위로 빠지면서 거대한 돔, 중앙 코어, 테라스 도시 전체를 처음 공개.','대장은 작은 실루엣이 되고 Q 키월드 전체가 프레임을 채움.'],
-['07',6,1,'출근길 하강','도시 전체샷에서 다시 대장 쪽으로 카메라가 내려오며 활기찬 아침 보행로와 교통을 보여줌.','대장이 본부 방향 보행로로 뛰어드는 지점.'],
-['08',5,1,'도시 생활 코미디','달리는 대장이 출근 군중 사이를 피해가며 작은 생활 리액션을 만남. 주민과 부딪히지 않고 아슬아슬하게 통과.','대장이 잠깐 멈춰 앞의 작은 사고를 발견.'],
-['09',7,1,'작은 생활사고','대장이 이동 중 주민의 사소한 문제를 빠르게 도와줌. 주인공의 책임감과 익숙한 구조 행동 소개.','문제가 해결되고 주민이 안도, 대장은 다시 출발.'],
-['10',6,1,'축제/출근 혼잡','거리 한쪽은 작은 아침 축제 분위기, 다른 쪽은 출근 혼잡. 대장이 지나가며 흐름을 정리하도록 짧게 도움.','대장이 구조대 본부 입구에 도착.'],
-['11',5,1,'본부 도착','대장이 본부에 급히 들어오지만 태연한 척 자세를 바로잡음. 첫 팀원과 자연스럽게 마주침.','첫 팀원이 대장을 바라보는 코믹한 정적.'],
-['12',6,1,'부대장/기술병 소개','부대장(기술병)은 이미 화면/장비에 집중 중. 대장의 지각을 눈치채지만 짧은 시선만 보내고 업무 지속.','대장과 기술병이 같은 방향의 점검 알림을 바라봄.'],
-['13',6,1,'엔지니어 소개','엔지니어가 장비를 점검하며 정교한 작업에 몰입. 주변의 작은 소동에도 흔들리지 않는 성격을 행동으로 소개.','점검 장비를 챙겨 팀 쪽으로 이동.'],
-['14',6,1,'힘캐/사고뭉치 소개','힘캐가 무거운 장비를 쉽게 들지만 사소한 조작 실수를 일으켜 주변 팀원이 반응. 손상이나 대형사고는 없음.','힘캐가 아무 일 없다는 듯 장비를 다시 들고 합류.'],
-['15',6,1,'겁쟁이 신입+출동','신입은 장비 뒤나 구석에서 조심스럽게 등장. 팀이 게이트 정기점검 지시를 받고 함께 출동 준비.','5명이 처음 한 프레임에 자연스럽게 모이고 출구 방향으로 움직이기 시작.']];let db=JSON.parse(localStorage.getItem(KEY)||'{"projects":[],"active":null}');function p(){return db.projects.find(x=>x.id===db.active)||db.projects[0]||null}function apply(){const x=p();if(!x)return null;x.flowScenePlan=SCENES.map(s=>({id:s[0],seconds:s[1],refs:s[2],title:s[3],action:s[4],end:s[5]}));x.flowRules={tool:'Google Flow',maxSeconds:10,oneSceneOneClip:true,preferredRefs:1,maxPreferredRefs:2};x.openingRevision='대장 방 내부→정적→우→좌 이동→알람→출근준비→외출→도시 돔 전체 공개';x.updated=Date.now();localStorage.setItem(KEY,JSON.stringify(db));return x}function render(){const x=apply();document.getElementById('list').innerHTML=SCENES.map(s=>`<div class="card scene"><div class="n">SCENE ${s[0]}</div><div class="meta">${s[1]}초</div><div class="meta">이미지 ${s[2]}장</div><div class="desc"><b>${s[3]}</b><br>${s[4]}<br><br><b>종료/연결:</b> ${s[5]}<div class="qa">✓ 10초 이하 · 1핵심행동 · 연속성 기준 적용</div></div></div>`).join('');document.getElementById('status').textContent=x?'✓ 프로젝트 localStorage에 씬 01–15 저장됨':'먼저 작업실에서 프로젝트를 만들어주세요.'}render();</script></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KEY WORLD Flow 씬 플랜</title><style>:root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--ok:#37c991;--warn:#ffcc66}*{box-sizing:border-box}body{margin:0;background:#0b1020;color:var(--text);font-family:system-ui,"Noto Sans KR",sans-serif}.wrap{max-width:1050px;margin:auto;padding:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}h1,h2,h3{margin:0 0 8px}p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.lock{border-color:var(--ok)}.scene{display:grid;grid-template-columns:85px 90px 1fr;gap:10px}.tag{color:#ffe3a1;font-weight:800}.ok{color:var(--ok);font-size:12px}.route{white-space:pre-wrap;line-height:1.7}.btn{display:inline-block;padding:8px 11px;border:1px solid #334163;border-radius:10px;color:#dce5ff;text-decoration:none;margin-right:6px}@media(max-width:760px){.grid,.scene{grid-template-columns:1fr}}</style></head><body><div class="wrap"><h1>KEY WORLD · Google Flow 씬 플랜</h1><p>MASTER HOME LAYOUT → 카메라 동선 → 대장 등장 시점 순서로 고정. 1씬=1클립, 최대 10초, 이미지 1장 우선/필요 시 2장.</p><div><a class="btn" href="./master-lock.html">MASTER LOCK</a><a class="btn" href="./roadmap.html">로드맵</a></div><div class="card lock"><h2>🏠 대장 집 MASTER HOME LAYOUT — 확정 기준</h2><div class="grid"><div><h3>구조: 투룸</h3><div class="route">① 현관/짧은 복도
+② 거실 겸 개인 작업실
+③ 분리된 침실
+④ 욕실/수납실은 복도 측면에 존재하지만 오프닝에서는 보여주지 않음
+
+핵심: 원룸처럼 한눈에 침대가 보이지 않게 한다. 거실/작업실과 침실을 물리적으로 분리한다.</div></div><div><h3>창밖 규칙</h3><div class="route">거실 창: 인접 건물 일부, 아침빛, 공중교통 실루엣 정도만
+침실 창: 블라인드/반투명 처리, 빛만 유입
+중앙 코어/돔 전체/도시 전경은 집 안에서 공개 금지
+도시 전체 공개는 대장이 집 밖으로 나간 뒤 처음 사용</div></div></div></div><div class="card lock"><h2>📍 룸별 고정 소품</h2><div class="grid"><div><h3>거실 겸 작업실</h3><div class="route">• 구조대 메달/표창 벽
+• 팀 단체사진/작전 사진
+• 대장 전용 장비 케이스 1개
+• 휴대 통신기/작전 태블릿
+• 구조 헬멧 거치대 1곳
+• 작은 화분
+• 책/작전 기록
+• 벽면 구조대 문양 1개
+• 현관 옆 출동용 장비 선반
+
+※ 모든 위치 고정. 이후 새 소품 임의 추가 금지.</div></div><div><h3>침실</h3><div class="route">• 침대 1개
+• 침대 왼쪽 협탁
+• 알람 장치 1개
+• 낮은 간접등 1개
+• 옷장 1개
+• 대장 전용 붉은 천/망토 보관 위치
+• 개인 사진 1~2장
+• 작은 수납함
+
+※ 대장 캐릭터는 SCENE 02 후반에 처음 등장.</div></div></div></div><div class="card lock"><h2>🎥 오프닝 카메라 동선 — 최신 LOCK</h2><div class="route">SCENE 01 (7초, 이미지 1장): 대장 등장 금지.
+거실/작업실의 오른쪽 끝에서 시작 → 천천히 좌측으로 이동 → 장비 케이스 → 메달/사진 → 통신기/태블릿 → 침실로 이어지는 문/통로까지 접근. 카메라는 ‘이 집의 주인이 어떤 인물인지’ 소품으로 먼저 소개한다.
+
+SCENE 02 (6초, 이미지 1~2장): 카메라가 침실 문턱을 통과 → 침실 내부를 천천히 훑음 → 후반 2~3초에 처음으로 침대에서 자고 있는 대장이 프레임에 들어온다. 알람은 아직 울리지 않음.
+
+SCENE 03 (4초, 이미지 1장): 알람 06:59 → 07:00. 알람이 울리고 대장이 화들짝 깨어남.
+
+SCENE 04 (7초, 이미지 2장): 황급히 출근 준비. 기존 MASTER 캐릭터/소품 유지.
+
+SCENE 05 (5초, 이미지 1장): 현관문을 열고 밖으로 나감.
+
+SCENE 06 (7~8초, 이미지 2장): 대장이 외부 보행로에 나오는 순간 카메라가 뒤/위로 크게 빠지며 처음으로 돔 전체 + 중앙 코어 + 도시를 공개.</div></div><div class="card"><h2>SCENE 01 자체 검수 기준</h2><div class="route">✓ 대장 화면 등장 없음
+✓ 침대 직접 노출 없음 또는 문 너머 일부만
+✓ 소품으로 대장 성격/직업 먼저 설명
+✓ 우→좌 부드러운 카메라 이동
+✓ 집 구조가 투룸으로 읽힘
+✓ 창밖 도시 전체/코어/돔 공개 없음
+✓ 소품 위치와 배경 구조 이후 절대 변경 금지
+✓ Google Flow 10초 이하</div></div><script>const KEY='ai-video-studio-v01';let db=JSON.parse(localStorage.getItem(KEY)||'{"projects":[],"active":null}');let p=db.projects.find(x=>x.id===db.active)||db.projects[0];if(p){p.masterHome={type:'투룸',rooms:['현관/복도','거실 겸 작업실','분리 침실'],hidden:['욕실/수납실'],revealCaptain:'SCENE 02 후반',cityReveal:'SCENE 06 집 밖 이후',camera:'거실 오른쪽→좌측→침실 문→SCENE02 침실 진입',locked:true};p.openingRevision='SCENE01 거실/작업실 소품 탐색(대장X) → SCENE02 침실 진입 후 후반에 대장 최초 등장 → SCENE03 알람 → 출근준비 → 외출 → SCENE06 돔 전체 공개';p.updated=Date.now();localStorage.setItem(KEY,JSON.stringify(db));}</script></div></body></html>
