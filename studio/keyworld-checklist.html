@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>KEY WORLD 추가 체크리스트</title>
+<title>KEY WORLD 단계별 체크리스트</title>
 <style>
-:root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--accent:#7c9cff;--ok:#37c991}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:900px;margin:auto;padding:20px}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}h1{font-size:24px;margin:0 0 6px}p{color:var(--muted);font-size:13px}.opt{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid transparent;border-radius:10px;background:#11192d;margin:8px 0}.opt:has(input:checked){border-color:var(--ok);background:#12271f}.opt input{width:19px;height:19px;accent-color:var(--ok)}textarea{width:100%;margin-top:10px;min-height:80px;background:#0e1629;color:var(--text);border:1px solid #33415f;border-radius:12px;padding:12px;font:inherit;resize:vertical}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#071022;font-weight:800;cursor:pointer}.ghost{background:#202b49;color:#dce5ff;border:1px solid #334163}.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}.saved{color:var(--ok);font-size:13px}.out{white-space:pre-wrap;background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:14px;min-height:100px;font-size:13px;line-height:1.55}
+:root{--bg:#0b1020;--panel:#121a2f;--line:#2b3757;--text:#f4f7ff;--muted:#9eabc6;--accent:#7c9cff;--ok:#37c991;--warn:#ffcc66}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0a0f1d,#0d1426 55%,#0a0f1d);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}.wrap{max-width:900px;margin:auto;padding:20px}.card{background:rgba(18,26,47,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}.current{border-color:var(--warn)}h1{font-size:24px;margin:0 0 6px}p{color:var(--muted);font-size:13px}.stage{font-size:12px;color:#ffe3a1;margin-bottom:10px}.opt{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid transparent;border-radius:10px;background:#11192d;margin:8px 0}.opt:has(input:checked){border-color:var(--ok);background:#12271f}.opt input{width:19px;height:19px;accent-color:var(--ok)}textarea{width:100%;margin-top:10px;min-height:80px;background:#0e1629;color:var(--text);border:1px solid #33415f;border-radius:12px;padding:12px;font:inherit;resize:vertical}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#071022;font-weight:800;cursor:pointer;text-decoration:none}.ghost{background:#202b49;color:#dce5ff;border:1px solid #334163}.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}.saved{color:var(--ok);font-size:13px}.out{white-space:pre-wrap;background:#0e1629;border:1px solid #33415f;border-radius:12px;padding:14px;min-height:100px;font-size:13px;line-height:1.55}.old{opacity:.72}details summary{cursor:pointer;font-weight:800;color:#dce5ff}
 </style>
 </head>
 <body><div class="wrap">
-<h1>KEY WORLD 추가 체크리스트</h1><p>앞으로 새 선택지가 생기면 이 페이지에 계속 추가합니다. 같은 브라우저에 자동 저장됩니다.</p>
-<div id="groups"></div>
-<div class="card"><h3>기타 / 추가 아이디어</h3><textarea id="free" placeholder="캐릭터, 탈출수단, 안전지역, 장면 아이디어 등을 자유롭게 적어주세요"></textarea></div>
-<div class="bar"><span class="saved" id="state">✓ 자동 저장</span><button class="btn ghost" id="saveBtn">저장</button><button class="btn" id="copyBtn">선택 내용 복사</button></div>
-<div id="out" class="out">체크한 뒤 '선택 내용 복사'를 누르세요.</div>
+<h1>KEY WORLD 단계별 체크리스트</h1><p>현재 제작 단계에서 필요한 선택만 먼저 표시합니다. 지난 단계 선택은 아래 접힌 기록에서 확인할 수 있습니다.</p>
+<div class="card current"><div class="stage">● 현재 단계 · 6. 맵 · 동선 · 연속성 설계</div><div id="mapGroups"></div></div>
+<details class="card old"><summary>지난 단계 선택 기록 펼치기</summary><div id="oldGroups" style="margin-top:12px"></div></details>
+<div class="card"><h3>6단계 기타 / 내 생각</h3><textarea id="mapFree" placeholder="Q 키월드 맵, 대피 동선, 구조대 움직임에 대한 생각을 자유롭게 적어주세요"></textarea></div>
+<div class="bar"><span class="saved" id="state">✓ 자동 저장</span><button class="btn ghost" id="saveBtn">저장</button><button class="btn" id="copyBtn">6단계 선택 내용 복사</button><a class="btn ghost" href="./roadmap.html">제작 로드맵</a></div>
+<div id="out" class="out">6단계를 체크한 뒤 '선택 내용 복사'를 누르세요.</div>
 </div>
 <script>
 const KEY='ai-video-studio-v01';
-const EXTRA=[
+const OLD=[
 ['rescueSize','구조대 인원',['3명','4명','5명']],
 ['worldCompare','새로운 키월드 디자인 비교',['현재 A안만 유지','현재 A안 + 수직도시 B안 비교','현재 A안 + 거대 돔 C안 비교','A/B/C 모두 시안 제작']],
 ['firstStage','첫 편의 주 무대',['Q 키월드','Space 키월드','Enter 키월드','다른 키월드']],
@@ -26,17 +27,22 @@ const EXTRA=[
 ['escapeVehicle','탈출 수단',['소형 우주선 여러 대','하나의 대형 대피선','키 사이를 달리는 고속열차','공중버스 같은 수송선','여러 종류의 탈출 수단이 함께 존재']],
 ['safeZone','안전지역 결정 방식',['방향키 구역','Home / End / Page 구역','숫자패드 구역','현재 게임에서 잘 안 쓰는 키를 시스템이 자동 계산','구조대장이 상황에 따라 직접 결정']]
 ];
+const MAP=[
+['mapCore','중앙 코어 위치',['돔 정중앙','돔 뒤쪽 상층','도시 한쪽에 치우친 비대칭 배치']],
+['mapRescueBase','구조대 기지 위치',['중앙 코어 바로 옆','고속열차역과 붙여 배치','주거구역과 열차역 사이']],
+['mapStation','고속열차역 위치',['도시 중심 대형 환승역','돔 가장자리 출구 직결역','중앙역 + 외곽 비상역 2곳']],
+['mapResidential','주민 생활구역 배치',['중앙 코어 주변 원형 도시','여러 층으로 나뉜 테라스형 도시','중앙에서 외곽으로 퍼지는 방사형 도시']],
+['mapEvacRoute','기본 대피 동선',['주거구역 → 중앙역 → 안전키 게이트','주거구역 → 여러 소형역 → 중앙 환승 → 안전키','구역별 가장 가까운 역으로 분산 대피']],
+['mapEmergency','비상 보조통로',['지하 비상터널','투명 파이프라인 슈트','고가 보행교/서비스 통로','보조통로 없이 열차만 사용']],
+['mapGate','안전키 연결 게이트',['고속열차가 게이트를 통과해 다른 키월드로 직접 이동','돔 외곽 환승 게이트에서 다른 키월드 열차로 교체','게이트 진입 후 초고속 튜브로 다른 키월드까지 이동']],
+['mapDisaster','재난 때 먼저 위험해지는 구역',['중앙 코어 주변','돔 상층/천장 구조','외곽 주거구역','열차 선로 일부']]
+];
 let db=JSON.parse(localStorage.getItem(KEY)||'{"projects":[],"active":null}');
 function current(){return db.projects.find(p=>p.id===db.active)||db.projects[0]||null}
-function ensure(){const p=current();if(!p)return null;if(!p.keyworldExtra)p.keyworldExtra={};EXTRA.forEach(([id])=>{if(!p.keyworldExtra[id])p.keyworldExtra[id]={selected:[],thought:''}});if(!p.keyworldExtra.free)p.keyworldExtra.free='';return p}
+function ensure(){const p=current();if(!p)return null;if(!p.keyworldExtra)p.keyworldExtra={};[...OLD,...MAP].forEach(([id])=>{if(!p.keyworldExtra[id])p.keyworldExtra[id]={selected:[],thought:''}});if(!p.keyworldExtra.mapFree)p.keyworldExtra.mapFree='';return p}
 function save(){const p=ensure();if(!p)return;localStorage.setItem(KEY,JSON.stringify(db));document.getElementById('state').textContent='✓ 저장됨 '+new Date().toLocaleTimeString('ko-KR')}
-function render(){const p=ensure();if(!p){document.getElementById('groups').innerHTML='<div class="card">먼저 영상 제작소에서 프로젝트를 만들어주세요.</div>';return}
- document.getElementById('groups').innerHTML=EXTRA.map(([id,title,opts],gi)=>`<div class="card"><h3>${gi+1}. ${title}</h3>${opts.map(o=>`<label class="opt"><input type="checkbox" data-id="${id}" data-v="${o}" ${p.keyworldExtra[id].selected.includes(o)?'checked':''}><span>${o}</span></label>`).join('')}<textarea data-thought="${id}" placeholder="기타 / 내 생각">${p.keyworldExtra[id].thought||''}</textarea></div>`).join('');
- document.getElementById('free').value=p.keyworldExtra.free||'';
- document.querySelectorAll('input[type=checkbox]').forEach(el=>el.onchange=e=>{const id=e.target.dataset.id,v=e.target.dataset.v,arr=p.keyworldExtra[id].selected;if(e.target.checked&&!arr.includes(v))arr.push(v);if(!e.target.checked)p.keyworldExtra[id].selected=arr.filter(x=>x!==v);save()});
- document.querySelectorAll('[data-thought]').forEach(el=>el.oninput=e=>{p.keyworldExtra[e.target.dataset.thought].thought=e.target.value;save()});
- document.getElementById('free').oninput=e=>{p.keyworldExtra.free=e.target.value;save()};
-}
-function text(){const p=ensure();if(!p)return '';let s='[KEY WORLD] 추가 체크리스트\n\n';EXTRA.forEach(([id,title])=>{s+=title+'\n';(p.keyworldExtra[id].selected||[]).forEach(v=>s+='- '+v+'\n');if(p.keyworldExtra[id].thought)s+='기타/내 생각: '+p.keyworldExtra[id].thought+'\n';s+='\n'});if(p.keyworldExtra.free)s+='기타 / 추가 아이디어\n'+p.keyworldExtra.free+'\n';return s}
+function groupHtml(list,start=1){const p=ensure();return list.map(([id,title,opts],gi)=>`<div><h3>${start+gi}. ${title}</h3>${opts.map(o=>`<label class="opt"><input type="checkbox" data-id="${id}" data-v="${o}" ${p.keyworldExtra[id].selected.includes(o)?'checked':''}><span>${o}</span></label>`).join('')}<textarea data-thought="${id}" placeholder="기타 / 내 생각">${p.keyworldExtra[id].thought||''}</textarea></div>`).join('<hr style="border:0;border-top:1px solid #2b3757;margin:18px 0">')}
+function render(){const p=ensure();if(!p){document.getElementById('mapGroups').innerHTML='먼저 프로젝트를 만들어주세요.';return}document.getElementById('mapGroups').innerHTML=groupHtml(MAP,1);document.getElementById('oldGroups').innerHTML=groupHtml(OLD,1);document.getElementById('mapFree').value=p.keyworldExtra.mapFree||'';document.querySelectorAll('input[type=checkbox]').forEach(el=>el.onchange=e=>{const id=e.target.dataset.id,v=e.target.dataset.v,arr=p.keyworldExtra[id].selected;if(e.target.checked&&!arr.includes(v))arr.push(v);if(!e.target.checked)p.keyworldExtra[id].selected=arr.filter(x=>x!==v);save()});document.querySelectorAll('[data-thought]').forEach(el=>el.oninput=e=>{p.keyworldExtra[e.target.dataset.thought].thought=e.target.value;save()});document.getElementById('mapFree').oninput=e=>{p.keyworldExtra.mapFree=e.target.value;save()}}
+function text(){const p=ensure();if(!p)return '';let s='[KEY WORLD] 6단계 맵 · 동선 · 연속성 체크리스트\n\n';MAP.forEach(([id,title])=>{s+=title+'\n';(p.keyworldExtra[id].selected||[]).forEach(v=>s+='- '+v+'\n');if(p.keyworldExtra[id].thought)s+='기타/내 생각: '+p.keyworldExtra[id].thought+'\n';s+='\n'});if(p.keyworldExtra.mapFree)s+='6단계 기타 / 내 생각\n'+p.keyworldExtra.mapFree+'\n';return s}
 document.getElementById('saveBtn').onclick=save;document.getElementById('copyBtn').onclick=async()=>{const t=text();document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('state').textContent='✓ 복사됨'}catch{document.getElementById('state').textContent='아래 내용을 직접 복사하세요'}};render();
 </script></body></html>
