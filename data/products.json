@@ -1,6 +1,6 @@
 {
   "version": "3.1-sab",
-  "updatedAt": "2026-10-06T11:11:05+09:00",
+  "updatedAt": "2026-10-06T12:11:32+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -313,7 +313,7 @@
       "rankingLabel": "판매순",
       "rankingExcluded": false,
       "viralRadar": false,
-      "grade": "A",
+      "grade": "B",
       "xiaohongshuQuery": "POUT HANDS7 PRO 三合一 Qi2.2 25W 无线充电器",
       "xiaohongshuRecommended": [
         "三合一无线充电器",
@@ -328,12 +328,12 @@
       "description": "스마트폰·워치·이어폰을 한 번에 충전할 수 있는 3in1 무선충전기입니다. Qi2.2 기반 최대 25W 충전을 지원해 책상이나 침대 옆 충전 공간을 간결하게 구성하기 좋은 제품입니다.",
       "officialUrl": "미확인",
       "spec": "미확인",
-      "coupangGroup": "A",
-      "coupangMatchGrade": "A",
+      "coupangGroup": "B",
+      "coupangMatchGrade": "B",
       "rank": 7,
       "image": "assets/products/image-fallback.svg",
       "imageSource": "기존 연결 이미지가 Qi2 15W Apple Watch 버전으로 확인되어 제거. Qi2.2 25W Galaxy 모델 정확 이미지 재검증 전까지 fallback 사용.",
-      "viralGrade": "A",
+      "viralGrade": "B",
       "imageStatus": "재검증",
       "imageCheckedAt": "2026-09-26T04:47:00+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상",
@@ -360,7 +360,7 @@
       "rankingLabel": "판매순",
       "rankingExcluded": false,
       "viralRadar": false,
-      "grade": "A",
+      "grade": "B",
       "xiaohongshuQuery": "OA Heatspot S 迷你 手腕 EMS 热敷 按摩器",
       "xiaohongshuRecommended": [
         "手腕按摩器",
@@ -375,12 +375,12 @@
       "description": "손목에 착용해 EMS 자극과 온열 기능을 함께 사용하는 휴대용 마사지기입니다. 작은 크기로 집이나 사무실에서 손목 피로 관리용으로 활용하기 쉬운 제품입니다.",
       "officialUrl": "미확인",
       "spec": "미확인",
-      "coupangGroup": "A",
-      "coupangMatchGrade": "A",
+      "coupangGroup": "B",
+      "coupangMatchGrade": "B",
       "rank": 8,
       "image": "https://m.oa-mall.co.kr/web/product/extra/big/202508/1a1837fc47573f737ccae24be3d6dd27.jpg",
       "imageSource": "오아몰 공식 상품 이미지",
-      "viralGrade": "A",
+      "viralGrade": "B",
       "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상",
       "xiaohongshuKeywords": [
         "手腕EMS热敷按摩器",
@@ -405,7 +405,7 @@
       "rankingLabel": "판매순",
       "rankingExcluded": false,
       "viralRadar": false,
-      "grade": "A",
+      "grade": "B",
       "xiaohongshuQuery": "110V转220V 韩国 转换插头 过流保护",
       "xiaohongshuRecommended": [
         "转换插头",
@@ -420,12 +420,12 @@
       "description": "해외 110V 플러그를 국내 220V 콘센트 형태에 연결할 때 사용하는 변환 어댑터입니다. 과전류 차단 기능을 갖춘 휴대형 제품으로 해외 전자기기 연결 시 플러그 규격 변환에 사용합니다.",
       "officialUrl": "미확인",
       "spec": "미확인",
-      "coupangGroup": "A",
-      "coupangMatchGrade": "A",
+      "coupangGroup": "B",
+      "coupangMatchGrade": "B",
       "rank": 9,
       "image": "https://m.notebook114.co.kr/web/product/big/202109/c38bc0b77efd1c35b10380103741c0f6.jpg",
       "imageSource": "Notebook114 product image",
-      "viralGrade": "A",
+      "viralGrade": "B",
       "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상",
       "xiaohongshuKeywords": [
         "110V转220V转换插头",
@@ -450,7 +450,7 @@
       "rankingLabel": "판매순",
       "rankingExcluded": false,
       "viralRadar": false,
-      "grade": "A",
+      "grade": "B",
       "xiaohongshuQuery": "COVANK 五合一 15000Pa 无线 车载吸尘器",
       "xiaohongshuRecommended": [
         "车载吸尘器",
@@ -465,12 +465,12 @@
       "description": "최대 15000Pa 흡입력을 내세운 5in1 무선 차량용 청소기입니다. 차량 내부의 틈새 먼지 청소처럼 짧은 전후 비교가 가능한 시연형 제품입니다.",
       "officialUrl": "미확인",
       "spec": "미확인",
-      "coupangGroup": "A",
-      "coupangMatchGrade": "A",
+      "coupangGroup": "B",
+      "coupangMatchGrade": "B",
       "rank": 10,
       "image": "assets/products/covank-5in1-v3.svg",
       "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
-      "viralGrade": "A",
+      "viralGrade": "B",
       "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상",
       "xiaohongshuKeywords": [
         "五合一车载无线吸尘器",
@@ -495,7 +495,7 @@
       "rankingLabel": "판매순",
       "rankingExcluded": false,
       "viralRadar": false,
-      "grade": "A",
+      "grade": "B",
       "xiaohongshuQuery": "无线遥控 自行车 转向灯 尾灯 USB充电",
       "xiaohongshuRecommended": [
         "自行车转向灯",
@@ -510,12 +510,12 @@
       "description": "자전거 뒤쪽에 장착해 무선 리모컨으로 방향지시 신호를 표시하는 USB 충전식 테일라이트입니다. 야간 주행에서 후방 시인성과 방향 표시를 돕는 제품입니다.",
       "officialUrl": "미확인",
       "spec": "미확인",
-      "coupangGroup": "A",
-      "coupangMatchGrade": "A",
+      "coupangGroup": "B",
+      "coupangMatchGrade": "B",
       "rank": 11,
       "image": "assets/products/bike-turn-tail-v3.svg",
       "imageSource": "제품별 대체 이미지 — 동일형 실물 오인 방지",
-      "viralGrade": "A",
+      "viralGrade": "B",
       "coupangValidationNote": "쿠팡 URL 보유 · 공개 판매 페이지 검증 대상",
       "xiaohongshuKeywords": [
         "无线遥控自行车转向尾灯",
@@ -1958,7 +1958,7 @@
       ]
     }
   ],
-  "lastValidationAt": "2026-10-06T11:11:05+09:00",
+  "lastValidationAt": "2026-10-06T12:11:32+09:00",
   "newCandidateGradeCounts": {
     "S": 0,
     "A": 0,
@@ -1966,8 +1966,8 @@
   },
   "gradeCounts": {
     "S": 0,
-    "A": 11,
-    "B": 30
+    "A": 6,
+    "B": 35
   },
   "validationSummary": {
     "newCandidateCount": 0,
