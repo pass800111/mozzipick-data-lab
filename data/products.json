@@ -1,6 +1,6 @@
 {
   "version": "3.1-sab",
-  "updatedAt": "2026-10-06T08:09:44+09:00",
+  "updatedAt": "2026-10-06T09:17:26+09:00",
   "basis": "verified public data only; unknown values are not estimated",
   "products": [
     {
@@ -1729,7 +1729,7 @@
       "spec": "휴대용 · 무선 블루투스 · 라벨 즉시 출력",
       "xiaohongshuQuery": "迷你 标签打印机 蓝牙 热敏",
       "siteUpdatedAt": "2026-09-21T09:02:59+09:00",
-      "coupangMatchGrade": "A",
+      "coupangMatchGrade": "B",
       "coupangMatchType": "핵심 기능·구매목적 동일 대체상품",
       "coupangMatchedProduct": "Niimbot B21 휴대용 라벨프린터 휴대용 무선 블루투스",
       "coupangUrl": "https://www.coupang.com/vp/products/6415760494",
@@ -1743,12 +1743,12 @@
       "reviewSource": "쿠팡 공개 상품 페이지",
       "reviewVerifiedAt": "2026-09-21T09:02:59+09:00",
       "coupangValidationNote": "쿠팡 URL 보유 · 매칭 등급 유지",
-      "grade": "A",
-      "coupangGroup": "A",
+      "grade": "B",
+      "coupangGroup": "B",
       "imageSource": "NIIMBOT product image",
       "viralRadar": false,
       "rankingExcluded": false,
-      "viralGrade": "A",
+      "viralGrade": "B",
       "rankingType": "sales",
       "rankingLabel": "판매순",
       "xiaohongshuRecommended": [
@@ -1958,7 +1958,7 @@
       ]
     }
   ],
-  "lastValidationAt": "2026-10-06T08:09:44+09:00",
+  "lastValidationAt": "2026-10-06T09:17:26+09:00",
   "newCandidateGradeCounts": {
     "S": 0,
     "A": 0,
@@ -1966,8 +1966,8 @@
   },
   "gradeCounts": {
     "S": 0,
-    "A": 37,
-    "B": 4
+    "A": 36,
+    "B": 5
   },
   "validationSummary": {
     "newCandidateCount": 0,
